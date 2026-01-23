@@ -1,9 +1,13 @@
 import "./App.css";
+import Container from "./components/Container";
+import { BellIcon } from "./icons/BellIcon";
 
 function App() {
   return (
     <>
-      <div className=" bg-green-400">hello</div>
+      <Container>
+        <BellIcon />
+      </Container>
     </>
   );
 }
