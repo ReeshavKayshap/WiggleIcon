@@ -1,1 +1,27 @@
+@font-face {
+  font-family: para;
+  src: url("fonts/Gabarito-Medium.ttf");
+}
+@font-face {
+  font-family: Gabarito;
+  src: url("fonts/Gabarito-Medium.ttf");
+}
+
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+:root {
+  --background: var(--color-white);
+  --forground: var(--color-black);
+}
+
+.dark {
+  --background: var(--color-black);
+  --forground: var(--color-white);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-forground: var(--forground);
+  --font-text: para, sans-serif;
+  --font-main: Gabarito, sans-serif;
+}
