@@ -5,23 +5,18 @@ import Search from "./Search";
 function Index() {
   return (
     <>
-      <div className="">
-        <div className="flex flex-wrap justify-center gap-10 py-20 ">
-          <Notification />
-          <Search />
-          <Home />
-          <Search />
+      <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-8  ">
+        <Search />
+        <Notification />
+        <Home />
+        <Search />
+        <Notification />
 
-          <Notification />
-          <Search />
-          <Notification />
-          <Search />
-
-          <Notification />
-          <Search />
-          <Notification />
-          <Search />
-        </div>
+        <Search />
+        <Notification />
+        <Search />
+        <Notification />
+        <Search />
       </div>
     </>
   );

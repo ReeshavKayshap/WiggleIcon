@@ -1,6 +1,9 @@
+import { IconCopy } from "@tabler/icons-react";
 import { motion, useAnimate } from "motion/react";
+import { useState } from "react";
 function Search() {
   const [scope, animate] = useAnimate();
+  const [hover, setHover] = useState(false);
   const handleHover = () => {
     animate(
       ".flip",
@@ -11,29 +14,43 @@ function Search() {
   return (
     <>
       <div
-        className=" flex justify-center items-center shadow-sm cursor-pointer
-     dark:shadow-neutral-800 shadow-neutral-300 ring-1 dark:ring-neutral-800 ring-neutral-300 size-40 w-60 rounded-2xl"
+        className="flex  flex-1 flex-col items-center justify-center gap-4 rounded-lg p-4  shadow-sm relative
+        
+     dark:shadow-neutral-800 shadow-neutral-300 ring-1 dark:ring-neutral-800 ring-neutral-300 "
       >
         {" "}
-        <motion.svg
-          ref={scope}
-          onMouseEnter={handleHover}
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          //   className="size-5 size-70"
-          width="70"
-          height="70"
+        <span className="flex cursor-pointer  items-center justify-center gap-2 p-2">
+          <motion.svg
+            ref={scope}
+            onMouseEnter={handleHover}
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            width="80"
+            height="80"
+          >
+            <path
+              d="M21 21L17.5001 17.5M20 11.5C20 16.1944 16.1944 20 11.5 20C6.80558 20 3 16.1944 3 11.5C3 6.80558 6.80558 3 11.5 3C16.1944 3 20 6.80558 20 11.5Z"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="flip"
+            />
+          </motion.svg>
+        </span>
+        <span
+          onMouseEnter={() => setHover(true)}
+          onMouseLeave={() => setHover(false)}
+          className="  cursor-pointer"
         >
-          <path
-            d="M21 21L17.5001 17.5M20 11.5C20 16.1944 16.1944 20 11.5 20C6.80558 20 3 16.1944 3 11.5C3 6.80558 6.80558 3 11.5 3C16.1944 3 20 6.80558 20 11.5Z"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="flip"
-          />
-        </motion.svg>
+          {hover && (
+            <div className="bg-neutral-200 text-black flex flex-col justify-center items-center absolute -bottom-10 right-2 px-2.5 py-1  rounded-lg ">
+              <h3 className="font-text">Click to copy</h3>
+            </div>
+          )}
+          <IconCopy className="size-4 text-neutral-700" />
+        </span>
       </div>
     </>
   );

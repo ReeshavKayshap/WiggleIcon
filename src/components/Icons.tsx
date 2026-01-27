@@ -3,8 +3,8 @@ import Index from "../icons/Index";
 function Icon() {
   return (
     <>
-      <div className=" border-r border-l max-w-7xl mx-auto  px-20 py-20 border-neutral-800">
-        <span className="flex items-center relative">
+      <div className=" border-r border-l max-w-7xl mx-auto flex flex-col gap-15 px-15 py-20 border-neutral-800">
+        <span className="flex items-center relative  ">
           <span className=" absolute pl-4">
             <svg
               viewBox="0 0 24 24"

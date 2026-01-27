@@ -1,4 +1,4 @@
-import { cn } from "@/lib/lib/utils";
+import { IconCopy } from "@tabler/icons-react";
 import { motion, useAnimate } from "motion/react";
 
 import { useState } from "react";
@@ -23,36 +23,11 @@ function Home() {
   return (
     <>
       <div
-        className=" flex justify-center items-center shadow-sm cursor-pointer
-     dark:shadow-neutral-800 shadow-neutral-300 ring-1 dark:ring-neutral-800 ring-neutral-300 size-40 w-60 rounded-2xl"
+        className="flex  flex-1 flex-col items-center justify-center gap-4 rounded-lg p-4  shadow-sm relative
+        
+     dark:shadow-neutral-800 shadow-neutral-300 ring-1 dark:ring-neutral-800 ring-neutral-300 "
       >
-        <span
-          onMouseEnter={() => setHover(true)}
-          onMouseLeave={() => setHover(false)}
-          className="  w-full flex justify-center"
-        >
-          {hover && (
-            <div
-              className={cn(
-                "bg-white text-black absolute -top-8 px-2 py-1 h-fit rounded-2xl",
-                "relative",
-              )}
-            >
-              {" "}
-              <h3 className="">Home-icon</h3>
-              <span className=" absolute bottom-0 translate-y-full left-11">
-                <svg
-                  className="block bg-white fill-white z-50 size-2.5 translate-y-[calc(-50%-2px)] rotate-45 rounded-xs"
-                  width="10"
-                  height="5"
-                  viewBox="0 0 30 10"
-                  preserveAspectRatio="none"
-                >
-                  …
-                </svg>
-              </span>
-            </div>
-          )}
+        <span className="flex cursor-pointer  items-center justify-center gap-2 p-2">
           <motion.svg
             ref={scope}
             onMouseEnter={handleHover}
@@ -78,9 +53,31 @@ function Home() {
             />
           </motion.svg>
         </span>
+
+        <span
+          onMouseEnter={() => setHover(true)}
+          onMouseLeave={() => setHover(false)}
+          className="  cursor-pointer"
+        >
+          {hover && (
+            <div className="bg-neutral-200 text-black flex flex-col justify-center items-center absolute -bottom-10 right-2 px-2.5 py-1  rounded-lg ">
+              <h3 className="font-text">Click to copy</h3>
+            </div>
+          )}
+          <IconCopy className="size-4 text-neutral-700" />
+        </span>
       </div>
     </>
   );
 }
 
 export default Home;
+<span className=" absolute bottom-0 translate-y-full left-[56.5px]">
+  <svg
+    className=" block bg-foreground fill-foreground z-50 size-2.5 translate-y-[calc(-50%-2px)] rotate-45 rounded-xs"
+    width="10"
+    height="5"
+    viewBox="0 0 30 10"
+    preserveAspectRatio="none"
+  ></svg>
+</span>;
