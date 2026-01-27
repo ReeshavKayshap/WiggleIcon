@@ -1,7 +1,12 @@
+import { Camera } from "./Camera";
+import { Eye } from "./Eye";
 import Home from "./Home";
 import { Notification } from "./Notification";
+import Phone from "./Phone";
 import Search from "./Search";
-
+import { UnorderedList } from "./UnorderedList";
+import { Map } from "./Map";
+import { Cast } from "./Cast";
 function Index() {
   return (
     <>
@@ -9,14 +14,20 @@ function Index() {
         <Search />
         <Notification />
         <Home />
-        <Search />
-        <Notification />
+        <Phone />
+        <Camera />
 
+        <Eye />
+        <UnorderedList />
+        <Map />
+        <Cast />
+        <Phone />
+
+        <Eye />
         <Search />
         <Notification />
-        <Search />
-        <Notification />
-        <Search />
+        <Home />
+        <Phone />
       </div>
     </>
   );
