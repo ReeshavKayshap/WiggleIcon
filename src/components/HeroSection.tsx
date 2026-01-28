@@ -3,7 +3,7 @@ import { IconBrandGithub } from "@tabler/icons-react";
 export function HeroSection() {
   return (
     <>
-      <div className=" border-r border-l  border-neutral-800 ">
+      <div className=" border-r border-l  dark:border-neutral-800 border-neutral-300 ">
         <div className="flex justify-center py-25">
           <span className="flex flex-col items-center gap-5">
             <span>

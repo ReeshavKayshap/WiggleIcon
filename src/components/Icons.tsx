@@ -1,9 +1,20 @@
-import Index from "../icons/Index";
+import { IconList } from "@/icons/Index";
+import { useState } from "react";
+
+const PAGE_SIZE = 10;
 
 function Icon() {
+  const [current, setCurrent] = useState(1);
+  const totalIcons = IconList.length;
+  const NoOfPage = Math.ceil(totalIcons / PAGE_SIZE);
+  const Start = (current - 1) * PAGE_SIZE;
+  const End = Start + PAGE_SIZE;
+  const handleClick = (page: number) => {
+    setCurrent(page);
+  };
   return (
     <>
-      <div className=" border-r border-l max-w-7xl mx-auto flex flex-col gap-15 px-15 py-20 border-neutral-800">
+      <div className=" border-r border-l max-w-7xl mx-auto flex flex-col gap-15 px-15 py-20 dark:border-neutral-800 border-neutral-300">
         <span className="flex items-center relative  ">
           <span className=" absolute pl-4">
             <svg
@@ -28,8 +39,22 @@ function Icon() {
           />
         </span>
 
+        <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-8  ">
+          {IconList.slice(Start, End).map(({ id, Component }) => (
+            <span key={id}>
+              <Component />
+            </span>
+          ))}
+        </div>
         <div>
-          <Index />
+          {Array.from({ length: NoOfPage }, (_, index) => {
+            const page = index + 1;
+            return (
+              <span key={page} onClick={() => handleClick(page)}>
+                {page}
+              </span>
+            );
+          })}
         </div>
       </div>
     </>

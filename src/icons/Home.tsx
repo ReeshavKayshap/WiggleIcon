@@ -72,12 +72,3 @@ function Home() {
 }
 
 export default Home;
-<span className=" absolute bottom-0 translate-y-full left-[56.5px]">
-  <svg
-    className=" block bg-foreground fill-foreground z-50 size-2.5 translate-y-[calc(-50%-2px)] rotate-45 rounded-xs"
-    width="10"
-    height="5"
-    viewBox="0 0 30 10"
-    preserveAspectRatio="none"
-  ></svg>
-</span>;
