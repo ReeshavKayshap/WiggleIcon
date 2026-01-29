@@ -1,6 +1,6 @@
 import { IconList } from "@/icons/Index";
 import { useState } from "react";
-
+import { motion } from "motion/react";
 const PAGE_SIZE = 10;
 
 function Icon() {
@@ -12,6 +12,11 @@ function Icon() {
   const handleClick = (page: number) => {
     setCurrent(page);
   };
+  const variants = {
+    initial: { opacity: 0, filter: "blur(10px)", y: 10 },
+    animate: { opacity: 1, filter: "blur(0px)", y: 0 },
+  };
+
   return (
     <>
       <div className=" border-r border-l max-w-7xl mx-auto flex flex-col gap-15 px-15 py-20 dark:border-neutral-800 border-neutral-300">
@@ -39,20 +44,31 @@ function Icon() {
           />
         </span>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-8  ">
+        <motion.div
+          key={current}
+          variants={variants}
+          initial="initial"
+          animate="animate"
+          className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-8  "
+        >
           {IconList.slice(Start, End).map(({ id, Component }) => (
             <span key={id}>
               <Component />
             </span>
           ))}
-        </div>
-        <div>
+        </motion.div>
+        <div className="flex justify-end gap-3 ">
           {Array.from({ length: NoOfPage }, (_, index) => {
             const page = index + 1;
             return (
-              <span key={page} onClick={() => handleClick(page)}>
+              <motion.span
+                whileTap={{ scale: 0.9 }}
+                className="bg-amber-600 px-2 cursor-pointer"
+                key={page}
+                onClick={() => handleClick(page)}
+              >
                 {page}
-              </span>
+              </motion.span>
             );
           })}
         </div>

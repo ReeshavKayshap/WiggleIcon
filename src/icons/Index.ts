@@ -12,6 +12,9 @@ import { Heart } from "./Heart";
 import { Bluetooth } from "./Bluetooth";
 import { Trash } from "./Trash";
 import { World } from "./World";
+import { Setting } from "./Setting";
+import { InfoCircle } from "./InfoCircle";
+import { Bell } from "./Bell";
 
 interface Icon {
   id: number;
@@ -71,5 +74,17 @@ export const IconList: Icon[] = [
   {
     id: 13,
     Component: World,
+  },
+  {
+    id: 14,
+    Component: Setting,
+  },
+  {
+    id: 15,
+    Component: InfoCircle,
+  },
+  {
+    id: 16,
+    Component: Bell,
   },
 ];

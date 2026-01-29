@@ -1,16 +1,23 @@
 import { useState } from "react";
 import { IconCopy } from "@tabler/icons-react";
 import { motion, useAnimate } from "motion/react";
-export function Trash() {
+export function InfoCircle() {
   const [scope, animate] = useAnimate();
   const [hover, setHover] = useState(false);
   const handleHover = async () => {
     animate(
-      ".up",
+      ".show",
 
-      { y: [0, -5, -3, -1.2, 0], rotate: [0, -3, 3, -3, 0] },
+      { pathLength: [0, 1] },
 
-      { duration: 0.98, ease: "easeInOut" },
+      { duration: 0.5, ease: "easeInOut" },
+    );
+    animate(
+      ".visible",
+
+      { opacity: [0, 1] },
+
+      { duration: 0.6, ease: "easeInOut", delay: 0.4 },
     );
   };
 
@@ -38,14 +45,9 @@ export function Trash() {
             strokeLinejoin="round"
           >
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <path className="up" d="M4 7l16 0" />
-            <path className="down" d="M10 11l0 6" />
-            <path className="down" d="M14 11l0 6" />
-            <path
-              className="down"
-              d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"
-            />
-            <path className="up" d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+            <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" />
+            <path className="visible" d="M12 9h.01" />
+            <path className="show" d="M11 12h1v4h1" />
           </motion.svg>
         </span>
 

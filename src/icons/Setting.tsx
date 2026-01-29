@@ -1,16 +1,16 @@
 import { useState } from "react";
 import { IconCopy } from "@tabler/icons-react";
 import { motion, useAnimate } from "motion/react";
-export function Trash() {
+export function Setting() {
   const [scope, animate] = useAnimate();
   const [hover, setHover] = useState(false);
   const handleHover = async () => {
     animate(
-      ".up",
+      ".role",
 
-      { y: [0, -5, -3, -1.2, 0], rotate: [0, -3, 3, -3, 0] },
+      { rotate: [0, -90, 0] },
 
-      { duration: 0.98, ease: "easeInOut" },
+      { duration: 0.8, ease: "easeInOut" },
     );
   };
 
@@ -21,12 +21,10 @@ export function Trash() {
         
      dark:shadow-neutral-800 shadow-neutral-300 ring-1 dark:ring-neutral-800 ring-neutral-300  "
       >
-        <span
-          onMouseEnter={handleHover}
-          ref={scope}
-          className="flex cursor-pointer  items-center justify-center gap-2 p-2"
-        >
+        <span className="flex cursor-pointer  items-center justify-center gap-2 p-2">
           <motion.svg
+            onMouseEnter={handleHover}
+            ref={scope}
             xmlns="http://www.w3.org/2000/svg"
             width="80"
             height="80"
@@ -38,14 +36,11 @@ export function Trash() {
             strokeLinejoin="round"
           >
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <path className="up" d="M4 7l16 0" />
-            <path className="down" d="M10 11l0 6" />
-            <path className="down" d="M14 11l0 6" />
             <path
-              className="down"
-              d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"
+              className="role"
+              d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065"
             />
-            <path className="up" d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+            <path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
           </motion.svg>
         </span>
 

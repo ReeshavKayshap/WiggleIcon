@@ -54,8 +54,17 @@ export function Heart() {
           className="  cursor-pointer"
         >
           {hover && (
-            <div className="bg-neutral-200 text-black flex flex-col justify-center items-center absolute -bottom-10 right-2 px-2.5 py-1  rounded-lg ">
-              <h3 className="font-text">Click to copy</h3>
+            <div className="bg-neutral-200 text-black flex flex-col justify-center items-center absolute -bottom-6 right-11.5 px-2.5 py-0.5  rounded-lg ">
+              <h3 className="font-text text-sm">Click to copy</h3>
+              <span className=" absolute top-1  left-10 ">
+                <svg
+                  className="bg-neutral-200 block fill-neutral-200 z-50 size-2.5 translate-y-[calc(-50%-2px)] rotate-45 rounded-xs"
+                  width="10"
+                  height="5"
+                  viewBox="0 0 30 10"
+                  preserveAspectRatio="none"
+                ></svg>
+              </span>
             </div>
           )}
           <IconCopy className="size-4 text-neutral-700" />

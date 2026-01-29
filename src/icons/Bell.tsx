@@ -1,16 +1,16 @@
 import { useState } from "react";
 import { IconCopy } from "@tabler/icons-react";
 import { motion, useAnimate } from "motion/react";
-export function Trash() {
+export function Bel80() {
   const [scope, animate] = useAnimate();
   const [hover, setHover] = useState(false);
   const handleHover = async () => {
     animate(
-      ".up",
+      ".show",
 
-      { y: [0, -5, -3, -1.2, 0], rotate: [0, -3, 3, -3, 0] },
+      { pathLength: [0, 1] },
 
-      { duration: 0.98, ease: "easeInOut" },
+      { duration: 0.8, ease: "easeInOut" },
     );
   };
 
@@ -27,25 +27,26 @@ export function Trash() {
           className="flex cursor-pointer  items-center justify-center gap-2 p-2"
         >
           <motion.svg
-            xmlns="http://www.w3.org/2000/svg"
             width="80"
             height="80"
-            viewBox="0 0 24 24"
+            viewBox="0 0 18 20"
             fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <path className="up" d="M4 7l16 0" />
-            <path className="down" d="M10 11l0 6" />
-            <path className="down" d="M14 11l0 6" />
             <path
-              className="down"
-              d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"
+              d="M5.99976 18C6.70743 18.5653 7.64195 18.9091 8.66642 18.9091C9.69089 18.9091 10.6254 18.5653 11.3331 18"
+              stroke="black"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
             />
-            <path className="up" d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+            <path
+              d="M1.50739 15.1818H16.4931C16.9095 15.1818 17.1456 14.5379 16.9004 14.169C16.3327 13.3147 15.7812 12.0555 15.7812 10.537L15.8056 8.45995C15.8056 4.33993 12.7585 1 8.99976 1C5.29556 1 2.29272 4.29145 2.29272 8.35166L2.26831 10.537C2.26831 12.0451 1.69712 13.2975 1.10533 14.1514C0.850296 14.5194 1.08578 15.1818 1.50739 15.1818Z"
+              stroke="black"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
           </motion.svg>
         </span>
 
