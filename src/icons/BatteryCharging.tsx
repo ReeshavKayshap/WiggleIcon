@@ -1,16 +1,16 @@
 import { useState } from "react";
 import { IconCopy } from "@tabler/icons-react";
 import { motion, useAnimate } from "motion/react";
-export function World() {
+export function BatteryCharging() {
   const [scope, animate] = useAnimate();
   const [hover, setHover] = useState(false);
   const handleHover = async () => {
     animate(
-      ".roted",
+      ".show",
 
-      { rotate: [0, -180] },
+      { pathLength: [0, 1] },
 
-      { duration: 0.98, ease: "easeInOut" },
+      { duration: 0.6, ease: "easeInOut" },
     );
   };
 
@@ -21,29 +21,36 @@ export function World() {
         
      dark:shadow-neutral-800 shadow-neutral-300 ring-1 dark:ring-neutral-800 ring-neutral-300  "
       >
-        <span
-          onMouseEnter={handleHover}
-          ref={scope}
-          className="flex cursor-pointer  items-center justify-center gap-2 p-2"
-        >
+        <span className="flex cursor-pointer z-30 items-center justify-center gap-2 p-2">
           <motion.svg
-            xmlns="http://www.w3.org/2000/svg"
+            onMouseEnter={handleHover}
+            ref={scope}
             width="80"
             height="80"
-            viewBox="0 0 24 24"
-            fill="none"
+            viewBox="0 0 22 14"
             stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="roted"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" />
-            <path d="M3.6 9h16.8" />
-            <path d="M3.6 15h16.8" />
-            <path d="M11.5 3a17 17 0 0 0 0 18" />
-            <path d="M12.5 3a17 17 0 0 1 0 18" />
+            <path
+              d="M15.4 1H3.39999C2.07451 1 1 2.07454 1 3.40002V10.6C1 11.9255 2.07451 13 3.39999 13H15.4C16.7255 13 17.8 11.9255 17.8 10.6V3.40002C17.8 2.07454 16.7255 1 15.4 1Z"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M21 8.59998V5"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              className="show"
+              d="M8.39999 9.99992L11.4 6.99996H6L8.99999 4"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
           </motion.svg>
         </span>
 

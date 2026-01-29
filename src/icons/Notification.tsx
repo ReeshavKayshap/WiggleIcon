@@ -9,19 +9,14 @@ export const Notification = () => {
     animate(
       ".bell",
       { rotate: [0, 12, 0, -12, 0, 12, 0] },
-      { duration: 0.7, ease: "easeInOut" },
+      { duration: 0.9, ease: "easeInOut" },
     );
 
     animate(
       ".clapper",
-      { x: [0, 3, 0, -3, 0] },
-      { duration: 0.7, ease: "easeInOut" },
+      { x: [0, 3, 0, -3, 0, 3, 0] },
+      { duration: 0.9, ease: "easeInOut" },
     );
-  };
-
-  const handleHoverEnd = () => {
-    animate(".bell", { rotate: 0 }, { duration: 0.2 });
-    animate(".clapper", { x: 0 }, { duration: 0.2 });
   };
 
   return (
@@ -37,7 +32,6 @@ export const Notification = () => {
             <motion.svg
               ref={scope}
               onMouseEnter={handleHover}
-              onMouseLeave={handleHoverEnd}
               xmlns="http://www.w3.org/2000/svg"
               width="80"
               height="80"

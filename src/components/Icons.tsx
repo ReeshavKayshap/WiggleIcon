@@ -1,7 +1,7 @@
-import { IconList } from "@/icons/Index";
+import { IconList } from "@/lib/lib/Index";
 import { useState } from "react";
 import { motion } from "motion/react";
-const PAGE_SIZE = 10;
+const PAGE_SIZE = 15;
 
 function Icon() {
   const [current, setCurrent] = useState(1);

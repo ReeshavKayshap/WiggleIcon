@@ -2,21 +2,15 @@ import { IconCopy } from "@tabler/icons-react";
 import { motion, useAnimate } from "motion/react";
 
 import { useState } from "react";
-function Home() {
+export function FingerPrint() {
   const [scope, animate] = useAnimate();
   const [hover, setHover] = useState(false);
   const [name, setName] = useState(false);
   const handleHover = async () => {
     animate(
-      ".house",
-      { scale: [1.12, 1, 1.12, 1] },
+      ".main",
+      { pathLength: [1, 0] },
 
-      { duration: 0.8, ease: "easeInOut" },
-    );
-
-    animate(
-      ".door",
-      { pathLength: [0.05, 1], opacity: [0, 1] },
       { duration: 0.8, ease: "easeInOut" },
     );
   };
@@ -55,25 +49,51 @@ function Home() {
           <motion.svg
             ref={scope}
             onMouseEnter={handleHover}
-            xmlns="http://www.w3.org/2000/svg"
             width="80"
             height="80"
-            viewBox="0 0 24 24"
-            fill="none"
+            viewBox="0 0 19 22"
             stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <path className="house" d="M5 12l-2 0l9 -9l9 9l-2 0" />
             <path
-              className="house"
-              d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7"
+              d="M13.6002 9.80302C13.5958 7.99316 12.4002 5.85889 9.91878 5.85889C7.43736 5.85889 5.98467 7.89489 5.98027 9.70048V10.7932C5.98027 13.3928 5.68108 15.8814 4.07227 17.9602"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              className="stroke-neutral-400"
             />
             <path
-              className="door"
-              d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6"
+              className="main"
+              d="M13.6002 9.80302C13.5958 7.99316 12.4002 5.85889 9.91878 5.85889C7.43736 5.85889 5.98467 7.89489 5.98027 9.70048V10.7932C5.98027 13.3928 5.68108 15.8814 4.07227 17.9602"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+
+            <path
+              d="M3.12335 5C2.38048 6.19519 1.99366 7.55686 1.99366 8.94413C1.99366 9.22159 2.05081 10.9973 2.05081 10.9973C2.05081 12.3334 1.69036 13.6481 1.00024 14.8091"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M11.6902 19.7851C12.4023 19 13.6002 15.4 13.6002 13"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M16.8399 17.0839C17.4905 14.9624 17.807 10.8518 17.807 8.6407C17.807 4.43191 14.2993 1.01281 9.96073 1H9.93876C8.55852 1 7.20026 1.35429 6.00024 2.02445"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M6.93018 20.5379C8.89064 17.7975 10.0112 14.5406 10.0112 11.2026V9"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
             />
           </motion.svg>
         </span>
@@ -108,5 +128,3 @@ function Home() {
     </>
   );
 }
-
-export default Home;

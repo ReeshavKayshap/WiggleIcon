@@ -1,16 +1,19 @@
 import { useState } from "react";
 import { IconCopy } from "@tabler/icons-react";
 import { motion, useAnimate } from "motion/react";
-export function World() {
+export function Edit() {
   const [scope, animate] = useAnimate();
   const [hover, setHover] = useState(false);
   const handleHover = async () => {
     animate(
-      ".roted",
+      ".main",
 
-      { rotate: [0, -180] },
+      {
+        x: [-2, 2, -2, 2, 0],
+        rotate: [0, -16, -10, -8, 3, 0],
+      },
 
-      { duration: 0.98, ease: "easeInOut" },
+      { duration: 0.9, ease: "easeInOut" },
     );
   };
 
@@ -21,29 +24,24 @@ export function World() {
         
      dark:shadow-neutral-800 shadow-neutral-300 ring-1 dark:ring-neutral-800 ring-neutral-300  "
       >
-        <span
-          onMouseEnter={handleHover}
-          ref={scope}
-          className="flex cursor-pointer  items-center justify-center gap-2 p-2"
-        >
+        <span className="flex cursor-pointer z-30 items-center justify-center gap-2 p-2">
           <motion.svg
-            xmlns="http://www.w3.org/2000/svg"
+            onMouseEnter={handleHover}
+            ref={scope}
             width="80"
             height="80"
-            viewBox="0 0 24 24"
-            fill="none"
+            viewBox="0 0 18 18"
             stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="roted"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" />
-            <path d="M3.6 9h16.8" />
-            <path d="M3.6 15h16.8" />
-            <path d="M11.5 3a17 17 0 0 0 0 18" />
-            <path d="M12.5 3a17 17 0 0 1 0 18" />
+            <path
+              className="main"
+              d="M9.99994 3.50319L13.5999 7.10319M1 16.1032L5.36598 15.2235C5.59776 15.1768 5.81058 15.0626 5.97772 14.8954L15.7514 5.11637C16.22 4.64752 16.2197 3.88753 15.7507 3.41907L13.6803 1.35099C13.2115 0.882725 12.4519 0.883044 11.9835 1.3517L2.20876 11.1318C2.04195 11.2987 1.92805 11.511 1.8813 11.7423L1 16.1032Z"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
           </motion.svg>
         </span>
 
