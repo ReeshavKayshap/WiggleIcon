@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { IconCopy } from "@tabler/icons-react";
 import { motion, useAnimate } from "motion/react";
-export function InfoCircle() {
+export function InfoCircle({ size = 70 }) {
   const [scope, animate] = useAnimate();
   const [hover, setHover] = useState(false);
   const handleHover = async () => {
@@ -35,8 +35,8 @@ export function InfoCircle() {
         >
           <motion.svg
             xmlns="http://www.w3.org/2000/svg"
-            width="80"
-            height="80"
+            width={size}
+            height={size}
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"

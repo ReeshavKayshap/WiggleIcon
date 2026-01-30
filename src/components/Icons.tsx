@@ -19,59 +19,67 @@ function Icon() {
 
   return (
     <>
-      <div className=" border-r border-l max-w-7xl mx-auto flex flex-col gap-15 px-15 py-20 dark:border-neutral-800 border-neutral-300">
-        <span className="flex items-center relative  ">
-          <span className=" absolute pl-4">
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              className="size-5"
-            >
-              <path
-                d="M21 21L17.5001 17.5M20 11.5C20 16.1944 16.1944 20 11.5 20C6.80558 20 3 16.1944 3 11.5C3 6.80558 6.80558 3 11.5 3C16.1944 3 20 6.80558 20 11.5Z"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </span>
-          <input
-            type="text"
-            placeholder="Search 50 Icons..."
-            className="bg-neutral-800 w-130 py-3 rounded-xl pl-13 ring-2 ring-neutral-700 font-main outline-none"
-          />
-        </span>
-
-        <motion.div
-          key={current}
-          variants={variants}
-          initial="initial"
-          animate="animate"
-          className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-8  "
-        >
-          {IconList.slice(Start, End).map(({ id, Component }) => (
-            <span key={id}>
-              <Component />
-            </span>
-          ))}
-        </motion.div>
-        <div className="flex justify-end gap-3 ">
-          {Array.from({ length: NoOfPage }, (_, index) => {
-            const page = index + 1;
-            return (
-              <motion.span
-                whileTap={{ scale: 0.9 }}
-                className="bg-amber-600 px-2 cursor-pointer"
-                key={page}
-                onClick={() => handleClick(page)}
+      <div className="pb-10">
+        <div className=" border-r border-l max-w-7xl mx-auto flex flex-col gap-10  dark:border-neutral-800 border-neutral-300">
+          <span className="flex items-center relative  px-15 py-10">
+            <span className=" absolute pl-4">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="size-5"
               >
-                {page}
-              </motion.span>
-            );
-          })}
+                <path
+                  d="M21 21L17.5001 17.5M20 11.5C20 16.1944 16.1944 20 11.5 20C6.80558 20 3 16.1944 3 11.5C3 6.80558 6.80558 3 11.5 3C16.1944 3 20 6.80558 20 11.5Z"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </span>
+            <input
+              type="text"
+              placeholder="Search 50 Icons..."
+              className="bg-neutral-800 w-130 py-3 rounded-xl pl-13 ring-2 ring-neutral-700 font-main outline-none"
+            />
+          </span>
         </div>
+        <span className=" relative ">
+          <div className=" h-px w-full   border-t dark:border-neutral-800 border-neutral-300" />
+          <div className=" h-px w-full absolute bottom-0  border-t dark:border-neutral-800 border-neutral-300" />
+
+          <span className="max-w-7xl mx-auto   flex flex-col  border-r border-l dark:border-neutral-800 border-neutral-300 px-15 pt-7">
+            <motion.div
+              key={current}
+              variants={variants}
+              initial="initial"
+              animate="animate"
+              className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5  gap-8 "
+            >
+              {IconList.slice(Start, End).map(({ id, Component }) => (
+                <span className="" key={id}>
+                  <Component />
+                </span>
+              ))}
+            </motion.div>
+            <div className="flex justify-end gap-3 py-5">
+              {Array.from({ length: NoOfPage }, (_, index) => {
+                const page = index + 1;
+                return (
+                  <motion.span
+                    whileTap={{ scale: 0.9 }}
+                    className="bg-amber-600 px-2 cursor-pointer"
+                    key={page}
+                    onClick={() => handleClick(page)}
+                  >
+                    {page}
+                  </motion.span>
+                );
+              })}
+            </div>
+          </span>
+        </span>
       </div>
     </>
   );

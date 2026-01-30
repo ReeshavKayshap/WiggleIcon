@@ -2,7 +2,7 @@ import { IconCopy } from "@tabler/icons-react";
 import { motion, useAnimate } from "motion/react";
 
 import { useState } from "react";
-export function Heart() {
+export function Heart({ size = 70 }) {
   const stroke = 1.5;
   const [scope, animate] = useAnimate();
   const [hover, setHover] = useState(false);
@@ -31,8 +31,8 @@ export function Heart() {
             onMouseEnter={handleHover}
             ref={scope}
             xmlns="http://www.w3.org/2000/svg"
-            width="80"
-            height="80"
+            width={size}
+            height={size}
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"

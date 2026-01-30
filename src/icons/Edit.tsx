@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { IconCopy } from "@tabler/icons-react";
 import { motion, useAnimate } from "motion/react";
-export function Edit() {
+export function Edit({ size = 70 }) {
   const [scope, animate] = useAnimate();
   const [hover, setHover] = useState(false);
   const handleHover = async () => {
@@ -28,8 +28,8 @@ export function Edit() {
           <motion.svg
             onMouseEnter={handleHover}
             ref={scope}
-            width="80"
-            height="80"
+            width={size}
+            height={size}
             viewBox="0 0 18 18"
             stroke="currentColor"
             fill="none"

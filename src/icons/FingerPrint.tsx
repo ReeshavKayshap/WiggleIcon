@@ -2,7 +2,7 @@ import { IconCopy } from "@tabler/icons-react";
 import { motion, useAnimate } from "motion/react";
 
 import { useState } from "react";
-export function FingerPrint() {
+export function FingerPrint({ size = 70 }) {
   const [scope, animate] = useAnimate();
   const [hover, setHover] = useState(false);
   const [name, setName] = useState(false);
@@ -49,8 +49,8 @@ export function FingerPrint() {
           <motion.svg
             ref={scope}
             onMouseEnter={handleHover}
-            width="80"
-            height="80"
+            width={size}
+            height={size}
             viewBox="0 0 19 22"
             stroke="currentColor"
             fill="none"

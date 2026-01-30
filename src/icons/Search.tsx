@@ -1,7 +1,7 @@
 import { IconCopy } from "@tabler/icons-react";
 import { motion, useAnimate } from "motion/react";
 import { useState } from "react";
-function Search() {
+function Search({ size = 70 }) {
   const [scope, animate] = useAnimate();
   const [hover, setHover] = useState(false);
   const handleHover = () => {
@@ -26,8 +26,8 @@ function Search() {
             viewBox="0 0 24 24"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            width="80"
-            height="80"
+            width={size}
+            height={size}
           >
             <path
               d="M21 21L17.5001 17.5M20 11.5C20 16.1944 16.1944 20 11.5 20C6.80558 20 3 16.1944 3 11.5C3 6.80558 6.80558 3 11.5 3C16.1944 3 20 6.80558 20 11.5Z"

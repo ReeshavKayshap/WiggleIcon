@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { IconCopy } from "@tabler/icons-react";
 import { motion, useAnimate } from "motion/react";
-export function Battery() {
+export function Battery({ size = 70, stroke = 2 }) {
   const [scope, animate] = useAnimate();
   const [hover, setHover] = useState(false);
   const handleHover = async () => {
@@ -25,36 +25,33 @@ export function Battery() {
           <motion.svg
             onMouseEnter={handleHover}
             ref={scope}
-            width="80"
-            height="80"
+            width={size}
+            height={size}
             viewBox="0 0 22 14"
             stroke="currentColor"
+            strokeWidth={stroke}
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
               d="M15.4 1H3.39999C2.07451 1 1 2.07454 1 3.40002V10.6C1 11.9255 2.07451 13 3.39999 13H15.4C16.7255 13 17.8 11.9255 17.8 10.6V3.40002C17.8 2.07454 16.7255 1 15.4 1Z"
-              stroke-width="2"
               stroke-linecap="round"
               stroke-linejoin="round"
             />
             <path
               d="M21 8.59998V5"
-              stroke-width="2"
               stroke-linecap="round"
               stroke-linejoin="round"
             />
             <path
               className="show"
               d="M9 6V4"
-              stroke-width="2"
               stroke-linecap="round"
               stroke-linejoin="round"
             />
             <path
               className="show"
               d="M9 9V9.03955"
-              stroke-width="2"
               stroke-linecap="round"
               stroke-linejoin="round"
             />

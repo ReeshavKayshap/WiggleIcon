@@ -2,7 +2,7 @@ import { IconCopy } from "@tabler/icons-react";
 import { motion, useAnimate } from "motion/react";
 import { useState } from "react";
 
-export const Notification = () => {
+export const Notification = ({ size = 70 }) => {
   const [scope, animate] = useAnimate();
   const [hover, setHover] = useState(false);
   const handleHover = async () => {
@@ -33,8 +33,8 @@ export const Notification = () => {
               ref={scope}
               onMouseEnter={handleHover}
               xmlns="http://www.w3.org/2000/svg"
-              width="80"
-              height="80"
+              width={size}
+              height={size}
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"

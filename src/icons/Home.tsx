@@ -2,7 +2,7 @@ import { IconCopy } from "@tabler/icons-react";
 import { motion, useAnimate } from "motion/react";
 
 import { useState } from "react";
-function Home() {
+function Home({ size = 70, stroke = 1.5 }) {
   const [scope, animate] = useAnimate();
   const [hover, setHover] = useState(false);
   const [name, setName] = useState(false);
@@ -56,12 +56,12 @@ function Home() {
             ref={scope}
             onMouseEnter={handleHover}
             xmlns="http://www.w3.org/2000/svg"
-            width="80"
-            height="80"
+            width={size}
+            height={size}
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
-            strokeWidth="2"
+            strokeWidth={stroke}
             strokeLinecap="round"
             strokeLinejoin="round"
           >
