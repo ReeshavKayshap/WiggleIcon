@@ -1,6 +1,7 @@
 import { IconList } from "@/lib/lib/Index";
 import { useState } from "react";
 import { motion } from "motion/react";
+
 const PAGE_SIZE = 15;
 
 function Icon() {
@@ -20,7 +21,7 @@ function Icon() {
   return (
     <>
       <div className="pb-10">
-        <div className=" border-r border-l max-w-7xl mx-auto flex flex-col gap-10  dark:border-neutral-800 border-neutral-300">
+        <div className=" border-r border-l max-w-7xl mx-auto flex flex-col gap-10  dark:border-neutral-800 border-neutral-200">
           <span className="flex items-center relative  px-15 py-10">
             <span className=" absolute pl-4">
               <svg
@@ -46,10 +47,10 @@ function Icon() {
           </span>
         </div>
         <span className=" relative ">
-          <div className=" h-px w-full   border-t dark:border-neutral-800 border-neutral-300" />
-          <div className=" h-px w-full absolute bottom-0  border-t dark:border-neutral-800 border-neutral-300" />
+          <div className=" h-px w-full   border-t dark:border-neutral-800 border-neutral-200" />
+          <div className=" h-px w-full absolute bottom-0  border-t dark:border-neutral-800 border-neutral-200" />
 
-          <span className="max-w-7xl mx-auto   flex flex-col  border-r border-l dark:border-neutral-800 border-neutral-300 px-15 pt-7">
+          <span className="max-w-7xl mx-auto   flex flex-col  border-r border-l dark:border-neutral-800 border-neutral-200 px-15 pt-7">
             <motion.div
               key={current}
               variants={variants}
@@ -63,18 +64,24 @@ function Icon() {
                 </span>
               ))}
             </motion.div>
-            <div className="flex justify-end gap-3 py-5">
+            <div className="flex justify-end gap-3 py-5 ">
               {Array.from({ length: NoOfPage }, (_, index) => {
                 const page = index + 1;
                 return (
-                  <motion.span
-                    whileTap={{ scale: 0.9 }}
-                    className="bg-amber-600 px-2 cursor-pointer"
-                    key={page}
-                    onClick={() => handleClick(page)}
+                  <div
+                    className="flex size-9 shrink-0 items-center justify-center rounded-lg 
+                  border border-white/15  ring-1 ring-edge ring-offset-1 ring-offset-background"
                   >
-                    {page}
-                  </motion.span>
+                    {" "}
+                    <motion.span
+                      whileTap={{ scale: 0.9 }}
+                      className=" font-text flex justify-center items-center bg-neutral-800 size-7 cursor-pointer rounded-lg border border-neutral-600"
+                      key={page}
+                      onClick={() => handleClick(page)}
+                    >
+                      {page}
+                    </motion.span>
+                  </div>
                 );
               })}
             </div>

@@ -32,8 +32,8 @@ export function Nav() {
         ${scrolled ? "shadow-sm" : "shadow-none"}`}
       >
         {" "}
-        <div className="  border-t border-b dark:border-neutral-800 border-neutral-300 ">
-          <div className="flex justify-between items-center max-w-7xl mx-auto border-r border-l py-3 dark:border-neutral-800 border-neutral-300 px-5 ">
+        <div className="  border-t border-b dark:border-neutral-800 border-neutral-200 ">
+          <div className="flex justify-between items-center max-w-7xl mx-auto border-r border-l py-3 dark:border-neutral-800 border-neutral-200 px-5 ">
             <span className="flex items-center gap-5">
               <h1 className=" font-text text-2xl">MotionIcon</h1>
               <nav className=" flex pt-1 gap-3 font-text text-[15.5px] ">

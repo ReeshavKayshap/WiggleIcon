@@ -1,27 +1,40 @@
+import { cn } from "@/lib/lib/utils";
 import { IconBrandGithub } from "@tabler/icons-react";
 
 export function HeroSection() {
   return (
     <>
-      <div className=" border-r border-l  dark:border-neutral-800 border-neutral-300 ">
+      <div
+        className={cn(
+          "border-r border-l  dark:border-neutral-800 border-neutral-200 ",
+          "dark:bg-[radial-gradient(color-mix(in_srgb,var(--color-white)_12%,transparent)_1px,transparent_1px)]",
+          "bg-[radial-gradient(color-mix(in_srgb,var(--color-zinc-950)_10%,transparent)_1px,transparent_1px)]",
+          "bg-size-[15px_15px]",
+        )}
+      >
         <div className="flex justify-center items-center py-35">
           <span className="flex flex-col items-center gap-5">
-            <span className="flex items-center gap-2">
-              <h2>Open Source</h2>
+            <span className="flex items-center gap-2 dark:bg-neutral-800 px-3 py-1 rounded-3xl">
               <IconBrandGithub />
+              <h2 className="font-text">Open Source</h2>
             </span>
             <h2 className="font-main text-center text-6xl   tracking-tight">
               Icons that come alive with interaction
             </h2>
-            <p className="font-main text-lg max-w-xl text-center mx-auto">
-              Animated icons designed for modern workflows: copy as React
-              components, Vue templates, Svelte files, or pure SVG
+            <p className="font-main text-xl max-w-xl text-center mx-auto">
+              Collection of customizable, motion-based icons that are editable
+              and Works seamlessly with modern design systems.
             </p>
             <span className="flex gap-5">
-              <button className=" py-2 px-5 rounded-lg bg-gray-400">
+              <button className=" font-text py-1.5 px-4.5 rounded-lg dark:hover:bg-white/95 hover:bg-black/90 cursor-pointer dark:bg-white bg-black text-background">
                 Contact Me
               </button>
-              <button>Sponsor</button>
+              <button
+                className="font-text py-1.5 px-6 rounded-lg dark:hover:bg-neutral-800 hover:bg-neutral-50/95  cursor-pointer dark:bg-neutral-900 bg-neutral-100 
+              border dark:border-neutral-700 border-neutral-300  dark:text-white"
+              >
+                Sponsor
+              </button>
             </span>
           </span>
         </div>

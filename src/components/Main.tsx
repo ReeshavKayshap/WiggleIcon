@@ -2,6 +2,7 @@ import Container from "./Container";
 import { HeroSection } from "./HeroSection";
 import { Nav } from "./Nav";
 import Icons from "./Icons";
+import { cn } from "@/lib/lib/utils";
 function Main() {
   return (
     <>
@@ -12,10 +13,15 @@ function Main() {
         </Container>
 
         <div
-          className=" w-full h-fit border-t border-b dark:border-neutral-800 border-neutral-300  bg-[repeating-linear-gradient(315deg,var(--pattern-fg)_0,var(--pattern-fg)_1px,transparent_0,transparent_50%)]
-           bg-size-[15px_15px]  [--pattern-fg:color-mix(in_srgb,var(--color-neutral-300)_10%,transparent)]"
+          className={cn(
+            "w-full h-fit border-t border-b border-neutral-200 dark:border-neutral-800",
+            "bg-[repeating-linear-gradient(315deg,var(--pattern-fg)_0,var(--pattern-fg)_1px,transparent_0,transparent_50%)]",
+            "bg-size-[15px_15px]",
+            "[--pattern-fg:var(--color-black)]/5",
+            "dark:[--pattern-fg:var(--color-white)]/8",
+          )}
         >
-          <div className=" h-10 w-full border-r border-l max-w-7xl mx-auto  dark:border-neutral-800 border-neutral-300" />
+          <div className=" h-10 w-full border-r border-l max-w-7xl mx-auto  dark:border-neutral-800 border-neutral-200" />
         </div>
         <Icons />
       </div>
