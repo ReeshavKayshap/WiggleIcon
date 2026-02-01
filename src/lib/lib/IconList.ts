@@ -20,36 +20,47 @@ import { EyeOff } from "@/icons/EyeOff";
 import { Edit } from "@/icons/Edit";
 import { FaceId } from "@/icons/FaceId";
 import { FingerPrint } from "@/icons/FingerPrint";
+import { Menu } from "@/icons/Menu";
+import { User } from "@/icons/User";
+import { Download } from "@/icons/Download";
 
 interface Icon {
   id: number;
   Component: ComponentType;
+  titel: string;
 }
 
 export const IconList: Icon[] = [
   {
     id: 1,
     Component: Home,
+    titel: "home-icon",
   },
   {
     id: 2,
-    Component: Notification,
+    Component: Menu,
+    titel: "menu-icon",
   },
   {
     id: 3,
-    Component: UnorderedList,
+    Component: Search,
+    titel: "search-icon",
   },
   {
     id: 4,
-    Component: Search,
+    Component: Setting,
+    titel: "setting-icon",
   },
+
   {
     id: 5,
-    Component: Phone,
+    Component: User,
+    titel: "user-icon",
   },
   {
     id: 6,
-    Component: Cast,
+    Component: Download,
+    titel: "download-icon",
   },
   {
     id: 7,
@@ -82,7 +93,7 @@ export const IconList: Icon[] = [
   },
   {
     id: 14,
-    Component: Setting,
+    Component: UnorderedList,
   },
   {
     id: 15,

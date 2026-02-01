@@ -1,10 +1,13 @@
-import { IconList } from "@/lib/lib/Index";
+import { IconList } from "@/lib/lib/IconList";
 import { useState } from "react";
 import { motion } from "motion/react";
+import { IconCopy } from "@tabler/icons-react";
 
-const PAGE_SIZE = 15;
+const PAGE_SIZE = 18;
 
 function Icon() {
+  const [hover, setHover] = useState<number | null>(null);
+  const [name, setName] = useState<number | null>(null);
   const [current, setCurrent] = useState(1);
   const totalIcons = IconList.length;
   const NoOfPage = Math.ceil(totalIcons / PAGE_SIZE);
@@ -56,11 +59,63 @@ function Icon() {
               variants={variants}
               initial="initial"
               animate="animate"
-              className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5  gap-8 "
+              className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-6  gap-8 "
             >
-              {IconList.slice(Start, End).map(({ id, Component }) => (
-                <span className="" key={id}>
-                  <Component />
+              {IconList.slice(Start, End).map(({ id, Component, titel }) => (
+                <span key={id}>
+                  <span
+                    className=" text-gray-300 flex flex-col   items-center justify-center  gap-4 rounded-lg p-4  shadow-sm relative
+        
+                  dark:shadow-neutral-800 shadow-neutral-300 ring-1 dark:ring-neutral-800 ring-neutral-300 "
+                  >
+                    <span
+                      onMouseEnter={() => setName(id)}
+                      onMouseLeave={() => setName(null)}
+                    >
+                      {name === id && (
+                        <motion.div
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          transition={{ duration: 0.4, ease: "easeInOut" }}
+                          className="bg-neutral-200 text-black flex flex-col w-full justify-center items-center absolute -top-4 right-15.5 px-3.5   rounded-lg "
+                        >
+                          <h3 className="font-text text-sm ">{titel}</h3>
+                          <span className=" absolute -bottom-2.5  left-10 ">
+                            <svg
+                              className="bg-neutral-200 block fill-neutral-200 z-50 size-2.5 translate-y-[calc(-50%-2px)] rotate-45 rounded-xs"
+                              width="10"
+                              height="5"
+                              viewBox="0 0 30 10"
+                              preserveAspectRatio="none"
+                            ></svg>
+                          </span>
+                        </motion.div>
+                      )}
+                      <Component />
+                    </span>
+
+                    <span
+                      onMouseEnter={() => setHover(id)}
+                      onMouseLeave={() => setHover(null)}
+                      className="  cursor-pointer"
+                    >
+                      {hover === id && (
+                        <div className="bg-neutral-200 text-black flex flex-col justify-center items-center absolute -bottom-6 right-11.5 px-2.5 py-0.5  rounded-lg ">
+                          <h3 className="font-text text-sm">Click to copy</h3>
+                          <span className=" absolute top-1  left-10 ">
+                            <svg
+                              className="bg-neutral-200 block fill-neutral-200 z-50 size-2.5 translate-y-[calc(-50%-2px)] rotate-45 rounded-xs"
+                              width="10"
+                              height="5"
+                              viewBox="0 0 30 10"
+                              preserveAspectRatio="none"
+                            ></svg>
+                          </span>
+                        </div>
+                      )}
+                      <IconCopy className="size-4 text-neutral-700" />
+                    </span>
+                  </span>
                 </span>
               ))}
             </motion.div>

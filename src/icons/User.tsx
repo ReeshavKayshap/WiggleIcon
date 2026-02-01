@@ -1,35 +1,42 @@
 import { motion, useAnimate } from "motion/react";
 
-export function Heart({
+type UserProps = {
+  size?: number;
+  width?: number;
+  height?: number;
+  strokeWidth?: number;
+  color?: string;
+  className?: string;
+};
+export function User({
   size = 60,
+  width,
+  height,
   strokeWidth = 2,
   color = "currentColor",
   className = "",
-}) {
-  const stroke = 1.5;
+}: UserProps) {
   const [scope, animate] = useAnimate();
+  const finalWidth = width ?? size;
+  const finalHeight = height ?? size;
 
-  const handleHover = async () => {
+  const handleHover = () => {
     animate(
-      ".heart",
-
+      ".top",
       {
-        scale: [1, 0.8, 1, 0.8, 1],
-        strokeWidth: [stroke, 2.3, stroke, 2.3, stroke],
+        y: [0, -1.5, 1.5, -1.5, 0],
       },
-
       { duration: 0.9, ease: "easeInOut" },
     );
   };
-
   return (
     <>
       <motion.svg
-        onMouseEnter={handleHover}
         ref={scope}
+        onMouseEnter={handleHover}
         xmlns="http://www.w3.org/2000/svg"
-        width={size}
-        height={size}
+        width={finalWidth}
+        height={finalHeight}
         viewBox="0 0 24 24"
         fill="none"
         stroke={color}
@@ -39,9 +46,10 @@ export function Heart({
         className={`cursor-pointer${className}`}
       >
         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <path className="top" d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
         <path
-          className="heart"
-          d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572"
+          className="bottom"
+          d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"
         />
       </motion.svg>
     </>

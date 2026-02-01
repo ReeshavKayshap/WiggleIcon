@@ -1,24 +1,34 @@
 import { motion, useAnimate } from "motion/react";
 
-export function Heart({
+export function Menu({
   size = 60,
   strokeWidth = 2,
   color = "currentColor",
   className = "",
 }) {
-  const stroke = 1.5;
   const [scope, animate] = useAnimate();
 
   const handleHover = async () => {
     animate(
-      ".heart",
+      ".showTwo",
 
-      {
-        scale: [1, 0.8, 1, 0.8, 1],
-        strokeWidth: [stroke, 2.3, stroke, 2.3, stroke],
-      },
+      { scaleX: [1, 0.25, 1] },
 
-      { duration: 0.9, ease: "easeInOut" },
+      { duration: 0.5, ease: "easeInOut" },
+    );
+    animate(
+      ".showOne",
+
+      { scaleX: [1, 0.3, 1] },
+
+      { duration: 0.5, ease: "easeInOut", delay: 0.1 },
+    );
+    animate(
+      ".showThree",
+
+      { scaleX: [1, 0.3, 1] },
+
+      { duration: 0.5, ease: "easeInOut", delay: 0.2 },
     );
   };
 
@@ -34,15 +44,14 @@ export function Heart({
         fill="none"
         stroke={color}
         strokeWidth={strokeWidth}
-        strokeLinecap="round"
-        strokeLinejoin="round"
+        stroke-linecap="round"
+        stroke-linejoin="round"
         className={`cursor-pointer${className}`}
       >
         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-        <path
-          className="heart"
-          d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572"
-        />
+        <path className="showOne" d="M4 6l16 0" />
+        <path className="showTwo" d="M4 12l16 0" />
+        <path className="showThree" d="M4 18l16 0" />
       </motion.svg>
     </>
   );
