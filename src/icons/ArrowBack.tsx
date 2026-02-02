@@ -1,28 +1,21 @@
 import { motion, useAnimate } from "motion/react";
 
-function Home({
+export function ArrowBack({
   size = 60,
+
   strokeWidth = 2,
   color = "currentColor",
   className = "",
 }) {
   const [scope, animate] = useAnimate();
 
-  const handleHover = async () => {
+  const handleHover = () => {
     animate(
-      ".house",
-      { scale: [1.1, 1] },
-
-      { duration: 0.8, ease: "easeInOut" },
-    );
-
-    animate(
-      ".door",
-      { pathLength: [0, 1], opacity: [0, 1] },
-      { duration: 0.8, ease: "easeInOut" },
+      ".main",
+      { x: [0, 1, -1, 1, 0] },
+      { duration: 0.6, ease: "easeOut" },
     );
   };
-
   return (
     <>
       <motion.svg
@@ -40,15 +33,8 @@ function Home({
         className={`cursor-pointer${className}`}
       >
         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-        <path className="house" d="M5 12l-2 0l9 -9l9 9l-2 0" />
-        <path
-          className="house"
-          d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7"
-        />
-        <path className="door" d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+        <path className="main" d="M9 11l-4 4l4 4m-4 -4h11a4 4 0 0 0 0 -8h-1" />
       </motion.svg>
     </>
   );
 }
-
-export default Home;

@@ -1,28 +1,24 @@
 import { motion, useAnimate } from "motion/react";
 
-function Home({
+export function Mail({
   size = 60,
+
   strokeWidth = 2,
   color = "currentColor",
   className = "",
 }) {
   const [scope, animate] = useAnimate();
 
-  const handleHover = async () => {
+  const handleHover = () => {
     animate(
-      ".house",
-      { scale: [1.1, 1] },
-
-      { duration: 0.8, ease: "easeInOut" },
-    );
-
-    animate(
-      ".door",
-      { pathLength: [0, 1], opacity: [0, 1] },
-      { duration: 0.8, ease: "easeInOut" },
+      ".open",
+      {
+        y: [0, -8, 0],
+        scaleY: [1, -1.3, 1],
+      },
+      { duration: 0.9, ease: "easeInOut" },
     );
   };
-
   return (
     <>
       <motion.svg
@@ -40,15 +36,9 @@ function Home({
         className={`cursor-pointer${className}`}
       >
         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-        <path className="house" d="M5 12l-2 0l9 -9l9 9l-2 0" />
-        <path
-          className="house"
-          d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7"
-        />
-        <path className="door" d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+        <path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10" />
+        <path className="open" d="M3 7l9 6l9 -6" />
       </motion.svg>
     </>
   );
 }
-
-export default Home;

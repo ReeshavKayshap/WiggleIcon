@@ -1,5 +1,5 @@
 import { motion, useAnimate } from "motion/react";
-export function BatteryCharging({
+export function Bell({
   size = 60,
   strokeWidth = 2,
   color = "currentColor",
@@ -7,11 +7,11 @@ export function BatteryCharging({
 }) {
   const [scope, animate] = useAnimate();
 
-  const handleHover = () => {
+  const handleHover = async () => {
     animate(
-      ".show",
+      ".top",
 
-      { pathLength: [0, 1], pathOffset: [1, 0] },
+      { rotate: [0, 6, -6, 6, -6, 0] },
 
       { duration: 0.6, ease: "easeInOut" },
     );
@@ -24,7 +24,7 @@ export function BatteryCharging({
         ref={scope}
         width={size}
         height={size}
-        viewBox="0 0 22 14"
+        viewBox="0 0 18 21"
         stroke={color}
         strokeWidth={strokeWidth}
         fill="none"
@@ -32,14 +32,14 @@ export function BatteryCharging({
         className={`cursor-pointer ${className}`}
       >
         <path
-          d="M15.4 1H3.39999C2.07451 1 1 2.07454 1 3.40002V10.6C1 11.9255 2.07451 13 3.39999 13H15.4C16.7255 13 17.8 11.9255 17.8 10.6V3.40002C17.8 2.07454 16.7255 1 15.4 1Z"
+          className="top"
+          d="M1.50739 15.1818H16.4931C16.9095 15.1818 17.1456 14.5379 16.9004 14.169C16.3327 13.3147 15.7812 12.0555 15.7812 10.537L15.8056 8.45995C15.8056 4.33993 12.7585 1 8.99976 1C5.29556 1 2.29272 4.29145 2.29272 8.35166L2.26831 10.537C2.26831 12.0451 1.69712 13.2975 1.10533 14.1514C0.850296 14.5194 1.08578 15.1818 1.50739 15.1818Z"
           strokeLinecap="round"
           strokeLinejoin="round"
         />
-        <path d="M21 8.59998V5" strokeLinecap="round" strokeLinejoin="round" />
         <path
-          className="show"
-          d="M8.39999 9.99992L11.4 6.99996H6L8.99999 4"
+          className="top"
+          d="M6.49976 18C7.20743 18.5653 8.14195 18.9091 9.16642 18.9091C10.1909 18.9091 11.1254 18.5653 11.8331 18"
           strokeLinecap="round"
           strokeLinejoin="round"
         />

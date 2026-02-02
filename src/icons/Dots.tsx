@@ -1,6 +1,5 @@
 import { motion, useAnimate } from "motion/react";
-
-export function Menu({
+export function Dots({
   size = 60,
   strokeWidth = 2,
   color = "currentColor",
@@ -10,34 +9,34 @@ export function Menu({
 
   const handleHover = async () => {
     animate(
-      ".showTwo",
+      ".show",
 
-      { scaleX: [1, 0.25, 1] },
+      { y: [0, -2, 0] },
 
-      { duration: 0.5, ease: "easeInOut" },
+      { duration: 0.6, ease: "easeInOut" },
     );
     animate(
-      ".showOne",
+      ".showTwo",
 
-      { scaleX: [1, 0.3, 1] },
+      { y: [0, -2, 0] },
 
-      { duration: 0.5, ease: "easeInOut", delay: 0.1 },
+      { duration: 0.6, ease: "easeInOut", delay: 0.2 },
     );
     animate(
       ".showThree",
 
-      { scaleX: [1, 0.3, 1] },
+      { y: [0, -2, 0] },
 
-      { duration: 0.5, ease: "easeInOut", delay: 0.2 },
+      { duration: 0.6, ease: "easeInOut", delay: 0.4 },
     );
   };
 
   return (
     <>
       <motion.svg
+        xmlns="http://www.w3.org/2000/svg"
         onMouseEnter={handleHover}
         ref={scope}
-        xmlns="http://www.w3.org/2000/svg"
         width={size}
         height={size}
         viewBox="0 0 24 24"
@@ -46,12 +45,12 @@ export function Menu({
         strokeWidth={strokeWidth}
         strokeLinecap="round"
         strokeLinejoin="round"
-        className={`cursor-pointer${className}`}
+        className={`cursor-pointer ${className}`}
       >
         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-        <path className="showOne" d="M4 6l16 0" />
-        <path className="showTwo" d="M4 12l16 0" />
-        <path className="showThree" d="M4 18l16 0" />
+        <path className="show" d="M4 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+        <path className="showTwo" d="M11 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+        <path className="showThree" d="M18 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
       </motion.svg>
     </>
   );

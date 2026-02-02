@@ -1,24 +1,13 @@
 import { motion, useAnimate } from "motion/react";
 
-type UserProps = {
-  size?: number;
-  width?: number;
-  height?: number;
-  strokeWidth?: number;
-  color?: string;
-  className?: string;
-};
 export function User({
   size = 60,
-  width,
-  height,
+
   strokeWidth = 2,
   color = "currentColor",
   className = "",
-}: UserProps) {
+}) {
   const [scope, animate] = useAnimate();
-  const finalWidth = width ?? size;
-  const finalHeight = height ?? size;
 
   const handleHover = () => {
     animate(
@@ -35,8 +24,8 @@ export function User({
         ref={scope}
         onMouseEnter={handleHover}
         xmlns="http://www.w3.org/2000/svg"
-        width={finalWidth}
-        height={finalHeight}
+        width={size}
+        height={size}
         viewBox="0 0 24 24"
         fill="none"
         stroke={color}

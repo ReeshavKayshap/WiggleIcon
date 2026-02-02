@@ -12,9 +12,9 @@ export function Eye({
     animate(
       ".main",
 
-      { scaleY: [1, 0.9, 1] },
+      { scaleY: [1, 0.85, 1] },
 
-      { duration: 0.4, ease: "easeInOut" },
+      { duration: 0.5, ease: "easeInOut" },
     );
 
     animate(
@@ -22,7 +22,7 @@ export function Eye({
       {
         scale: [1, 0.9, 1],
       },
-      { duration: 0.8, ease: "easeInOut", delay: 0.4 },
+      { duration: 0.7, ease: "easeInOut", delay: 0.4 },
     );
   };
 

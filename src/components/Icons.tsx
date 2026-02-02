@@ -1,7 +1,8 @@
 import { IconList } from "@/lib/lib/IconList";
 import { useState } from "react";
 import { motion } from "motion/react";
-import { IconCopy } from "@tabler/icons-react";
+
+import { Copy } from "@/icons/Copy";
 
 const PAGE_SIZE = 18;
 
@@ -71,16 +72,17 @@ function Icon() {
                     <span
                       onMouseEnter={() => setName(id)}
                       onMouseLeave={() => setName(null)}
+                      className="w-full flex justify-center"
                     >
                       {name === id && (
                         <motion.div
                           initial={{ opacity: 0 }}
                           animate={{ opacity: 1 }}
                           transition={{ duration: 0.4, ease: "easeInOut" }}
-                          className="bg-neutral-200 text-black flex flex-col w-full justify-center items-center absolute -top-4 right-15.5 px-3.5   rounded-lg "
+                          className="bg-neutral-200 text-black flex flex-col  justify-center items-center absolute -top-6  px-3.5 py-0.5  rounded-xl "
                         >
                           <h3 className="font-text text-sm ">{titel}</h3>
-                          <span className=" absolute -bottom-2.5  left-10 ">
+                          <span className=" absolute -bottom-2.5  -z-10 ">
                             <svg
                               className="bg-neutral-200 block fill-neutral-200 z-50 size-2.5 translate-y-[calc(-50%-2px)] rotate-45 rounded-xs"
                               width="10"
@@ -97,12 +99,12 @@ function Icon() {
                     <span
                       onMouseEnter={() => setHover(id)}
                       onMouseLeave={() => setHover(null)}
-                      className="  cursor-pointer"
+                      className="w-fit flex justify-center"
                     >
                       {hover === id && (
-                        <div className="bg-neutral-200 text-black flex flex-col justify-center items-center absolute -bottom-6 right-11.5 px-2.5 py-0.5  rounded-lg ">
+                        <div className="bg-neutral-200 text-black flex flex-col justify-center items-center absolute -bottom-6  px-2.5 py-0.5  rounded-xl ">
                           <h3 className="font-text text-sm">Click to copy</h3>
-                          <span className=" absolute top-1  left-10 ">
+                          <span className=" absolute top-1  ">
                             <svg
                               className="bg-neutral-200 block fill-neutral-200 z-50 size-2.5 translate-y-[calc(-50%-2px)] rotate-45 rounded-xs"
                               width="10"
@@ -113,7 +115,7 @@ function Icon() {
                           </span>
                         </div>
                       )}
-                      <IconCopy className="size-4 text-neutral-700" />
+                      <Copy size={16} className=" text-neutral-700" />
                     </span>
                   </span>
                 </span>

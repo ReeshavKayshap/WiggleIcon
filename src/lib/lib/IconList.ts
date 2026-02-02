@@ -23,6 +23,15 @@ import { FingerPrint } from "@/icons/FingerPrint";
 import { Menu } from "@/icons/Menu";
 import { User } from "@/icons/User";
 import { Download } from "@/icons/Download";
+import { Mail } from "@/icons/Mail";
+import { Copy } from "@/icons/Copy";
+import { Bell } from "@/icons/Bell";
+import { BellRinging } from "@/icons/BellRinging";
+import { SmartHome } from "@/icons/SmartHome";
+import { ArrowBack } from "@/icons/ArrowBack";
+import { Image } from "@/icons/Image";
+import { Dots } from "@/icons/Dots";
+import { Filter } from "@/icons/Filter";
 
 interface Icon {
   id: number;
@@ -33,8 +42,8 @@ interface Icon {
 export const IconList: Icon[] = [
   {
     id: 1,
-    Component: Home,
-    titel: "home-icon",
+    Component: SmartHome,
+    titel: "smart-home-icon",
   },
   {
     id: 2,
@@ -65,62 +74,123 @@ export const IconList: Icon[] = [
   {
     id: 7,
     Component: Map,
+    titel: "map-icon",
   },
   {
     id: 8,
     Component: Eye,
+    titel: "eye-icon",
   },
   {
     id: 9,
-    Component: Mic,
+    Component: Copy,
+    titel: "copy-icon",
   },
 
   {
     id: 10,
     Component: Heart,
+    titel: "heart-icon",
   },
   {
     id: 11,
-    Component: Bluetooth,
+    Component: Phone,
+    titel: "phone-call-icon",
   },
   {
     id: 12,
     Component: Trash,
+    titel: "trash-icon",
   },
   {
     id: 13,
     Component: World,
+    titel: "world-icon",
   },
   {
     id: 14,
     Component: UnorderedList,
+    titel: "list-icon",
   },
   {
     id: 15,
     Component: InfoCircle,
+    titel: "info-icon",
   },
   {
     id: 16,
-    Component: Battery,
+    Component: FaceId,
+    titel: "face-id-icon",
   },
   {
     id: 17,
-    Component: BatteryCharging,
+    Component: Bell,
+    titel: "bell-icon",
   },
+
   {
     id: 18,
     Component: EyeOff,
+    titel: "eye-off-icon",
   },
   {
     id: 19,
-    Component: Edit,
+    Component: Cast,
+    titel: "cast-icon",
   },
   {
     id: 20,
-    Component: FaceId,
+    Component: Battery,
+    titel: "battery-icon",
   },
   {
-    id: 20,
+    id: 21,
     Component: FingerPrint,
+    titel: "finger-Print-icon",
+  },
+  {
+    id: 22,
+    Component: BatteryCharging,
+    titel: "battery-charging-icon",
+  },
+  {
+    id: 23,
+    Component: BellRinging,
+    titel: "bell-off-icon",
+  },
+  {
+    id: 24,
+    Component: Home,
+    titel: "home-icon",
+  },
+  {
+    id: 25,
+    Component: Edit,
+    titel: "pen-icon",
+  },
+  {
+    id: 26,
+    Component: Bluetooth,
+    titel: "bluetooth-icon",
+  },
+  {
+    id: 27,
+    Component: ArrowBack,
+    titel: "arrow-back-icon",
+  },
+  {
+    id: 28,
+    Component: Image,
+    titel: "image-icon",
+  },
+  {
+    id: 29,
+    Component: Dots,
+    titel: "dots-icon",
+  },
+  {
+    id: 30,
+    Component: Filter,
+    titel: "filter-icon",
   },
 ];

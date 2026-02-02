@@ -49,8 +49,9 @@ export function FaceId({
           d="M7.4 4H3.13333C1.95513 4 1 4.95513 1 6.13333V10.4M7.4 23.2H3.13333C1.95513 23.2 1 22.2449 1 21.0667V16.8M13.8 4H18.0667C19.2449 4 20.2 4.95513 20.2 6.13333V10.4M20.2 16.8V21.0667C20.2 22.2449 19.2449 23.2 18.0667 23.2H13.8"
           strokeLinecap="round"
         />
-        <path
+        <motion.path
           className="scan"
+          initial={{ opacity: 0 }}
           d="M1 1H20.2"
           strokeLinecap="round"
           strokeLinejoin="round"
