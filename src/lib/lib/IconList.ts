@@ -39,7 +39,11 @@ import { Help } from "@/icons/Help";
 import { Activity } from "@/icons/Activity";
 import { CircleCheck } from "@/icons/CircleCheck";
 import { ArrowBackUp } from "@/icons/ArrowBackUp";
-
+import { ThumbUp } from "@/icons/ThumbUp";
+import { Check } from "@/icons/Check";
+import { Volume } from "@/icons/Volume";
+import { DotsVertical } from "@/icons/DotsVertical";
+import { Upload } from "@/icons/Upload";
 interface Icon {
   id: number;
   Component: ComponentType;
@@ -234,5 +238,30 @@ export const IconList: Icon[] = [
     id: 37,
     Component: ArrowBackUp,
     titel: "arrow-back-up-icon",
+  },
+  {
+    id: 38,
+    Component: ThumbUp,
+    titel: "like-icon",
+  },
+  {
+    id: 39,
+    Component: Check,
+    titel: "check-icon",
+  },
+  {
+    id: 40,
+    Component: Volume,
+    titel: "volume-icon",
+  },
+  {
+    id: 41,
+    Component: DotsVertical,
+    titel: "dots-vertical-icon",
+  },
+  {
+    id: 42,
+    Component: Upload,
+    titel: "upload-icon",
   },
 ];
