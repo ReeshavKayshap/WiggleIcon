@@ -1,5 +1,5 @@
 import { motion, useAnimate } from "motion/react";
-export function Dots({
+export function Activity({
   size = 60,
   strokeWidth = 2,
   color = "currentColor",
@@ -11,23 +11,9 @@ export function Dots({
     animate(
       ".show",
 
-      { y: [0, -2, 0] },
+      { pathLength: [0, 1] },
 
-      { duration: 0.5, ease: "easeInOut" },
-    );
-    animate(
-      ".showTwo",
-
-      { y: [0, -2, 0] },
-
-      { duration: 0.5, ease: "easeInOut", delay: 0.2 },
-    );
-    animate(
-      ".showThree",
-
-      { y: [0, -2, 0] },
-
-      { duration: 0.5, ease: "easeInOut", delay: 0.4 },
+      { duration: 0.8, ease: "easeInOut" },
     );
   };
 
@@ -48,9 +34,7 @@ export function Dots({
         className={`cursor-pointer ${className}`}
       >
         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-        <path className="show" d="M4 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
-        <path className="showTwo" d="M11 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
-        <path className="showThree" d="M18 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+        <path className="show" d="M3 12h4l3 8l4 -16l3 8h4" />
       </motion.svg>
     </>
   );

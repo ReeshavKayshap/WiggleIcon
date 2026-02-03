@@ -1,5 +1,5 @@
 import { motion, useAnimate } from "motion/react";
-export function Dots({
+export function CircleCheck({
   size = 60,
   strokeWidth = 2,
   color = "currentColor",
@@ -9,25 +9,18 @@ export function Dots({
 
   const handleHover = async () => {
     animate(
-      ".show",
+      ".circle",
 
-      { y: [0, -2, 0] },
+      { pathLength: [0, 1], pathOffset: [1, 0] },
 
-      { duration: 0.5, ease: "easeInOut" },
+      { duration: 0.8, ease: "easeInOut" },
     );
     animate(
-      ".showTwo",
+      ".check",
 
-      { y: [0, -2, 0] },
+      { pathLength: [0, 1], opacity: [0, 1] },
 
-      { duration: 0.5, ease: "easeInOut", delay: 0.2 },
-    );
-    animate(
-      ".showThree",
-
-      { y: [0, -2, 0] },
-
-      { duration: 0.5, ease: "easeInOut", delay: 0.4 },
+      { duration: 0.75, ease: "easeInOut", delay: 0.6 },
     );
   };
 
@@ -48,9 +41,8 @@ export function Dots({
         className={`cursor-pointer ${className}`}
       >
         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-        <path className="show" d="M4 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
-        <path className="showTwo" d="M11 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
-        <path className="showThree" d="M18 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+        <path className="circle" d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+        <path className="check" d="M9 12l2 2l4 -4" />
       </motion.svg>
     </>
   );

@@ -126,13 +126,13 @@ function Icon() {
                 const page = index + 1;
                 return (
                   <div
-                    className="flex size-9 shrink-0 items-center justify-center rounded-lg 
-                  border border-white/15  ring-1 ring-edge ring-offset-1 ring-offset-background"
+                  //   className="flex size-9 shrink-0 items-center justify-center rounded-lg
+                  // border border-white/15  ring-1 ring-edge ring-offset-1 ring-offset-background"
                   >
                     {" "}
                     <motion.span
                       whileTap={{ scale: 0.9 }}
-                      className=" font-text flex justify-center items-center bg-neutral-800 size-7 cursor-pointer rounded-lg border border-neutral-600"
+                      className=" font-text flex justify-center items-center bg-neutral-800 size-7 cursor-pointer rounded-sm border border-neutral-600"
                       key={page}
                       onClick={() => handleClick(page)}
                     >

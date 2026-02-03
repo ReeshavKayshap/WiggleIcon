@@ -32,6 +32,13 @@ import { ArrowBack } from "@/icons/ArrowBack";
 import { Image } from "@/icons/Image";
 import { Dots } from "@/icons/Dots";
 import { Filter } from "@/icons/Filter";
+import { Github } from "@/icons/Github";
+import { Twitter } from "@/icons/Twitter";
+import { Share } from "@/icons/Share";
+import { Help } from "@/icons/Help";
+import { Activity } from "@/icons/Activity";
+import { CircleCheck } from "@/icons/CircleCheck";
+import { ArrowBackUp } from "@/icons/ArrowBackUp";
 
 interface Icon {
   id: number;
@@ -141,7 +148,7 @@ export const IconList: Icon[] = [
   {
     id: 20,
     Component: Battery,
-    titel: "battery-icon",
+    titel: "battery-low-icon",
   },
   {
     id: 21,
@@ -192,5 +199,40 @@ export const IconList: Icon[] = [
     id: 30,
     Component: Filter,
     titel: "filter-icon",
+  },
+  {
+    id: 31,
+    Component: Github,
+    titel: "github-icon",
+  },
+  {
+    id: 32,
+    Component: Twitter,
+    titel: "twitter-x-icon",
+  },
+  {
+    id: 33,
+    Component: Share,
+    titel: "share-icon",
+  },
+  {
+    id: 34,
+    Component: Help,
+    titel: "help-icon",
+  },
+  {
+    id: 35,
+    Component: Activity,
+    titel: "activity-icon",
+  },
+  {
+    id: 36,
+    Component: CircleCheck,
+    titel: "circle-check-icon",
+  },
+  {
+    id: 37,
+    Component: ArrowBackUp,
+    titel: "arrow-back-up-icon",
   },
 ];

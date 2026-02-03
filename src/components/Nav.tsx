@@ -1,11 +1,9 @@
 import { useTheme } from "next-themes";
 
-import {
-  IconBrandGithub,
-  IconBrandX,
-  IconBrightness,
-} from "@tabler/icons-react";
+import { IconBrightness } from "@tabler/icons-react";
 import { useEffect, useState } from "react";
+import { Github } from "@/icons/Github";
+import { Twitter } from "@/icons/Twitter";
 export function Nav() {
   const links = [
     { title: "Icons", tag: "/icons" },
@@ -53,14 +51,14 @@ export function Nav() {
                 className=" flex justify-center items-center 
                        overflow-hidden cursor-pointer hover:bg-neutral-100 dark:hover:bg-neutral-800 px-2 py-1 rounded-lg "
               >
-                <IconBrandGithub className="size-5" />
+                <Github size={22} />
               </button>
 
               <button
                 className=" flex justify-center items-center 
                        cursor-pointer hover:bg-neutral-100 dark:hover:bg-neutral-800 px-2 py-1 rounded-lg "
               >
-                <IconBrandX className="size-5" />
+                <Twitter size={22} />
               </button>
               <button
                 onClick={handleThem}

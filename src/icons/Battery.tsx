@@ -37,13 +37,15 @@ export function Battery({
           strokeLinejoin="round"
         />
         <path d="M21 8.59998V5" strokeLinecap="round" strokeLinejoin="round" />
-        <path
+        <motion.path
+          initial={{ opacity: 0 }}
           className="show"
           d="M9 6V4"
           strokeLinecap="round"
           strokeLinejoin="round"
         />
-        <path
+        <motion.path
+          initial={{ opacity: 0 }}
           className="show"
           d="M9 9V9.03955"
           strokeLinecap="round"

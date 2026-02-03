@@ -1,5 +1,6 @@
 import { motion, useAnimate } from "motion/react";
-export function Filter({
+
+export function Github({
   size = 60,
   strokeWidth = 2,
   color = "currentColor",
@@ -9,25 +10,10 @@ export function Filter({
 
   const handleHover = async () => {
     animate(
-      ".show",
+      ".main",
+      { scale: [1, 1.1, 1], rotate: [0, -3, 3, -3, 3, -3, 0] },
 
-      { scaleX: [1, 0.7, 1] },
-
-      { duration: 0.5, ease: "easeInOut" },
-    );
-    animate(
-      ".showTwo",
-
-      { scaleX: [1, 0.8, 1] },
-
-      { duration: 0.5, ease: "easeInOut", delay: 0.2 },
-    );
-    animate(
-      ".showThree",
-
-      { scaleX: [1, 0.8, 1] },
-
-      { duration: 0.5, ease: "easeInOut", delay: 0.4 },
+      { duration: 0.7, ease: "easeInOut" },
     );
   };
 
@@ -35,22 +21,23 @@ export function Filter({
     <>
       <motion.svg
         xmlns="http://www.w3.org/2000/svg"
-        onMouseEnter={handleHover}
         ref={scope}
+        onMouseEnter={handleHover}
         width={size}
         height={size}
         viewBox="0 0 24 24"
         fill="none"
         stroke={color}
         strokeWidth={strokeWidth}
+        className={`cursor-pointer${className}`}
         strokeLinecap="round"
         strokeLinejoin="round"
-        className={`cursor-pointer ${className}`}
       >
         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-        <path className="show" d="M4 6h16" />
-        <path className="showTwo" d="M6 12h12" />
-        <path className="showThree" d="M9 18h6" />
+        <path
+          className="main"
+          d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5"
+        />
       </motion.svg>
     </>
   );
