@@ -1,5 +1,5 @@
+import { Github } from "@/icons/Github";
 import { cn } from "@/lib/lib/utils";
-import { IconBrandGithub } from "@tabler/icons-react";
 
 export function HeroSection() {
   return (
@@ -15,7 +15,7 @@ export function HeroSection() {
         <div className="flex justify-center items-center py-35">
           <span className="flex flex-col items-center gap-5">
             <span className="flex items-center gap-2 dark:bg-neutral-800 px-3 py-1 rounded-3xl">
-              <IconBrandGithub />
+              <Github size={22} />
               <h2 className="font-text">Open Source</h2>
             </span>
             <h2 className="font-main text-center text-6xl   tracking-tight">

@@ -11,7 +11,7 @@ export function FingerPrint({
   const handleHover = async () => {
     animate(
       ".main",
-      { pathLength: [1, 0] },
+      { pathLength: [1, 0], opacity: [0, 1] },
 
       { duration: 0.8, ease: "easeInOut" },
     );

@@ -44,6 +44,14 @@ import { Check } from "@/icons/Check";
 import { Volume } from "@/icons/Volume";
 import { DotsVertical } from "@/icons/DotsVertical";
 import { Upload } from "@/icons/Upload";
+import { ArrowRight } from "@/icons/ArrowRight";
+import { Stack } from "@/icons/Stack";
+import { Cross } from "@/icons/Cross";
+import { Wifi } from "@/icons/Wifi";
+import { VolumeOff } from "@/icons/VolumeOff";
+import Pinned from "@/icons/Pinned";
+import { Rotate } from "@/icons/Rotate";
+import { CircleArrowRight } from "@/icons/CircleArrowRight";
 interface Icon {
   id: number;
   Component: ComponentType;
@@ -263,5 +271,45 @@ export const IconList: Icon[] = [
     id: 42,
     Component: Upload,
     titel: "upload-icon",
+  },
+  {
+    id: 43,
+    Component: ArrowRight,
+    titel: "arrow-right-icon",
+  },
+  {
+    id: 44,
+    Component: Stack,
+    titel: "stack-icon",
+  },
+  {
+    id: 45,
+    Component: Cross,
+    titel: "cross-icon",
+  },
+  {
+    id: 46,
+    Component: Wifi,
+    titel: "wifi-icon",
+  },
+  {
+    id: 47,
+    Component: VolumeOff,
+    titel: "volume-off-icon",
+  },
+  {
+    id: 48,
+    Component: Pinned,
+    titel: "pinned-icon",
+  },
+  {
+    id: 49,
+    Component: Rotate,
+    titel: "rotate-icon",
+  },
+  {
+    id: 50,
+    Component: CircleArrowRight,
+    titel: "circle-arrow-right-icon",
   },
 ];
