@@ -56,6 +56,7 @@ import { Refresh } from "@/icons/Refresh";
 import { IncomingPhoneCall } from "@/icons/Send";
 import { Coffee } from "@/icons/Coffee";
 import { SearchTwo } from "@/icons/SearchTwo";
+import { History } from "@/icons/History";
 interface Icon {
   id: number;
   Component: ComponentType;
@@ -335,5 +336,10 @@ export const IconList: Icon[] = [
     id: 54,
     Component: SearchTwo,
     titel: "search-two-icon",
+  },
+  {
+    id: 55,
+    Component: History,
+    titel: "history-icon",
   },
 ];
