@@ -52,6 +52,10 @@ import { VolumeOff } from "@/icons/VolumeOff";
 import Pinned from "@/icons/Pinned";
 import { Rotate } from "@/icons/Rotate";
 import { CircleArrowRight } from "@/icons/CircleArrowRight";
+import { Refresh } from "@/icons/Refresh";
+import { IncomingPhoneCall } from "@/icons/Send";
+import { Coffee } from "@/icons/Coffee";
+import { SearchTwo } from "@/icons/SearchTwo";
 interface Icon {
   id: number;
   Component: ComponentType;
@@ -311,5 +315,25 @@ export const IconList: Icon[] = [
     id: 50,
     Component: CircleArrowRight,
     titel: "circle-arrow-right-icon",
+  },
+  {
+    id: 51,
+    Component: Refresh,
+    titel: "refresh-icon",
+  },
+  {
+    id: 52,
+    Component: IncomingPhoneCall,
+    titel: "incoming-phone-icon",
+  },
+  {
+    id: 53,
+    Component: Coffee,
+    titel: "coffee-icon",
+  },
+  {
+    id: 54,
+    Component: SearchTwo,
+    titel: "search-two-icon",
   },
 ];

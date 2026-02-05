@@ -1,7 +1,7 @@
 import { motion, useAnimate } from "motion/react";
 export function Rotate({
   size = 60,
-  strokeWidth = 1.5,
+  strokeWidth = 2,
   color = "currentColor",
   className = "",
 }) {
