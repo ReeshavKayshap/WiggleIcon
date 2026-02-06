@@ -8,6 +8,9 @@ import Search from "@/icons/Search";
 const PAGE_SIZE = 18;
 
 function Icon() {
+  const copyToClipboard = async (text: string) => {
+    await navigator.clipboard.writeText(text);
+  };
   const [search, setSearch] = useState("");
 
   const filteredIcons = IconList.filter((icon) =>
@@ -30,7 +33,7 @@ function Icon() {
 
   return (
     <>
-      <div className="pb-10">
+      <div>
         <div className=" border-r border-l max-w-7xl mx-auto flex flex-col gap-10  dark:border-neutral-800 border-neutral-200">
           <div className="px-15 py-10 pt-20 flex flex-col gap-10">
             <span className="flex flex-col gap-3">
@@ -71,7 +74,6 @@ function Icon() {
         </div>
         <span className=" relative ">
           <div className=" h-px w-full   border-t dark:border-neutral-800 border-neutral-200" />
-          <div className=" h-px w-full absolute bottom-0  border-t dark:border-neutral-800 border-neutral-200" />
 
           <span className="max-w-7xl mx-auto   flex flex-col  border-r border-l dark:border-neutral-800 border-neutral-200 px-15 pt-7">
             <motion.div
@@ -83,7 +85,7 @@ function Icon() {
             >
               {filteredIcons
                 .slice(Start, End)
-                .map(({ id, Component, titel }) => (
+                .map(({ id, Component, titel, copyText }) => (
                   <span key={id}>
                     <span
                       className=" dark:text-gray-300 text-neutral-800 flex flex-col   items-center justify-center  gap-4 rounded-lg p-4  shadow-sm relative
@@ -121,6 +123,7 @@ function Icon() {
                       <span
                         onMouseEnter={() => setHover(id)}
                         onMouseLeave={() => setHover(null)}
+                        onClick={() => copyToClipboard(copyText)}
                         className="w-fit flex justify-center"
                       >
                         {hover === id && (

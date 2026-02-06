@@ -3,6 +3,7 @@ import { HeroSection } from "./HeroSection";
 import { Nav } from "./Nav";
 import Icons from "./Icons";
 import { cn } from "@/lib/lib/utils";
+import Footer from "./Footer";
 function Main() {
   return (
     <>
@@ -24,6 +25,18 @@ function Main() {
           <div className=" h-10 w-full border-r border-l max-w-7xl mx-auto  dark:border-neutral-800 border-neutral-200" />
         </div>
         <Icons />
+        <div
+          className={cn(
+            "w-full h-fit border-t border-b border-neutral-200 dark:border-neutral-800",
+            "bg-[repeating-linear-gradient(315deg,var(--pattern-fg)_0,var(--pattern-fg)_1px,transparent_0,transparent_50%)]",
+            "bg-size-[15px_15px]",
+            "[--pattern-fg:var(--color-black)]/5",
+            "dark:[--pattern-fg:var(--color-white)]/8",
+          )}
+        >
+          <div className=" h-10 w-full border-r border-l max-w-7xl mx-auto  dark:border-neutral-800 border-neutral-200" />
+        </div>
+        <Footer />
       </div>
     </>
   );

@@ -1,4 +1,5 @@
 import { motion, useAnimate } from "motion/react";
+
 export function SmartHome({
   size = 60,
   strokeWidth = 2,
