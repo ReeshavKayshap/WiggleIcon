@@ -7,7 +7,7 @@ function App() {
   return (
     <>
       <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-        <div className=" bg-background text-forground overflow-clip">
+        <div className="dark:bg-forground bg-background dark:text-background overflow-clip">
           <Main />
         </div>
       </ThemeProvider>

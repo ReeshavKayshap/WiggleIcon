@@ -1,19 +1,22 @@
-import Container from "./Container";
+// import Container from "./Container";
 import { HeroSection } from "./HeroSection";
 import { Nav } from "./Nav";
 import Icons from "./Icons";
 import { cn } from "@/lib/lib/utils";
 import Footer from "./Footer";
+import Playground from "./Playground";
 function Main() {
   return (
     <>
       <div>
         <Nav />
-        <Container>
-          <HeroSection />
-        </Container>
+        <HeroSection />
 
-        <div
+        {/* <Container> */}
+
+        {/* </Container> */}
+
+        {/* <div
           className={cn(
             "w-full h-fit border-t border-b border-neutral-200 dark:border-neutral-800",
             "bg-[repeating-linear-gradient(315deg,var(--pattern-fg)_0,var(--pattern-fg)_1px,transparent_0,transparent_50%)]",
@@ -23,9 +26,9 @@ function Main() {
           )}
         >
           <div className=" h-10 w-full border-r border-l max-w-7xl mx-auto  dark:border-neutral-800 border-neutral-200" />
-        </div>
+        </div> */}
         <Icons />
-        <div
+        {/* <div
           className={cn(
             "w-full h-fit border-t border-b border-neutral-200 dark:border-neutral-800",
             "bg-[repeating-linear-gradient(315deg,var(--pattern-fg)_0,var(--pattern-fg)_1px,transparent_0,transparent_50%)]",
@@ -35,7 +38,8 @@ function Main() {
           )}
         >
           <div className=" h-10 w-full border-r border-l max-w-7xl mx-auto  dark:border-neutral-800 border-neutral-200" />
-        </div>
+        </div> */}
+        <Playground />
         <Footer />
       </div>
     </>

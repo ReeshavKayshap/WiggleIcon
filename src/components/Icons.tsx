@@ -4,8 +4,9 @@ import { motion } from "motion/react";
 
 import { Copy } from "@/icons/Copy";
 import Search from "@/icons/Search";
+import { ArrowRight } from "@/icons/ArrowRight";
 
-const PAGE_SIZE = 18;
+const PAGE_SIZE = 24;
 
 function Icon() {
   const copyToClipboard = async (text: string) => {
@@ -34,28 +35,35 @@ function Icon() {
   return (
     <>
       <div>
-        <div className=" border-r border-l max-w-7xl mx-auto flex flex-col gap-10  dark:border-neutral-800 border-neutral-200">
-          <div className="px-15 py-10 pt-20 flex flex-col gap-10">
+        <div className=" max-w-336 mx-auto flex flex-col gap-10  ">
+          <div className=" py-10 pt-20 flex flex-col gap-10">
             <span className="flex flex-col gap-3">
-              <h1 className="text-5xl font-text ">Designed with intention </h1>
+              <h1 className="text-5xl font-text text-forground dark:text-background">
+                Designed with intention{" "}
+              </h1>
               <p className="text-lg font-text  dark:text-gray-400 text-gray-600">
                 {" "}
                 animated components that bring your UI to life.Ready to copy,
                 customize, and deploy.
               </p>
-              {/* <h4 className="font-text pt-5 dark:text-gray-400 text-gray-600">
-                Install{" "}
-                <span
-                  className=" cursor-pointer dark:text-sky-400 text-sky-500
-               "
-                >
-                  motion
-                </span>{" "}
-                for animation.
-              </h4> */}
+              <div className="font-text pt-5 dark:text-gray-400 text-gray-600 flex items-center gap-2">
+                <h4> To enable animations, install </h4>
+                <span className=" flex items-center gap-1 cursor-pointer bg-neutral-800 px-3.5 py-1 rounded-lg dark:text-neutral-100 text-neutral-950">
+                  <h4>motion</h4>
+                  <span>
+                    <ArrowRight
+                      // animation={{
+                      //   keyframes: { x: [0, 8, 0] },
+                      //   options: { duration: 0.4, ease: "easeInOut" },
+                      // }}
+                      size={20}
+                    />
+                  </span>
+                </span>
+              </div>
             </span>
             <span className="flex items-center relative  ">
-              <span className=" absolute pl-4">
+              <span className=" absolute pl-4 dark:text-white">
                 <Search size={19} />
               </span>
               <input
@@ -65,7 +73,7 @@ function Icon() {
                 }}
                 type="text"
                 placeholder="Search 50 Icons ..."
-                className="dark:bg-neutral-800 bg-neutral-100 w-150 py-3 rounded-xl pl-13 shadow-sm 
+                className="dark:bg-neutral-800 bg-neutral-100 dark:text-white w-150 py-3 rounded-xl pl-13 shadow-sm 
          dark:shadow-neutral-800 shadow-neutral-300 ring-1 dark:ring-neutral-700 ring-neutral-200 
          font-main outline-none focus:ring-1 focus:ring-neutral-500 focus:transition-all focus:duration-300 focus:ease-in-out not-focus:duration-300"
               />
@@ -73,9 +81,9 @@ function Icon() {
           </div>
         </div>
         <span className=" relative ">
-          <div className=" h-px w-full   border-t dark:border-neutral-800 border-neutral-200" />
+          <div className=" h-px w-full   " />
 
-          <span className="max-w-7xl mx-auto   flex flex-col  border-r border-l dark:border-neutral-800 border-neutral-200 px-15 pt-7">
+          <span className="max-w-336 mx-auto   flex flex-col   pt-7">
             <motion.div
               key={current}
               variants={variants}

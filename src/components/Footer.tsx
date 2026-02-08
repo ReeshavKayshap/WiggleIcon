@@ -9,7 +9,7 @@ function Footer() {
   ];
   return (
     <>
-      <div className="mx-auto max-w-7xl pt-10   border-l border-r border-neutral-200 dark:border-neutral-800">
+      <div className="mx-auto max-w-7xl pt-10  ">
         <div
           className="flex justify-between items-center  px-15 pb-5
      "
@@ -48,7 +48,7 @@ function Footer() {
             </span>
           </div>
         </div>
-        <span className="flex justify-center py-5 border-t border-neutral-200 dark:border-neutral-800">
+        <span className="flex justify-center py-5 ">
           <p className="text-lg font-text dark:text-neutral-400 text-gray-600">
             Built by{" "}
             <span className="hover:text-neutral-300 cursor-pointer hover:decoration-neutral-300 underline underline-offset-2 dark:decoration-neutral-400 decoration-gray-600">
