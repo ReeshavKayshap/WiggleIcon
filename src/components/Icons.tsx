@@ -6,11 +6,18 @@ import { Copy } from "@/icons/Copy";
 import Search from "@/icons/Search";
 import { ArrowRight } from "@/icons/ArrowRight";
 
+import { IconCheck } from "@tabler/icons-react";
+
 const PAGE_SIZE = 24;
 
 function Icon() {
-  const copyToClipboard = async (text: string) => {
+  const [copied, setCopied] = useState<number | null>(null);
+
+  const copyToClipboard = async (text: string, id: number) => {
     await navigator.clipboard.writeText(text);
+    setCopied(id);
+
+    setTimeout(() => setCopied(null), 1500);
   };
   const [search, setSearch] = useState("");
 
@@ -32,6 +39,15 @@ function Icon() {
     animate: { opacity: 1, filter: "blur(0px)", y: 0 },
   };
 
+  const [size, setSize] = useState(60);
+  const [strokeWidth, setStrokeWidth] = useState(2);
+  const [durationOverride, setDurationOverride] = useState<number | null>(null);
+
+  const resetToDefault = () => {
+    setSize(60);
+    setStrokeWidth(2);
+    setDurationOverride(null);
+  };
   return (
     <>
       <div>
@@ -51,13 +67,7 @@ function Icon() {
                 <span className=" flex items-center gap-1 cursor-pointer bg-neutral-800 px-3.5 py-1 rounded-lg dark:text-neutral-100 text-neutral-950">
                   <h4>motion</h4>
                   <span>
-                    <ArrowRight
-                      // animation={{
-                      //   keyframes: { x: [0, 8, 0] },
-                      //   options: { duration: 0.4, ease: "easeInOut" },
-                      // }}
-                      size={20}
-                    />
+                    <ArrowRight size={20} />
                   </span>
                 </span>
               </div>
@@ -78,6 +88,70 @@ function Icon() {
          font-main outline-none focus:ring-1 focus:ring-neutral-500 focus:transition-all focus:duration-300 focus:ease-in-out not-focus:duration-300"
               />
             </span>
+          </div>
+          <div className="w-full max-w-sm space-y-4 font-text">
+            <button
+              onClick={resetToDefault}
+              className="
+                mt-3 text-sm font-text
+                      text-neutral-500 hover:text-neutral-800
+                        dark:hover:text-neutral-200
+                         transition
+                             "
+            >
+              Reset to original
+            </button>
+            <div>
+              <label className="flex justify-between text-sm mb-1">
+                <span>Size</span>
+                <span>{size}px</span>
+              </label>
+              <input
+                type="range"
+                min={24}
+                max={90}
+                value={size}
+                onChange={(e) => setSize(Number(e.target.value))}
+                className="w-full"
+              />
+            </div>
+
+            {/* Stroke Width */}
+            <div>
+              <label className="flex justify-between text-sm mb-1">
+                <span>Stroke</span>
+                <span>{strokeWidth}</span>
+              </label>
+              <input
+                type="range"
+                min={1}
+                max={4}
+                step={0.5}
+                value={strokeWidth}
+                onChange={(e) => setStrokeWidth(Number(e.target.value))}
+                className="w-full"
+              />
+            </div>
+            <div>
+              <label className="flex justify-between text-sm mb-1">
+                <span>Animation</span>
+                <span>
+                  {" "}
+                  {durationOverride === null
+                    ? "default"
+                    : `${durationOverride}s`}
+                </span>
+              </label>
+              <input
+                type="range"
+                min={0.2}
+                max={2}
+                step={0.1}
+                value={durationOverride ?? 0.8}
+                onChange={(e) => setDurationOverride(Number(e.target.value))}
+                className="w-full"
+              />
+            </div>
           </div>
         </div>
         <span className=" relative ">
@@ -125,18 +199,24 @@ function Icon() {
                             </span>
                           </motion.div>
                         )}
-                        <Component />
+                        <Component
+                          size={size}
+                          strokeWidth={strokeWidth}
+                          duration={durationOverride ?? undefined}
+                        />
                       </span>
 
                       <span
                         onMouseEnter={() => setHover(id)}
                         onMouseLeave={() => setHover(null)}
-                        onClick={() => copyToClipboard(copyText)}
+                        onClick={() => copyToClipboard(copyText, id)}
                         className="w-fit flex justify-center"
                       >
                         {hover === id && (
                           <div className="dark:bg-neutral-200 bg-black dark:text-black text-neutral-200  flex flex-col justify-center items-center absolute -bottom-6  px-2.5 py-0.5  rounded-xl ">
-                            <h3 className="font-text text-sm">Click to copy</h3>
+                            <h3 className="font-text text-sm">
+                              {copied === id ? "Copied" : "Click to copy"}
+                            </h3>
                             <span className=" absolute top-1  ">
                               <svg
                                 className="dark:bg-neutral-200 bg-black dark:fill-neutral-200 fill-black z-50 size-2.5 translate-y-[calc(-50%-2px)] rotate-45 rounded-xs"
@@ -148,10 +228,17 @@ function Icon() {
                             </span>
                           </div>
                         )}
-                        <Copy
-                          size={16}
-                          className=" dark:text-neutral-700 text-neutral-500"
-                        />
+                        {copied === id ? (
+                          <IconCheck
+                            size={16}
+                            className="text-green-500  cursor-pointer"
+                          />
+                        ) : (
+                          <Copy
+                            size={16}
+                            className="dark:text-neutral-700 text-neutral-500 cursor-pointer"
+                          />
+                        )}
                       </span>
                     </span>
                   </span>

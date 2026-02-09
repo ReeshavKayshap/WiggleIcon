@@ -11,7 +11,7 @@ function Footer() {
     <>
       <div className="mx-auto max-w-7xl pt-10  ">
         <div
-          className="flex justify-between items-center  px-15 pb-5
+          className="flex justify-between   px-15 pb-5
      "
         >
           <div className="flex flex-col gap-2">
@@ -24,7 +24,7 @@ function Footer() {
           <div className="flex gap-25">
             <span className="flex flex-col gap-2">
               {" "}
-              <h1 className="text-xl font-text">Page</h1>
+              <h1 className="text-lg font-text"> Section</h1>
               {tag.map((item, idx) => (
                 <span
                   className="flex flex-col font-text dark:text-neutral-400 text-gray-600 cursor-pointer hover:text-neutral-300"
@@ -35,7 +35,7 @@ function Footer() {
               ))}
             </span>
             <span className="flex flex-col gap-3">
-              <h1 className="text-xl font-text">Sponsor</h1>
+              <h1 className="text-lg font-text">Sponsor</h1>
               <span className="flex gap-3 items-center">
                 <Coffee
                   size={19}

@@ -61,8 +61,9 @@ export interface IconItem {
   id: number;
   Component: ComponentType<{
     size?: number;
-    color?: string;
     strokeWidth?: number;
+    duration?: number;
+    className?: string;
   }>;
   title: string;
   copyText: string;

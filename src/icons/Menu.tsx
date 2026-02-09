@@ -5,6 +5,7 @@ export function Menu({
   strokeWidth = 2,
   color = "currentColor",
   className = "",
+  duration = 0.5,
 }) {
   const [scope, animate] = useAnimate();
 
@@ -14,21 +15,21 @@ export function Menu({
 
       { scaleX: [1, 0.25, 1] },
 
-      { duration: 0.5, ease: "easeInOut" },
+      { duration, ease: "easeInOut" },
     );
     animate(
       ".showOne",
 
       { scaleX: [1, 0.3, 1] },
 
-      { duration: 0.5, ease: "easeInOut", delay: 0.1 },
+      { duration, ease: "easeInOut", delay: 0.1 },
     );
     animate(
       ".showThree",
 
       { scaleX: [1, 0.3, 1] },
 
-      { duration: 0.5, ease: "easeInOut", delay: 0.2 },
+      { duration, ease: "easeInOut", delay: 0.2 },
     );
   };
 

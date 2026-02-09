@@ -1,25 +1,29 @@
 import { motion, useAnimate } from "motion/react";
 
+interface HomeProps {
+  size?: number;
+  strokeWidth?: number;
+  color?: string;
+  className?: string;
+  duration?: number;
+}
+
 function Home({
   size = 60,
   strokeWidth = 2,
   color = "currentColor",
   className = "",
-}) {
+  duration = 0.8,
+}: HomeProps) {
   const [scope, animate] = useAnimate();
 
   const handleHover = async () => {
-    animate(
-      ".house",
-      { scale: [1.1, 1] },
-
-      { duration: 0.8, ease: "easeInOut" },
-    );
+    animate(".house", { scale: [1.1, 1] }, { duration, ease: "easeInOut" });
 
     animate(
       ".door",
       { pathLength: [0, 1], opacity: [0, 1] },
-      { duration: 0.8, ease: "easeInOut" },
+      { duration, ease: "easeInOut" },
     );
   };
 
