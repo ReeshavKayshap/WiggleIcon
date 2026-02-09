@@ -57,18 +57,22 @@ import { IncomingPhoneCall } from "@/icons/Send";
 import { Coffee } from "@/icons/Coffee";
 import { SearchTwo } from "@/icons/SearchTwo";
 import { History } from "@/icons/History";
-interface Icon {
+export interface IconItem {
   id: number;
-  Component: ComponentType;
-  titel: string;
+  Component: ComponentType<{
+    size?: number;
+    color?: string;
+    strokeWidth?: number;
+  }>;
+  title: string;
   copyText: string;
 }
 
-export const IconList: Icon[] = [
+export const IconList: IconItem[] = [
   {
     id: 1,
     Component: SmartHome,
-    titel: "smart-home-icon",
+    title: "smart-home-icon",
     copyText: `import { motion, useAnimate } from "motion/react";
 
 interface ActivityProps {
@@ -119,274 +123,274 @@ export function SmartHome({
   {
     id: 2,
     Component: Menu,
-    titel: "menu-icon",
+    title: "menu-icon",
   },
   {
     id: 3,
     Component: Search,
-    titel: "search-icon",
+    title: "search-icon",
   },
   {
     id: 4,
     Component: Setting,
-    titel: "setting-icon",
+    title: "setting-icon",
   },
 
   {
     id: 5,
     Component: User,
-    titel: "user-icon",
+    title: "user-icon",
   },
   {
     id: 6,
     Component: Download,
-    titel: "download-icon",
+    title: "download-icon",
   },
   {
     id: 7,
     Component: Map,
-    titel: "map-icon",
+    title: "map-icon",
   },
   {
     id: 8,
     Component: Eye,
-    titel: "eye-icon",
+    title: "eye-icon",
   },
   {
     id: 9,
     Component: Copy,
-    titel: "copy-icon",
+    title: "copy-icon",
   },
 
   {
     id: 10,
     Component: Heart,
-    titel: "heart-icon",
+    title: "heart-icon",
   },
   {
     id: 11,
     Component: Phone,
-    titel: "phone-call-icon",
+    title: "phone-call-icon",
   },
   {
     id: 12,
     Component: Trash,
-    titel: "trash-icon",
+    title: "trash-icon",
   },
   {
     id: 13,
     Component: World,
-    titel: "world-icon",
+    title: "world-icon",
   },
   {
     id: 14,
     Component: UnorderedList,
-    titel: "list-icon",
+    title: "list-icon",
   },
   {
     id: 15,
     Component: InfoCircle,
-    titel: "info-icon",
+    title: "info-icon",
   },
   {
     id: 16,
     Component: FaceId,
-    titel: "face-id-icon",
+    title: "face-id-icon",
   },
   {
     id: 17,
     Component: Bell,
-    titel: "bell-icon",
+    title: "bell-icon",
   },
 
   {
     id: 18,
     Component: EyeOff,
-    titel: "eye-off-icon",
+    title: "eye-off-icon",
   },
   {
     id: 19,
     Component: Cast,
-    titel: "cast-icon",
+    title: "cast-icon",
   },
   {
     id: 20,
     Component: Battery,
-    titel: "battery-low-icon",
+    title: "battery-low-icon",
   },
   {
     id: 21,
     Component: FingerPrint,
-    titel: "finger-Print-icon",
+    title: "finger-Print-icon",
   },
   {
     id: 22,
     Component: BatteryCharging,
-    titel: "battery-charging-icon",
+    title: "battery-charging-icon",
   },
   {
     id: 23,
     Component: BellRinging,
-    titel: "bell-off-icon",
+    title: "bell-off-icon",
   },
   {
     id: 24,
     Component: Home,
-    titel: "home-icon",
+    title: "home-icon",
   },
   {
     id: 25,
     Component: Edit,
-    titel: "pen-icon",
+    title: "pen-icon",
   },
   {
     id: 26,
     Component: Bluetooth,
-    titel: "bluetooth-icon",
+    title: "bluetooth-icon",
   },
   {
     id: 27,
     Component: ArrowBack,
-    titel: "arrow-back-icon",
+    title: "arrow-back-icon",
   },
   {
     id: 28,
     Component: Image,
-    titel: "image-icon",
+    title: "image-icon",
   },
   {
     id: 29,
     Component: Dots,
-    titel: "dots-icon",
+    title: "dots-icon",
   },
   {
     id: 30,
     Component: Filter,
-    titel: "filter-icon",
+    title: "filter-icon",
   },
   {
     id: 31,
     Component: Github,
-    titel: "github-icon",
+    title: "github-icon",
   },
   {
     id: 32,
     Component: Twitter,
-    titel: "twitter-x-icon",
+    title: "twitter-x-icon",
   },
   {
     id: 33,
     Component: Share,
-    titel: "share-icon",
+    title: "share-icon",
   },
   {
     id: 34,
     Component: Help,
-    titel: "help-icon",
+    title: "help-icon",
   },
   {
     id: 35,
     Component: Activity,
-    titel: "activity-icon",
+    title: "activity-icon",
   },
   {
     id: 36,
     Component: CircleCheck,
-    titel: "circle-check-icon",
+    title: "circle-check-icon",
   },
   {
     id: 37,
     Component: ArrowBackUp,
-    titel: "arrow-back-up-icon",
+    title: "arrow-back-up-icon",
   },
   {
     id: 38,
     Component: ThumbUp,
-    titel: "like-icon",
+    title: "like-icon",
   },
   {
     id: 39,
     Component: Check,
-    titel: "check-icon",
+    title: "check-icon",
   },
   {
     id: 40,
     Component: Volume,
-    titel: "volume-icon",
+    title: "volume-icon",
   },
   {
     id: 41,
     Component: DotsVertical,
-    titel: "dots-vertical-icon",
+    title: "dots-vertical-icon",
   },
   {
     id: 42,
     Component: Upload,
-    titel: "upload-icon",
+    title: "upload-icon",
   },
   {
     id: 43,
     Component: ArrowRight,
-    titel: "arrow-right-icon",
+    title: "arrow-right-icon",
   },
   {
     id: 44,
     Component: Stack,
-    titel: "stack-icon",
+    title: "stack-icon",
   },
   {
     id: 45,
     Component: Cross,
-    titel: "cross-icon",
+    title: "cross-icon",
   },
   {
     id: 46,
     Component: Wifi,
-    titel: "wifi-icon",
+    title: "wifi-icon",
   },
   {
     id: 47,
     Component: VolumeOff,
-    titel: "volume-off-icon",
+    title: "volume-off-icon",
   },
   {
     id: 48,
     Component: Pinned,
-    titel: "pinned-icon",
+    title: "pinned-icon",
   },
   {
     id: 49,
     Component: Rotate,
-    titel: "rotate-icon",
+    title: "rotate-icon",
   },
   {
     id: 50,
     Component: CircleArrowRight,
-    titel: "circle-arrow-right-icon",
+    title: "circle-arrow-right-icon",
   },
   {
     id: 51,
     Component: Refresh,
-    titel: "refresh-icon",
+    title: "refresh-icon",
   },
   {
     id: 52,
     Component: IncomingPhoneCall,
-    titel: "incoming-phone-icon",
+    title: "incoming-phone-icon",
   },
   {
     id: 53,
     Component: Coffee,
-    titel: "coffee-icon",
+    title: "coffee-icon",
   },
   {
     id: 54,
     Component: SearchTwo,
-    titel: "search-two-icon",
+    title: "search-two-icon",
   },
   {
     id: 55,
     Component: History,
-    titel: "history-icon",
+    title: "history-icon",
   },
 ];

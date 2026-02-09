@@ -15,7 +15,7 @@ function Icon() {
   const [search, setSearch] = useState("");
 
   const filteredIcons = IconList.filter((icon) =>
-    icon.titel.toLowerCase().includes(search.toLowerCase()),
+    icon.title.toLowerCase().includes(search.toLowerCase()),
   );
   const [hover, setHover] = useState<number | null>(null);
   const [name, setName] = useState<number | null>(null);
@@ -93,7 +93,7 @@ function Icon() {
             >
               {filteredIcons
                 .slice(Start, End)
-                .map(({ id, Component, titel, copyText }) => (
+                .map(({ id, Component, title, copyText }) => (
                   <span key={id}>
                     <span
                       className=" dark:text-gray-300 text-neutral-800 flex flex-col   items-center justify-center  gap-4 rounded-lg p-4  shadow-sm relative
@@ -113,7 +113,7 @@ function Icon() {
                             className="dark:bg-neutral-200 bg-black dark:text-black text-neutral-200 
                           flex flex-col  justify-center items-center absolute -top-6  px-3.5 py-0.5  rounded-xl "
                           >
-                            <h3 className="font-text text-sm ">{titel}</h3>
+                            <h3 className="font-text text-sm ">{title}</h3>
                             <span className=" absolute -bottom-2.5  -z-10 ">
                               <svg
                                 className="dark:bg-neutral-200 bg-black dark:fill-neutral-200 fill-black z-50 size-2.5 translate-y-[calc(-50%-2px)] rotate-45 rounded-xs"
