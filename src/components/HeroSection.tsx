@@ -21,59 +21,60 @@ export function HeroSection() {
         // className="bg-linear-[#488CDB,#D7EAFB] mask-b-from-70%"
         className="max-w-336 mx-auto"
       >
-        <div className="flex justify-between items-center py-35 dark:text-background text-forground">
-          <span className="flex flex-col  gap-8 ">
-            <span className="flex items-center gap-2 dark:bg-neutral-800 bg-neutral-100 w-fit  px-3 py-1 rounded-3xl ring ring-neutral-200 dark:ring-neutral-700">
-              <Github size={22} />
-              <h2 className="font-text">Open Source</h2>
-            </span>
-            <span className="flex flex-col gap-4">
-              <h2 className="font-main text-7xl   tracking-tight">
-                Icons that come alive <br /> with interaction
-              </h2>
-              <p className="font-main text-xl max-w-xl   dark:text-gray-300  ">
-                Collection of customizable, motion-based icons that are editable
-                and Works seamlessly with modern design systems.
-              </p>
-            </span>
+        <div>
+          {" "}
+          <div className="flex justify-center items-center py-35 dark:text-background text-forground">
+            <span className="flex flex-col  gap-8 ">
+              <span className="flex items-center gap-2 dark:bg-neutral-800 bg-neutral-100 w-fit  px-3 py-1 rounded-3xl ring ring-neutral-200 dark:ring-neutral-700">
+                <Github size={22} />
+                <h2 className="font-text">Open Source</h2>
+              </span>
+              <span className="flex flex-col gap-4">
+                <h2 className="font-main text-7xl   tracking-tight">
+                  Icons that come alive <br /> with interaction
+                </h2>
+                <p className="font-main text-xl max-w-xl   dark:text-gray-300  ">
+                  Collection of customizable, motion-based icons that are
+                  editable and Works seamlessly with modern design systems.
+                </p>
+              </span>
 
-            <span className="flex gap-5">
-              <button className=" font-text py-1.5 px-10 rounded-lg dark:hover:bg-white/95 hover:bg-black/90 cursor-pointer dark:text-forground dark:bg-white bg-black text-background">
-                Contact Me
-              </button>
-              <button
-                className="font-text py-1.5 px-15 rounded-lg dark:hover:bg-neutral-800 hover:bg-neutral-50/95  cursor-pointer dark:bg-neutral-900 bg-neutral-100 
+              <span className="flex gap-5">
+                <button className=" font-text py-1.5 px-10 rounded-lg dark:hover:bg-white/95 hover:bg-black/90 cursor-pointer dark:text-forground dark:bg-white bg-black text-background">
+                  Contact Me
+                </button>
+                <button
+                  className="font-text py-1.5 px-15 rounded-lg dark:hover:bg-neutral-800 hover:bg-neutral-50/95  cursor-pointer dark:bg-neutral-900 bg-neutral-100 
               border dark:border-neutral-700 border-neutral-300  dark:text-white"
-              >
-                Sponsor
-              </button>
+                >
+                  Sponsor
+                </button>
+              </span>
+              <div className="flex items-center font-text gap-5 dark:text-neutral-700 text-neutral-300">
+                <span className="text-neutral-500 ">Built with</span>
+                <div className="flex gap-3 hover:text-neutral-500 cursor-pointer">
+                  <span>
+                    {" "}
+                    <IconBrandReact />
+                  </span>
+                  <span>React</span>
+                </div>
+                <div className="flex gap-3 hover:text-neutral-500 cursor-pointer">
+                  <span>
+                    {" "}
+                    <IconBrandTailwind />
+                  </span>
+                  <span>TailwindCSS</span>
+                </div>
+                <div className="flex gap-3 hover:text-neutral-500 cursor-pointer">
+                  <span>
+                    <IconBrandFramerMotion />
+                  </span>
+                  <span>FramerMotion</span>
+                </div>
+              </div>
             </span>
-            <div className="flex items-center font-text gap-5 dark:text-neutral-700 text-neutral-300">
-              <span className="text-neutral-500 ">Built with</span>
-              <div className="flex gap-3 hover:text-neutral-500 cursor-pointer">
-                <span>
-                  {" "}
-                  <IconBrandReact />
-                </span>
-                <span>React</span>
-              </div>
-              <div className="flex gap-3 hover:text-neutral-500 cursor-pointer">
-                <span>
-                  {" "}
-                  <IconBrandTailwind />
-                </span>
-                <span>TailwindCSS</span>
-              </div>
-              <div className="flex gap-3 hover:text-neutral-500 cursor-pointer">
-                <span>
-                  {" "}
-                  <IconBrandFramerMotion />
-                </span>
-                <span>FramerMotion</span>
-              </div>
-            </div>
-          </span>
-          <span>
+            {/* <span>
             <img
               className="w-160 mask-y-from-80% mask-x-from-80%  dark:hidden   object-cover"
               src={hero}
@@ -84,7 +85,8 @@ export function HeroSection() {
               src={heroTwo}
               alt="logoTwo"
             />
-          </span>
+          </span> */}
+          </div>
         </div>
       </div>
     </>

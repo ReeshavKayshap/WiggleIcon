@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Inconsolata:wght@200..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 @font-face {
   font-family: para;
   src: url("fonts/Gabarito-Medium.ttf");
@@ -12,11 +13,14 @@
 :root {
   --background: #f9fafc;
   --forground: var(--color-black);
+  --range-fill: theme(--color-neutral-900);
+  --range-track: theme(--color-neutral-400);
 }
 
 .dark {
   --background: var(--color-black);
   --background: #f9fafc;
+  --range-track: theme(colors.gray.600);
 }
 
 @theme inline {
@@ -24,4 +28,5 @@
   --color-forground: var(--forground);
   --font-text: para, sans-serif;
   --font-main: Gabarito, sans-serif;
+  --font-Adjust: Inconsolata, sans-serif;
 }

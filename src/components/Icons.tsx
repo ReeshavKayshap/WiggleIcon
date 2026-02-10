@@ -8,7 +8,6 @@ import { ArrowRight } from "@/icons/ArrowRight";
 
 import { IconCheck } from "@tabler/icons-react";
 import { cn } from "@/lib/lib/utils";
-import { Rotate } from "@/icons/Rotate";
 
 const PAGE_SIZE = 24;
 
@@ -53,8 +52,8 @@ function Icon() {
   return (
     <>
       <div className="max-w-336 mx-auto">
-        <div className="  flex justify-between items-center">
-          <div className=" py-10 pt-20 flex flex-col gap-10">
+        <div className="  flex justify-between items-center py-10">
+          <div className="  flex flex-col gap-10">
             <span className="flex flex-col gap-3">
               <h1 className="text-5xl font-text text-forground dark:text-background">
                 Designed with intention{" "}
@@ -66,14 +65,18 @@ function Icon() {
               </p>
               <div className="font-text pt-5 dark:text-gray-400 text-gray-600 flex items-center gap-2">
                 <h4> To enable animations, install </h4>
-                <span className=" flex items-center gap-1 cursor-pointer bg-neutral-800 px-3.5 py-1 rounded-lg dark:text-neutral-100 text-neutral-950">
+                <button
+                  className=" flex items-center gap-1 cursor-pointer dark:bg-neutral-900 bg-neutral-100 dark:hover:bg-neutral-800 hover:bg-neutral-50/95  px-3.5 py-1 rounded-lg
+                 dark:text-neutral-100 text-neutral-950  border dark:border-neutral-700 border-neutral-300 "
+                >
                   <h4>motion</h4>
                   <span>
                     <ArrowRight size={20} />
                   </span>
-                </span>
+                </button>
               </div>
             </span>
+
             <span className="flex items-center relative  ">
               <span className=" absolute pl-4 dark:text-white">
                 <Search size={19} />
@@ -86,98 +89,144 @@ function Icon() {
                 type="text"
                 placeholder="Search 50 Icons ..."
                 className="dark:bg-neutral-800 bg-neutral-100 dark:text-white w-150 py-3 rounded-xl pl-13 shadow-sm 
-         dark:shadow-neutral-800 shadow-neutral-300 ring-1 dark:ring-neutral-700 ring-neutral-200 
-         font-main outline-none focus:ring-1 focus:ring-neutral-500 focus:transition-all focus:duration-300 focus:ease-in-out not-focus:duration-300"
+                  dark:shadow-neutral-800 shadow-neutral-300 ring-1 dark:ring-neutral-700 ring-neutral-200 
+                   font-main outline-none focus:ring-1 focus:ring-neutral-500 focus:transition-all focus:duration-300 focus:ease-in-out not-focus:duration-300"
               />
             </span>
           </div>
+
           <div
-            className="w-full max-w-sm space-y-4 font-text dark:bg-neutral-800 bg-neutral-100
-           ring-1 dark:ring-neutral-700 ring-neutral-200  px-4 py-3 rounded-xl"
+            className="w-full max-w-lg flex flex-col gap-3  dark:bg-neutral-800 bg-neutral-100 shadow-sm dark:shadow-neutral-800 shadow-neutral-300
+           ring-1 dark:ring-neutral-700 ring-neutral-200  px-4 py-6 rounded-lg"
           >
-            <span className="">
-              {" "}
+            <span>
               <button
                 onClick={resetToDefault}
                 className="
-                mt-3 text-sm font-text
-                      text-neutral-500 hover:text-neutral-800
-                        dark:hover:text-neutral-200
-                         transition
-                             "
+                text-sm text-neutral-200 hover:text-neutral-50 font-Adjust font-semibold transition duration-300
+                 hover:bg-neutral-700 dark:hover:bg-neutral-200 bg-neutral-800 px-3 py-1 rounded-sm cursor-pointer"
               >
-                <Rotate size={20} />
+                Restart
               </button>
             </span>
 
-            <div>
-              <label className="flex justify-between text-sm mb-1">
-                <span>Size</span>
-                <span>{size}px</span>
-              </label>
-              <input
-                type="range"
-                min={24}
-                max={90}
-                value={size}
-                onChange={(e) => setSize(Number(e.target.value))}
-                className={cn(
-                  "w-full h-2 rounded-full appearance-none cursor-grab active:cursor-grabbing",
-                  "[&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-black dark:[&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:shadow-lg",
-                  "[&::-moz-range-thumb]:h-5 [&::-moz-range-thumb]:w-5 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-white [&::-moz-range-thumb]:border-2 [&::-moz-range-thumb]:border-indigo-500",
-                )}
-                style={{
-                  background: `linear-gradient(
-                  to right,
-                  #6366f1 0%, /* Indigo fill */
-                  #6366f1 ${((size - 24) / (90 - 24)) * 100}%,
-                  #d1d5db ${((size - 24) / (90 - 24)) * 100}%, /* Neutral unfilled */
-                  #d1d5db 100%)`,
-                }}
-              />
-            </div>
-
-            {/* Stroke Width */}
-            <div>
-              <label className="flex justify-between text-sm mb-1">
-                <span>Stroke</span>
-                <span>{strokeWidth}</span>
-              </label>
-              <input
-                type="range"
-                min={1}
-                max={4}
-                step={0.5}
-                value={strokeWidth}
-                onChange={(e) => setStrokeWidth(Number(e.target.value))}
-                className="w-full"
-              />
-            </div>
-            <div>
-              <label className="flex justify-between text-sm mb-1">
-                <span>Animation</span>
-                <span>
-                  {" "}
-                  {durationOverride === null
-                    ? "default"
-                    : `${durationOverride}s`}
+            <div className="flex flex-col gap-5">
+              <div className="w-full relative ">
+                <span className="flex justify-between w-full text-lg  ">
+                  <span className="text-neutral-500 font-Adjust font-semibold ">
+                    Size
+                  </span>
+                  <span className="font-extrabold font-mono text-neutral-600">
+                    {size}
+                  </span>
                 </span>
-              </label>
-              <input
-                type="range"
-                min={0.2}
-                max={2}
-                step={0.1}
-                value={durationOverride ?? 0.8}
-                onChange={(e) => setDurationOverride(Number(e.target.value))}
-                className="w-full"
-              />
+
+                <span className="w-full max-w-xs absolute top-0 left-27 ">
+                  {" "}
+                  <input
+                    type="range"
+                    min={24}
+                    max={90}
+                    value={size}
+                    onChange={(e) => setSize(Number(e.target.value))}
+                    className={cn(
+                      "w-full h-1 rounded-full appearance-none cursor-grab active:cursor-grabbing",
+                      "[&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:size-6 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-black dark:[&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:shadow-lg",
+                      "[&::-moz-range-thumb]:h-5 [&::-moz-range-thumb]:w-5 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-white [&::-moz-range-thumb]:border-2 [&::-moz-range-thumb]:border-indigo-500",
+                    )}
+                    style={{
+                      background: `linear-gradient(
+                  to right,
+                  var(--range-fill) 0%, /* Indigo fill */
+                  var(--range-fill) ${((size - 24) / (90 - 24)) * 100}%,
+                  var(--range-track)${((size - 24) / (90 - 24)) * 100}%,
+                  var(--range-track) 100%)`,
+                    }}
+                  />
+                </span>
+              </div>
+
+              <div className="w-full relative ">
+                <div className="w-full relative ">
+                  <span className="flex justify-between w-full text-lg  ">
+                    <span className="text-neutral-500 font-Adjust font-semibold ">
+                      Stroke
+                    </span>
+                    <span className="font-extrabold font-mono text-neutral-600">
+                      {strokeWidth}
+                    </span>
+                  </span>
+
+                  <div className="w-full max-w-xs absolute top-0 left-27 ">
+                    <input
+                      type="range"
+                      min={1}
+                      max={4}
+                      step={0.5}
+                      value={strokeWidth}
+                      onChange={(e) => setStrokeWidth(Number(e.target.value))}
+                      className={cn(
+                        "w-full h-1 rounded-full appearance-none cursor-grab active:cursor-grabbing",
+                        "[&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:size-6 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-black dark:[&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:shadow-lg",
+                        "[&::-moz-range-thumb]:h-5 [&::-moz-range-thumb]:w-5 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-white [&::-moz-range-thumb]:border-2 [&::-moz-range-thumb]:border-indigo-500",
+                      )}
+                      style={{
+                        background: `linear-gradient(
+                  to right,
+                  var(--range-fill) 0%,
+                  var(--range-fill)${((strokeWidth - 1) / (4 - 1)) * 100}%,
+                  var(--range-track)${((strokeWidth - 1) / (4 - 1)) * 100}%,
+                  var(--range-track) 100%)`,
+                      }}
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div className="w-full relative ">
+                <div className="w-full relative ">
+                  <span className="flex justify-between w-full text-lg  ">
+                    <span className="text-neutral-500 font-Adjust font-semibold ">
+                      Animation
+                    </span>
+                    <span className="font-extrabold font-mono text-neutral-600">
+                      {durationOverride === null ? "0" : `${durationOverride}s`}
+                    </span>
+                  </span>
+
+                  <div className="w-full max-w-xs absolute top-0 left-27 ">
+                    <input
+                      type="range"
+                      min={0.2}
+                      max={2}
+                      step={0.1}
+                      value={durationOverride ?? 1}
+                      onChange={(e) =>
+                        setDurationOverride(Number(e.target.value))
+                      }
+                      className={cn(
+                        "w-full h-1 rounded-full appearance-none cursor-grab active:cursor-grabbing",
+                        "[&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:size-6 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-black dark:[&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:shadow-lg",
+                        "[&::-moz-range-thumb]:h-5 [&::-moz-range-thumb]:w-5 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-white [&::-moz-range-thumb]:border-2 [&::-moz-range-thumb]:border-indigo-500",
+                      )}
+                      style={{
+                        background: `linear-gradient(
+                  to right,
+                  var(--range-fill) 0%,
+                  var(--range-fill)${(((durationOverride ?? 1) - 0.2) / (2 - 0.2)) * 100}%,
+                  var(--range-track)${(((durationOverride ?? 1) - 0.2) / (2 - 0.2)) * 100}%, 
+                  var(--range-track) 100%)`,
+                      }}
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
+
         <span className=" relative ">
           <div className=" h-px w-full   " />
-
           <span className="max-w-336 mx-auto   flex flex-col   pt-7">
             <motion.div
               key={current}
