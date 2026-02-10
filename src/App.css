@@ -12,7 +12,7 @@
 @custom-variant dark (&:where(.dark, .dark *));
 :root {
   --background: #f9fafc;
-  --forground: var(--color-black);
+  --forground: #111110;
   --range-fill: theme(--color-neutral-900);
   --range-track: theme(--color-neutral-400);
 }
@@ -20,7 +20,7 @@
 .dark {
   --background: var(--color-black);
   --background: #f9fafc;
-  --range-track: theme(colors.gray.600);
+  --range-track: theme(--color-gray-600);
 }
 
 @theme inline {

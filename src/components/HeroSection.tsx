@@ -1,12 +1,11 @@
 import { Github } from "@/icons/Github";
-// import { cn } from "@/lib/lib/utils";
-import hero from "../assets/hero.png";
-import heroTwo from "../assets/herotwo.png";
+
 import {
   IconBrandFramerMotion,
   IconBrandReact,
   IconBrandTailwind,
 } from "@tabler/icons-react";
+import { cn } from "@/lib/lib/utils";
 
 export function HeroSection() {
   return (
@@ -19,27 +18,40 @@ export function HeroSection() {
         //   "bg-size-[15px_15px]",
         // )}
         // className="bg-linear-[#488CDB,#D7EAFB] mask-b-from-70%"
-        className="max-w-336 mx-auto"
+        className="max-w-336 mx-auto relative"
       >
+        <div
+          className={cn(
+            "absolute inset-0 mask-b-from-30% mask-t-from-70% mask-x-from-90%",
+            "bg-size-[50px_50px]",
+            "bg-[linear-gradient(to_right,#e4e4e7_1px,transparent_1px),linear-gradient(to_bottom,#e4e4e7_1px,transparent_1px)]",
+            "dark:bg-[linear-gradient(to_right,#262626_1px,transparent_1px),linear-gradient(to_bottom,#262626_1px,transparent_1px)]",
+          )}
+        />
         <div>
           {" "}
-          <div className="flex justify-center items-center py-35 dark:text-background text-forground">
+          <div className="flex justify-center items-center py-35 dark:text-background text-forground relative">
             <span className="flex flex-col  gap-8 ">
-              <span className="flex items-center gap-2 dark:bg-neutral-800 bg-neutral-100 w-fit  px-3 py-1 rounded-3xl ring ring-neutral-200 dark:ring-neutral-700">
-                <Github size={22} />
-                <h2 className="font-text">Open Source</h2>
-              </span>
+              <div className="flex justify-center">
+                <div
+                  className="flex  items-center gap-2 dark:bg-neutral-800 bg-neutral-100 w-fit  
+                px-3 py-1 rounded-3xl ring ring-neutral-200 dark:ring-neutral-700"
+                >
+                  <Github size={22} />
+                  <h2 className="font-text">Open Source</h2>
+                </div>
+              </div>
               <span className="flex flex-col gap-4">
-                <h2 className="font-main text-7xl   tracking-tight">
-                  Icons that come alive <br /> with interaction
+                <h2 className="font-main text-7xl  text-center tracking-tight">
+                  Icons that move when <br /> you interact
                 </h2>
-                <p className="font-main text-xl max-w-xl   dark:text-gray-300  ">
+                <p className="font-main text-xl max-w-xl  mx-auto text-center dark:text-gray-300  ">
                   Collection of customizable, motion-based icons that are
                   editable and Works seamlessly with modern design systems.
                 </p>
               </span>
 
-              <span className="flex gap-5">
+              <span className="flex justify-center gap-5">
                 <button className=" font-text py-1.5 px-10 rounded-lg dark:hover:bg-white/95 hover:bg-black/90 cursor-pointer dark:text-forground dark:bg-white bg-black text-background">
                   Contact Me
                 </button>
@@ -50,7 +62,7 @@ export function HeroSection() {
                   Sponsor
                 </button>
               </span>
-              <div className="flex items-center font-text gap-5 dark:text-neutral-700 text-neutral-300">
+              <div className="flex justify-center items-center font-text gap-5 dark:text-neutral-700 text-neutral-300">
                 <span className="text-neutral-500 ">Built with</span>
                 <div className="flex gap-3 hover:text-neutral-500 cursor-pointer">
                   <span>
