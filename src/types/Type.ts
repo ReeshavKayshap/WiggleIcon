@@ -12,5 +12,5 @@ export interface IconItem {
   id: number;
   Component: ComponentType<IconProps>;
   title: string;
-  defaultDuration: number;
+  // defaultDuration: number;
 }

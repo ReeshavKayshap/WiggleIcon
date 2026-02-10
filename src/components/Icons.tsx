@@ -7,6 +7,8 @@ import Search from "@/icons/Search";
 import { ArrowRight } from "@/icons/ArrowRight";
 
 import { IconCheck } from "@tabler/icons-react";
+import { cn } from "@/lib/lib/utils";
+import { Rotate } from "@/icons/Rotate";
 
 const PAGE_SIZE = 24;
 
@@ -50,8 +52,8 @@ function Icon() {
   };
   return (
     <>
-      <div>
-        <div className=" max-w-336 mx-auto flex flex-col gap-10  ">
+      <div className="max-w-336 mx-auto">
+        <div className="  flex justify-between items-center">
           <div className=" py-10 pt-20 flex flex-col gap-10">
             <span className="flex flex-col gap-3">
               <h1 className="text-5xl font-text text-forground dark:text-background">
@@ -89,18 +91,25 @@ function Icon() {
               />
             </span>
           </div>
-          <div className="w-full max-w-sm space-y-4 font-text">
-            <button
-              onClick={resetToDefault}
-              className="
+          <div
+            className="w-full max-w-sm space-y-4 font-text dark:bg-neutral-800 bg-neutral-100
+           ring-1 dark:ring-neutral-700 ring-neutral-200  px-4 py-3 rounded-xl"
+          >
+            <span className="">
+              {" "}
+              <button
+                onClick={resetToDefault}
+                className="
                 mt-3 text-sm font-text
                       text-neutral-500 hover:text-neutral-800
                         dark:hover:text-neutral-200
                          transition
                              "
-            >
-              Reset to original
-            </button>
+              >
+                <Rotate size={20} />
+              </button>
+            </span>
+
             <div>
               <label className="flex justify-between text-sm mb-1">
                 <span>Size</span>
@@ -112,7 +121,19 @@ function Icon() {
                 max={90}
                 value={size}
                 onChange={(e) => setSize(Number(e.target.value))}
-                className="w-full"
+                className={cn(
+                  "w-full h-2 rounded-full appearance-none cursor-grab active:cursor-grabbing",
+                  "[&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-black dark:[&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:shadow-lg",
+                  "[&::-moz-range-thumb]:h-5 [&::-moz-range-thumb]:w-5 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-white [&::-moz-range-thumb]:border-2 [&::-moz-range-thumb]:border-indigo-500",
+                )}
+                style={{
+                  background: `linear-gradient(
+                  to right,
+                  #6366f1 0%, /* Indigo fill */
+                  #6366f1 ${((size - 24) / (90 - 24)) * 100}%,
+                  #d1d5db ${((size - 24) / (90 - 24)) * 100}%, /* Neutral unfilled */
+                  #d1d5db 100%)`,
+                }}
               />
             </div>
 
@@ -167,7 +188,7 @@ function Icon() {
             >
               {filteredIcons
                 .slice(Start, End)
-                .map(({ id, Component, title, copyText }) => (
+                .map(({ id, Component, title }) => (
                   <span key={id}>
                     <span
                       className=" dark:text-gray-300 text-neutral-800 flex flex-col   items-center justify-center  gap-4 rounded-lg p-4  shadow-sm relative
