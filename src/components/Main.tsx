@@ -5,12 +5,21 @@ import Icons from "./Icons";
 // import { cn } from "@/lib/lib/utils";
 import Footer from "./Footer";
 import Playground from "./Playground";
+import Container from "./Container";
 function Main() {
   return (
     <>
       <div>
-        <Nav />
-        <HeroSection />
+        <Container>
+          <span className=" relative">
+            {" "}
+            <div className=" h-full w-px border-r absolute right-0  dark:border-neutral-800 border-neutral-200" />
+            <div className=" h-full w-px border-l absolute left-0   dark:border-neutral-800 border-neutral-200" />
+            <Nav />
+            <HeroSection />
+            <Icons />
+          </span>
+        </Container>
 
         {/* <Container> */}
 
@@ -27,7 +36,7 @@ function Main() {
         >
           <div className=" h-10 w-full border-r border-l max-w-7xl mx-auto  dark:border-neutral-800 border-neutral-200" />
         </div> */}
-        <Icons />
+
         {/* <div
           className={cn(
             "w-full h-fit border-t border-b border-neutral-200 dark:border-neutral-800",

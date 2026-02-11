@@ -27,54 +27,49 @@ export function Nav() {
     <>
       <div
         className={`z-20 fixed inset-x-0  transition-shadow duration-200
-        ${scrolled ? "shadow-sm" : "shadow-none"}`}
+        ${scrolled ? "shadow-sm dark:bg-forground bg-background" : "shadow-none bg-none"}`}
       >
-        {" "}
         <div
-        // className="  border-t border-b dark:border-neutral-800 border-neutral-200 "
+          className="flex justify-between items-center  py-3 px-5 max-w-336 mx-auto   dark:text-background text-forground
+           "
         >
-          <div
-            className="flex justify-between items-center  py-3  px-10 mx-auto max-w-376 dark:text-background text-forground
-           dark:bg-forground bg-background"
-          >
-            <span className="flex items-center gap-5">
-              <h1 className=" font-text text-2xl">MotionIcon</h1>
-              <nav className=" flex pt-1 gap-3 font-text text-[15.5px] ">
-                {links.map((item, indx) => (
-                  <a
-                    className="cursor-pointer hover:bg-neutral-100 dark:hover:bg-neutral-800 px-2 py-1 rounded-lg  "
-                    key={indx}
-                  >
-                    {item.title}
-                  </a>
-                ))}
-              </nav>
-            </span>
+          <span className="flex items-center gap-5">
+            <h1 className=" font-text text-2xl">MotionIcon</h1>
+            <nav className=" flex pt-1 gap-3 font-text text-[15.5px] ">
+              {links.map((item, indx) => (
+                <a
+                  className="cursor-pointer hover:bg-neutral-100 dark:hover:bg-neutral-800 px-2 py-1 rounded-lg  "
+                  key={indx}
+                >
+                  {item.title}
+                </a>
+              ))}
+            </nav>
+          </span>
 
-            <span className="flex gap-2">
-              <button
-                className=" flex justify-center items-center 
+          <span className="flex gap-2">
+            <button
+              className=" flex justify-center items-center 
                        overflow-hidden cursor-pointer hover:bg-neutral-100 dark:hover:bg-neutral-800 px-2 py-1 rounded-lg "
-              >
-                <Github size={22} />
-              </button>
+            >
+              <Github size={22} />
+            </button>
 
-              <button
-                className=" flex justify-center items-center 
+            <button
+              className=" flex justify-center items-center 
                        cursor-pointer hover:bg-neutral-100 dark:hover:bg-neutral-800 px-2 py-1 rounded-lg "
-              >
-                <Twitter size={22} />
-              </button>
-              <button
-                onClick={handleThem}
-                className="size-9 flex justify-center items-center 
+            >
+              <Twitter size={22} />
+            </button>
+            <button
+              onClick={handleThem}
+              className="size-9 flex justify-center items-center 
                  cursor-pointer hover:bg-neutral-100 dark:hover:bg-neutral-800 
                  rounded-lg "
-              >
-                <IconBrightness className="size-5 text-black dark:text-white" />
-              </button>
-            </span>
-          </div>
+            >
+              <IconBrightness className="size-5 text-black dark:text-white" />
+            </button>
+          </span>
         </div>
       </div>
     </>

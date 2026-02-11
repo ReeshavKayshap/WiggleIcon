@@ -18,16 +18,17 @@ export function HeroSection() {
         //   "bg-size-[15px_15px]",
         // )}
         // className="bg-linear-[#488CDB,#D7EAFB] mask-b-from-70%"
-        className="max-w-336 mx-auto relative"
+        className=" relative "
       >
         <div
           className={cn(
-            "absolute inset-0 mask-b-from-30% mask-t-from-70% mask-x-from-90%",
-            "bg-size-[50px_50px]",
+            "absolute inset-0 mask-b-from-50% mask-t-from-60% mask-x-from-90%",
+            "bg-size-[40px_40px]",
             "bg-[linear-gradient(to_right,#e4e4e7_1px,transparent_1px),linear-gradient(to_bottom,#e4e4e7_1px,transparent_1px)]",
             "dark:bg-[linear-gradient(to_right,#262626_1px,transparent_1px),linear-gradient(to_bottom,#262626_1px,transparent_1px)]",
           )}
         />
+
         <div>
           {" "}
           <div className="flex justify-center items-center py-35 dark:text-background text-forground relative">

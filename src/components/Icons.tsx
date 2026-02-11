@@ -51,7 +51,7 @@ function Icon() {
   };
   return (
     <>
-      <div className="max-w-336 mx-auto">
+      <div>
         <div className="  flex justify-between items-center py-10">
           <div className="  flex flex-col gap-10">
             <span className="flex flex-col gap-3">
