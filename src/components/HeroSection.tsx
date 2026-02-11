@@ -4,9 +4,8 @@ import {
   IconBrandFramerMotion,
   IconBrandReact,
   IconBrandTailwind,
-  IconCast,
 } from "@tabler/icons-react";
-import { cn } from "@/lib/lib/utils";
+
 import { ArrowRight } from "@/icons/ArrowRight";
 
 export function HeroSection() {
@@ -69,25 +68,25 @@ export function HeroSection() {
               </span>
               <div className="flex justify-center items-center font-text gap-5  dark:text-neutral-700 text-neutral-300">
                 <span className="text-neutral-500 ">Built with</span>
-                <div className="flex gap-3 hover:text-neutral-500 cursor-pointer">
+                <div className="flex gap-2 hover:text-neutral-500 cursor-pointer">
                   <span>
                     {" "}
                     <IconBrandReact />
                   </span>
                   <span>React</span>
                 </div>
-                <div className="flex gap-3 hover:text-neutral-500 cursor-pointer">
+                <div className="flex gap-2 hover:text-neutral-500 cursor-pointer">
                   <span>
                     {" "}
                     <IconBrandTailwind />
                   </span>
                   <span>TailwindCSS</span>
                 </div>
-                <div className="flex gap-3 hover:text-neutral-500 cursor-pointer">
+                <div className="flex gap-2 hover:text-neutral-500 cursor-pointer">
                   <span>
                     <IconBrandFramerMotion />
                   </span>
-                  <span>FramerMotion</span>
+                  <span>Framer Motion</span>
                 </div>
               </div>
             </span>

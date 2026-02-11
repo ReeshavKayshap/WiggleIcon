@@ -12,7 +12,7 @@ import { cn } from "@/lib/lib/utils";
 const PAGE_SIZE = 24;
 
 function Icon() {
-  const [size, setSize] = useState(60);
+  const [size, setSize] = useState(50);
   const [strokeWidth, setStrokeWidth] = useState(2);
   const [durationOverride, setDurationOverride] = useState<number | null>(null);
   const [copied, setCopied] = useState<number | null>(null);
@@ -38,7 +38,7 @@ function Icon() {
   };
 
   const resetToDefault = () => {
-    setSize(60);
+    setSize(50);
     setStrokeWidth(2);
     setDurationOverride(null);
   };
@@ -227,7 +227,7 @@ function Icon() {
                       type="range"
                       min={0.2}
                       max={2}
-                      step={0.1}
+                      step={0.01}
                       value={durationOverride ?? 1}
                       onChange={(e) =>
                         setDurationOverride(Number(e.target.value))

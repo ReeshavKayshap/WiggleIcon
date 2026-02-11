@@ -1,10 +1,12 @@
 import { motion, useAnimate } from "motion/react";
+import type { IconProps } from "../types/Type";
 export function InfoCircle({
-  size = 60,
+  size = 50,
   strokeWidth = 2,
   color = "currentColor",
   className = "",
-}) {
+  duration = 0.5,
+}: IconProps) {
   const [scope, animate] = useAnimate();
 
   const handleHover = async () => {
@@ -13,14 +15,18 @@ export function InfoCircle({
 
       { pathLength: [0, 1] },
 
-      { duration: 0.5, ease: "easeInOut" },
+      { duration: duration, ease: "easeInOut" },
     );
     animate(
       ".visible",
 
       { opacity: [0, 1] },
 
-      { duration: 0.6, ease: "easeInOut", delay: 0.4 },
+      {
+        duration: duration * 1.2,
+        ease: "easeInOut",
+        delay: duration * 0.8,
+      },
     );
   };
 

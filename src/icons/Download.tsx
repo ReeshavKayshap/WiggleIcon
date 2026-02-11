@@ -1,12 +1,13 @@
 import { motion, useAnimate } from "motion/react";
-
+import type { IconProps } from "../types/Type";
 export function Download({
-  size = 60,
+  size = 50,
 
   strokeWidth = 2,
   color = "currentColor",
   className = "",
-}) {
+  duration = 0.5,
+}: IconProps) {
   const [scope, animate] = useAnimate();
 
   const handleHover = () => {
@@ -15,14 +16,14 @@ export function Download({
       {
         y: [0, 3.5, 0],
       },
-      { duration: 0.5, ease: "easeInOut" },
+      { duration, ease: "easeInOut" },
     );
     animate(
       ".downThree",
       {
         y: [0, 1.1, 0],
       },
-      { duration: 0.5, ease: "easeInOut" },
+      { duration, ease: "easeInOut" },
     );
   };
   return (

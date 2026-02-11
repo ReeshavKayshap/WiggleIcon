@@ -1,7 +1,7 @@
 import { motion, useAnimate } from "motion/react";
 import type { IconProps } from "../types/Type";
 export function SmartHome({
-  size = 60,
+  size = 50,
   strokeWidth = 2,
   color = "currentColor",
   className = "",

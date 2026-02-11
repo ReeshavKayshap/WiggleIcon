@@ -1,22 +1,23 @@
 import { motion, useAnimate } from "motion/react";
-
+import type { IconProps } from "../types/Type";
 function Search({
-  size = 60,
+  size = 50,
   strokeWidth = 2,
   color = "currentColor",
   className = "",
-}) {
+  duration = 0.5,
+}: IconProps) {
   const [scope, animate] = useAnimate();
 
   const MouseEnter = () => {
     animate(
       ".flip",
       { y: [0, -2, 0], x: [0, 1, 0, -1, 0] },
-      { duration: 0.9, ease: "easeInOut", repeat: Infinity },
+      { duration: duration * 2, ease: "easeInOut", repeat: Infinity },
     );
   };
   const MouseLeave = () => {
-    animate(".flip", { y: 0, x: 0 }, { duration: 0.4, ease: "easeInOut" });
+    animate(".flip", { y: 0, x: 0 }, { duration: duration, ease: "easeInOut" });
   };
   return (
     <>

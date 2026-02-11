@@ -1,11 +1,12 @@
 import { motion, useAnimate } from "motion/react";
-
+import type { IconProps } from "../types/Type";
 export function Heart({
-  size = 60,
+  size = 50,
   strokeWidth = 2,
   color = "currentColor",
   className = "",
-}) {
+  duration = 0.9,
+}: IconProps) {
   const stroke = 1.5;
   const [scope, animate] = useAnimate();
 
@@ -18,7 +19,7 @@ export function Heart({
         strokeWidth: [stroke, 2.3, stroke, 2.3, stroke],
       },
 
-      { duration: 0.9, ease: "easeInOut" },
+      { duration, ease: "easeInOut" },
     );
   };
 

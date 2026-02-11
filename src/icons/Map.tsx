@@ -1,11 +1,12 @@
 import { motion, useAnimate } from "motion/react";
-
+import type { IconProps } from "../types/Type";
 export function Map({
-  size = 60,
+  size = 50,
   strokeWidth = 2,
   color = "currentColor",
   className = "",
-}) {
+  duration = 0.8,
+}: IconProps) {
   const [scope, animate] = useAnimate();
 
   const handleHover = async () => {
@@ -14,21 +15,21 @@ export function Map({
 
       { y: [0, -8, 4, 0] },
 
-      { duration: 0.8, ease: "easeInOut" },
+      { duration: duration * 1, ease: "easeInOut" },
     );
     animate(
       ".tilt",
 
       { rotateX: [0, -20, 4, 0] },
 
-      { duration: 0.8, ease: "easeInOut" },
+      { duration: duration * 1, ease: "easeInOut" },
     );
     animate(
       ".round",
 
       { rotateY: [0, 90, 0] },
 
-      { duration: 0.6, ease: "easeInOut" },
+      { duration: duration * 0.75, ease: "easeInOut" },
     );
   };
 

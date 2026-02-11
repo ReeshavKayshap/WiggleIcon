@@ -1,11 +1,12 @@
 import { motion, useAnimate } from "motion/react";
-
+import type { IconProps } from "../types/Type";
 function Phone({
-  size = 60,
+  size = 50,
   strokeWidth = 2,
   color = "currentColor",
   className = "",
-}) {
+  duration = 0.9,
+}: IconProps) {
   const [scope, animate] = useAnimate();
 
   const handleHover = () => {
@@ -16,7 +17,7 @@ function Phone({
         rotate: [10, 0],
         y: [-2, 2, -2, 2, -2, 2, 0],
       },
-      { duration: 0.9, ease: "easeInOut" },
+      { duration: duration * 1, ease: "easeInOut" },
     );
     animate(
       ".glow",
@@ -25,7 +26,7 @@ function Phone({
         rotate: [10, 0],
         scale: [1, 0.8, 0.8, 0.8, 1],
       },
-      { duration: 0.7, ease: "easeInOut" },
+      { duration: duration * 0.78, ease: "easeInOut" },
     );
     animate(
       ".glowTwo",
@@ -34,7 +35,7 @@ function Phone({
         rotate: [10, 0],
         scale: [1, 0.8, 0.8, 0.8, 1],
       },
-      { duration: 0.8, ease: "easeInOut" },
+      { duration: duration * 0.89, ease: "easeInOut" },
     );
   };
   return (

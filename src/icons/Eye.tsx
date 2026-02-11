@@ -1,11 +1,12 @@
 import { motion, useAnimate } from "motion/react";
-
+import type { IconProps } from "../types/Type";
 export function Eye({
-  size = 60,
+  size = 50,
   strokeWidth = 2,
   color = "currentColor",
   className = "",
-}) {
+  duration = 0.5,
+}: IconProps) {
   const [scope, animate] = useAnimate();
 
   const handleHover = async () => {
@@ -14,7 +15,7 @@ export function Eye({
 
       { scaleY: [1, 0.85, 1] },
 
-      { duration: 0.5, ease: "easeInOut" },
+      { duration: duration * 1, ease: "easeInOut" },
     );
 
     animate(
@@ -22,7 +23,7 @@ export function Eye({
       {
         scale: [1, 0.9, 1],
       },
-      { duration: 0.7, ease: "easeInOut", delay: 0.4 },
+      { duration: duration * 1.4, ease: "easeInOut", delay: duration * 0.8 },
     );
   };
 
