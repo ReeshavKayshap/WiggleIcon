@@ -8,6 +8,7 @@ export function Nav() {
   const links = [
     { title: "Icons", tag: "/icons" },
     { title: "Sponsor", tag: "/sponsor" },
+    { title: "Example", tag: "/example" },
     { title: "Contact", tag: "/contact" },
   ];
   const { theme, setTheme } = useTheme();
@@ -30,7 +31,7 @@ export function Nav() {
         ${scrolled ? "shadow-sm dark:bg-forground bg-background" : "shadow-none bg-none"}`}
       >
         <div
-          className="flex justify-between items-center  py-3 px-5 max-w-336 mx-auto   dark:text-background text-forground
+          className="flex justify-between items-center  py-3 px-5 max-w-367  mx-auto   dark:text-background text-forground
            "
         >
           <span className="flex items-center gap-5">

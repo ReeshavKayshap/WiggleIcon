@@ -10,12 +10,12 @@ function Main() {
   return (
     <>
       <div>
+        <Nav />
         <Container>
           <span className=" relative">
             {" "}
-            <div className=" h-full w-px border-r absolute right-0  dark:border-neutral-800 border-neutral-200" />
-            <div className=" h-full w-px border-l absolute left-0   dark:border-neutral-800 border-neutral-200" />
-            <Nav />
+            {/* <div className=" h-full w-px border-r absolute right-0  dark:border-neutral-800 border-neutral-200" />
+            <div className=" h-full w-px border-l absolute left-0   dark:border-neutral-800 border-neutral-200" /> */}
             <HeroSection />
             <Icons />
           </span>

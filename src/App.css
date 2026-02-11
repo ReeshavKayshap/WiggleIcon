@@ -20,7 +20,8 @@
 .dark {
   --background: var(--color-black);
   --background: #f9fafc;
-  --range-track: theme(--color-gray-600);
+  --range-fill: theme(--color-neutral-400);
+  --range-track: theme(--color-neutral-900);
 }
 
 @theme inline {
@@ -29,4 +30,5 @@
   --font-text: para, sans-serif;
   --font-main: Gabarito, sans-serif;
   --font-Adjust: Inconsolata, sans-serif;
+  --font-inter: Inter, sans-serif;
 }

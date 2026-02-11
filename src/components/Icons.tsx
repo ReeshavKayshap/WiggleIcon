@@ -1,7 +1,7 @@
 import { IconList } from "@/lib/lib/IconList";
 import { useState } from "react";
 import { motion } from "motion/react";
-
+import type { IconItem } from "../types/Type";
 import { Copy } from "@/icons/Copy";
 import Search from "@/icons/Search";
 import { ArrowRight } from "@/icons/ArrowRight";
@@ -12,14 +12,11 @@ import { cn } from "@/lib/lib/utils";
 const PAGE_SIZE = 24;
 
 function Icon() {
+  const [size, setSize] = useState(60);
+  const [strokeWidth, setStrokeWidth] = useState(2);
+  const [durationOverride, setDurationOverride] = useState<number | null>(null);
   const [copied, setCopied] = useState<number | null>(null);
 
-  const copyToClipboard = async (text: string, id: number) => {
-    await navigator.clipboard.writeText(text);
-    setCopied(id);
-
-    setTimeout(() => setCopied(null), 1500);
-  };
   const [search, setSearch] = useState("");
 
   const filteredIcons = IconList.filter((icon) =>
@@ -40,25 +37,53 @@ function Icon() {
     animate: { opacity: 1, filter: "blur(0px)", y: 0 },
   };
 
-  const [size, setSize] = useState(60);
-  const [strokeWidth, setStrokeWidth] = useState(2);
-  const [durationOverride, setDurationOverride] = useState<number | null>(null);
-
   const resetToDefault = () => {
     setSize(60);
     setStrokeWidth(2);
     setDurationOverride(null);
   };
+  const generateCode = (
+    source: string,
+    size: number,
+    strokeWidth: number,
+    duration?: number,
+  ) => {
+    let updated = source
+      .replace(/size\s*=\s*\d+/, `size = ${size}`)
+      .replace(/strokeWidth\s*=\s*\d+/, `strokeWidth = ${strokeWidth}`);
+
+    if (duration) {
+      updated = updated.replace(
+        /duration\s*=\s*[\d.]+/,
+        `duration = ${duration}`,
+      );
+    }
+
+    return updated;
+  };
+  const copyToClipboard = async (item: IconItem) => {
+    const updatedCode = generateCode(
+      item.source,
+      size,
+      strokeWidth,
+      durationOverride ?? undefined,
+    );
+
+    await navigator.clipboard.writeText(updatedCode);
+
+    setCopied(item.id);
+    setTimeout(() => setCopied(null), 1500);
+  };
   return (
     <>
       <div>
-        <div className="  flex justify-between items-center py-10">
+        <div className="  flex justify-between items-center  pb-10">
           <div className="  flex flex-col gap-10">
             <span className="flex flex-col gap-3">
               <h1 className="text-5xl font-text text-forground dark:text-background">
                 Designed with intention{" "}
               </h1>
-              <p className="text-lg font-text  dark:text-gray-400 text-gray-600">
+              <p className="text-lg font-text  dark:text-gray-300 ">
                 {" "}
                 animated components that bring your UI to life.Ready to copy,
                 customize, and deploy.
@@ -96,21 +121,24 @@ function Icon() {
           </div>
 
           <div
-            className="w-full max-w-lg flex flex-col gap-3  dark:bg-neutral-800 bg-neutral-100 shadow-sm dark:shadow-neutral-800 shadow-neutral-300
+            className="w-full max-w-lg flex flex-col gap-7  dark:bg-neutral-800 bg-neutral-100 shadow-sm dark:shadow-neutral-800 shadow-neutral-300
            ring-1 dark:ring-neutral-700 ring-neutral-200  px-4 py-6 rounded-lg"
           >
-            <span>
+            <span className="flex justify-between items-center">
+              <div>
+                <h1 className="font-inter text-lg">Customize icons</h1>
+              </div>
               <button
                 onClick={resetToDefault}
                 className="
-                text-sm text-neutral-200 hover:text-neutral-50 font-Adjust font-semibold transition duration-300
-                 hover:bg-neutral-700 dark:hover:bg-neutral-200 bg-neutral-800 px-3 py-1 rounded-sm cursor-pointer"
+                text-[16px] dark:text-neutral-950 text-neutral-200 hover:text-neutral-50 dark:hover:text-black font-Adjust font-semibold transition duration-300
+                 hover:bg-neutral-700 dark:hover:bg-neutral-200 bg-neutral-800 dark:bg-white px-4 py-0.5   rounded-lg cursor-pointer"
               >
-                Restart
+                Reset
               </button>
             </span>
 
-            <div className="flex flex-col gap-5">
+            <div className="flex flex-col gap-6">
               <div className="w-full relative ">
                 <span className="flex justify-between w-full text-lg  ">
                   <span className="text-neutral-500 font-Adjust font-semibold ">
@@ -235,84 +263,82 @@ function Icon() {
               animate="animate"
               className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-6  gap-8 "
             >
-              {filteredIcons
-                .slice(Start, End)
-                .map(({ id, Component, title }) => (
-                  <span key={id}>
-                    <span
-                      className=" dark:text-gray-300 text-neutral-800 flex flex-col   items-center justify-center  gap-4 rounded-lg p-4  shadow-sm relative
+              {filteredIcons.slice(Start, End).map((item) => (
+                <span key={item.id}>
+                  <span
+                    className=" dark:text-gray-300 text-neutral-800 flex flex-col   items-center justify-center  gap-4 rounded-lg p-4  shadow-sm relative
         
                   dark:shadow-neutral-800 shadow-neutral-300 ring-1 dark:ring-neutral-800 ring-neutral-300 "
+                  >
+                    <span
+                      onMouseEnter={() => setName(item.id)}
+                      onMouseLeave={() => setName(null)}
+                      className="w-full flex justify-center"
                     >
-                      <span
-                        onMouseEnter={() => setName(id)}
-                        onMouseLeave={() => setName(null)}
-                        className="w-full flex justify-center"
-                      >
-                        {name === id && (
-                          <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ duration: 0.4, ease: "easeInOut" }}
-                            className="dark:bg-neutral-200 bg-black dark:text-black text-neutral-200 
+                      {name === item.id && (
+                        <motion.div
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          transition={{ duration: 0.4, ease: "easeInOut" }}
+                          className="dark:bg-neutral-200 bg-black dark:text-black text-neutral-200 
                           flex flex-col  justify-center items-center absolute -top-6  px-3.5 py-0.5  rounded-xl "
-                          >
-                            <h3 className="font-text text-sm ">{title}</h3>
-                            <span className=" absolute -bottom-2.5  -z-10 ">
-                              <svg
-                                className="dark:bg-neutral-200 bg-black dark:fill-neutral-200 fill-black z-50 size-2.5 translate-y-[calc(-50%-2px)] rotate-45 rounded-xs"
-                                width="10"
-                                height="5"
-                                viewBox="0 0 30 10"
-                                preserveAspectRatio="none"
-                              ></svg>
-                            </span>
-                          </motion.div>
-                        )}
-                        <Component
-                          size={size}
-                          strokeWidth={strokeWidth}
-                          duration={durationOverride ?? undefined}
-                        />
-                      </span>
+                        >
+                          <h3 className="font-text text-sm ">{item.title}</h3>
+                          <span className=" absolute -bottom-2.5  -z-10 ">
+                            <svg
+                              className="dark:bg-neutral-200 bg-black dark:fill-neutral-200 fill-black z-50 size-2.5 translate-y-[calc(-50%-2px)] rotate-45 rounded-xs"
+                              width="10"
+                              height="5"
+                              viewBox="0 0 30 10"
+                              preserveAspectRatio="none"
+                            ></svg>
+                          </span>
+                        </motion.div>
+                      )}
+                      <item.Component
+                        size={size}
+                        strokeWidth={strokeWidth}
+                        duration={durationOverride ?? undefined}
+                      />
+                    </span>
 
-                      <span
-                        onMouseEnter={() => setHover(id)}
-                        onMouseLeave={() => setHover(null)}
-                        onClick={() => copyToClipboard(copyText, id)}
-                        className="w-fit flex justify-center"
-                      >
-                        {hover === id && (
-                          <div className="dark:bg-neutral-200 bg-black dark:text-black text-neutral-200  flex flex-col justify-center items-center absolute -bottom-6  px-2.5 py-0.5  rounded-xl ">
-                            <h3 className="font-text text-sm">
-                              {copied === id ? "Copied" : "Click to copy"}
-                            </h3>
-                            <span className=" absolute top-1  ">
-                              <svg
-                                className="dark:bg-neutral-200 bg-black dark:fill-neutral-200 fill-black z-50 size-2.5 translate-y-[calc(-50%-2px)] rotate-45 rounded-xs"
-                                width="10"
-                                height="5"
-                                viewBox="0 0 30 10"
-                                preserveAspectRatio="none"
-                              ></svg>
-                            </span>
-                          </div>
-                        )}
-                        {copied === id ? (
-                          <IconCheck
-                            size={16}
-                            className="text-green-500  cursor-pointer"
-                          />
-                        ) : (
-                          <Copy
-                            size={16}
-                            className="dark:text-neutral-700 text-neutral-500 cursor-pointer"
-                          />
-                        )}
-                      </span>
+                    <span
+                      onMouseEnter={() => setHover(item.id)}
+                      onMouseLeave={() => setHover(null)}
+                      onClick={() => copyToClipboard(item)}
+                      className="w-fit flex justify-center"
+                    >
+                      {hover === item.id && (
+                        <div className="dark:bg-neutral-200 bg-black dark:text-black text-neutral-200  flex flex-col justify-center items-center absolute -bottom-6  px-2.5 py-0.5  rounded-xl ">
+                          <h3 className="font-text text-sm">
+                            {copied === item.id ? "Copied" : "Click to copy"}
+                          </h3>
+                          <span className=" absolute top-1  ">
+                            <svg
+                              className="dark:bg-neutral-200 bg-black dark:fill-neutral-200 fill-black z-50 size-2.5 translate-y-[calc(-50%-2px)] rotate-45 rounded-xs"
+                              width="10"
+                              height="5"
+                              viewBox="0 0 30 10"
+                              preserveAspectRatio="none"
+                            ></svg>
+                          </span>
+                        </div>
+                      )}
+                      {copied === item.id ? (
+                        <IconCheck
+                          size={16}
+                          className="text-green-500  cursor-pointer"
+                        />
+                      ) : (
+                        <Copy
+                          size={16}
+                          className="dark:text-neutral-700 text-neutral-500 cursor-pointer"
+                        />
+                      )}
                     </span>
                   </span>
-                ))}
+                </span>
+              ))}
             </motion.div>
             <div className="flex justify-end gap-3 py-5 ">
               {Array.from({ length: NoOfPage }, (_, index) => {

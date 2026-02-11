@@ -1,12 +1,12 @@
 import { motion, useAnimate } from "motion/react";
-
+import type { IconProps } from "../types/Type";
 export function Menu({
   size = 60,
   strokeWidth = 2,
   color = "currentColor",
   className = "",
   duration = 0.5,
-}) {
+}: IconProps) {
   const [scope, animate] = useAnimate();
 
   const handleHover = async () => {
