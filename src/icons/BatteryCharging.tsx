@@ -1,10 +1,12 @@
 import { motion, useAnimate } from "motion/react";
+import type { IconProps } from "../types/Type";
 export function BatteryCharging({
-  size = 60,
+  size = 50,
   strokeWidth = 2,
   color = "currentColor",
   className = "",
-}) {
+  duration = 0.6,
+}: IconProps) {
   const [scope, animate] = useAnimate();
 
   const handleHover = () => {
@@ -13,7 +15,7 @@ export function BatteryCharging({
 
       { pathLength: [0, 1], pathOffset: [1, 0] },
 
-      { duration: 0.6, ease: "easeInOut" },
+      { duration, ease: "easeInOut" },
     );
   };
 

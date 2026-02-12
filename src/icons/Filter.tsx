@@ -1,33 +1,36 @@
 import { motion, useAnimate } from "motion/react";
+import type { IconProps } from "../types/Type";
+
 export function Filter({
-  size = 60,
+  size = 50,
   strokeWidth = 2,
   color = "currentColor",
   className = "",
-}) {
+  duration = 0.5,
+}: IconProps) {
   const [scope, animate] = useAnimate();
 
   const handleHover = async () => {
     animate(
       ".show",
 
-      { scaleX: [1, 0.7, 1] },
+      { scaleX: [1, 0.5, 1] },
 
-      { duration: 0.5, ease: "easeInOut" },
+      { duration, ease: "easeInOut" },
     );
     animate(
       ".showTwo",
 
-      { scaleX: [1, 0.8, 1] },
+      { scaleX: [1, 0.6, 1] },
 
-      { duration: 0.5, ease: "easeInOut", delay: 0.2 },
+      { duration, ease: "easeInOut", delay: duration * 0.4 },
     );
     animate(
       ".showThree",
 
-      { scaleX: [1, 0.8, 1] },
+      { scaleX: [1, 0.6, 1] },
 
-      { duration: 0.5, ease: "easeInOut", delay: 0.4 },
+      { duration, ease: "easeInOut", delay: duration * 0.8 },
     );
   };
 

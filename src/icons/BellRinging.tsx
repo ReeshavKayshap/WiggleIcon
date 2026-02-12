@@ -1,10 +1,12 @@
 import { motion, useAnimate } from "motion/react";
+import type { IconProps } from "../types/Type";
 export function BellRinging({
-  size = 60,
+  size = 50,
   strokeWidth = 2,
   color = "currentColor",
   className = "",
-}) {
+  duration = 0.4,
+}: IconProps) {
   const [scope, animate] = useAnimate();
 
   const handleHover = async () => {
@@ -13,14 +15,14 @@ export function BellRinging({
 
       { pathLength: [0, 1], pathOffset: [1, 0] },
 
-      { duration: 0.6, ease: "easeInOut" },
+      { duration: duration * 1.5, ease: "easeInOut" },
     );
     animate(
       ".top",
 
       { scale: [1, 0.96], x: [0, -1, 1, -1, 0], opacity: 0.6 },
 
-      { duration: 0.4, ease: "easeInOut" },
+      { duration, ease: "easeInOut" },
     );
   };
   const handleHoverEnd = () => {
@@ -31,7 +33,7 @@ export function BellRinging({
 
         opacity: 1,
       },
-      { duration: 0.4, ease: "easeInOut" },
+      { duration, ease: "easeInOut" },
     );
   };
 

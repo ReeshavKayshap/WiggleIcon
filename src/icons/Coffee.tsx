@@ -1,12 +1,14 @@
 import { motion, useAnimate } from "motion/react";
+import type { IconProps } from "../types/Type";
 
 export function Coffee({
-  size = 60,
+  size = 50,
 
   strokeWidth = 2,
   color = "currentColor",
   className = "",
-}) {
+  duration = 0.6,
+}: IconProps) {
   const [scope, animate] = useAnimate();
 
   const handleHover = () => {
@@ -16,7 +18,7 @@ export function Coffee({
         rotate: [0, 8, -8, 0],
         y: [0, -1, 0],
       },
-      { duration: 0.6, ease: "easeInOut" },
+      { duration, ease: "easeInOut" },
     );
     animate(
       ".steam",
@@ -24,7 +26,7 @@ export function Coffee({
         y: [0, -2, 0],
         opacity: [1, 0.5, 0, 1],
       },
-      { duration: 0.8, ease: "easeInOut", delay: 0.3 },
+      { duration: duration * 1.333, ease: "easeInOut", delay: duration * 0.5 },
     );
   };
 

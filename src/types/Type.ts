@@ -6,6 +6,8 @@ export interface IconProps {
   duration?: number;
   color?: string;
   className?: string;
+  trigger?: boolean;
+  triggerMode?: "self" | "external";
 }
 
 export interface IconItem {

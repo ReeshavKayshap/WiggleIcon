@@ -1,10 +1,12 @@
 import { motion, useAnimate } from "motion/react";
+import type { IconProps } from "../types/Type";
 export function CircleArrowRight({
-  size = 60,
+  size = 50,
   strokeWidth = 2,
   color = "currentColor",
   className = "",
-}) {
+  duration = 0.7,
+}: IconProps) {
   const [scope, animate] = useAnimate();
 
   const handleHover = async () => {
@@ -13,7 +15,7 @@ export function CircleArrowRight({
 
       { x: [0, -2, 2, 0] },
 
-      { duration: 0.7, ease: "easeInOut" },
+      { duration, ease: "easeInOut" },
     );
   };
 

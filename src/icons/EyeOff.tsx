@@ -1,11 +1,12 @@
 import { motion, useAnimate } from "motion/react";
-
+import type { IconProps } from "../types/Type";
 export function EyeOff({
-  size = 60,
+  size = 50,
   strokeWidth = 2,
   color = "currentColor",
   className = "",
-}) {
+  duration = 0.4,
+}: IconProps) {
   const [scope, animate] = useAnimate();
 
   const handleHover = async () => {
@@ -14,7 +15,7 @@ export function EyeOff({
 
       { pathLength: [0, 1] },
 
-      { duration: 0.6, ease: "easeInOut" },
+      { duration: duration * 1.5, ease: "easeInOut" },
     );
 
     animate(
@@ -24,7 +25,7 @@ export function EyeOff({
         x: [0, -1, 1, -1, 0],
         opacity: 0.6,
       },
-      { duration: 0.4, ease: "easeInOut" },
+      { duration, ease: "easeInOut" },
     );
   };
   const handleHoverEnd = () => {
@@ -34,7 +35,7 @@ export function EyeOff({
         scale: [0.96, 1],
         opacity: 1,
       },
-      { duration: 0.4, ease: "easeInOut" },
+      { duration, ease: "easeInOut" },
     );
   };
 
@@ -53,7 +54,7 @@ export function EyeOff({
         strokeWidth={strokeWidth}
         strokeLinecap="round"
         strokeLinejoin="round"
-        className={`cursor-pointer ${className}`}
+        className={`cursor-pointer${className}`}
       >
         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
         <path className="eye" d="M10.585 10.587a2 2 0 0 0 2.829 2.828" />

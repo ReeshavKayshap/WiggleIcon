@@ -1,26 +1,26 @@
 import { motion, useAnimate } from "motion/react";
+import type { IconProps } from "../types/Type";
 
 export function IncomingPhoneCall({
-  size = 60,
+  size = 50,
   strokeWidth = 2,
   color = "currentColor",
   className = "",
-}) {
+  duration = 0.6,
+}: IconProps) {
   const [scope, animate] = useAnimate();
 
   const MouseEnter = () => {
-    // await animate(".arrow", { opacity: 0, x: 0, y: 0 }, { duration: 0 });
-
     animate(
       ".arrow",
       { opacity: [0, 1], x: [2, 0], y: [-2, 0] },
-      { duration: 0.6, ease: "easeInOut" },
+      { duration, ease: "easeInOut" },
     );
 
     animate(
       ".show",
       { rotate: [0, -15, 15, -10, 10, 0] },
-      { duration: 0.6, ease: "easeInOut" },
+      { duration, ease: "easeInOut" },
     );
   };
 

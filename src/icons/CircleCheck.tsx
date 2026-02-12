@@ -1,10 +1,12 @@
 import { motion, useAnimate } from "motion/react";
+import type { IconProps } from "../types/Type";
 export function CircleCheck({
-  size = 60,
+  size = 50,
   strokeWidth = 2,
   color = "currentColor",
   className = "",
-}) {
+  duration = 0.8,
+}: IconProps) {
   const [scope, animate] = useAnimate();
 
   const handleHover = async () => {
@@ -13,14 +15,14 @@ export function CircleCheck({
 
       { pathLength: [0, 1], pathOffset: [1, 0] },
 
-      { duration: 0.8, ease: "easeInOut" },
+      { duration, ease: "easeInOut" },
     );
     animate(
       ".check",
 
       { pathLength: [0, 1], opacity: [0, 1] },
 
-      { duration: 0.75, ease: "easeInOut", delay: 0.6 },
+      { duration: duration * 0.75, ease: "easeInOut", delay: duration * 0.75 },
     );
   };
 

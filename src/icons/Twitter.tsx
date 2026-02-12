@@ -1,10 +1,13 @@
 import { motion, useAnimate } from "motion/react";
+import type { IconProps } from "../types/Type";
+
 export function Twitter({
-  size = 60,
+  size = 50,
   strokeWidth = 2,
   color = "currentColor",
   className = "",
-}) {
+  duration = 0.98,
+}: IconProps) {
   const [scope, animate] = useAnimate();
 
   const handleHover = async () => {
@@ -13,7 +16,7 @@ export function Twitter({
 
       { scale: [1, 1.1, 1], rotate: [0, -3, 3, -3, 3, -3, 0] },
 
-      { duration: 0.98, ease: "easeInOut" },
+      { duration, ease: "easeInOut" },
     );
   };
 

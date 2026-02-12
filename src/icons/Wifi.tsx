@@ -1,10 +1,12 @@
 import { motion, useAnimate } from "motion/react";
+import type { IconProps } from "../types/Type";
 export function Wifi({
-  size = 60,
+  size = 50,
   strokeWidth = 2,
   color = "currentColor",
   className = "",
-}) {
+  duration = 0.6,
+}: IconProps) {
   const [scope, animate] = useAnimate();
 
   const handleHover = async () => {
@@ -13,28 +15,28 @@ export function Wifi({
 
       { opacity: [1, 0, 1] },
 
-      { duration: 0.6, ease: "easeInOut" },
+      { duration, ease: "easeInOut" },
     );
     animate(
       ".two",
 
       { opacity: [1, 0, 1] },
 
-      { duration: 0.6, ease: "easeInOut", delay: 0.2 },
+      { duration, ease: "easeInOut", delay: 0.2 },
     );
     animate(
       ".three",
 
       { opacity: [1, 0, 1] },
 
-      { duration: 0.6, ease: "easeInOut", delay: 0.4 },
+      { duration, ease: "easeInOut", delay: 0.4 },
     );
     animate(
       ".four",
 
       { opacity: [1, 0, 1] },
 
-      { duration: 0.6, ease: "easeInOut", delay: 0.6 },
+      { duration, ease: "easeInOut", delay: 0.6 },
     );
   };
 

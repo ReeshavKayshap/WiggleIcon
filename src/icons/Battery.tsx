@@ -1,10 +1,12 @@
 import { motion, useAnimate } from "motion/react";
+import type { IconProps } from "../types/Type";
 export function Battery({
-  size = 60,
+  size = 50,
   strokeWidth = 2,
   color = "currentColor",
   className = "",
-}) {
+  duration = 1.2,
+}: IconProps) {
   const [scope, animate] = useAnimate();
 
   const handleHover = async () => {
@@ -13,7 +15,7 @@ export function Battery({
 
       { opacity: [0, 1, 0, 1, 0, 1, 0] },
 
-      { duration: 1.2, ease: "easeInOut" },
+      { duration, ease: "easeInOut" },
     );
   };
 

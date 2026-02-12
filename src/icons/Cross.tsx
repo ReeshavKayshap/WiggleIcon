@@ -1,12 +1,13 @@
 import { motion, useAnimate } from "motion/react";
+import type { IconProps } from "../types/Type";
 
 export function Cross({
-  size = 60,
-
+  size = 50,
   strokeWidth = 2,
   color = "currentColor",
   className = "",
-}) {
+  duration = 0.6,
+}: IconProps) {
   const [scope, animate] = useAnimate();
 
   const handleHover = () => {
@@ -15,7 +16,7 @@ export function Cross({
       {
         scale: [1, 0.85, 1],
       },
-      { duration: 0.6, ease: "easeInOut" },
+      { duration, ease: "easeInOut" },
     );
   };
   return (

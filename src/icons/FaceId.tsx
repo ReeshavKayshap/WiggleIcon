@@ -1,10 +1,12 @@
 import { motion, useAnimate } from "motion/react";
+import type { IconProps } from "../types/Type";
 export function FaceId({
-  size = 60,
+  size = 50,
   strokeWidth = 2,
   color = "currentColor",
   className = "",
-}) {
+  duration = 0.8,
+}: IconProps) {
   const [scope, animate] = useAnimate();
 
   const handleHover = async () => {
@@ -13,21 +15,21 @@ export function FaceId({
 
       { x: [2, -2, 0] },
 
-      { duration: 0.8, ease: "easeInOut" },
+      { duration, ease: "easeInOut" },
     );
     animate(
       "#blink",
 
       { scaleY: [1, 0, 1] },
 
-      { duration: 0.4, ease: "easeInOut", delay: 0.6 },
+      { duration: duration * 0.5, ease: "easeInOut", delay: 0.6 },
     );
     animate(
       ".scan",
 
       { opacity: [0, 1, 0, 1, 0], y: [0, 23, 0] },
 
-      { duration: 1.3, ease: "easeInOut", delay: 0.9 },
+      { duration: duration * 1.625, ease: "easeInOut", delay: 0.9 },
     );
   };
 

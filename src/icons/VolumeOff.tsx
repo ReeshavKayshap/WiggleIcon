@@ -1,10 +1,13 @@
 import { motion, useAnimate } from "motion/react";
+import type { IconProps } from "../types/Type";
+
 export function VolumeOff({
-  size = 60,
+  size = 50,
   strokeWidth = 2,
   color = "currentColor",
   className = "",
-}) {
+  duration = 0.4,
+}: IconProps) {
   const [scope, animate] = useAnimate();
 
   const handleHover = async () => {
@@ -13,7 +16,7 @@ export function VolumeOff({
 
       { pathLength: [0, 1] },
 
-      { duration: 0.6, ease: "easeInOut" },
+      { duration: duration * 1.5, ease: "easeInOut" },
     );
     animate(
       ".sound",
@@ -22,7 +25,7 @@ export function VolumeOff({
         x: [0, -1, 1, -1, 0],
         opacity: 0.6,
       },
-      { duration: 0.4, ease: "easeInOut" },
+      { duration, ease: "easeInOut" },
     );
   };
   const handleHoverEnd = () => {
@@ -32,7 +35,7 @@ export function VolumeOff({
         scale: [0.96, 1],
         opacity: 1,
       },
-      { duration: 0.4, ease: "easeInOut" },
+      { duration, ease: "easeInOut" },
     );
   };
   return (

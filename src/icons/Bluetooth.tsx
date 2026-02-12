@@ -1,10 +1,13 @@
 import { motion, useAnimate } from "motion/react";
+import type { IconProps } from "../types/Type";
+
 export function Bluetooth({
-  size = 60,
+  size = 50,
   strokeWidth = 2,
   color = "currentColor",
   className = "",
-}) {
+  duration = 0.8,
+}: IconProps) {
   const [scope, animate] = useAnimate();
 
   const handleHover = async () => {
@@ -13,7 +16,7 @@ export function Bluetooth({
 
       { pathLength: [0, 1] },
 
-      { duration: 0.8, ease: "easeInOut" },
+      { duration, ease: "easeInOut" },
     );
   };
 

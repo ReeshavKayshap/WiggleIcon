@@ -1,19 +1,22 @@
 import { motion, useAnimate } from "motion/react";
+import type { IconProps } from "../types/Type";
+
 export function ThumbUp({
-  size = 60,
+  size = 50,
   strokeWidth = 2,
   color = "currentColor",
   className = "",
-}) {
+  duration = 0.6,
+}: IconProps) {
   const [scope, animate] = useAnimate();
 
-  const handleHover = async () => {
+  const handleHover = () => {
     animate(
       ".main",
 
-      { y: [0, -2, 0], scale: [1, 1.1, 1], rotate: [0, -3, 0] },
+      { y: [0, 2, -4, 0], scale: [1, 0.8, 1.15, 1], rotate: [0, 0, -4, 0] },
 
-      { duration: 0.5, ease: "easeInOut" },
+      { duration, ease: "easeInOut" },
     );
   };
 

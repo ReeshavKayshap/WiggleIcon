@@ -1,19 +1,19 @@
 import { motion, useAnimate } from "motion/react";
 import type { IconProps } from "../types/Type";
-export function Share({
+export function CircleArrowLeft({
   size = 50,
   strokeWidth = 2,
   color = "currentColor",
   className = "",
-  duration = 0.8,
+  duration = 0.7,
 }: IconProps) {
   const [scope, animate] = useAnimate();
 
-  const handleHover = async () => {
+  const handleHover = () => {
     animate(
       ".main",
 
-      { rotate: [0, -10, 10, 0], x: [0, 1, 0] },
+      { x: [0, 2, -2, 0] },
 
       { duration, ease: "easeInOut" },
     );
@@ -22,9 +22,9 @@ export function Share({
   return (
     <>
       <motion.svg
-        onMouseEnter={handleHover}
-        ref={scope}
         xmlns="http://www.w3.org/2000/svg"
+        ref={scope}
+        onMouseEnter={handleHover}
         width={size}
         height={size}
         viewBox="0 0 24 24"
@@ -36,10 +36,10 @@ export function Share({
         className={`cursor-pointer${className}`}
       >
         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-        <path
-          className="main"
-          d="M13 4v4c-6.575 1.028 -9.02 6.788 -10 12c-.037 .206 5.384 -5.962 10 -6v4l8 -7l-8 -7"
-        />
+        <path d="M12 21a9 9 0 1 0 0 -18a9 9 0 0 0 0 18" />
+        <path className="main" d="M8 12l4 4" />
+        <path className="main" d="M8 12h8" />
+        <path className="main" d="M12 8l-4 4" />
       </motion.svg>
     </>
   );

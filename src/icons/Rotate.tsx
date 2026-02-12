@@ -1,10 +1,12 @@
 import { motion, useAnimate } from "motion/react";
+import type { IconProps } from "../types/Type";
 export function Rotate({
-  size = 60,
+  size = 50,
   strokeWidth = 2,
   color = "currentColor",
   className = "",
-}) {
+  duration = 1,
+}: IconProps) {
   const [scope, animate] = useAnimate();
 
   const handleHover = async () => {
@@ -14,7 +16,7 @@ export function Rotate({
         rotate: [0, -360],
         scale: [1, 1.05, 1],
       },
-      { duration: 1, ease: "easeInOut" },
+      { duration, ease: "easeInOut" },
     );
   };
 

@@ -1,20 +1,18 @@
 import { motion, useAnimate } from "motion/react";
+import type { IconProps } from "../types/Type";
 
 export function ArrowBack({
-  size = 60,
+  size = 50,
 
   strokeWidth = 2,
   color = "currentColor",
   className = "",
-}) {
+  duration = 0.6,
+}: IconProps) {
   const [scope, animate] = useAnimate();
 
   const handleHover = () => {
-    animate(
-      ".main",
-      { x: [0, 1, -1, 1, 0] },
-      { duration: 0.6, ease: "easeOut" },
-    );
+    animate(".main", { x: [0, 1, -1, 1, 0] }, { duration, ease: "easeOut" });
   };
   return (
     <>

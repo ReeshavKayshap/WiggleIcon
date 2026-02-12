@@ -1,10 +1,13 @@
 import { motion, useAnimate } from "motion/react";
+import type { IconProps } from "../types/Type";
+
 export function Volume({
-  size = 60,
+  size = 50,
   strokeWidth = 2,
   color = "currentColor",
   className = "",
-}) {
+  duration = 0.7,
+}: IconProps) {
   const [scope, animate] = useAnimate();
 
   const handleHover = async () => {
@@ -13,28 +16,36 @@ export function Volume({
 
       { x: [0, -1.1, 0] },
 
-      { duration: 0.7, ease: "easeInOut" },
+      { duration, ease: "easeInOut" },
     );
     animate(
       ".one",
 
       { x: [0, -3, 0] },
 
-      { duration: 0.7, ease: "easeInOut" },
+      { duration, ease: "easeInOut" },
     );
     animate(
       "#one",
 
       { scale: [1, 1.2, 1], opacity: [1, 0.4, 1] },
 
-      { duration: 0.6, ease: "easeInOut", delay: 0.4 },
+      {
+        duration: duration * 0.857,
+        ease: "easeInOut",
+        delay: duration * 0.571,
+      },
     );
     animate(
       "#two",
 
       { scale: [1, 1.2, 1], opacity: [1, 0.4, 1] },
 
-      { duration: 0.6, ease: "easeInOut", delay: 0.6 },
+      {
+        duration: duration * 0.857,
+        ease: "easeInOut",
+        delay: duration * 0.857,
+      },
     );
   };
 

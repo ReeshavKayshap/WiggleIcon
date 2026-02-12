@@ -1,24 +1,22 @@
 import { motion, useAnimate } from "motion/react";
+import type { IconProps } from "../types/Type";
+import { useEffect } from "react";
 
-interface HomeProps {
-  size?: number;
-  strokeWidth?: number;
-  color?: string;
-  className?: string;
-  duration?: number;
-}
-
+// trigger?: boolean;
+//   triggerMode?: "self" | "external";
 function Home({
-  size = 60,
+  size = 50,
   strokeWidth = 2,
   color = "currentColor",
   className = "",
   duration = 0.8,
-}: HomeProps) {
+  trigger = false,
+  triggerMode = "self",
+}: IconProps) {
   const [scope, animate] = useAnimate();
 
   const handleHover = async () => {
-    animate(".house", { scale: [1.1, 1] }, { duration, ease: "easeInOut" });
+    animate(".house", { scale: [1.08, 1] }, { duration, ease: "easeInOut" });
 
     animate(
       ".door",
@@ -26,12 +24,16 @@ function Home({
       { duration, ease: "easeInOut" },
     );
   };
-
+  useEffect(() => {
+    if (triggerMode === "external" && trigger) {
+      handleHover();
+    }
+  }, [trigger]);
   return (
     <>
       <motion.svg
         ref={scope}
-        onMouseEnter={handleHover}
+        onMouseEnter={triggerMode === "self" ? handleHover : undefined}
         xmlns="http://www.w3.org/2000/svg"
         width={size}
         height={size}

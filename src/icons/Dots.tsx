@@ -1,10 +1,13 @@
 import { motion, useAnimate } from "motion/react";
+import type { IconProps } from "../types/Type";
+
 export function Dots({
-  size = 60,
+  size = 50,
   strokeWidth = 2,
   color = "currentColor",
   className = "",
-}) {
+  duration = 0.5,
+}: IconProps) {
   const [scope, animate] = useAnimate();
 
   const handleHover = async () => {
@@ -13,21 +16,21 @@ export function Dots({
 
       { y: [0, -2, 0] },
 
-      { duration: 0.5, ease: "easeInOut" },
+      { duration, ease: "easeInOut" },
     );
     animate(
       ".showTwo",
 
       { y: [0, -2, 0] },
 
-      { duration: 0.5, ease: "easeInOut", delay: 0.2 },
+      { duration, ease: "easeInOut", delay: duration * 0.4 },
     );
     animate(
       ".showThree",
 
       { y: [0, -2, 0] },
 
-      { duration: 0.5, ease: "easeInOut", delay: 0.4 },
+      { duration, ease: "easeInOut", delay: duration * 0.8 },
     );
   };
 

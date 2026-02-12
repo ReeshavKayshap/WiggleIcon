@@ -1,10 +1,13 @@
 import { motion, useAnimate } from "motion/react";
+import type { IconProps } from "../types/Type";
+
 export function Edit({
-  size = 60,
+  size = 50,
   strokeWidth = 2,
   color = "currentColor",
   className = "",
-}) {
+  duration = 0.9,
+}: IconProps) {
   const [scope, animate] = useAnimate();
 
   const handleHover = async () => {
@@ -16,7 +19,7 @@ export function Edit({
         rotate: [0, -16, -10, -8, 3, 0],
       },
 
-      { duration: 0.9, ease: "easeInOut" },
+      { duration, ease: "easeInOut" },
     );
   };
 

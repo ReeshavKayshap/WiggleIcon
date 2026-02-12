@@ -1,19 +1,22 @@
 import { motion, useAnimate } from "motion/react";
+import type { IconProps } from "../types/Type";
+
 export function Check({
-  size = 60,
+  size = 50,
   strokeWidth = 2,
   color = "currentColor",
   className = "",
-}) {
+  duration = 0.7,
+}: IconProps) {
   const [scope, animate] = useAnimate();
 
-  const handleHover = async () => {
+  const handleHover = () => {
     animate(
       ".main",
 
       { pathLength: [0, 1], opacity: [0, 1] },
 
-      { duration: 0.7, ease: "easeInOut" },
+      { duration, ease: "easeInOut" },
     );
   };
 

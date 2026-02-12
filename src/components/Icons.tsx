@@ -122,7 +122,7 @@ function Icon() {
 
           <div
             className="w-full max-w-lg flex flex-col gap-7  dark:bg-neutral-800 bg-neutral-100 shadow-sm dark:shadow-neutral-800 shadow-neutral-300
-           ring-1 dark:ring-neutral-700 ring-neutral-200  px-4 py-6 rounded-lg"
+           ring-1 dark:ring-neutral-700 ring-neutral-200  px-4 py-5 rounded-lg"
           >
             <span className="flex justify-between items-center">
               <div>
@@ -310,8 +310,10 @@ function Icon() {
                     >
                       {hover === item.id && (
                         <div className="dark:bg-neutral-200 bg-black dark:text-black text-neutral-200  flex flex-col justify-center items-center absolute -bottom-6  px-2.5 py-0.5  rounded-xl ">
-                          <h3 className="font-text text-sm">
-                            {copied === item.id ? "Copied" : "Click to copy"}
+                          <h3 className="font-text text-sm z-20">
+                            {copied === item.id
+                              ? "Code copied"
+                              : "Click to copy"}
                           </h3>
                           <span className=" absolute top-1  ">
                             <svg

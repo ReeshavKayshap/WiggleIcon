@@ -1,26 +1,29 @@
 import { motion, useAnimate } from "motion/react";
+import type { IconProps } from "../types/Type";
+
 export function Stack({
-  size = 60,
+  size = 50,
   strokeWidth = 2,
   color = "currentColor",
   className = "",
-}) {
+  duration = 0.6,
+}: IconProps) {
   const [scope, animate] = useAnimate();
 
   const handleHover = async () => {
     animate(
       ".one",
 
-      { y: [0, -1.5, 0] },
+      { y: [0, -1.8, 0] },
 
-      { duration: 0.6, ease: "easeInOut" },
+      { duration, ease: "easeInOut" },
     );
     animate(
       ".three",
 
-      { y: [0, 1.5, 0] },
+      { y: [0, 1.8, 0] },
 
-      { duration: 0.6, ease: "easeInOut" },
+      { duration, ease: "easeInOut" },
     );
   };
 
