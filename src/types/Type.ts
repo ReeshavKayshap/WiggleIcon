@@ -1,13 +1,15 @@
 import type { ComponentType } from "react";
 
+export interface AnimatedIconHandle {
+  startAnimation: () => void;
+  stopAnimation: () => void;
+}
 export interface IconProps {
   size?: number;
+  color?: string;
   strokeWidth?: number;
   duration?: number;
-  color?: string;
   className?: string;
-  trigger?: boolean;
-  triggerMode?: "self" | "external";
 }
 
 export interface IconItem {

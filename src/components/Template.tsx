@@ -1,25 +1,37 @@
-import Home from "@/icons/Home";
-import { useState } from "react";
+import { Home } from "@/icons/Home";
+import { Menu } from "@/icons/Menu";
+import { SmartHome } from "@/icons/SmartHome";
+import type { AnimatedIconHandle } from "@/types/Type";
+import { useRef } from "react";
 
-function nav() {
-  const [hovered, setHovered] = useState(false);
+function Nav() {
+  const items = [
+    { id: "home", Icon: Home, label: "Home" },
+    { id: "smart", Icon: SmartHome, label: "Smart Home" },
+    { id: "menu", Icon: Menu, label: "Menu" },
+  ];
+  const iconRefs = useRef<Record<string, AnimatedIconHandle | null>>({});
+
   return (
-    <>
-      <div className="flex justify-center  ">
+    <div className="flex justify-center gap-20">
+      {items.map(({ id, Icon, label }) => (
         <div
-          onMouseEnter={() => setHovered(true)}
-          onMouseLeave={() => setHovered(false)}
-          className=""
+          key={id}
+          onMouseEnter={() => iconRefs.current[id]?.startAnimation()}
+          onMouseLeave={() => iconRefs.current[id]?.stopAnimation()}
+          className="flex items-center gap-4 bg-amber-950"
         >
-          <Home trigger={hovered} triggerMode="external" />
-          <h1>hello</h1>
+          <Icon
+            ref={(el) => {
+              iconRefs.current[id] = el;
+            }}
+            className="size-10 pointer-events-none"
+          />
+          <h1>{label}</h1>
         </div>
-        <div>
-          <Home />
-        </div>
-      </div>
-    </>
+      ))}
+    </div>
   );
 }
 
-export default nav;
+export default Nav;

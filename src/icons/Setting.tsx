@@ -1,47 +1,57 @@
 import { motion, useAnimate } from "motion/react";
-import type { IconProps } from "../types/Type";
-export function Setting({
-  size = 50,
-  strokeWidth = 2,
-  color = "currentColor",
-  className = "",
-  duration = 0.8,
-}: IconProps) {
-  const [scope, animate] = useAnimate();
+import { forwardRef, useImperativeHandle } from "react";
+import type { AnimatedIconHandle, IconProps } from "@/types/Type";
 
-  const handleHover = async () => {
-    animate(
-      ".role",
+export const Setting = forwardRef<AnimatedIconHandle, IconProps>(
+  (
+    {
+      size = 24,
+      strokeWidth = 2,
+      color = "currentColor",
+      className = "",
+      duration = 0.8,
+    },
+    ref,
+  ) => {
+    const [scope, animate] = useAnimate();
 
-      { rotate: [0, -90, 0] },
+    const start = () => {
+      animate(
+        ".role",
 
-      { duration, ease: "easeInOut" },
+        { rotate: [0, -90, 0] },
+
+        { duration, ease: "easeInOut" },
+      );
+    };
+    useImperativeHandle(ref, () => ({
+      startAnimation: start,
+      stopAnimation: stop,
+    }));
+    return (
+      <>
+        <motion.svg
+          onMouseEnter={start}
+          ref={scope}
+          xmlns="http://www.w3.org/2000/svg"
+          width={size}
+          height={size}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke={color}
+          strokeWidth={strokeWidth}
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className={`cursor-pointer${className}`}
+        >
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path
+            className="role"
+            d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065"
+          />
+          <path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
+        </motion.svg>
+      </>
     );
-  };
-
-  return (
-    <>
-      <motion.svg
-        onMouseEnter={handleHover}
-        ref={scope}
-        xmlns="http://www.w3.org/2000/svg"
-        width={size}
-        height={size}
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke={color}
-        strokeWidth={strokeWidth}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className={`cursor-pointer${className}`}
-      >
-        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-        <path
-          className="role"
-          d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065"
-        />
-        <path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
-      </motion.svg>
-    </>
-  );
-}
+  },
+);
