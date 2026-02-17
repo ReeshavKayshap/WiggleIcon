@@ -4,8 +4,9 @@ import { Nav } from "./Nav";
 import Icons from "./Icons";
 // import { cn } from "@/lib/lib/utils";
 import Footer from "./Footer";
-import Playground from "./Playground";
+
 import Container from "./Container";
+import IconsComponents from "./Components";
 
 function Main() {
   return (
@@ -22,7 +23,7 @@ function Main() {
           </span>
         </Container>
 
-        <Playground />
+        <IconsComponents />
         <Footer />
       </div>
     </>

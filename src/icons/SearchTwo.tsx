@@ -1,41 +1,54 @@
 import { motion, useAnimate } from "motion/react";
-import type { IconProps } from "../types/Type";
+import { forwardRef, useImperativeHandle } from "react";
+import type { AnimatedIconHandle, IconProps } from "@/types/Type";
 
-export function SearchTwo({
-  size = 50,
-  strokeWidth = 2,
-  color = "currentColor",
-  className = "",
-  duration = 0.8,
-}: IconProps) {
-  const [scope, animate] = useAnimate();
+export const SearchTwo = forwardRef<AnimatedIconHandle, IconProps>(
+  (
+    {
+      size = 24,
+      strokeWidth = 2,
+      color = "currentColor",
+      className = "",
+      duration = 0.8,
+    },
+    ref,
+  ) => {
+    const [scope, animate] = useAnimate();
 
-  const MouseEnter = () => {
-    animate(".flip", { rotateY: [0, 180, 0] }, { duration, ease: "easeInOut" });
-  };
-
-  return (
-    <>
-      <motion.svg
-        ref={scope}
-        onMouseEnter={MouseEnter}
-        viewBox="0 0 24 24"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        width={size}
-        height={size}
-        stroke={color}
-        strokeWidth={strokeWidth}
-        className={`cursor-pointer${className}`}
-      >
-        <path
-          d="M21 21L17.5001 17.5M20 11.5C20 16.1944 16.1944 20 11.5 20C6.80558 20 3 16.1944 3 11.5C3 6.80558 6.80558 3 11.5 3C16.1944 3 20 6.80558 20 11.5Z"
-          stroke="currentColor"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="flip"
-        />
-      </motion.svg>
-    </>
-  );
-}
+    const start = () => {
+      animate(
+        ".flip",
+        { rotateY: [0, 180, 0] },
+        { duration, ease: "easeInOut" },
+      );
+    };
+    useImperativeHandle(ref, () => ({
+      startAnimation: start,
+      stopAnimation: stop,
+    }));
+    return (
+      <>
+        <motion.svg
+          ref={scope}
+          onMouseEnter={start}
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          width={size}
+          height={size}
+          stroke={color}
+          strokeWidth={strokeWidth}
+          className={`cursor-pointer${className}`}
+        >
+          <path
+            d="M21 21L17.5001 17.5M20 11.5C20 16.1944 16.1944 20 11.5 20C6.80558 20 3 16.1944 3 11.5C3 6.80558 6.80558 3 11.5 3C16.1944 3 20 6.80558 20 11.5Z"
+            stroke="currentColor"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="flip"
+          />
+        </motion.svg>
+      </>
+    );
+  },
+);
