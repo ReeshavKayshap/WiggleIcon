@@ -1,50 +1,59 @@
 import { motion, useAnimate } from "motion/react";
-import type { IconProps } from "../types/Type";
+import { forwardRef, useImperativeHandle } from "react";
+import type { AnimatedIconHandle, IconProps } from "@/types/Type";
 
-export function Edit({
-  size = 50,
-  strokeWidth = 2,
-  color = "currentColor",
-  className = "",
-  duration = 0.9,
-}: IconProps) {
-  const [scope, animate] = useAnimate();
+export const Edit = forwardRef<AnimatedIconHandle, IconProps>(
+  (
+    {
+      size = 24,
+      strokeWidth = 2,
+      color = "currentColor",
+      className = "",
+      duration = 1,
+    },
+    ref,
+  ) => {
+    const [scope, animate] = useAnimate();
 
-  const handleHover = async () => {
-    animate(
-      ".main",
+    const start = () => {
+      animate(
+        ".main",
 
-      {
-        x: [-2, 2, -2, 2, 0],
-        rotate: [0, -16, -10, -8, 3, 0],
-      },
+        {
+          x: [-2, 2, -2, 2, 0],
+          rotate: [0, -16, -10, -8, 3, 0],
+        },
 
-      { duration, ease: "easeInOut" },
+        { duration, ease: "easeInOut" },
+      );
+    };
+    useImperativeHandle(ref, () => ({
+      startAnimation: start,
+      stopAnimation: stop,
+    }));
+    return (
+      <>
+        <motion.svg
+          onMouseEnter={start}
+          ref={scope}
+          width={size}
+          height={size}
+          viewBox="0 0 18 18"
+          stroke={color}
+          strokeWidth={strokeWidth}
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          className={`cursor-pointer${className}`}
+        >
+          <path
+            className="main"
+            d="M9.99994 3.50319L13.5999 7.10319M1 16.1032L5.36598 15.2235C5.59776 15.1768 5.81058 15.0626 5.97772 14.8954L15.7514 5.11637C16.22 4.64752 16.2197 3.88753 15.7507 3.41907L13.6803 1.35099C13.2115 0.882725 12.4519 0.883044 11.9835 1.3517L2.20876 11.1318C2.04195 11.2987 1.92805 11.511 1.8813 11.7423L1 16.1032Z"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </motion.svg>
+      </>
     );
-  };
-
-  return (
-    <>
-      <motion.svg
-        onMouseEnter={handleHover}
-        ref={scope}
-        width={size}
-        height={size}
-        viewBox="0 0 18 18"
-        stroke={color}
-        strokeWidth={strokeWidth}
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        className={`cursor-pointer${className}`}
-      >
-        <path
-          className="main"
-          d="M9.99994 3.50319L13.5999 7.10319M1 16.1032L5.36598 15.2235C5.59776 15.1768 5.81058 15.0626 5.97772 14.8954L15.7514 5.11637C16.22 4.64752 16.2197 3.88753 15.7507 3.41907L13.6803 1.35099C13.2115 0.882725 12.4519 0.883044 11.9835 1.3517L2.20876 11.1318C2.04195 11.2987 1.92805 11.511 1.8813 11.7423L1 16.1032Z"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </motion.svg>
-    </>
-  );
-}
+  },
+);
