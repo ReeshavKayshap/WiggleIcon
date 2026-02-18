@@ -60,6 +60,9 @@ import { History } from "@/icons/History";
 import { CircleArrowLeft } from "@/icons/CircleArrowLeft";
 import { IncomingPhoneCall } from "@/icons/IncomingPhoneCall";
 import { Home } from "@/icons/Home";
+import { Box } from "@/icons/Box";
+import { Docs } from "@/icons/Docs";
+import { Pricing } from "@/icons/Pricing";
 
 export const IconList: IconItem[] = [
   {
@@ -4616,4 +4619,82 @@ export const History = forwardRef<AnimatedIconHandle, IconProps>(
 );
 `,
   },
+  {
+    id: 56,
+    Component: Box,
+    title: "box-icon",
+    source: `import { motion, useAnimate } from "motion/react";
+import { forwardRef, useImperativeHandle } from "react";
+
+export interface AnimatedIconHandle {
+  startAnimation: () => void;
+  stopAnimation: () => void;
+}
+export interface IconProps {
+  size?: number;
+  color?: string;
+  strokeWidth?: number;
+  duration?: number;
+  className?: string;
+}
+
+export const Box = forwardRef<AnimatedIconHandle, IconProps>(
+  (
+    {
+      size = 24,
+      strokeWidth = 2,
+      color = "currentColor",
+      className = "",
+      duration = 0.8,
+    },
+    ref,
+  ) => {
+    const [scope, animate] = useAnimate();
+
+    const start = () => {
+      animate(
+        ".box",
+
+        { rotate: [0, 90, 0] },
+
+        { duration, ease: "easeInOut" },
+      );
+    };
+    useImperativeHandle(ref, () => ({
+      startAnimation: start,
+      stopAnimation: stop,
+    }));
+    return (
+      <>
+        <motion.svg
+          onMouseEnter={start}
+          ref={scope}
+          xmlns="http://www.w3.org/2000/svg"
+          width={size}
+          height={size}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke={color}
+          strokeWidth={strokeWidth}
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className={\`cursor-pointer\${className}\`}
+        >
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path
+            className="box"
+            d="M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5"
+          />
+          <path className="box" d="M12 12l8 -4.5" />
+          <path className="box" d="M12 12l0 9" />
+          <path className="box" d="M12 12l-8 -4.5" />
+        </motion.svg>
+      </>
+    );
+  },
+);
+`,
+  },
+  { id: 57, Component: Docs, title: "docs-icon" },
+  { id: 58, Component: Pricing, title: "pricing-icon" },
 ];

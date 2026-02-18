@@ -37,7 +37,7 @@ function Navicon() {
 
   const iconRefs = useRef<Record<string, AnimatedIconHandle | null>>({});
   return (
-    <div className="max-w-6xl mx-auto flex flex-col justify-center py-5 gap-5">
+    <div className="max-w-6xl mx-auto flex flex-col justify-center py-5 gap-5 ">
       <div className="px-2">
         <h1 className="text-4xl font-text">Navbar</h1>
         <p className="text-sm font-text text-neutral-400">
@@ -135,7 +135,6 @@ function Navicon() {
                     transition={{ duration: 0.3, ease: "easeInOut" }}
                     className=" absolute right-20 top-15 bg-neutral-500 p-4 rounded-2xl"
                   >
-                    {" "}
                     {nav.map(({ id, Icon, label }) => (
                       <div
                         key={id}
