@@ -22,12 +22,45 @@ function NavBar() {
     setTimeout(() => setCopied(false), 1500);
   };
   const codeString = `
-<span className="flex items-center gap-5 bg-neutral-800 px-8 py-2 rounded-4xl ">
-  <SmartHome size={30} />
-  <SearchTwo size={25} />
-  <Bell size={24} />
-  <User size={25} />
-</span>
+function NavBar() {}
+export default NavBar;
+const Navbar = ({ children }: { children: React.ReactNode }) => (
+  <span className="flex justify-between border border-neutral-700 py-4 px-5 rounded-2xl">
+    {children}
+  </span>
+);
+
+type NavOneProps = React.PropsWithChildren<{
+  onLeave?: () => void;
+}>;
+
+const NavOne = ({ children, onLeave }: NavOneProps) => (
+  <span className="flex items-center gap-5 relative" onMouseLeave={onLeave}>
+    {children}
+  </span>
+);
+
+type PopAnimationProps = React.PropsWithChildren<{
+  isOpen: boolean;
+  className?: string;
+}>;
+
+const PopAnimation = ({ isOpen, children, className }: PopAnimationProps) => (
+  <AnimatePresence>
+    {isOpen && (
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95, y: 6 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.95, y: 6 }}
+        transition={{ duration: 0.25, ease: "easeOut" }}
+        className={\`absolute bg-neutral-900 text-white text-xs
+                    px-3 py-2.5 rounded-2xl shadow-lg \${className}\`}
+      >
+        {children}
+      </motion.div>
+    )}
+  </AnimatePresence>
+);
 `;
   const nav = [
     { id: "product", Icon: Box, label: "Product" },
@@ -38,6 +71,10 @@ function NavBar() {
   const navTwo = [
     { id: "docs", Icon: Docs, label: "Docs" },
     { id: "pricing", Icon: Pricing, label: "Pricing" },
+  ];
+  const product = [
+    { id: "user", Icon: User, label: "User Authentication" },
+    // { id: "pricing", Icon: Pricing, label: "Pricing" },
   ];
 
   const iconRefs = useRef<Record<string, AnimatedIconHandle | null>>({});
@@ -64,38 +101,40 @@ function NavBar() {
         </div>
 
         <div className="flex-1 gap-6 px-6 py-4 bg-[#0a0a09] rounded-t-none rounded-3xl">
-          <span className="flex gap-6">
-            <button
-              onClick={() => setTab("preview")}
-              className={`text-sm font-medium transition ${
-                tab === "preview"
-                  ? "dark:text-white text-neutral-950 border-b-2 border-white"
-                  : "text-neutral-400 hover:text-white"
-              }`}
-            >
-              Preview
-            </button>
-
-            <button
-              onClick={() => setTab("code")}
-              className={`text-sm font-medium transition ${
-                tab === "code"
-                  ? "text-white border-b-2 border-white"
-                  : "text-neutral-400 hover:text-white"
-              }`}
-            >
-              Code
-            </button>
-          </span>
-
-          <span>
-            <button onClick={copyFunction}>
+          <div className="flex justify-between ">
+            <span className="flex gap-6">
               {" "}
-              {tab === "code" && <> {copied ? "Copied!" : "Copy code"}</>}
-            </button>
-          </span>
+              <button
+                onClick={() => setTab("preview")}
+                className={`text-sm font-medium transition ${
+                  tab === "preview"
+                    ? "dark:text-white text-neutral-950 border-b-2 border-white"
+                    : "text-neutral-400 hover:text-white"
+                }`}
+              >
+                Preview
+              </button>
+              <button
+                onClick={() => setTab("code")}
+                className={`text-sm font-medium transition ${
+                  tab === "code"
+                    ? "text-white border-b-2 border-white"
+                    : "text-neutral-400 hover:text-white"
+                }`}
+              >
+                Code
+              </button>
+            </span>
 
-          <div className="pt-20 ">
+            <span>
+              <button onClick={copyFunction}>
+                {" "}
+                {tab === "code" && <> {copied ? "Copied!" : "Copy code"}</>}
+              </button>
+            </span>
+          </div>
+
+          <div>
             {tab === "preview" ? (
               <Navbar>
                 <div className="flex">
@@ -142,12 +181,63 @@ function NavBar() {
                           <div className="absolute top-full left-0 right-0 h-8" />
                         )}
 
-                        <PopAnimation
-                          isOpen={hoveredId === id}
-                          className="top-17 left-0"
-                        >
-                          {tooltipContent[id]}
-                        </PopAnimation>
+                        <AnimatePresence>
+                          {hoveredId === id && (
+                            <motion.div
+                              initial={{ opacity: 0, scale: 0.95, y: 6 }}
+                              animate={{ opacity: 1, scale: 1, y: 0 }}
+                              exit={{ opacity: 0, scale: 0.95, y: 6 }}
+                              transition={{ duration: 0.25, ease: "easeOut" }}
+                              className="absolute top-full mt-2 left-0  bg-neutral-900 text-white text-xs
+                                                px-3 py-2.5 rounded-2xl shadow-lg"
+                            >
+                              {id === "product" && (
+                                <div className="h-50 w-80">
+                                  <h4 className="font-semibold text-lg font-Adjust">
+                                    Product
+                                  </h4>
+
+                                  <div>
+                                    {product.map(
+                                      ({ id: productId, Icon, label }) => (
+                                        <div
+                                          key={productId}
+                                          className="flex items-center gap-2 cursor-pointer"
+                                          onMouseEnter={() => {
+                                            iconRefs.current[
+                                              productId
+                                            ]?.startAnimation();
+                                          }}
+                                        >
+                                          <Icon
+                                            ref={(el) => {
+                                              iconRefs.current[productId] = el;
+                                            }}
+                                          />
+
+                                          <span className="text-lg">
+                                            {label}
+                                          </span>
+                                        </div>
+                                      ),
+                                    )}
+                                  </div>
+                                </div>
+                              )}
+
+                              {id === "resource" && (
+                                <div>
+                                  <h4 className="font-semibold">
+                                    Search Tooltip
+                                  </h4>
+                                  <button className="mt-2 bg-white text-black px-3 py-1 rounded text-xs">
+                                    Copy shortcut
+                                  </button>
+                                </div>
+                              )}
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
                       </div>
                     ))}
                   </NavOne>
@@ -179,7 +269,7 @@ function NavBar() {
                 </div>
               </Navbar>
             ) : (
-              <pre className="w-full max-w-2xl bg-neutral-900 text-neutral-200 p-5 rounded-xl text-sm overflow-x-auto">
+              <pre className="w-full  bg-neutral-900 text-neutral-200 p-5 rounded-xl text-sm overflow-y">
                 <code>{codeString}</code>
               </pre>
             )}
@@ -205,49 +295,5 @@ const NavOne = ({ children, onLeave }: NavOneProps) => (
     {children}
   </span>
 );
-
-type PopAnimationProps = React.PropsWithChildren<{
-  isOpen: boolean;
-  className?: string;
-}>;
-const PopAnimation = ({ isOpen, children, className }: PopAnimationProps) => (
-  <AnimatePresence>
-    {isOpen && (
-      <motion.div
-        initial={{ opacity: 0, scale: 0.95, y: 6 }}
-        animate={{ opacity: 1, scale: 1, y: 0 }}
-        exit={{ opacity: 0, scale: 0.95, y: 6 }}
-        transition={{ duration: 0.25, ease: "easeOut" }}
-        className={`absolute bg-neutral-900 text-white text-xs
-                    px-3 py-2.5 rounded-2xl shadow-lg ${className}`}
-      >
-        {children}
-      </motion.div>
-    )}
-  </AnimatePresence>
-);
-
-const tooltipContent: Record<string, React.ReactNode> = {
-  product: (
-    <div className="h-50 w-80">
-      <h4 className="font-semibold text-lg font-Adjust">Product</h4>
-      <div>
-        <span>
-          <span>
-            <User />
-          </span>
-        </span>
-      </div>
-    </div>
-  ),
-  resource: (
-    <div>
-      <h4 className="font-semibold">Search Tooltip</h4>
-      <button className="mt-2 bg-white text-black px-3 py-1 rounded text-xs">
-        Copy shortcut
-      </button>
-    </div>
-  ),
-};
 
 export default NavBar;
