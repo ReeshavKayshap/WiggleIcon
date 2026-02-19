@@ -2,33 +2,25 @@ import { motion, useAnimate } from "motion/react";
 import { forwardRef, useImperativeHandle } from "react";
 import type { AnimatedIconHandle, IconProps } from "@/types/Type";
 
-export const File = forwardRef<AnimatedIconHandle, IconProps>(
+export const Bag = forwardRef<AnimatedIconHandle, IconProps>(
   (
     {
       size = 24,
       strokeWidth = 2,
       color = "currentColor",
       className = "",
-      duration = 0.5,
+      duration = 0.6,
     },
     ref,
   ) => {
     const [scope, animate] = useAnimate();
 
     const start = () => {
+      animate(".top", { y: [0, -2, 0] }, { duration, ease: "easeOut" });
       animate(
-        ".one",
-
-        { scale: [1, 0.6, 1] },
-
-        { duration, ease: "easeInOut" },
-      );
-      animate(
-        ".two",
-
-        { scale: [1, 0.6, 1] },
-
-        { duration, ease: "easeInOut", delay: 0.2 },
+        ".bag",
+        { rotate: [0, -6, 6, -6, 6, 0] },
+        { duration, ease: "easeOut" },
       );
     };
     useImperativeHandle(ref, () => ({
@@ -38,8 +30,8 @@ export const File = forwardRef<AnimatedIconHandle, IconProps>(
     return (
       <>
         <motion.svg
-          onMouseEnter={start}
           ref={scope}
+          onMouseEnter={start}
           xmlns="http://www.w3.org/2000/svg"
           width={size}
           height={size}
@@ -52,10 +44,11 @@ export const File = forwardRef<AnimatedIconHandle, IconProps>(
           className={`cursor-pointer${className}`}
         >
           <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-          <path d="M14 3v4a1 1 0 0 0 1 1h4" />
-          <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2" />
-          <path className="two" d="M9 17h6" />
-          <path className="one" d="M9 13h6" />
+          <path
+            className="bag"
+            d="M3 9a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-9"
+          />
+          <path className="top" d="M8 7v-2a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v2" />
         </motion.svg>
       </>
     );

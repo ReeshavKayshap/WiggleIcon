@@ -2,14 +2,14 @@ import { motion, useAnimate } from "motion/react";
 import { forwardRef, useImperativeHandle } from "react";
 import type { AnimatedIconHandle, IconProps } from "@/types/Type";
 
-export const Docs = forwardRef<AnimatedIconHandle, IconProps>(
+export const Users = forwardRef<AnimatedIconHandle, IconProps>(
   (
     {
       size = 24,
       strokeWidth = 2,
       color = "currentColor",
       className = "",
-      duration = 0.5,
+      duration = 0.7,
     },
     ref,
   ) => {
@@ -17,18 +17,12 @@ export const Docs = forwardRef<AnimatedIconHandle, IconProps>(
 
     const start = () => {
       animate(
-        ".one",
-
-        { scale: [1, 0.6, 1] },
-
+        ".user",
+        {
+          x: [-5, 0],
+          opacity: [0, 1],
+        },
         { duration, ease: "easeInOut" },
-      );
-      animate(
-        ".two",
-
-        { scale: [1, 0.6, 1] },
-
-        { duration, ease: "easeInOut", delay: 0.2 },
       );
     };
     useImperativeHandle(ref, () => ({
@@ -38,8 +32,8 @@ export const Docs = forwardRef<AnimatedIconHandle, IconProps>(
     return (
       <>
         <motion.svg
-          onMouseEnter={start}
           ref={scope}
+          onMouseEnter={start}
           xmlns="http://www.w3.org/2000/svg"
           width={size}
           height={size}
@@ -52,10 +46,10 @@ export const Docs = forwardRef<AnimatedIconHandle, IconProps>(
           className={`cursor-pointer${className}`}
         >
           <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-          <path d="M14 3v4a1 1 0 0 0 1 1h4" />
-          <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2" />
-          <path className="two" d="M9 17h6" />
-          <path className="one" d="M9 13h6" />
+          <path d="M5 7a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" />
+          <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+          <path className="user" d="M16 3.13a4 4 0 0 1 0 7.75" />
+          <path className="user" d="M21 21v-2a4 4 0 0 0 -3 -3.85" />
         </motion.svg>
       </>
     );

@@ -2,34 +2,21 @@ import { motion, useAnimate } from "motion/react";
 import { forwardRef, useImperativeHandle } from "react";
 import type { AnimatedIconHandle, IconProps } from "@/types/Type";
 
-export const File = forwardRef<AnimatedIconHandle, IconProps>(
+export const Attachment = forwardRef<AnimatedIconHandle, IconProps>(
   (
     {
       size = 24,
       strokeWidth = 2,
       color = "currentColor",
       className = "",
-      duration = 0.5,
+      duration = 0.6,
     },
     ref,
   ) => {
     const [scope, animate] = useAnimate();
 
     const start = () => {
-      animate(
-        ".one",
-
-        { scale: [1, 0.6, 1] },
-
-        { duration, ease: "easeInOut" },
-      );
-      animate(
-        ".two",
-
-        { scale: [1, 0.6, 1] },
-
-        { duration, ease: "easeInOut", delay: 0.2 },
-      );
+      animate(".main", { scaleX: [1, -1, 1] }, { duration, ease: "easeOut" });
     };
     useImperativeHandle(ref, () => ({
       startAnimation: start,
@@ -38,8 +25,8 @@ export const File = forwardRef<AnimatedIconHandle, IconProps>(
     return (
       <>
         <motion.svg
-          onMouseEnter={start}
           ref={scope}
+          onMouseEnter={start}
           xmlns="http://www.w3.org/2000/svg"
           width={size}
           height={size}
@@ -52,10 +39,10 @@ export const File = forwardRef<AnimatedIconHandle, IconProps>(
           className={`cursor-pointer${className}`}
         >
           <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-          <path d="M14 3v4a1 1 0 0 0 1 1h4" />
-          <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2" />
-          <path className="two" d="M9 17h6" />
-          <path className="one" d="M9 13h6" />
+          <path
+            className="main"
+            d="M15 7l-6.5 6.5a1.5 1.5 0 0 0 3 3l6.5 -6.5a3 3 0 0 0 -6 -6l-6.5 6.5a4.5 4.5 0 0 0 9 9l6.5 -6.5"
+          />
         </motion.svg>
       </>
     );

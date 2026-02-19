@@ -24,6 +24,7 @@ function Main() {
         </Container>
 
         <IconsComponents />
+
         <Footer />
       </div>
     </>
