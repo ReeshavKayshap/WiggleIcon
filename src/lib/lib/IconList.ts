@@ -1,6 +1,5 @@
 import type { IconItem } from "../../types/Type";
 
-import { Notification } from "../../icons/Notification";
 import { UnorderedList } from "../../icons/UnorderedList";
 import { Search } from "@/icons/Search";
 import { Phone } from "@/icons/Phone";
@@ -25,8 +24,8 @@ import { User } from "@/icons/User";
 import { Download } from "@/icons/Download";
 import { Mail } from "@/icons/Mail";
 import { Copy } from "@/icons/Copy";
-import { Bell } from "@/icons/Bell";
-import { BellRinging } from "@/icons/BellRinging";
+import { Notification } from "@/icons/Notification";
+import { NotificationOff } from "@/icons/NotificationOff";
 import { SmartHome } from "@/icons/SmartHome";
 import { ArrowBack } from "@/icons/ArrowBack";
 import { Image } from "@/icons/Image";
@@ -67,6 +66,9 @@ import { BoxPlus } from "@/icons/BoxPlus";
 import { Attachment } from "@/icons/Attachment";
 import { Users } from "@/icons/Users";
 import { Bag } from "@/icons/Bag";
+import { Logout } from "@/icons/Logout";
+import { ArrowLeft } from "@/icons/ArrowLeft";
+import { Plug } from "@/icons/Plug";
 
 export const IconList: IconItem[] = [
   {
@@ -1482,8 +1484,8 @@ export const FaceId = forwardRef<AnimatedIconHandle, IconProps>(
   },
   {
     id: 17,
-    Component: Bell,
-    title: "bell-icon",
+    Component: Notification,
+    title: "notification-icon",
     source: `import { motion, useAnimate } from "motion/react";
 import { forwardRef, useImperativeHandle } from "react";
 
@@ -1997,8 +1999,8 @@ export const BatteryCharging = forwardRef<AnimatedIconHandle, IconProps>(
   },
   {
     id: 23,
-    Component: BellRinging,
-    title: "bell-off-icon",
+    Component: NotificationOff,
+    title: "notification-off-icon",
     source: `import { motion, useAnimate } from "motion/react";
 import { forwardRef, useImperativeHandle } from "react";
 
@@ -5133,6 +5135,233 @@ export const Bag = forwardRef<AnimatedIconHandle, IconProps>(
             d="M3 9a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-9"
           />
           <path className="top" d="M8 7v-2a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v2" />
+        </motion.svg>
+      </>
+    );
+  },
+);
+`,
+  },
+  {
+    id: 63,
+    Component: Logout,
+    title: "logout-icon",
+    source: `import { motion, useAnimate } from "motion/react";
+import { forwardRef, useImperativeHandle } from "react";
+
+export interface AnimatedIconHandle {
+  startAnimation: () => void;
+  stopAnimation: () => void;
+}
+export interface IconProps {
+  size?: number;
+  color?: string;
+  strokeWidth?: number;
+  duration?: number;
+  className?: string;
+}
+
+export const Logout = forwardRef<AnimatedIconHandle, IconProps>(
+  (
+    {
+      size = 24,
+      strokeWidth = 2,
+      color = "currentColor",
+      className = "",
+      duration = 0.5,
+    },
+    ref,
+  ) => {
+    const [scope, animate] = useAnimate();
+
+    const start = async () => {
+      animate(
+        ".arrow",
+
+        { x: [0, -2, 2, 0] },
+
+        { duration, ease: "easeInOut" },
+      );
+    };
+    useImperativeHandle(ref, () => ({
+      startAnimation: start,
+      stopAnimation: stop,
+    }));
+    return (
+      <>
+        <motion.svg
+          onMouseEnter={start}
+          ref={scope}
+          xmlns="http://www.w3.org/2000/svg"
+          width={size}
+          height={size}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke={color}
+          strokeWidth={strokeWidth}
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className={\`cursor-pointer\${className}\`}
+        >
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2" />
+          <path className="arrow" d="M9 12h12l-3 -3" />
+          <path className="arrow" d="M18 15l3 -3" />
+        </motion.svg>
+      </>
+    );
+  },
+);
+`,
+  },
+  {
+    id: 64,
+    Component: ArrowLeft,
+    title: "arrow-left-icon",
+    source: `import { motion, useAnimate } from "motion/react";
+import { forwardRef, useImperativeHandle } from "react";
+
+export interface AnimatedIconHandle {
+  startAnimation: () => void;
+  stopAnimation: () => void;
+}
+export interface IconProps {
+  size?: number;
+  color?: string;
+  strokeWidth?: number;
+  duration?: number;
+  className?: string;
+}
+
+export const ArrowLeft = forwardRef<AnimatedIconHandle, IconProps>(
+  (
+    {
+      size = 24,
+      strokeWidth = 2,
+      color = "currentColor",
+      className = "",
+      duration = 0.6,
+    },
+    ref,
+  ) => {
+    const [scope, animate] = useAnimate();
+
+    const start = () => {
+      animate(".main", { x: [0, -1, 1, -1, 0] }, { duration, ease: "easeOut" });
+    };
+    useImperativeHandle(ref, () => ({
+      startAnimation: start,
+      stopAnimation: stop,
+    }));
+    return (
+      <>
+        <motion.svg
+          ref={scope}
+          onMouseEnter={start}
+          xmlns="http://www.w3.org/2000/svg"
+          width={size}
+          height={size}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke={color}
+          strokeWidth={strokeWidth}
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className={\`cursor-pointer\${className}\`}
+        >
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path className="main" d="M5 12l14 0" />
+          <path className="main" d="M5 12l4 4" />
+          <path className="main" d="M5 12l4 -4" />
+        </motion.svg>
+      </>
+    );
+  },
+);
+`,
+  },
+  {
+    id: 65,
+    Component: Plug,
+    title: "webstock-icon",
+    source: `import { motion, useAnimate } from "motion/react";
+import { forwardRef, useImperativeHandle } from "react";
+
+export interface AnimatedIconHandle {
+  startAnimation: () => void;
+  stopAnimation: () => void;
+}
+export interface IconProps {
+  size?: number;
+  color?: string;
+  strokeWidth?: number;
+  duration?: number;
+  className?: string;
+}
+
+
+export const Plug = forwardRef<AnimatedIconHandle, IconProps>(
+  (
+    {
+      size = 24,
+      strokeWidth = 2,
+      color = "currentColor",
+      className = "",
+      duration = 0.6,
+    },
+    ref,
+  ) => {
+    const [scope, animate] = useAnimate();
+
+    const start = () => {
+      animate(
+        ".main",
+        {
+          y: [0, -2, 0],
+          x: [0, 2, 0],
+        },
+        { duration, ease: "easeInOut" },
+      );
+    };
+    const stop = () => {
+      animate(
+        ".main",
+        {
+          rotate: [0],
+          opacity: 1,
+        },
+        { duration, ease: "easeInOut" },
+      );
+    };
+    useImperativeHandle(ref, () => ({
+      startAnimation: start,
+      stopAnimation: stop,
+    }));
+    return (
+      <>
+        <motion.svg
+          onMouseEnter={start}
+          onMouseLeave={stop}
+          ref={scope}
+          xmlns="http://www.w3.org/2000/svg"
+          width={size}
+          height={size}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke={color}
+          strokeWidth={strokeWidth}
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className={\`cursor-pointer\${className}\`}
+        >
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path
+            className="main"
+            d="M9.785 6l8.215 8.215l-2.054 2.054a5.81 5.81 0 1 1 -8.215 -8.215l2.054 -2.054"
+          />
+          <path className="main" d="M4 20l3.5 -3.5" />
+          <path className="main" d="M15 4l-3.5 3.5" />
+          <path className="main" d="M20 9l-3.5 3.5" />
         </motion.svg>
       </>
     );

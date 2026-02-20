@@ -3,6 +3,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Cross } from "@/icons/Cross";
 import firstlogoDark from "../assets/darklogo.png";
 import firstlogoLight from "../assets/lightlogo.png";
+import firstlogoDark2 from "../assets/darklogo2.png";
+import firstlogoLight2 from "../assets/lightlogo2.png";
 import Navicon from "../IconsComponents/Navicon";
 import NavBar from "@/IconsComponents/NavBar";
 
@@ -36,19 +38,14 @@ function IconsComponents() {
     },
     {
       id: 2,
-      title: "NavBar",
+      title: "Card",
       component: NavBar,
+      images: {
+        light: firstlogoLight2,
+        dark: firstlogoDark2,
+      },
       colSpan: 1,
       description: "A responsive animated navbar component",
-    },
-    {
-      id: 3,
-      title: "Coming Soon",
-      component: () => (
-        <div className="text-white text-center p-20">Third Component</div>
-      ),
-      colSpan: 2,
-      description: "More components coming soon",
     },
   ];
 
@@ -60,35 +57,36 @@ function IconsComponents() {
   const ActiveComponent = activeItem?.component;
 
   return (
-    <div className="py-30">
-      <div className="max-w-336 mx-auto grid grid-cols-2 gap-6">
+    <div className="py-30 max-w-336 mx-auto flex flex-col gap-6 ">
+      <div className="grid grid-cols-2 gap-6">
         {components.map((item) => (
           <div
             key={item.id}
             onClick={() => openComponent(item)}
-            className={`w-full group cursor-pointer border border-neutral-300 dark:border-neutral-700 rounded-3xl 
+            className={`w-full flex flex-col  group cursor-pointer border border-neutral-300 dark:border-neutral-700 rounded-3xl shadow-xs
                ${item.colSpan === 2 ? "col-span-2" : "col-span-1"}`}
           >
-            <span className="dark:bg-black bg-white group flex justify-center rounded-3xl rounded-b-none  py-8">
+            <div className="dark:bg-black bg-white group flex-1 flex justify-center items-center rounded-3xl rounded-b-none  ">
               {item.images && (
                 <>
                   {/* Light Mode Image */}
                   <img
                     src={item.images.light}
                     alt={item.title}
-                    className="block dark:hidden scale-96 group-hover:scale-100 transition duration-300 ease-in-out"
+                    className="block dark:hidden scale-96 group-hover:scale-100 transition duration-300 ease-in-out rounded-3xl"
                   />
 
                   {/* Dark Mode Image */}
                   <img
                     src={item.images.dark}
                     alt={item.title}
-                    className="hidden dark:block  scale-96 group-hover:scale-100 transition duration-300 ease-in-out"
+                    className="hidden dark:block  scale-96 group-hover:scale-100 transition duration-300 ease-in-out rounded-3xl"
                   />
                 </>
               )}
-            </span>
-            <span className=" flex flex-col  px-5 pt-4 pb-6">
+            </div>
+
+            <span className=" flex flex-col  px-5  pt-8 pb-10">
               <h2 className=" font-medium text-3xl font-text">{item.title}</h2>
               <p className="font-inter  dark:text-neutral-200">
                 {item.description}
@@ -141,6 +139,12 @@ function IconsComponents() {
           </>
         )}
       </AnimatePresence>
+      <div
+        className="dark:text-white text-center py-8  font-inter cursor-pointer px-5 
+       border border-neutral-300 dark:border-neutral-700 rounded-3xl flex flex-col gap-1 "
+      >
+        <h1 className=" text-4xl">New components launching soon...</h1>
+      </div>
     </div>
   );
 }

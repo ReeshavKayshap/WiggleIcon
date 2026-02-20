@@ -542,7 +542,7 @@ export default Navbar;
           </div>
         ) : (
           <pre
-            className="w-full  max-h-115 rounded-3xl rounded-t-none bg-neutral-900 text-neutral-200 p-5 text-sm 
+            className="w-full  max-h-115 rounded-3xl rounded-t-none bg-neutral-100 text-black dark:bg-neutral-900 dark:text-neutral-200 p-5 text-sm 
                overflow-auto"
           >
             <code>{codeString}</code>

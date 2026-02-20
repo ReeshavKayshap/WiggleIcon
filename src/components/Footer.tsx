@@ -9,14 +9,14 @@ function Footer() {
   ];
   return (
     <>
-      <div className="mx-auto max-w-7xl pt-10  ">
+      <div className="mx-auto max-w-336 pt-10  ">
         <div
-          className="flex justify-between   px-15 pb-5
+          className="flex justify-between pb-5
      "
         >
           <div className="flex flex-col gap-2">
             <h1 className="text-4xl font-text">MotionIcon</h1>
-            <p className="text-lg font-text dark:text-neutral-400 text-gray-600 max-w-xl">
+            <p className="text-lg font-text dark:text-neutral-400 text-neutral-500 max-w-xl">
               Elevate your UI with a growing library of motion‑ready icon
               components built for developers and designers.
             </p>
@@ -27,7 +27,7 @@ function Footer() {
               <h1 className="text-lg font-text"> Section</h1>
               {tag.map((item, idx) => (
                 <span
-                  className="flex flex-col font-text dark:text-neutral-400 text-gray-600 cursor-pointer hover:text-neutral-300"
+                  className="flex flex-col font-text dark:text-neutral-400 text-neutral-500 cursor-pointer hover:text-neutral-500"
                   key={idx}
                 >
                   {item.title}
@@ -39,9 +39,9 @@ function Footer() {
               <span className="flex gap-3 items-center">
                 <Coffee
                   size={19}
-                  className="dark:text-gray-600 text-neutral-400 cursor-pointer hover:text-neutral-300"
+                  className="dark:text-gray-600 text-neutral-500 cursor-pointer hover:text-gray-600"
                 />
-                <p className="font-text dark:text-neutral-400 text-gray-600 cursor-pointer hover:text-neutral-300">
+                <p className="font-text dark:text-neutral-400 text-neutral-500 cursor-pointer hover:text-gray-600">
                   Buy Me A Coffee
                 </p>
               </span>
@@ -49,13 +49,13 @@ function Footer() {
           </div>
         </div>
         <span className="flex justify-center py-5 ">
-          <p className="text-lg font-text dark:text-neutral-400 text-gray-600">
+          <p className="text-lg font-text dark:text-neutral-400 text-neutral-500">
             Built by{" "}
-            <span className="hover:text-neutral-300 cursor-pointer hover:decoration-neutral-300 underline underline-offset-2 dark:decoration-neutral-400 decoration-gray-600">
+            <span className="hover:text-gray-600 cursor-pointer hover:decoration-gray-600 underline underline-offset-2 dark:decoration-neutral-400 decoration-neutral-500">
               Reeshav
             </span>
             . The source code is available on{" "}
-            <span className=" cursor-pointer hover:text-neutral-300 hover:decoration-neutral-300 underline underline-offset-2 dark:decoration-neutral-400 decoration-gray-600">
+            <span className=" cursor-pointer hover:text-gray-600 hover:decoration-gray-600 underline underline-offset-2 dark:decoration-neutral-400 decoration-neutral-500">
               {" "}
               GitHub
             </span>

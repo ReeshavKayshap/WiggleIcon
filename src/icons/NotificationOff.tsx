@@ -2,14 +2,14 @@ import { motion, useAnimate } from "motion/react";
 import { forwardRef, useImperativeHandle } from "react";
 import type { AnimatedIconHandle, IconProps } from "@/types/Type";
 
-export const Bell = forwardRef<AnimatedIconHandle, IconProps>(
+export const NotificationOff = forwardRef<AnimatedIconHandle, IconProps>(
   (
     {
       size = 24,
       strokeWidth = 2,
       color = "currentColor",
       className = "",
-      duration = 0.6,
+      duration = 0.4,
     },
     ref,
   ) => {
@@ -17,10 +17,28 @@ export const Bell = forwardRef<AnimatedIconHandle, IconProps>(
 
     const start = () => {
       animate(
+        ".line",
+
+        { pathLength: [0, 1], pathOffset: [1, 0] },
+
+        { duration: duration * 1.5, ease: "easeInOut" },
+      );
+      animate(
         ".top",
 
-        { rotate: [0, 6, -6, 6, -6, 0] },
+        { scale: [1, 0.96], x: [0, -1, 1, -1, 0], opacity: 0.6 },
 
+        { duration, ease: "easeInOut" },
+      );
+    };
+    const stop = () => {
+      animate(
+        ".top",
+        {
+          scale: [0.96, 1],
+
+          opacity: 1,
+        },
         { duration, ease: "easeInOut" },
       );
     };
@@ -32,10 +50,11 @@ export const Bell = forwardRef<AnimatedIconHandle, IconProps>(
       <>
         <motion.svg
           onMouseEnter={start}
+          onMouseLeave={stop}
           ref={scope}
           width={size}
           height={size}
-          viewBox="0 0 18 21"
+          viewBox="0 0 18 22"
           stroke={color}
           strokeWidth={strokeWidth}
           fill="none"
@@ -44,7 +63,19 @@ export const Bell = forwardRef<AnimatedIconHandle, IconProps>(
         >
           <path
             className="top"
-            d="M1.50739 15.1818H16.4931C16.9095 15.1818 17.1456 14.5379 16.9004 14.169C16.3327 13.3147 15.7812 12.0555 15.7812 10.537L15.8056 8.45995C15.8056 4.33993 12.7585 1 8.99976 1C5.29556 1 2.29272 4.29145 2.29272 8.35166L2.26831 10.537C2.26831 12.0451 1.69712 13.2975 1.10533 14.1514C0.850296 14.5194 1.08578 15.1818 1.50739 15.1818Z"
+            d="M12.8064 15.7274H1.51056C1.08631 15.7274 0.849362 15.065 1.10599 14.697C1.70147 13.8431 2.27624 12.5907 2.27624 11.0826L2.3008 8.89728C2.3008 7.14508 2.86355 5.53605 3.80292 4.27295"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            className="top"
+            d="M17.1422 15.1689C16.5709 14.3146 16.016 13.0554 16.016 11.5369L16.0405 9.4599C16.0405 5.33991 12.9744 2 9.19218 2C8.78529 2 8.38681 2.03922 7.99976 2.11439"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            className="line"
+            d="M15.3431 18.4545L2.99976 1"
             strokeLinecap="round"
             strokeLinejoin="round"
           />
