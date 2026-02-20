@@ -457,7 +457,7 @@ export default Navbar;
 
       <div className="  ">
         {tab === "preview" ? (
-          <div className="flex justify-center w-full px-5 pt-10">
+          <div className="flex justify-center w-full px-5 pt-20">
             <div className="flex justify-between items-center w-full dark:bg-neutral-950 bg-neutral-100 shadow-xs  ring-1 dark:ring-neutral-700 ring-neutral-300 py-4 px-5 rounded-2xl">
               <span className="flex items-center gap-6">
                 <span className="px-2">

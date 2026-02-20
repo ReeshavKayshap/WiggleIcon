@@ -10,7 +10,7 @@ import { IconCard } from "./IconsCard";
 const PAGE_SIZE = 28;
 
 function Icon() {
-  const [size, setSize] = useState(50);
+  const [size, setSize] = useState(40);
   const [strokeWidth, setStrokeWidth] = useState(2);
   const [durationOverride, setDurationOverride] = useState<number | null>(null);
   const [copied, setCopied] = useState<number | null>(null);
@@ -36,7 +36,7 @@ function Icon() {
   };
 
   const resetToDefault = () => {
-    setSize(50);
+    setSize(40);
     setStrokeWidth(2);
     setDurationOverride(null);
   };
@@ -114,7 +114,7 @@ function Icon() {
                 }}
                 type="text"
                 placeholder="Search 50 Icons ..."
-                className="dark:bg-neutral-800 bg-neutral-100 dark:text-white w-150 py-3 rounded-xl pl-13 shadow-sm 
+                className="dark:bg-neutral-800 bg-neutral-50 dark:text-white w-150 py-3 rounded-xl pl-13 shadow-sm 
                   dark:shadow-neutral-800 shadow-neutral-300 ring-1 dark:ring-neutral-700 ring-neutral-200 
                    font-main outline-none focus:ring-1 focus:ring-neutral-500 focus:transition-all focus:duration-300 focus:ease-in-out not-focus:duration-300"
               />
@@ -122,8 +122,8 @@ function Icon() {
           </div>
 
           <div
-            className="w-full max-w-lg flex flex-col gap-7 dark:bg-neutral-800 bg-neutral-100 shadow-sm dark:shadow-neutral-800 shadow-neutral-300
-           ring-1 dark:ring-neutral-700 ring-neutral-200 px-4 py-5 rounded-lg"
+            className="w-full max-w-lg flex flex-col gap-7 dark:bg-neutral-800 bg-neutral-50 shadow-sm dark:shadow-neutral-800 shadow-neutral-300
+           ring-1 dark:ring-neutral-700 ring-neutral-200 px-4 py-5 rounded-2xl"
           >
             <span className="flex justify-between items-center">
               <div>
@@ -284,7 +284,8 @@ function Icon() {
                     {" "}
                     <motion.span
                       whileTap={{ scale: 0.9 }}
-                      className="font-text flex justify-center items-center bg-neutral-800 size-7 cursor-pointer rounded-sm border border-neutral-600"
+                      className="font-text flex justify-center items-center  dark:bg-neutral-800 size-7
+                      shadow-xs cursor-pointer rounded-sm border border-neutral-300 dark:border-neutral-600"
                       onClick={() => handleClick(page)}
                     >
                       {page}

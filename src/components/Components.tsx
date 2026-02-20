@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Cross } from "@/icons/Cross";
-
+import firstlogoDark from "../assets/darklogo.png";
+import firstlogoLight from "../assets/lightlogo.png";
 import Navicon from "../IconsComponents/Navicon";
 import NavBar from "@/IconsComponents/NavBar";
 
@@ -9,6 +10,10 @@ type ShowcaseItem = {
   id: number;
   title: string;
   component: React.ComponentType;
+  images?: {
+    light: string;
+    dark: string;
+  };
   colSpan: number;
   description: string;
 };
@@ -20,11 +25,14 @@ function IconsComponents() {
   const components: ShowcaseItem[] = [
     {
       id: 1,
-      title: "Navicon",
+      title: "NavBar",
       component: Navicon,
-      colSpan: 2,
-      description:
-        "A tooltip card container that follows mouse pointer when hovered over",
+      images: {
+        light: firstlogoLight,
+        dark: firstlogoDark,
+      },
+      colSpan: 1,
+      description: "Simple and elegant headers for your website",
     },
     {
       id: 2,
@@ -39,7 +47,7 @@ function IconsComponents() {
       component: () => (
         <div className="text-white text-center p-20">Third Component</div>
       ),
-      colSpan: 1,
+      colSpan: 2,
       description: "More components coming soon",
     },
   ];
@@ -58,12 +66,34 @@ function IconsComponents() {
           <div
             key={item.id}
             onClick={() => openComponent(item)}
-            className={`cursor-pointer border border-neutral-700 rounded-3xl p-6
-              hover:bg-neutral-800 transition ${
-                item.colSpan === 2 ? "col-span-2" : "col-span-1"
-              }`}
+            className={`w-full group cursor-pointer border border-neutral-300 dark:border-neutral-700 rounded-3xl 
+               ${item.colSpan === 2 ? "col-span-2" : "col-span-1"}`}
           >
-            <h2 className="text-lg font-medium">{item.title}</h2>
+            <span className="dark:bg-black bg-white group flex justify-center rounded-3xl rounded-b-none  py-8">
+              {item.images && (
+                <>
+                  {/* Light Mode Image */}
+                  <img
+                    src={item.images.light}
+                    alt={item.title}
+                    className="block dark:hidden scale-96 group-hover:scale-100 transition duration-300 ease-in-out"
+                  />
+
+                  {/* Dark Mode Image */}
+                  <img
+                    src={item.images.dark}
+                    alt={item.title}
+                    className="hidden dark:block  scale-96 group-hover:scale-100 transition duration-300 ease-in-out"
+                  />
+                </>
+              )}
+            </span>
+            <span className=" flex flex-col  px-5 pt-4 pb-6">
+              <h2 className=" font-medium text-3xl font-text">{item.title}</h2>
+              <p className="font-inter  dark:text-neutral-200">
+                {item.description}
+              </p>
+            </span>
           </div>
         ))}
       </div>
@@ -73,7 +103,7 @@ function IconsComponents() {
           <>
             <motion.div
               onClick={() => setShow(false)}
-              className="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm"
+              className="fixed inset-0 z-50 bg-white/40 dark:bg-black/40 backdrop-blur-sm"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -136,7 +166,7 @@ const Text = ({ title, description }: TextProps) => (
 );
 
 const Box = ({ children }: React.PropsWithChildren) => (
-  <div className="flex flex-col border border-neutral-700 rounded-3xl h-150 dark:bg-black bg-neutral-200">
+  <div className="flex flex-col border border-neutral-700 rounded-3xl h-150 dark:bg-black bg-white">
     {children}
   </div>
 );
