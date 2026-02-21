@@ -38,8 +38,8 @@ export default function Component() {
 
 ## Links
 
-# Website: wiggleicon.in
+* Website: wiggleicon.in
 
 ## Creator
 
-Built by 
+* Built by 
