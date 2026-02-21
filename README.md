@@ -38,7 +38,7 @@ export default function Component() {
 
 ## Links
 
-* Website: (wiggleicon.in)
+* Website: [wiggleicon.in](https://www.wiggleicon.in)
 
 ## Creator
 
