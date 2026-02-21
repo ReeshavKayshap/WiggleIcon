@@ -4,12 +4,11 @@ Collection of customizable, motion-based icons that are editable and Works seaml
 
 ## Features
  
-* Editable icons - You can edit the icons size,stroke,anaimtion in the website.
+* Editable icons - You can edit the icons size, stroke, animation in the website.
 * Support - We supports React `forwardRef`, allowing you to access animation using parent.
 * Examples - Drop some examples to see exactly how these icons look and feel inside real-world interfaces.
 
-
-## Expanding the ESLint configuration
+## Quick Start
 
 If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
