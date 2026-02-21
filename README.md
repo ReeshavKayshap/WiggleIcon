@@ -12,7 +12,7 @@ Collection of customizable, motion-based icons that are editable and Works seaml
 
 * Manual Installation
   
-  1. Install dependencies:
+1. Install dependencies:
 
 ```js
 npm install motion
@@ -32,9 +32,9 @@ export default function Component() {
 
 ## Tech Stack
 
-# React Version 18+
-# motion/react for animations
-# Tailwind CSS 4
+* React Version 18+
+* motion/react for animations
+* Tailwind CSS 4
 
 ## Links
 
