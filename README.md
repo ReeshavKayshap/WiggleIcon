@@ -1,6 +1,9 @@
-# React + TypeScript + Vite
+# Project Title
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Collection of customizable, motion-based icons that are editable and Works seamlessly with modern design systems.
+_____________________________________________________________________________________________________________________________________________________________________________________________
+
+
 
 Currently, two official plugins are available:
 
