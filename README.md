@@ -1,18 +1,13 @@
 # Project Title
 
 Collection of customizable, motion-based icons that are editable and Works seamlessly with modern design systems.
-_____________________________________________________________________________________________________________________________________________________________________________________________
 
+## Features
+ 
+* Editable icons - You can edit the icons size,stroke,anaimtion in the website.
+* Support - We supports React `forwardRef`, allowing you to access animation using parent.
+* Examples - Drop some examples to see exactly how these icons look and feel inside real-world interfaces.
 
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
 ## Expanding the ESLint configuration
 
