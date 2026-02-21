@@ -14,14 +14,10 @@ function Main() {
       <div>
         <Nav />
         <Container>
-          <span className=" relative">
-            <HeroSection />
-            <Icons />
-          </span>
+          <HeroSection />
+          <Icons />
+          <IconsComponents />
         </Container>
-
-        <IconsComponents />
-
         <Footer />
       </div>
     </>

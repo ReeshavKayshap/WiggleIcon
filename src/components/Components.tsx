@@ -57,95 +57,109 @@ function IconsComponents() {
   const ActiveComponent = activeItem?.component;
 
   return (
-    <div className="py-30 max-w-336 mx-auto flex flex-col gap-6 ">
-      <div className="grid grid-cols-2 gap-6">
-        {components.map((item) => (
-          <div
-            key={item.id}
-            onClick={() => openComponent(item)}
-            className={`w-full flex flex-col  group cursor-pointer border border-neutral-300 dark:border-neutral-700 rounded-3xl shadow-xs
+    <section id="components" className="scroll-mt-24  pb-30">
+      <div className="py-10  flex flex-col gap-6 ">
+        <span className="flex flex-col gap-2 px-2 py-4">
+          <h1 className="text-5xl font-text  text-forground dark:text-background">
+            Components
+          </h1>
+          <p className="text-lg font-text dark:text-gray-300">
+            Icons components with smooth interactions.
+          </p>
+        </span>
+        <div className="grid grid-cols-2 gap-6">
+          {components.map((item) => (
+            <div
+              key={item.id}
+              onClick={() => openComponent(item)}
+              className={`w-full flex flex-col  group cursor-pointer border border-neutral-300 dark:border-neutral-700 rounded-3xl shadow-xs
                ${item.colSpan === 2 ? "col-span-2" : "col-span-1"}`}
-          >
-            <div className="dark:bg-black bg-white group flex-1 flex justify-center items-center rounded-3xl rounded-b-none  ">
-              {item.images && (
-                <>
-                  {/* Light Mode Image */}
-                  <img
-                    src={item.images.light}
-                    alt={item.title}
-                    className="block dark:hidden scale-96 group-hover:scale-100 transition duration-300 ease-in-out rounded-3xl"
-                  />
-
-                  {/* Dark Mode Image */}
-                  <img
-                    src={item.images.dark}
-                    alt={item.title}
-                    className="hidden dark:block  scale-96 group-hover:scale-100 transition duration-300 ease-in-out rounded-3xl"
-                  />
-                </>
-              )}
-            </div>
-
-            <span className=" flex flex-col  px-5  pt-8 pb-10">
-              <h2 className=" font-medium text-3xl font-text">{item.title}</h2>
-              <p className="font-inter  dark:text-neutral-200">
-                {item.description}
-              </p>
-            </span>
-          </div>
-        ))}
-      </div>
-
-      <AnimatePresence>
-        {show && activeItem && (
-          <>
-            <motion.div
-              onClick={() => setShow(false)}
-              className="fixed inset-0 z-50 bg-white/40 dark:bg-black/40 backdrop-blur-sm"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.25 }}
-            />
-
-            <motion.div
-              className="fixed inset-0 z-60 flex items-center justify-center"
-              initial={{ opacity: 0, scale: 0.97 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.97 }}
-              transition={{ duration: 0.3, ease: "easeInOut" }}
             >
-              <div className="relative w-full max-w-6xl rounded-3xl  p-8">
-                <div className="absolute top-18 right-20  z-30">
-                  <button onClick={() => setShow(false)}>
-                    <Cross size={32} />
-                  </button>
-                </div>
-
-                {ActiveComponent && (
-                  <Mainlayer>
-                    <Text
-                      title={activeItem.title}
-                      description={activeItem.description}
+              <div className="dark:bg-black bg-white group flex-1 flex justify-center items-center rounded-3xl rounded-b-none  ">
+                {item.images && (
+                  <>
+                    {/* Light Mode Image */}
+                    <img
+                      src={item.images.light}
+                      alt={item.title}
+                      className="block dark:hidden scale-96 group-hover:scale-100 transition duration-300 ease-in-out rounded-3xl"
                     />
-                    <Box>
-                      <Topbar />
-                      <ActiveComponent />
-                    </Box>
-                  </Mainlayer>
+
+                    {/* Dark Mode Image */}
+                    <img
+                      src={item.images.dark}
+                      alt={item.title}
+                      className="hidden dark:block  scale-96 group-hover:scale-100 transition duration-300 ease-in-out rounded-3xl"
+                    />
+                  </>
                 )}
               </div>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
-      <div
-        className="dark:text-white text-center py-8  font-inter cursor-pointer px-5 
+
+              <span className=" flex flex-col  px-5  pt-8 pb-10">
+                <h2 className=" font-medium text-3xl font-text">
+                  {item.title}
+                </h2>
+                <p className="font-inter  dark:text-neutral-200">
+                  {item.description}
+                </p>
+              </span>
+            </div>
+          ))}
+        </div>
+
+        <AnimatePresence>
+          {show && activeItem && (
+            <>
+              <motion.div
+                onClick={() => setShow(false)}
+                className="fixed inset-0 z-50 bg-white/40 dark:bg-black/40 backdrop-blur-sm"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.25 }}
+              />
+
+              <motion.div
+                className="fixed inset-0 z-60 flex items-center justify-center"
+                initial={{ opacity: 0, scale: 0.97 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.97 }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+              >
+                <div className="relative w-full max-w-6xl rounded-3xl  p-8">
+                  <div className="absolute top-18 right-20  z-30">
+                    <button onClick={() => setShow(false)}>
+                      <Cross size={32} />
+                    </button>
+                  </div>
+
+                  {ActiveComponent && (
+                    <Mainlayer>
+                      <Text
+                        title={activeItem.title}
+                        description={activeItem.description}
+                      />
+                      <Box>
+                        <Topbar />
+                        <ActiveComponent />
+                      </Box>
+                    </Mainlayer>
+                  )}
+                </div>
+              </motion.div>
+            </>
+          )}
+        </AnimatePresence>
+        <div
+          className="dark:text-white text-center py-8  cursor-pointer px-5 
        border border-neutral-300 dark:border-neutral-700 rounded-3xl flex flex-col gap-1 "
-      >
-        <h1 className=" text-4xl">New components launching soon...</h1>
+        >
+          <h1 className=" text-4xl font-text">
+            New components launching soon...
+          </h1>
+        </div>
       </div>
-    </div>
+    </section>
   );
 }
 

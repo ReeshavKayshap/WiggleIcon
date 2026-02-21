@@ -77,7 +77,7 @@ function Icon() {
 
   return (
     <>
-      <div>
+      <section id="icons" className="scroll-mt-24 pb-10">
         <div className="flex justify-between items-center pb-10">
           <div className="flex flex-col gap-10">
             <span className="flex flex-col gap-3">
@@ -296,7 +296,7 @@ function Icon() {
             </div>
           </span>
         </span>
-      </div>
+      </section>
     </>
   );
 }

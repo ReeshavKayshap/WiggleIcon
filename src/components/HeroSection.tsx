@@ -7,6 +7,7 @@ import {
 } from "@tabler/icons-react";
 
 import { ArrowRight } from "@/icons/ArrowRight";
+import { Link } from "react-router-dom";
 
 export function HeroSection() {
   return (
@@ -36,14 +37,16 @@ export function HeroSection() {
           <div className="flex justify-center items-center py-30 dark:text-background text-forground relative">
             <span className="flex flex-col  gap-4 ">
               <div className="flex justify-center">
-                <div
+                <Link
+                  to="https://github.com/ReeshavKayshap/IconLibrary"
+                  target="_blank"
                   className="flex items-center cursor-pointer gap-2 dark:bg-neutral-800 bg-neutral-100 w-fit  
                 px-3 py-1 rounded-3xl ring ring-neutral-200 dark:ring-neutral-700"
                 >
                   <Github size={22} />
                   <h2 className="font-text">Open Source</h2>
                   <ArrowRight size={20} />
-                </div>
+                </Link>
               </div>
               <span className="flex flex-col gap-5">
                 <h2 className="font-main text-6xl  text-center tracking-tight">
@@ -60,10 +63,10 @@ export function HeroSection() {
                   Contact Me
                 </button>
                 <button
-                  className="font-text py-1.5 px-15 rounded-xl dark:hover:bg-neutral-800 hover:bg-neutral-100   cursor-pointer dark:bg-neutral-900  bg-neutral-50/95 
+                  className="font-text py-1.5 px-10 rounded-xl dark:hover:bg-neutral-800 hover:bg-neutral-100   cursor-pointer dark:bg-neutral-900  bg-neutral-50/95 
               border dark:border-neutral-700 border-neutral-300  dark:text-white"
                 >
-                  Example
+                  Components
                 </button>
               </span>
               <div className="flex justify-center items-center font-text gap-5  dark:text-neutral-700 text-neutral-300">
