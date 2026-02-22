@@ -1,9 +1,10 @@
 import { useTheme } from "next-themes";
 import { Link } from "react-router";
-import { IconBrightness } from "@tabler/icons-react";
 import { useEffect, useState } from "react";
 import { Github } from "@/icons/Github";
 import { Twitter } from "@/icons/Twitter";
+import { Brightness } from "@/icons/Brightness";
+import { IconLayoutFilled } from "@tabler/icons-react";
 export function Nav() {
   const links = [
     { title: "Icons", id: "icons" },
@@ -34,7 +35,10 @@ export function Nav() {
            "
         >
           <span className="flex items-center gap-5">
-            <h1 className=" font-text text-2xl">MotionIcon</h1>
+            <span className="flex items-center gap-2 ">
+              <IconLayoutFilled />
+              <h1 className=" font-text text-2xl">Wiggleicon</h1>
+            </span>
             <nav className=" flex pt-1 gap-3 font-text text-[15.5px] ">
               {links.map((item) => (
                 <a
@@ -55,7 +59,7 @@ export function Nav() {
               className=" flex justify-center items-center 
                        overflow-hidden cursor-pointer hover:bg-neutral-100 dark:hover:bg-neutral-800 px-2 py-1 rounded-lg "
             >
-              <Github size={22} />
+              <Github size={20} />
             </Link>
 
             <Link
@@ -64,7 +68,7 @@ export function Nav() {
               className=" flex justify-center items-center 
                        cursor-pointer hover:bg-neutral-100 dark:hover:bg-neutral-800 px-2 py-1 rounded-lg "
             >
-              <Twitter size={22} />
+              <Twitter size={20} />
             </Link>
 
             <button
@@ -73,7 +77,7 @@ export function Nav() {
                  cursor-pointer hover:bg-neutral-100 dark:hover:bg-neutral-800 
                  rounded-lg "
             >
-              <IconBrightness className="size-5 text-black dark:text-white" />
+              <Brightness size={20} />
             </button>
           </span>
         </div>

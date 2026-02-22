@@ -6,6 +6,7 @@ import { Search } from "@/icons/Search";
 import { ArrowRight } from "@/icons/ArrowRight";
 import { cn } from "@/lib/lib/utils";
 import { IconCard } from "./IconsCard";
+import { Link } from "react-router-dom";
 
 const PAGE_SIZE = 28;
 
@@ -91,7 +92,9 @@ function Icon() {
               </p>
               <div className="font-text pt-5 dark:text-gray-400 text-gray-600 flex items-center gap-2">
                 <h4> To enable animations, install </h4>
-                <button
+                <Link
+                  to="https://motion.dev/"
+                  target="_blank"
                   className="flex items-center gap-1 cursor-pointer dark:bg-neutral-900 bg-neutral-100 dark:hover:bg-neutral-800 hover:bg-neutral-50/95 px-3.5 py-1 rounded-lg
                  dark:text-neutral-100 text-neutral-950 border dark:border-neutral-700 border-neutral-300"
                 >
@@ -99,7 +102,7 @@ function Icon() {
                   <span>
                     <ArrowRight size={20} />
                   </span>
-                </button>
+                </Link>
               </div>
             </span>
 

@@ -150,14 +150,6 @@ function IconsComponents() {
             </>
           )}
         </AnimatePresence>
-        <div
-          className="dark:text-white text-center py-8  cursor-pointer px-5 
-       border border-neutral-300 dark:border-neutral-700 rounded-3xl flex flex-col gap-1 "
-        >
-          <h1 className=" text-4xl font-text">
-            New components launching soon...
-          </h1>
-        </div>
       </div>
     </section>
   );
