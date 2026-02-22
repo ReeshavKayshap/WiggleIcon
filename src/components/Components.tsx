@@ -33,7 +33,7 @@ function IconsComponents() {
         light: firstlogoLight,
         dark: firstlogoDark,
       },
-      colSpan: 1,
+      colSpan: 2,
       description: "Simple and elegant headers for your website",
     },
     {
@@ -44,7 +44,7 @@ function IconsComponents() {
         light: firstlogoLight2,
         dark: firstlogoDark2,
       },
-      colSpan: 1,
+      colSpan: 2,
       description: "A responsive animated navbar component",
     },
   ];
@@ -58,7 +58,7 @@ function IconsComponents() {
 
   return (
     <section id="components" className="scroll-mt-24  pb-30">
-      <div className="py-10  flex flex-col gap-6 ">
+      <div className="py-10  flex flex-col gap-6 px-5">
         <span className="flex flex-col gap-2 px-2 py-4">
           <h1 className="text-5xl font-text  text-forground dark:text-background">
             Components
@@ -72,8 +72,8 @@ function IconsComponents() {
             <div
               key={item.id}
               onClick={() => openComponent(item)}
-              className={`w-full flex flex-col  group cursor-pointer border border-neutral-300 dark:border-neutral-700 rounded-3xl shadow-xs
-               ${item.colSpan === 2 ? "col-span-2" : "col-span-1"}`}
+              className={`w-full flex flex-col group cursor-pointer border border-neutral-300 dark:border-neutral-700 rounded-3xl shadow-xs
+               ${item.colSpan === 2 ? "col-span-2 md:col-span-1" : "col-span-1"}`}
             >
               <div className="dark:bg-black bg-white group flex-1 flex justify-center items-center rounded-3xl rounded-b-none  ">
                 {item.images && (

@@ -25,6 +25,10 @@
 }
 
 @theme inline {
+  --breakpoint-xs: 425px;
+  --breakpoint-max: 1130px;
+  --breakpoint-maxTwo: 1040px;
+  --breakpoint-input: 535px;
   --color-background: var(--background);
   --color-forground: var(--forground);
   --font-text: para, sans-serif;

@@ -31,7 +31,7 @@ export function HeroSection() {
               <h2 className="font-main text-6xl  text-center tracking-tight">
                 Icons that move when you interact
               </h2>
-              <p className="font-main text-lg max-w-xl  mx-auto text-center dark:text-gray-300  ">
+              <p className="font-main  max-w-sm px-2 text-lg xs:max-w-xl  mx-auto text-center dark:text-gray-300  ">
                 Collection of customizable, motion-based icons that are editable
                 and Works seamlessly with modern design systems.
               </p>
@@ -41,7 +41,7 @@ export function HeroSection() {
               <Link
                 to="https://x.com/KayshapReeshav"
                 target="_blank"
-                className=" font-text py-1.5 px-10 rounded-xl dark:hover:bg-white/95 hover:bg-black/90 cursor-pointer dark:text-forground dark:bg-white bg-black text-background"
+                className=" font-text py-1.5 px-7 xs:px-10 rounded-xl dark:hover:bg-white/95 hover:bg-black/90 cursor-pointer dark:text-forground dark:bg-white bg-black text-background"
               >
                 Contact Me
               </Link>
@@ -49,18 +49,17 @@ export function HeroSection() {
                 <a
                   key={item.id}
                   href={`#${item.id}`}
-                  className="font-text py-1.5 px-10 rounded-xl dark:hover:bg-neutral-800 hover:bg-neutral-100   cursor-pointer dark:bg-neutral-900  bg-neutral-50/95 
+                  className="font-text py-1.5 px-7 xs:px-10 rounded-xl dark:hover:bg-neutral-800 hover:bg-neutral-100   cursor-pointer dark:bg-neutral-900  bg-neutral-50/95 
               border dark:border-neutral-700 border-neutral-300  dark:text-white"
                 >
                   {item.title}
                 </a>
               ))}
             </span>
-            <div className="flex justify-center items-center font-text gap-5  dark:text-neutral-700 text-neutral-300">
-              <span className="text-neutral-500 ">Built with</span>
+            <div className="hidden xs:flex justify-center items-center font-text gap-5  dark:text-neutral-700 text-neutral-400">
+              <span className="text-neutral-600 ">Built with</span>
               <div className="flex gap-2 hover:text-neutral-500 cursor-pointer">
                 <span>
-                  {" "}
                   <IconBrandReact />
                 </span>
                 <span>React</span>

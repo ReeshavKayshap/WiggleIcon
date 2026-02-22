@@ -4,8 +4,10 @@ import { useEffect, useState } from "react";
 import { Github } from "@/icons/Github";
 import { Twitter } from "@/icons/Twitter";
 import { Brightness } from "@/icons/Brightness";
-import { IconLayoutFilled } from "@tabler/icons-react";
+import { IconLayoutFilled, IconMenu2, IconX } from "@tabler/icons-react";
+import { motion } from "motion/react";
 export function Nav() {
+  const [show, setShow] = useState(false);
   const links = [
     { title: "Icons", id: "icons" },
     { title: "Components", id: "components" },
@@ -31,55 +33,114 @@ export function Nav() {
         ${scrolled ? "shadow-sm dark:bg-forground bg-background" : "shadow-none bg-none"}`}
       >
         <div
-          className="flex justify-between items-center  py-3 px-5 max-w-367  mx-auto   dark:text-background text-forground
+          className="flex flex-col md:flex-row justify-between items-center  py-3 px-5 max-w-367  mx-auto   dark:text-background text-forground
            "
         >
-          <span className="flex items-center gap-5">
-            <span className="flex items-center gap-2 ">
-              <IconLayoutFilled />
-              <h1 className=" font-text text-2xl">Wiggleicon</h1>
+          <div className="flex justify-between w-full">
+            <span className="flex items-center gap-5">
+              <span className="flex items-center gap-2 ">
+                <IconLayoutFilled />
+                <h1 className=" font-text text-2xl">Wiggleicon</h1>
+              </span>
+              <nav className="  pt-1 gap-3 font-text text-[15.5px] hidden md:flex">
+                {links.map((item) => (
+                  <a
+                    className="cursor-pointer hover:bg-neutral-100 dark:hover:bg-neutral-800 px-2 py-1 rounded-lg  "
+                    key={item.id}
+                    href={`#${item.id}`}
+                  >
+                    {item.title}
+                  </a>
+                ))}
+              </nav>
             </span>
-            <nav className=" flex pt-1 gap-3 font-text text-[15.5px] ">
-              {links.map((item) => (
-                <a
-                  className="cursor-pointer hover:bg-neutral-100 dark:hover:bg-neutral-800 px-2 py-1 rounded-lg  "
-                  key={item.id}
-                  href={`#${item.id}`}
-                >
-                  {item.title}
-                </a>
-              ))}
-            </nav>
-          </span>
 
-          <span className="flex gap-2">
-            <Link
-              to="https://github.com/ReeshavKayshap/IconLibrary"
-              target="_blank"
-              className=" flex justify-center items-center 
+            <span className=" gap-2 hidden md:flex">
+              <Link
+                to="https://github.com/ReeshavKayshap/IconLibrary"
+                target="_blank"
+                className=" flex justify-center items-center 
                        overflow-hidden cursor-pointer hover:bg-neutral-100 dark:hover:bg-neutral-800 px-2 py-1 rounded-lg "
-            >
-              <Github size={20} />
-            </Link>
+              >
+                <Github size={20} />
+              </Link>
 
-            <Link
-              to="https://x.com/KayshapReeshav"
-              target="_blank"
-              className=" flex justify-center items-center 
+              <Link
+                to="https://x.com/KayshapReeshav"
+                target="_blank"
+                className=" flex justify-center items-center 
                        cursor-pointer hover:bg-neutral-100 dark:hover:bg-neutral-800 px-2 py-1 rounded-lg "
-            >
-              <Twitter size={20} />
-            </Link>
+              >
+                <Twitter size={20} />
+              </Link>
 
-            <button
-              onClick={handleThem}
-              className="size-9 flex justify-center items-center 
+              <button
+                onClick={handleThem}
+                className="size-9 flex justify-center items-center 
                  cursor-pointer hover:bg-neutral-100 dark:hover:bg-neutral-800 
                  rounded-lg "
-            >
-              <Brightness size={20} />
-            </button>
-          </span>
+              >
+                <Brightness size={20} />
+              </button>
+            </span>
+
+            <span className="flex gap-3 md:hidden">
+              <button
+                onClick={handleThem}
+                className="size-9 flex justify-center items-center md:hidden z-50
+                 cursor-pointer hover:bg-neutral-100 dark:hover:bg-neutral-800 
+                 rounded-lg "
+              >
+                <Brightness size={20} />
+              </button>
+              <button
+                onClick={() => setShow((prev) => !prev)}
+                className="md:hidden z-50"
+              >
+                {show ? <IconX /> : <IconMenu2 />}
+              </button>
+            </span>
+          </div>
+
+          <div className="md:hidden w-full pt-5">
+            {show && (
+              <motion.nav
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                className="md:hidden bg-background dark:bg-forground  py-2"
+              >
+                {links.map((item) => (
+                  <a
+                    className="cursor-pointer flex hover:bg-neutral-100 dark:hover:bg-neutral-800 px-2 py-1 rounded-lg  "
+                    key={item.id}
+                    href={`#${item.id}`}
+                  >
+                    {item.title}
+                  </a>
+                ))}
+                <span className=" flex py-3">
+                  <Link
+                    to="https://github.com/ReeshavKayshap/IconLibrary"
+                    target="_blank"
+                    className="
+                       overflow-hidden cursor-pointer hover:bg-neutral-100 dark:hover:bg-neutral-800 px-2 py-1 rounded-lg "
+                  >
+                    <Github size={20} />
+                  </Link>
+
+                  <Link
+                    to="https://x.com/KayshapReeshav"
+                    target="_blank"
+                    className="
+                       cursor-pointer hover:bg-neutral-100 dark:hover:bg-neutral-800 px-2 py-1 rounded-lg "
+                  >
+                    <Twitter size={20} />
+                  </Link>
+                </span>
+              </motion.nav>
+            )}
+          </div>
         </div>
       </div>
     </>
