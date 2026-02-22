@@ -52,7 +52,7 @@ function Footer() {
               <p className="text-lg font-text text-center dark:text-neutral-400 text-neutral-500">
                 Built by{" "}
                 <Link
-                  to="https://x.com/KayshapReeshav"
+                  to="https://x.com/rshvkyp"
                   target="_blank"
                   className="hover:text-neutral-700 dark:hover:text-neutral-300 cursor-pointer dark:hover:decoration-neutral-300 hover:decoration-neutral-700
                    underline underline-offset-2 dark:decoration-neutral-400 decoration-neutral-500"

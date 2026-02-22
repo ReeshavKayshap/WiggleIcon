@@ -39,7 +39,7 @@ export function HeroSection() {
 
             <span className="flex justify-center gap-5 py-3">
               <Link
-                to="https://x.com/KayshapReeshav"
+                to="https://x.com/rshvkyp"
                 target="_blank"
                 className=" font-text py-1.5 px-7 xs:px-10 rounded-xl dark:hover:bg-white/95 hover:bg-black/90 cursor-pointer dark:text-forground dark:bg-white bg-black text-background"
               >

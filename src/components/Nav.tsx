@@ -66,7 +66,7 @@ export function Nav() {
               </Link>
 
               <Link
-                to="https://x.com/KayshapReeshav"
+                to="https://x.com/rshvkyp"
                 target="_blank"
                 className=" flex justify-center items-center 
                        cursor-pointer hover:bg-neutral-100 dark:hover:bg-neutral-800 px-2 py-1 rounded-lg "
@@ -130,7 +130,7 @@ export function Nav() {
                   </Link>
 
                   <Link
-                    to="https://x.com/KayshapReeshav"
+                    to="https://x.com/rshvkyp"
                     target="_blank"
                     className="
                        cursor-pointer hover:bg-neutral-100 dark:hover:bg-neutral-800 px-2 py-1 rounded-lg "
