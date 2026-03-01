@@ -69,7 +69,7 @@ function Icon() {
   const copyToClipboard = async (item: IconItem, isCliProps?: boolean) => {
     if (isCliProps) {
       const formattedTitle = item.title.replace("-icon", "").replace(/-/g, "");
-      const command = `npx shadcn@latest add "https://wiggleicon.in/r/${formattedTitle}.json"`;
+      const command = `npx shadcn@latest add "https://www.wiggleicon.in/r/${formattedTitle}.json"`;
       await navigator.clipboard.writeText(command);
       setCliCopied(item.id);
       setTimeout(() => setCliCopied(null), 1500);
@@ -298,12 +298,12 @@ function Icon() {
                 className="text-[16px] group-hover:text-black  dark:group-hover:text-gray-300  transition-colors duration-200 ease-in-out
                dark:text-gray-400 text-gray-600 font-Adjust flex items-center gap-2"
               >
-                npx shadcn@latest add https://wiggleicon.in/r/index.json
+                npx shadcn@latest add https://www.wiggleicon.in/r/index.json
               </p>
               <button
                 onClick={async () => {
                   await navigator.clipboard.writeText(
-                    'npx shadcn@latest add "https://wiggleicon.in/r/index.json"',
+                    'npx shadcn@latest add "https://www.wiggleicon.in/r/index.json"',
                   );
                   setCopiedAll(true);
                   setTimeout(() => setCopiedAll(false), 2000);
