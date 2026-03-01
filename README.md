@@ -3,15 +3,15 @@
 Collection of customizable, motion-based icons that are editable and Works seamlessly with modern design systems.
 
 ## Features
- 
-* Editable icons - You can edit the icons size, stroke, animation in the website.
-* Support - We supports React `forwardRef`, allowing you to access animation using parent.
-* Examples - Drop some examples to see exactly how these icons look and feel inside real-world interfaces.
+
+- Editable icons - You can edit the icons size, stroke, animation in the website.
+- Support - We supports React `forwardRef`, allowing you to access animation using parent.
+- Examples - Drop some examples to see exactly how these icons look and feel inside real-world interfaces.
 
 ## Quick Start
 
-* Manual Installation
-  
+- Manual Installation
+
 1. Install dependencies:
 
 ```js
@@ -32,14 +32,14 @@ export default function Component() {
 
 ## Tech Stack
 
-* React Version 18+
-* motion/react for animations
-* Tailwind CSS 4
+- React Version 18+
+- motion/react for animations
+- Tailwind CSS 4
 
 ## Links
 
-* Website: [wiggleicon.in](https://www.wiggleicon.in)
+- Website: [wiggleicon.in](https://www.wiggleicon.in)
 
 ## Creator
 
-* Built by Reeshav
+- Built by Reeshav

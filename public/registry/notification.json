@@ -1,0 +1,15 @@
+{
+  "name": "notification",
+  "type": "registry:ui",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "src/icons/Notification.tsx",
+      "content": "import { motion, useAnimate } from \"motion/react\";\r\nimport { forwardRef, useImperativeHandle } from \"react\";\r\nexport interface AnimatedIconHandle {\n  startAnimation: () => void;\n  stopAnimation: () => void;\n}\n\nexport interface IconProps {\n  size?: number;\n  color?: string;\n  strokeWidth?: number;\n  duration?: number;\n  className?: string;\n}\n\r\n\r\nexport const Notification = forwardRef<AnimatedIconHandle, IconProps>(\r\n  (\r\n    {\r\n      size = 24,\r\n      strokeWidth = 2,\r\n      color = \"currentColor\",\r\n      className = \"\",\r\n      duration = 0.6,\r\n    },\r\n    ref,\r\n  ) => {\r\n    const [scope, animate] = useAnimate();\r\n\r\n    const start = () => {\r\n      animate(\r\n        \".top\",\r\n\r\n        { rotate: [0, 6, -6, 6, -6, 0] },\r\n\r\n        { duration, ease: \"easeInOut\" },\r\n      );\r\n    };\r\n    useImperativeHandle(ref, () => ({\r\n      startAnimation: start,\r\n      stopAnimation: stop,\r\n    }));\r\n    return (\r\n      <>\r\n        <motion.svg\r\n          onMouseEnter={start}\r\n          ref={scope}\r\n          width={size}\r\n          height={size}\r\n          viewBox=\"0 0 18 21\"\r\n          stroke={color}\r\n          strokeWidth={strokeWidth}\r\n          fill=\"none\"\r\n          xmlns=\"http://www.w3.org/2000/svg\"\r\n          className={`cursor-pointer ${className}`}\r\n        >\r\n          <path\r\n            className=\"top\"\r\n            d=\"M1.50739 15.1818H16.4931C16.9095 15.1818 17.1456 14.5379 16.9004 14.169C16.3327 13.3147 15.7812 12.0555 15.7812 10.537L15.8056 8.45995C15.8056 4.33993 12.7585 1 8.99976 1C5.29556 1 2.29272 4.29145 2.29272 8.35166L2.26831 10.537C2.26831 12.0451 1.69712 13.2975 1.10533 14.1514C0.850296 14.5194 1.08578 15.1818 1.50739 15.1818Z\"\r\n            strokeLinecap=\"round\"\r\n            strokeLinejoin=\"round\"\r\n          />\r\n          <path\r\n            className=\"top\"\r\n            d=\"M6.49976 18C7.20743 18.5653 8.14195 18.9091 9.16642 18.9091C10.1909 18.9091 11.1254 18.5653 11.8331 18\"\r\n            strokeLinecap=\"round\"\r\n            strokeLinejoin=\"round\"\r\n          />\r\n        </motion.svg>\r\n      </>\r\n    );\r\n  },\r\n);\r\n",
+      "type": "registry:ui"
+    }
+  ]
+}

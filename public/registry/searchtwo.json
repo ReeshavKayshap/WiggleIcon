@@ -1,0 +1,15 @@
+{
+  "name": "searchtwo",
+  "type": "registry:ui",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "src/icons/SearchTwo.tsx",
+      "content": "import { motion, useAnimate } from \"motion/react\";\r\nimport { forwardRef, useImperativeHandle } from \"react\";\r\nexport interface AnimatedIconHandle {\n  startAnimation: () => void;\n  stopAnimation: () => void;\n}\n\nexport interface IconProps {\n  size?: number;\n  color?: string;\n  strokeWidth?: number;\n  duration?: number;\n  className?: string;\n}\n\r\n\r\nexport const SearchTwo = forwardRef<AnimatedIconHandle, IconProps>(\r\n  (\r\n    {\r\n      size = 24,\r\n      strokeWidth = 2,\r\n      color = \"currentColor\",\r\n      className = \"\",\r\n      duration = 0.8,\r\n    },\r\n    ref,\r\n  ) => {\r\n    const [scope, animate] = useAnimate();\r\n\r\n    const start = () => {\r\n      animate(\r\n        \".flip\",\r\n        { rotateY: [0, 180, 0] },\r\n        { duration, ease: \"easeInOut\" },\r\n      );\r\n    };\r\n    useImperativeHandle(ref, () => ({\r\n      startAnimation: start,\r\n      stopAnimation: stop,\r\n    }));\r\n    return (\r\n      <>\r\n        <motion.svg\r\n          ref={scope}\r\n          onMouseEnter={start}\r\n          viewBox=\"0 0 24 24\"\r\n          fill=\"none\"\r\n          xmlns=\"http://www.w3.org/2000/svg\"\r\n          width={size}\r\n          height={size}\r\n          stroke={color}\r\n          strokeWidth={strokeWidth}\r\n          className={`cursor-pointer${className}`}\r\n        >\r\n          <path\r\n            d=\"M21 21L17.5001 17.5M20 11.5C20 16.1944 16.1944 20 11.5 20C6.80558 20 3 16.1944 3 11.5C3 6.80558 6.80558 3 11.5 3C16.1944 3 20 6.80558 20 11.5Z\"\r\n            stroke=\"currentColor\"\r\n            strokeLinecap=\"round\"\r\n            strokeLinejoin=\"round\"\r\n            className=\"flip\"\r\n          />\r\n        </motion.svg>\r\n      </>\r\n    );\r\n  },\r\n);\r\n",
+      "type": "registry:ui"
+    }
+  ]
+}

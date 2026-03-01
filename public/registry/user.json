@@ -1,0 +1,15 @@
+{
+  "name": "user",
+  "type": "registry:ui",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "src/icons/User.tsx",
+      "content": "import { motion, useAnimate } from \"motion/react\";\r\nimport { forwardRef, useImperativeHandle } from \"react\";\r\nexport interface AnimatedIconHandle {\n  startAnimation: () => void;\n  stopAnimation: () => void;\n}\n\nexport interface IconProps {\n  size?: number;\n  color?: string;\n  strokeWidth?: number;\n  duration?: number;\n  className?: string;\n}\n\r\n\r\nexport const User = forwardRef<AnimatedIconHandle, IconProps>(\r\n  (\r\n    {\r\n      size = 24,\r\n      strokeWidth = 2,\r\n      color = \"currentColor\",\r\n      className = \"\",\r\n      duration = 0.8,\r\n    },\r\n    ref,\r\n  ) => {\r\n    const [scope, animate] = useAnimate();\r\n\r\n    const start = () => {\r\n      animate(\r\n        \".top\",\r\n        {\r\n          y: [0, -1.5, 1.5, -1.5, 0],\r\n        },\r\n        { duration, ease: \"easeInOut\" },\r\n      );\r\n      animate(\r\n        \".bottom\",\r\n        {\r\n          y: [0, 0, 1, 0],\r\n        },\r\n        { duration, ease: \"easeInOut\" },\r\n      );\r\n    };\r\n    useImperativeHandle(ref, () => ({\r\n      startAnimation: start,\r\n      stopAnimation: stop,\r\n    }));\r\n    return (\r\n      <>\r\n        <motion.svg\r\n          ref={scope}\r\n          onMouseEnter={start}\r\n          xmlns=\"http://www.w3.org/2000/svg\"\r\n          width={size}\r\n          height={size}\r\n          viewBox=\"0 0 24 24\"\r\n          fill=\"none\"\r\n          stroke={color}\r\n          strokeWidth={strokeWidth}\r\n          strokeLinecap=\"round\"\r\n          strokeLinejoin=\"round\"\r\n          className={`cursor-pointer${className}`}\r\n        >\r\n          <path stroke=\"none\" d=\"M0 0h24v24H0z\" fill=\"none\" />\r\n          <path className=\"top\" d=\"M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0\" />\r\n          <path\r\n            className=\"bottom\"\r\n            d=\"M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2\"\r\n          />\r\n        </motion.svg>\r\n      </>\r\n    );\r\n  },\r\n);\r\n",
+      "type": "registry:ui"
+    }
+  ]
+}

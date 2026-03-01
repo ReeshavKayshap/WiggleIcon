@@ -1,0 +1,15 @@
+{
+  "name": "volumeoff",
+  "type": "registry:ui",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "src/icons/VolumeOff.tsx",
+      "content": "import { motion, useAnimate } from \"motion/react\";\r\nimport { forwardRef, useImperativeHandle } from \"react\";\r\nexport interface AnimatedIconHandle {\n  startAnimation: () => void;\n  stopAnimation: () => void;\n}\n\nexport interface IconProps {\n  size?: number;\n  color?: string;\n  strokeWidth?: number;\n  duration?: number;\n  className?: string;\n}\n\r\n\r\nexport const VolumeOff = forwardRef<AnimatedIconHandle, IconProps>(\r\n  (\r\n    {\r\n      size = 24,\r\n      strokeWidth = 2,\r\n      color = \"currentColor\",\r\n      className = \"\",\r\n      duration = 0.4,\r\n    },\r\n    ref,\r\n  ) => {\r\n    const [scope, animate] = useAnimate();\r\n\r\n    const start = () => {\r\n      animate(\r\n        \".line\",\r\n\r\n        { pathLength: [0, 1] },\r\n\r\n        { duration: duration * 1.5, ease: \"easeInOut\" },\r\n      );\r\n      animate(\r\n        \".sound\",\r\n        {\r\n          scale: [1, 0.96],\r\n          x: [0, -1, 1, -1, 0],\r\n          opacity: 0.6,\r\n        },\r\n        { duration, ease: \"easeInOut\" },\r\n      );\r\n    };\r\n    const stop = () => {\r\n      animate(\r\n        \".sound\",\r\n        {\r\n          scale: [0.96, 1],\r\n          opacity: 1,\r\n        },\r\n        { duration, ease: \"easeInOut\" },\r\n      );\r\n    };\r\n    useImperativeHandle(ref, () => ({\r\n      startAnimation: start,\r\n      stopAnimation: stop,\r\n    }));\r\n    return (\r\n      <>\r\n        <motion.svg\r\n          onMouseEnter={start}\r\n          onMouseLeave={stop}\r\n          ref={scope}\r\n          xmlns=\"http://www.w3.org/2000/svg\"\r\n          width={size}\r\n          height={size}\r\n          viewBox=\"0 0 24 24\"\r\n          fill=\"none\"\r\n          stroke={color}\r\n          strokeWidth={strokeWidth}\r\n          strokeLinecap=\"round\"\r\n          strokeLinejoin=\"round\"\r\n          className={`cursor-pointer${className}`}\r\n        >\r\n          <path stroke=\"none\" d=\"M0 0h24v24H0z\" fill=\"none\" />\r\n          <path\r\n            className=\"sound\"\r\n            d=\"M15 8a5 5 0 0 1 1.912 4.934m-1.377 2.602a5 5 0 0 1 -.535 .464\"\r\n          />\r\n          <path\r\n            className=\"sound\"\r\n            d=\"M17.7 5a9 9 0 0 1 2.362 11.086m-1.676 2.299a9 9 0 0 1 -.686 .615\"\r\n          />\r\n          <path\r\n            className=\"sound\"\r\n            d=\"M9.069 5.054l.431 -.554a.8 .8 0 0 1 1.5 .5v2m0 4v8a.8 .8 0 0 1 -1.5 .5l-3.5 -4.5h-2a1 1 0 0 1 -1 -1v-4a1 1 0 0 1 1 -1h2l1.294 -1.664\"\r\n          />\r\n          <path className=\"line\" d=\"M3 3l18 18\" />\r\n        </motion.svg>\r\n      </>\r\n    );\r\n  },\r\n);\r\n",
+      "type": "registry:ui"
+    }
+  ]
+}

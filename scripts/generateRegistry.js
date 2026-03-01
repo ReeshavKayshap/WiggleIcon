@@ -30,7 +30,30 @@ const files = fs.readdirSync(SRC_DIR).filter((file) => file.endsWith(".tsx"));
 files.forEach((file) => {
   const componentName = file.replace(".tsx", "");
   const filePath = path.join(SRC_DIR, file);
-  const content = fs.readFileSync(filePath, "utf-8");
+  let content = fs.readFileSync(filePath, "utf-8");
+
+  // Check if the file already defines the types
+  const hasDefs = content.includes("export interface AnimatedIconHandle");
+
+  if (!hasDefs) {
+    const typeDefs = `export interface AnimatedIconHandle {
+  startAnimation: () => void;
+  stopAnimation: () => void;
+}
+
+export interface IconProps {
+  size?: number;
+  color?: string;
+  strokeWidth?: number;
+  duration?: number;
+  className?: string;
+}
+`;
+    content = content.replace(
+      /import type \{[^}]+\} from ["']@\/types\/Type["'];?\n?/,
+      typeDefs,
+    );
+  }
 
   const registryItem = {
     name: componentName.toLowerCase(), // This acts as the ID for `shadcn add`

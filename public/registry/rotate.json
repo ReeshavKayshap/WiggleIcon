@@ -1,0 +1,15 @@
+{
+  "name": "rotate",
+  "type": "registry:ui",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "src/icons/Rotate.tsx",
+      "content": "import { motion, useAnimate } from \"motion/react\";\r\nimport { forwardRef, useImperativeHandle } from \"react\";\r\nexport interface AnimatedIconHandle {\n  startAnimation: () => void;\n  stopAnimation: () => void;\n}\n\nexport interface IconProps {\n  size?: number;\n  color?: string;\n  strokeWidth?: number;\n  duration?: number;\n  className?: string;\n}\n\r\n\r\nexport const Rotate = forwardRef<AnimatedIconHandle, IconProps>(\r\n  (\r\n    {\r\n      size = 24,\r\n      strokeWidth = 2,\r\n      color = \"currentColor\",\r\n      className = \"\",\r\n      duration = 1,\r\n    },\r\n    ref,\r\n  ) => {\r\n    const [scope, animate] = useAnimate();\r\n\r\n    const start = () => {\r\n      animate(\r\n        \".main\",\r\n        {\r\n          rotate: [0, -360],\r\n          scale: [1, 1.05, 1],\r\n        },\r\n        { duration, ease: \"easeInOut\" },\r\n      );\r\n    };\r\n    useImperativeHandle(ref, () => ({\r\n      startAnimation: start,\r\n      stopAnimation: stop,\r\n    }));\r\n    return (\r\n      <>\r\n        <motion.svg\r\n          xmlns=\"http://www.w3.org/2000/svg\"\r\n          onMouseEnter={start}\r\n          ref={scope}\r\n          width={size}\r\n          height={size}\r\n          viewBox=\"0 0 24 24\"\r\n          fill=\"none\"\r\n          stroke={color}\r\n          strokeWidth={strokeWidth}\r\n          strokeLinecap=\"round\"\r\n          strokeLinejoin=\"round\"\r\n          className={`cursor-pointer${className}`}\r\n        >\r\n          <path stroke=\"none\" d=\"M0 0h24v24H0z\" fill=\"none\" />\r\n          <path className=\"main\" d=\"M19.95 11a8 8 0 1 0 -.5 4m.5 5v-5h-5\" />\r\n        </motion.svg>\r\n      </>\r\n    );\r\n  },\r\n);\r\n",
+      "type": "registry:ui"
+    }
+  ]
+}
