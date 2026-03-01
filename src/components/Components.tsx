@@ -58,11 +58,9 @@ function IconsComponents() {
 
   return (
     <section id="components" className="scroll-mt-24  pb-30">
-      <div className="py-10  flex flex-col gap-6 px-5">
+      <div className=" flex flex-col gap-6 px-5">
         <span className="flex flex-col gap-2 px-2 py-4">
-          <h1 className="text-5xl font-text  text-forground dark:text-background">
-            Components
-          </h1>
+          <h1 className="text-5xl font-text  text-foreground ">Components</h1>
           <p className="text-lg font-text dark:text-gray-300">
             Icons components with smooth interactions.
           </p>
@@ -127,7 +125,7 @@ function IconsComponents() {
                 transition={{ duration: 0.3, ease: "easeInOut" }}
               >
                 <div className="relative w-full max-w-6xl rounded-3xl  p-8">
-                  <div className="absolute top-18 right-20  z-30">
+                  <div className="absolute text-neutral-800 dark:text-neutral-300 top-18 right-20  z-30">
                     <button onClick={() => setShow(false)}>
                       <Cross size={32} />
                     </button>
@@ -170,8 +168,10 @@ type TextProps = {
 
 const Text = ({ title, description }: TextProps) => (
   <div className="px-2">
-    <h1 className="text-4xl font-text">{title}</h1>
-    <p className="text-sm font-text text-neutral-400">{description}</p>
+    <h1 className="text-4xl font-text text-foreground">{title}</h1>
+    <p className="text-sm font-text dark:text-neutral-300 text-neutral-700">
+      {description}
+    </p>
   </div>
 );
 

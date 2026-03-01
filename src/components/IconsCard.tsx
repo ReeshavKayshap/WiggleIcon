@@ -1,8 +1,9 @@
 import { motion } from "motion/react";
 import { useState } from "react";
-import { IconCheck, IconTerminal, IconCode } from "@tabler/icons-react";
 import type { IconItem } from "../types/Type";
 import { Copy } from "@/icons/Copy";
+import { IconTerminal } from "@/icons/IconTerminal";
+import { Check } from "@/icons/Check";
 
 interface IconCardProps {
   item: IconItem;
@@ -45,7 +46,7 @@ export const IconCard = ({
             className="dark:bg-neutral-200 bg-black dark:text-black text-neutral-200 
               flex flex-col justify-center items-center absolute -top-6 px-3.5 py-0.5 rounded-xl "
           >
-            <h3 className="font-text text-sm">{item.title}</h3>
+            <h3 className="font-mono  text-[13.5px]">{item.title}</h3>
             <span className="absolute -bottom-2.5 -z-10">
               <svg
                 className="dark:bg-neutral-200 bg-black dark:fill-neutral-200 fill-black z-50 size-2.5 translate-y-[calc(-50%-2px)] rotate-45 rounded-xs"
@@ -64,40 +65,7 @@ export const IconCard = ({
         />
       </span>
 
-      <span className="w-full flex justify-between px-2 gap-4">
-        <span
-          onMouseEnter={() => setCliHover(true)}
-          onMouseLeave={() => setCliHover(false)}
-          onClick={() => onCopy(item, true)}
-          className="w-fit flex justify-center relative"
-        >
-          {cliHover && (
-            <div className="dark:bg-neutral-200 bg-black dark:text-black text-neutral-200 flex flex-col justify-center items-center absolute -bottom-8 px-2.5 py-0.5 rounded-xl whitespace-nowrap">
-              <h3 className="font-text text-sm z-20">
-                {isCliCopied ? "CLI copied" : "Copy CLI command"}
-              </h3>
-              <span className="absolute top-1">
-                <svg
-                  className="dark:bg-neutral-200 bg-black dark:fill-neutral-200 fill-black z-50 size-2.5 translate-y-[calc(-50%-2px)] rotate-45 rounded-xs"
-                  width="10"
-                  height="5"
-                  viewBox="0 0 30 10"
-                  preserveAspectRatio="none"
-                ></svg>
-              </span>
-            </div>
-          )}
-          {isCliCopied ? (
-            <IconCheck size={18} className="text-green-500 cursor-pointer" />
-          ) : (
-            <IconTerminal
-              size={18}
-              stroke={1.5}
-              className="dark:text-neutral-500 text-neutral-500 cursor-pointer hover:dark:text-neutral-300 hover:text-neutral-700 transition-colors"
-            />
-          )}
-        </span>
-
+      <span className="flex justify-center items-center gap-4  ">
         <span
           onMouseEnter={() => setHover(true)}
           onMouseLeave={() => setHover(false)}
@@ -105,8 +73,13 @@ export const IconCard = ({
           className="w-fit flex justify-center relative"
         >
           {hover && (
-            <div className="dark:bg-neutral-200 bg-black dark:text-black text-neutral-200 flex flex-col justify-center items-center absolute -bottom-8 px-2.5 py-0.5 rounded-xl whitespace-nowrap">
-              <h3 className="font-text text-sm z-20">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+              className="dark:bg-neutral-200 bg-black dark:text-black text-neutral-200 flex flex-col justify-center items-center absolute -bottom-8 px-2.5 py-0.5 rounded-xl whitespace-nowrap"
+            >
+              <h3 className="font-mono  text-[13.5px] z-20">
                 {isCopied ? "Code copied" : "Copy React code"}
               </h3>
               <span className="absolute top-1">
@@ -118,12 +91,48 @@ export const IconCard = ({
                   preserveAspectRatio="none"
                 ></svg>
               </span>
-            </div>
+            </motion.div>
           )}
           {isCopied ? (
-            <IconCheck size={18} className="text-green-500 cursor-pointer" />
+            <Check size={15} className="text-green-500 cursor-pointer" />
           ) : (
             <Copy
+              size={15}
+              className="dark:text-neutral-500 text-neutral-500 cursor-pointer hover:dark:text-neutral-300 hover:text-neutral-700 transition-colors"
+            />
+          )}
+        </span>
+        <span
+          onMouseEnter={() => setCliHover(true)}
+          onMouseLeave={() => setCliHover(false)}
+          onClick={() => onCopy(item, true)}
+          className="w-fit flex justify-center relative"
+        >
+          {cliHover && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+              className="dark:bg-neutral-200 bg-black dark:text-black text-neutral-200 flex flex-col justify-center items-center absolute -bottom-8 px-2.5 py-0.5 rounded-xl whitespace-nowrap"
+            >
+              <h3 className="font-mono text-[13.5px] z-20">
+                {isCliCopied ? "CLI copied" : "Copy CLI command"}
+              </h3>
+              <span className="absolute top-1">
+                <svg
+                  className="dark:bg-neutral-200 bg-black dark:fill-neutral-200 fill-black z-50 size-2.5 translate-y-[calc(-50%-2px)] rotate-45 rounded-xs"
+                  width="10"
+                  height="5"
+                  viewBox="0 0 30 10"
+                  preserveAspectRatio="none"
+                ></svg>
+              </span>
+            </motion.div>
+          )}
+          {isCliCopied ? (
+            <Check size={18} className="text-green-500 cursor-pointer" />
+          ) : (
+            <IconTerminal
               size={18}
               className="dark:text-neutral-500 text-neutral-500 cursor-pointer hover:dark:text-neutral-300 hover:text-neutral-700 transition-colors"
             />

@@ -7,6 +7,8 @@ import { ArrowRight } from "@/icons/ArrowRight";
 import { cn } from "@/lib/lib/utils";
 import { IconCard } from "./IconsCard";
 import { Link } from "react-router-dom";
+import { Copy } from "@/icons/Copy";
+import { Check } from "@/icons/Check";
 
 const PAGE_SIZE = 28;
 
@@ -16,6 +18,7 @@ function Icon() {
   const [durationOverride, setDurationOverride] = useState<number | null>(null);
   const [copied, setCopied] = useState<number | null>(null);
   const [cliCopied, setCliCopied] = useState<number | null>(null);
+  const [copiedAll, setCopiedAll] = useState(false);
   const [search, setSearch] = useState("");
   const [current, setCurrent] = useState(1);
 
@@ -65,7 +68,7 @@ function Icon() {
 
   const copyToClipboard = async (item: IconItem, isCliProps?: boolean) => {
     if (isCliProps) {
-      const command = `npx shadcn@latest add "https://wiggleicon.in/registry/${item.title}.json"`;
+      const command = `npx shadcn@latest add "https://wiggleicon.in/r/${item.title}.json"`;
       await navigator.clipboard.writeText(command);
       setCliCopied(item.id);
       setTimeout(() => setCliCopied(null), 1500);
@@ -90,27 +93,45 @@ function Icon() {
         <div className=" maxTwo:flex maxTwo:justify-between maxTwo:items-center pb-10 px-5">
           <div className=" flex flex-col gap-10">
             <span className="flex flex-col gap-3">
-              <h1 className="text-5xl font-text text-forground dark:text-background">
+              <h1 className="text-5xl font-text text-foreground ">
                 Designed with intention{" "}
               </h1>
               <p className="text-lg font-text dark:text-gray-300">
-                {" "}
-                animated components that bring your UI to life. Ready to copy,
+                animated components that bring your ui to life. ready to copy,
                 customize, and deploy.
               </p>
-              <div className="font-text pt-5 dark:text-gray-400 text-gray-600 flex items-center gap-2">
-                <h4> To enable animations, install </h4>
-                <Link
-                  to="https://motion.dev/"
-                  target="_blank"
-                  className="flex items-center gap-1 cursor-pointer dark:bg-neutral-900 bg-neutral-100 dark:hover:bg-neutral-800 hover:bg-neutral-50/95 px-3.5 py-1 rounded-lg
+
+              <div className="font-text pt-4  flex flex-col gap-6">
+                <span className="flex flex-col gap-3">
+                  <p className="dark:text-gray-400 text-gray-600">
+                    Add all icons directly via terminal using the{" "}
+                    <Link
+                      to="https://ui.shadcn.com/"
+                      target="_blank"
+                      className=" hover:text-neutral-950 dark:hover:text-neutral-200 cursor-pointer underline underline-offset-3 
+                     hover:decoration-neutral-950 dark:hover:decoration-neutral-200 transition  "
+                    >
+                      shadcn
+                    </Link>{" "}
+                    cli
+                  </p>
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <h4 className="dark:text-gray-400 text-gray-600">
+                    To enable animations, install{" "}
+                  </h4>
+                  <Link
+                    to="https://motion.dev/"
+                    target="_blank"
+                    className="flex items-center gap-1 text-[15px] cursor-pointer dark:bg-neutral-900 bg-neutral-100 dark:hover:bg-neutral-800 hover:bg-neutral-50/95 px-3.5 py-1 rounded-lg
                  dark:text-neutral-100 text-neutral-950 border dark:border-neutral-700 border-neutral-300"
-                >
-                  <h4>motion</h4>
-                  <span>
-                    <ArrowRight size={20} />
-                  </span>
-                </Link>
+                  >
+                    <h4>motion</h4>
+                    <span>
+                      <ArrowRight size={20} />
+                    </span>
+                  </Link>
+                </span>
               </div>
             </span>
 
@@ -132,14 +153,16 @@ function Icon() {
             </span>
           </div>
 
-          <div className="pt-10 maxTwo:pt-0 w-full maxTwo:flex maxTwo:justify-end ">
+          <div className="pt-10 maxTwo:pt-0 w-full flex flex-col gap-8 maxTwo:items-end ">
             <div
               className="w-full max-w-lg flex flex-col gap-7 dark:bg-neutral-800 bg-neutral-50 shadow-sm dark:shadow-neutral-800 shadow-neutral-300
            ring-1 dark:ring-neutral-700 ring-neutral-200 px-4 py-5 rounded-2xl"
             >
               <span className="flex justify-between items-center">
                 <div>
-                  <h1 className="font-inter text-lg">Customize icons</h1>
+                  <h1 className="font-inter text-lg text-foreground">
+                    Customize icons
+                  </h1>
                 </div>
                 <button
                   onClick={resetToDefault}
@@ -266,6 +289,37 @@ function Icon() {
                 </div>
               </div>
             </div>
+            <div
+              className=" relative group max-w-lg w-full flex items-center justify-between dark:bg-neutral-800 bg-neutral-50 shadow-sm dark:shadow-neutral-800 shadow-neutral-300
+           ring-1 dark:ring-neutral-700 ring-neutral-200 rounded-lg px-4 py-4 gap-6 "
+            >
+              <p
+                className="text-[16px] group-hover:text-black  dark:group-hover:text-gray-300  transition-colors duration-200 ease-in-out
+               dark:text-gray-400 text-gray-600 font-Adjust flex items-center gap-2"
+              >
+                npx shadcn@latest add https://wiggleicon.in/r/index.json
+              </p>
+              <button
+                onClick={async () => {
+                  await navigator.clipboard.writeText(
+                    'npx shadcn@latest add "https://wiggleicon.in/r/index.json"',
+                  );
+                  setCopiedAll(true);
+                  setTimeout(() => setCopiedAll(false), 2000);
+                }}
+                className=" absolute right-3 transition-all active:scale-95 cursor-pointer"
+              >
+                {copiedAll ? (
+                  <Check size={18} className="text-green-500" />
+                ) : (
+                  <Copy
+                    size={18}
+                    className="dark:text-gray-400 text-gray-600 group-hover:text-black transition-colors duration-200 ease-in-out
+                     dark:group-hover:text-gray-300  "
+                  />
+                )}
+              </button>
+            </div>
           </div>
         </div>
 
@@ -292,7 +346,7 @@ function Icon() {
                 />
               ))}
             </motion.div>
-            <div className="flex justify-end gap-3 py-5">
+            <div className="flex justify-end gap-3 py-10">
               {Array.from({ length: NoOfPage }, (_, index) => {
                 const page = index + 1;
                 return (
@@ -300,7 +354,7 @@ function Icon() {
                     {" "}
                     <motion.span
                       whileTap={{ scale: 0.9 }}
-                      className="font-text flex justify-center items-center  dark:bg-neutral-800 size-7
+                      className="font-text flex justify-center items-center text-foreground  dark:bg-neutral-800 size-7
                       shadow-xs cursor-pointer rounded-sm border border-neutral-300 dark:border-neutral-600"
                       onClick={() => handleClick(page)}
                     >

@@ -449,8 +449,17 @@ export default Navbar;
         </span>
 
         <span>
-          <button onClick={copyFunction}>
-            {tab === "code" && <> {copied ? <IconCheck /> : <Copy />}</>}
+          <button className="cursor-pointer" onClick={copyFunction}>
+            {tab === "code" && (
+              <>
+                {" "}
+                {copied ? (
+                  <IconCheck className="text-green-500 cursor-pointer" />
+                ) : (
+                  <Copy className="text-neutral-800 dark:text-neutral-300" />
+                )}
+              </>
+            )}
           </button>
         </span>
       </div>
@@ -461,7 +470,9 @@ export default Navbar;
             <div className="flex justify-between items-center w-full dark:bg-neutral-950 bg-neutral-100 shadow-xs  ring-1 dark:ring-neutral-700 ring-neutral-300 py-4 px-5 rounded-2xl">
               <span className="flex items-center gap-6">
                 <span className="px-2">
-                  <h1 className="text-2xl font-text">Wiggleicon</h1>
+                  <h1 className="text-2xl font-text text-neutral-800 dark:text-neutral-300">
+                    Wiggleicon
+                  </h1>
                 </span>
                 {nav.map(({ id, Icon, label, hasDropdown, Tooltip }) => (
                   <nav key={id}>
@@ -526,7 +537,7 @@ export default Navbar;
 
               <span className="flex gap-3">
                 <button
-                  className="dark:hover:bg-neutral-800 dark:bg-neutral-950 bg-neutral-50 hover:bg-neutral-100 
+                  className="dark:hover:bg-neutral-800 text-black dark:text-neutral-100 dark:bg-neutral-950 bg-neutral-50 hover:bg-neutral-100 
                 transition cursor-pointer border text-sm dark:border-neutral-700 border-neutral-300  px-4 py-2 rounded-lg font-inter "
                 >
                   Login

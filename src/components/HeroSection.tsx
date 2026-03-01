@@ -13,21 +13,21 @@ export function HeroSection() {
   return (
     <>
       <div>
-        <div className="flex justify-center items-center py-30 dark:text-background text-forground relative">
+        <div className="flex justify-center items-center py-30 dark:text-background text-foreground relative">
           <span className="flex flex-col  gap-4 ">
             <div className="flex justify-center">
               <Link
                 to="https://github.com/ReeshavKayshap/IconLibrary"
                 target="_blank"
                 className="flex items-center cursor-pointer gap-2 dark:bg-neutral-800 bg-neutral-100 w-fit  
-                px-3 py-1 rounded-3xl ring ring-neutral-200 dark:ring-neutral-700"
+                px-3 py-1 rounded-3xl ring ring-neutral-200 dark:ring-neutral-700 text-foreground"
               >
                 <Github size={22} />
-                <h2 className="font-text">Open Source</h2>
+                <h2 className="font-text ">Open Source</h2>
                 <ArrowRight size={20} />
               </Link>
             </div>
-            <span className="flex flex-col gap-5">
+            <span className="flex flex-col gap-5 text-foreground">
               <h2 className="font-main text-6xl  text-center tracking-tight">
                 Icons that move when you interact
               </h2>
@@ -41,7 +41,7 @@ export function HeroSection() {
               <Link
                 to="https://x.com/rshvkyp"
                 target="_blank"
-                className=" font-text py-1.5 px-7 xs:px-10 rounded-xl dark:hover:bg-white/95 hover:bg-black/90 cursor-pointer dark:text-forground dark:bg-white bg-black text-background"
+                className=" font-text py-1.5 px-7 xs:px-10 rounded-xl  dark:hover:bg-white/95 hover:bg-black/90 cursor-pointer  dark:bg-white bg-black dark:text-black text-white "
               >
                 Contact Me
               </Link>

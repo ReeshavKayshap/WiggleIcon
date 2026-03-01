@@ -17,8 +17,13 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <div className="dark:bg-forground bg-background dark:text-background overflow-clip">
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <div className="dark:bg-foreground-color bg-background dark:text-background overflow-clip">
             <Routes>
               <Route path="/" element={<Main />} />
             </Routes>

@@ -1,20 +1,25 @@
-import { Coffee } from "@/icons/Coffee";
 import { Link } from "react-router-dom";
 
 function Footer() {
   const tag = [
     { title: "Icons", id: "icons" },
     { title: "Components", id: "components" },
-    { title: "Sponsor", id: "sponsor" },
+    { title: "Contact", id: "contact" },
+  ];
+  const social = [
+    { title: "Twitter", id: "https://x.com/rshvkyp" },
+    { title: "GitHub", id: "https://github.com/ReeshavKayshap/IconLibrary" },
   ];
   return (
     <>
-      <section id="sponsor" className="scroll-mt-24">
-        <div className="  border-t border-neutral-800 ">
+      <section id="contact" className="scroll-mt-24">
+        <div className="  border-t dark:border-neutral-800 border-neutral-200 ">
           <div className="  max-w-336 mx-auto pt-20 px-5">
             <div className="md:flex md:justify-between pb-20  ">
               <div className="flex flex-col gap-2 pb-20 md:pb-0">
-                <h1 className="text-4xl font-text">Wiggleicon</h1>
+                <h1 className="text-5xl font-text text-foreground">
+                  Wiggleicon
+                </h1>
                 <p className="text-lg font-text dark:text-neutral-400 text-neutral-500 max-w-xl">
                   Elevate your UI with a growing library of motion‑ready icon
                   components built for developers and designers.
@@ -22,8 +27,10 @@ function Footer() {
               </div>
               <div className="flex gap-25">
                 <span className="flex flex-col gap-2">
-                  {" "}
-                  <h1 className="text-lg font-text"> Section</h1>
+                  <h1 className="text-lg font-text text-foreground">
+                    {" "}
+                    Section
+                  </h1>
                   {tag.map((item) => (
                     <a
                       className="flex flex-col font-text dark:text-neutral-400 text-neutral-500 cursor-pointer hover:text-neutral-700 dark:hover:text-neutral-300"
@@ -34,17 +41,18 @@ function Footer() {
                     </a>
                   ))}
                 </span>
-                <span className="flex flex-col gap-3">
-                  <h1 className="text-lg font-text">Sponsor</h1>
-                  <span className="flex gap-3 items-center">
-                    <Coffee
-                      size={19}
-                      className="dark:text-gray-600 text-neutral-500 cursor-pointer hover:text-gray-600"
-                    />
-                    <p className="font-text dark:text-neutral-400 text-neutral-500 cursor-pointer hover:text-gray-600">
-                      Buy Me A Coffee
-                    </p>
-                  </span>
+                <span className="flex flex-col gap-2">
+                  <h1 className="text-lg font-text text-foreground">Social</h1>
+                  {social.map((item) => (
+                    <Link
+                      target="_blank"
+                      className=" font-text dark:text-neutral-400 text-neutral-500 cursor-pointer hover:text-neutral-700 dark:hover:text-neutral-300"
+                      key={item.id}
+                      to={item.id}
+                    >
+                      {item.title}
+                    </Link>
+                  ))}
                 </span>
               </div>
             </div>

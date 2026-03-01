@@ -11,7 +11,7 @@ export function Nav() {
   const links = [
     { title: "Icons", id: "icons" },
     { title: "Components", id: "components" },
-    { title: "Sponsor", id: "sponsor" },
+    { title: "Contact", id: "contact" },
   ];
   const { theme, setTheme } = useTheme();
   const handleThem = () => {
@@ -30,13 +30,13 @@ export function Nav() {
     <>
       <div
         className={`z-20 fixed inset-x-0  transition-shadow duration-200
-        ${scrolled ? "shadow-sm dark:bg-forground bg-background" : "shadow-none bg-none"}`}
+        ${scrolled ? "shadow-sm dark:bg-foreground-color bg-background" : "shadow-none bg-none"}`}
       >
         <div
-          className="flex flex-col md:flex-row justify-between items-center  py-3 px-5 max-w-367  mx-auto   dark:text-background text-forground
+          className="flex flex-col md:flex-row justify-between items-center  py-3 px-5 max-w-367  mx-auto   dark:text-background text-foreground
            "
         >
-          <div className="flex justify-between w-full">
+          <div className="flex justify-between w-full text-foreground ">
             <span className="flex items-center gap-5">
               <span className="flex items-center gap-2 ">
                 <IconLayoutFilled />
@@ -108,7 +108,7 @@ export function Nav() {
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
-                className="md:hidden bg-background dark:bg-forground  py-2"
+                className="md:hidden bg-background dark:bg-foreground-color  py-2"
               >
                 {links.map((item) => (
                   <a

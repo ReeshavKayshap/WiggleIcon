@@ -252,8 +252,17 @@ export default Card;
         </span>
 
         <span>
-          <button onClick={copyFunction}>
-            {tab === "code" && <> {copied ? <IconCheck /> : <Copy />}</>}
+          <button className="cursor-pointer" onClick={copyFunction}>
+            {tab === "code" && (
+              <>
+                {" "}
+                {copied ? (
+                  <IconCheck className="text-green-500 cursor-pointer" />
+                ) : (
+                  <Copy className="text-neutral-800 dark:text-neutral-300" />
+                )}
+              </>
+            )}
           </button>
         </span>
       </div>
@@ -292,7 +301,7 @@ export default Card;
               </span>
 
               <span className="flex flex-col ">
-                <div className="  w-full  py-2 px-4 ">
+                <div className="  w-full text-neutral-800 dark:text-neutral-300 py-2 px-4 ">
                   <h1>Configure</h1>
                 </div>
                 <span className="flex flex-col gap-2 py-2">
@@ -322,7 +331,7 @@ export default Card;
               </span>
 
               <span className="flex flex-col ">
-                <div className="  w-full  py-2 px-4 ">
+                <div className="  w-full  py-2 px-4 text-neutral-800 dark:text-neutral-300">
                   <h1>Term & Condition</h1>
                 </div>
                 <span className="flex flex-col gap-2 py-2">

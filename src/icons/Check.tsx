@@ -1,5 +1,5 @@
 import { motion, useAnimate } from "motion/react";
-import { forwardRef, useImperativeHandle } from "react";
+import { forwardRef, useEffect, useImperativeHandle } from "react";
 import type { AnimatedIconHandle, IconProps } from "@/types/Type";
 
 export const Check = forwardRef<AnimatedIconHandle, IconProps>(
@@ -9,7 +9,7 @@ export const Check = forwardRef<AnimatedIconHandle, IconProps>(
       strokeWidth = 2,
       color = "currentColor",
       className = "",
-      duration = 0.7,
+      duration = 0.5,
     },
     ref,
   ) => {
@@ -24,10 +24,18 @@ export const Check = forwardRef<AnimatedIconHandle, IconProps>(
         { duration, ease: "easeInOut" },
       );
     };
+
+    // const stop = () => {};
+
     useImperativeHandle(ref, () => ({
       startAnimation: start,
       stopAnimation: stop,
     }));
+
+    useEffect(() => {
+      start();
+    }, []);
+
     return (
       <>
         <motion.svg
@@ -42,7 +50,7 @@ export const Check = forwardRef<AnimatedIconHandle, IconProps>(
           strokeWidth={strokeWidth}
           strokeLinecap="round"
           strokeLinejoin="round"
-          className={`cursor-pointer${className}`}
+          className={`cursor-pointer ${className}`}
         >
           <path stroke="none" d="M0 0h24v24H0z" fill="none" />
           <path className="main" d="M5 12l5 5l10 -10" />
