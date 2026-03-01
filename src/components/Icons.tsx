@@ -68,7 +68,8 @@ function Icon() {
 
   const copyToClipboard = async (item: IconItem, isCliProps?: boolean) => {
     if (isCliProps) {
-      const command = `npx shadcn@latest add "https://wiggleicon.in/r/${item.title}.json"`;
+      const formattedTitle = item.title.replace("-icon", "").replace(/-/g, "");
+      const command = `npx shadcn@latest add "https://wiggleicon.in/r/${formattedTitle}.json"`;
       await navigator.clipboard.writeText(command);
       setCliCopied(item.id);
       setTimeout(() => setCliCopied(null), 1500);
