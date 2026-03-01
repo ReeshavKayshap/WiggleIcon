@@ -318,7 +318,8 @@ export interface IconProps {
                 className="text-[16px] group-hover:text-black  dark:group-hover:text-gray-300  transition-colors duration-200 ease-in-out
                dark:text-gray-400 text-gray-600 font-Adjust flex items-center gap-2"
               >
-                npx shadcn@latest add https://wiggleicon.in/r/index.json
+                npx shadcn@latest add
+                &quot;https://wiggleicon.in/r/index.json&quot;
               </p>
               <button
                 onClick={async () => {

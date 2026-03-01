@@ -10,8 +10,15 @@ if (!fs.existsSync(REGISTRY_DIR)) {
 
 // Ensure the main registry.json exists
 const mainRegistryPath = path.resolve(REGISTRY_DIR, "index.json");
+
+const typeFilePath = path.resolve(process.cwd(), "src/types/Type.ts");
+const typeContent = fs.existsSync(typeFilePath)
+  ? fs.readFileSync(typeFilePath, "utf-8")
+  : "";
+
 const mainRegistry = {
-  name: "iconlibrary",
+  $schema: "https://ui.shadcn.com/schema/registry-item.json",
+  name: "index",
   type: "registry:ui",
   dependencies: ["motion"],
   registryDependencies: [],
@@ -22,7 +29,14 @@ const mainRegistry = {
       },
     },
   },
-  items: [],
+  files: [
+    {
+      path: `src/types/Type.ts`,
+      content: typeContent,
+      type: "registry:ui",
+      target: `types/Type.ts`,
+    },
+  ],
 };
 
 const files = fs.readdirSync(SRC_DIR).filter((file) => file.endsWith(".tsx"));
@@ -32,12 +46,8 @@ files.forEach((file) => {
   const filePath = path.join(SRC_DIR, file);
   let content = fs.readFileSync(filePath, "utf-8");
 
-  const typeFilePath = path.resolve(process.cwd(), "src/types/Type.ts");
-  const typeContent = fs.existsSync(typeFilePath)
-    ? fs.readFileSync(typeFilePath, "utf-8")
-    : "";
-
   const registryItem = {
+    $schema: "https://ui.shadcn.com/schema/registry-item.json",
     name: componentName.toLowerCase(), // This acts as the ID for `shadcn add`
     type: "registry:ui",
     dependencies: ["motion"],
@@ -57,6 +67,13 @@ files.forEach((file) => {
     ],
   };
 
+  // Add individual component files to the main registry
+  mainRegistry.files.push({
+    path: `src/icons/${file}`,
+    content: content,
+    type: "registry:ui",
+  });
+
   // Create individual registry file for each component e.g. menu.json
   const componentRegistryPath = path.resolve(
     REGISTRY_DIR,
@@ -66,12 +83,9 @@ files.forEach((file) => {
     componentRegistryPath,
     JSON.stringify(registryItem, null, 2),
   );
-
-  // Add to main index
-  mainRegistry.items.push(registryItem);
 });
 
-// Optionally create the index.json
+// Create the index.json
 fs.writeFileSync(mainRegistryPath, JSON.stringify(mainRegistry, null, 2));
 
 console.log(
