@@ -1,0 +1,15 @@
+{
+  "name": "image",
+  "type": "registry:ui",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "src/icons/Image.tsx",
+      "content": "import { motion, useAnimate } from \"motion/react\";\r\nimport { forwardRef, useImperativeHandle } from \"react\";\r\nimport type { AnimatedIconHandle, IconProps } from \"@/types/Type\";\r\n\r\nexport const Image = forwardRef<AnimatedIconHandle, IconProps>(\r\n  (\r\n    {\r\n      size = 24,\r\n\r\n      strokeWidth = 2,\r\n      color = \"currentColor\",\r\n      className = \"\",\r\n      duration = 0.4,\r\n    },\r\n    ref,\r\n  ) => {\r\n    const [scope, animate] = useAnimate();\r\n\r\n    const start = () => {\r\n      animate(\r\n        \".show\",\r\n        {\r\n          pathLength: [0, 1],\r\n        },\r\n        { duration: duration * 2, ease: \"easeInOut\" },\r\n      );\r\n      animate(\r\n        \".showTwo\",\r\n        {\r\n          opacity: [0, 1],\r\n        },\r\n        { duration, ease: \"easeInOut\", delay: duration * 1.5 },\r\n      );\r\n    };\r\n    useImperativeHandle(ref, () => ({\r\n      startAnimation: start,\r\n      stopAnimation: stop,\r\n    }));\r\n    return (\r\n      <>\r\n        <motion.svg\r\n          ref={scope}\r\n          onMouseEnter={start}\r\n          width={size}\r\n          height={size}\r\n          viewBox=\"0 0 22 20\"\r\n          stroke={color}\r\n          strokeWidth={strokeWidth}\r\n          fill=\"none\"\r\n          xmlns=\"http://www.w3.org/2000/svg\"\r\n          className={`cursor-pointer${className}`}\r\n        >\r\n          <path d=\"M1 4.375C1 2.51104 2.51104 1 4.375 1H15.625C17.489 1 19 2.51104 19 4.375V15.625C19 17.489 17.489 19 15.625 19H4.375C2.51104 19 1 17.489 1 15.625V4.375Z\" />\r\n          <path\r\n            className=\"show\"\r\n            d=\"M2 17.3125L6.5 12.8125L8.75 15.0625L13.8125 10L18.3125 14.5\"\r\n            strokeLinecap=\"round\"\r\n            strokeLinejoin=\"round\"\r\n          />\r\n          <path\r\n            className=\"showTwo\"\r\n            d=\"M6 6.09023V6\"\r\n            strokeLinecap=\"round\"\r\n            strokeLinejoin=\"round\"\r\n          />\r\n        </motion.svg>\r\n      </>\r\n    );\r\n  },\r\n);\r\n",
+      "type": "registry:ui"
+    }
+  ]
+}

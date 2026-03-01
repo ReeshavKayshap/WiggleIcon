@@ -1,0 +1,15 @@
+{
+  "name": "history",
+  "type": "registry:ui",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "src/icons/History.tsx",
+      "content": "import { motion, useAnimate } from \"motion/react\";\r\nimport { forwardRef, useImperativeHandle } from \"react\";\r\nimport type { AnimatedIconHandle, IconProps } from \"@/types/Type\";\r\n\r\nexport const History = forwardRef<AnimatedIconHandle, IconProps>(\r\n  (\r\n    {\r\n      size = 24,\r\n      strokeWidth = 2,\r\n      color = \"currentColor\",\r\n      className = \"\",\r\n      duration = 0.8,\r\n    },\r\n    ref,\r\n  ) => {\r\n    const [scope, animate] = useAnimate();\r\n\r\n    const start = () => {\r\n      animate(\r\n        \".time\",\r\n\r\n        {\r\n          rotate: [0, -360],\r\n        },\r\n\r\n        { duration, ease: \"easeInOut\" },\r\n      );\r\n    };\r\n    useImperativeHandle(ref, () => ({\r\n      startAnimation: start,\r\n      stopAnimation: stop,\r\n    }));\r\n    return (\r\n      <>\r\n        <motion.svg\r\n          onMouseEnter={start}\r\n          ref={scope}\r\n          xmlns=\"http://www.w3.org/2000/svg\"\r\n          width={size}\r\n          height={size}\r\n          viewBox=\"0 0 24 24\"\r\n          fill=\"none\"\r\n          stroke={color}\r\n          strokeWidth={strokeWidth}\r\n          stroke-linecap=\"round\"\r\n          stroke-linejoin=\"round\"\r\n          className={`cursor-pointer${className}`}\r\n        >\r\n          <path stroke=\"none\" d=\"M0 0h24v24H0z\" fill=\"none\" />\r\n          <path className=\"time\" d=\"M12 8l0 4l2 2\" />\r\n          <path d=\"M3.05 11a9 9 0 1 1 .5 4m-.5 5v-5h5\" />\r\n        </motion.svg>\r\n      </>\r\n    );\r\n  },\r\n);\r\n",
+      "type": "registry:ui"
+    }
+  ]
+}

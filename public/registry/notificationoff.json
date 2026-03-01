@@ -1,0 +1,15 @@
+{
+  "name": "notificationoff",
+  "type": "registry:ui",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "src/icons/NotificationOff.tsx",
+      "content": "import { motion, useAnimate } from \"motion/react\";\r\nimport { forwardRef, useImperativeHandle } from \"react\";\r\nimport type { AnimatedIconHandle, IconProps } from \"@/types/Type\";\r\n\r\nexport const NotificationOff = forwardRef<AnimatedIconHandle, IconProps>(\r\n  (\r\n    {\r\n      size = 24,\r\n      strokeWidth = 2,\r\n      color = \"currentColor\",\r\n      className = \"\",\r\n      duration = 0.4,\r\n    },\r\n    ref,\r\n  ) => {\r\n    const [scope, animate] = useAnimate();\r\n\r\n    const start = () => {\r\n      animate(\r\n        \".line\",\r\n\r\n        { pathLength: [0, 1], pathOffset: [1, 0] },\r\n\r\n        { duration: duration * 1.5, ease: \"easeInOut\" },\r\n      );\r\n      animate(\r\n        \".top\",\r\n\r\n        { scale: [1, 0.96], x: [0, -1, 1, -1, 0], opacity: 0.6 },\r\n\r\n        { duration, ease: \"easeInOut\" },\r\n      );\r\n    };\r\n    const stop = () => {\r\n      animate(\r\n        \".top\",\r\n        {\r\n          scale: [0.96, 1],\r\n\r\n          opacity: 1,\r\n        },\r\n        { duration, ease: \"easeInOut\" },\r\n      );\r\n    };\r\n    useImperativeHandle(ref, () => ({\r\n      startAnimation: start,\r\n      stopAnimation: stop,\r\n    }));\r\n    return (\r\n      <>\r\n        <motion.svg\r\n          onMouseEnter={start}\r\n          onMouseLeave={stop}\r\n          ref={scope}\r\n          width={size}\r\n          height={size}\r\n          viewBox=\"0 0 18 22\"\r\n          stroke={color}\r\n          strokeWidth={strokeWidth}\r\n          fill=\"none\"\r\n          xmlns=\"http://www.w3.org/2000/svg\"\r\n          className={`cursor-pointer ${className}`}\r\n        >\r\n          <path\r\n            className=\"top\"\r\n            d=\"M12.8064 15.7274H1.51056C1.08631 15.7274 0.849362 15.065 1.10599 14.697C1.70147 13.8431 2.27624 12.5907 2.27624 11.0826L2.3008 8.89728C2.3008 7.14508 2.86355 5.53605 3.80292 4.27295\"\r\n            strokeLinecap=\"round\"\r\n            strokeLinejoin=\"round\"\r\n          />\r\n          <path\r\n            className=\"top\"\r\n            d=\"M17.1422 15.1689C16.5709 14.3146 16.016 13.0554 16.016 11.5369L16.0405 9.4599C16.0405 5.33991 12.9744 2 9.19218 2C8.78529 2 8.38681 2.03922 7.99976 2.11439\"\r\n            strokeLinecap=\"round\"\r\n            strokeLinejoin=\"round\"\r\n          />\r\n          <path\r\n            className=\"line\"\r\n            d=\"M15.3431 18.4545L2.99976 1\"\r\n            strokeLinecap=\"round\"\r\n            strokeLinejoin=\"round\"\r\n          />\r\n          <path\r\n            className=\"top\"\r\n            d=\"M6.49976 18C7.20743 18.5653 8.14195 18.9091 9.16642 18.9091C10.1909 18.9091 11.1254 18.5653 11.8331 18\"\r\n            strokeLinecap=\"round\"\r\n            strokeLinejoin=\"round\"\r\n          />\r\n        </motion.svg>\r\n      </>\r\n    );\r\n  },\r\n);\r\n",
+      "type": "registry:ui"
+    }
+  ]
+}

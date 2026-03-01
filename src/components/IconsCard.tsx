@@ -1,16 +1,17 @@
 import { motion } from "motion/react";
 import { useState } from "react";
-import { Copy } from "@/icons/Copy";
-import { IconCheck } from "@tabler/icons-react";
+import { IconCheck, IconTerminal, IconCode } from "@tabler/icons-react";
 import type { IconItem } from "../types/Type";
+import { Copy } from "@/icons/Copy";
 
 interface IconCardProps {
   item: IconItem;
   size: number;
   strokeWidth: number;
   durationOverride: number | null;
-  onCopy: (item: IconItem) => void;
+  onCopy: (item: IconItem, isCliProps?: boolean) => void;
   isCopied: boolean;
+  isCliCopied: boolean;
 }
 
 export const IconCard = ({
@@ -20,8 +21,10 @@ export const IconCard = ({
   durationOverride,
   onCopy,
   isCopied,
+  isCliCopied,
 }: IconCardProps) => {
   const [hover, setHover] = useState(false);
+  const [cliHover, setCliHover] = useState(false);
   const [showName, setShowName] = useState(false);
 
   return (
@@ -61,36 +64,71 @@ export const IconCard = ({
         />
       </span>
 
-      <span
-        onMouseEnter={() => setHover(true)}
-        onMouseLeave={() => setHover(false)}
-        onClick={() => onCopy(item)}
-        className="w-fit flex justify-center"
-      >
-        {hover && (
-          <div className="dark:bg-neutral-200 bg-black dark:text-black text-neutral-200 flex flex-col justify-center items-center absolute -bottom-6 px-2.5 py-0.5 rounded-xl">
-            <h3 className="font-text text-sm z-20">
-              {isCopied ? "Code copied" : "Click to copy"}
-            </h3>
-            <span className="absolute top-1">
-              <svg
-                className="dark:bg-neutral-200 bg-black dark:fill-neutral-200 fill-black z-50 size-2.5 translate-y-[calc(-50%-2px)] rotate-45 rounded-xs"
-                width="10"
-                height="5"
-                viewBox="0 0 30 10"
-                preserveAspectRatio="none"
-              ></svg>
-            </span>
-          </div>
-        )}
-        {isCopied ? (
-          <IconCheck size={16} className="text-green-500 cursor-pointer" />
-        ) : (
-          <Copy
-            size={16}
-            className="dark:text-neutral-700 text-neutral-500 cursor-pointer"
-          />
-        )}
+      <span className="w-full flex justify-between px-2 gap-4">
+        <span
+          onMouseEnter={() => setCliHover(true)}
+          onMouseLeave={() => setCliHover(false)}
+          onClick={() => onCopy(item, true)}
+          className="w-fit flex justify-center relative"
+        >
+          {cliHover && (
+            <div className="dark:bg-neutral-200 bg-black dark:text-black text-neutral-200 flex flex-col justify-center items-center absolute -bottom-8 px-2.5 py-0.5 rounded-xl whitespace-nowrap">
+              <h3 className="font-text text-sm z-20">
+                {isCliCopied ? "CLI copied" : "Copy CLI command"}
+              </h3>
+              <span className="absolute top-1">
+                <svg
+                  className="dark:bg-neutral-200 bg-black dark:fill-neutral-200 fill-black z-50 size-2.5 translate-y-[calc(-50%-2px)] rotate-45 rounded-xs"
+                  width="10"
+                  height="5"
+                  viewBox="0 0 30 10"
+                  preserveAspectRatio="none"
+                ></svg>
+              </span>
+            </div>
+          )}
+          {isCliCopied ? (
+            <IconCheck size={18} className="text-green-500 cursor-pointer" />
+          ) : (
+            <IconTerminal
+              size={18}
+              stroke={1.5}
+              className="dark:text-neutral-500 text-neutral-500 cursor-pointer hover:dark:text-neutral-300 hover:text-neutral-700 transition-colors"
+            />
+          )}
+        </span>
+
+        <span
+          onMouseEnter={() => setHover(true)}
+          onMouseLeave={() => setHover(false)}
+          onClick={() => onCopy(item)}
+          className="w-fit flex justify-center relative"
+        >
+          {hover && (
+            <div className="dark:bg-neutral-200 bg-black dark:text-black text-neutral-200 flex flex-col justify-center items-center absolute -bottom-8 px-2.5 py-0.5 rounded-xl whitespace-nowrap">
+              <h3 className="font-text text-sm z-20">
+                {isCopied ? "Code copied" : "Copy React code"}
+              </h3>
+              <span className="absolute top-1">
+                <svg
+                  className="dark:bg-neutral-200 bg-black dark:fill-neutral-200 fill-black z-50 size-2.5 translate-y-[calc(-50%-2px)] rotate-45 rounded-xs"
+                  width="10"
+                  height="5"
+                  viewBox="0 0 30 10"
+                  preserveAspectRatio="none"
+                ></svg>
+              </span>
+            </div>
+          )}
+          {isCopied ? (
+            <IconCheck size={18} className="text-green-500 cursor-pointer" />
+          ) : (
+            <Copy
+              size={18}
+              className="dark:text-neutral-500 text-neutral-500 cursor-pointer hover:dark:text-neutral-300 hover:text-neutral-700 transition-colors"
+            />
+          )}
+        </span>
       </span>
     </span>
   );

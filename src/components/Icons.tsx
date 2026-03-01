@@ -15,6 +15,7 @@ function Icon() {
   const [strokeWidth, setStrokeWidth] = useState(2);
   const [durationOverride, setDurationOverride] = useState<number | null>(null);
   const [copied, setCopied] = useState<number | null>(null);
+  const [cliCopied, setCliCopied] = useState<number | null>(null);
   const [search, setSearch] = useState("");
   const [current, setCurrent] = useState(1);
 
@@ -62,18 +63,25 @@ function Icon() {
     return updated;
   };
 
-  const copyToClipboard = async (item: IconItem) => {
-    const updatedCode = generateCode(
-      item.source,
-      size,
-      strokeWidth,
-      durationOverride ?? undefined,
-    );
+  const copyToClipboard = async (item: IconItem, isCliProps?: boolean) => {
+    if (isCliProps) {
+      const command = `npx shadcn@latest add "https://wiggleicon.in/registry/${item.title}.json"`;
+      await navigator.clipboard.writeText(command);
+      setCliCopied(item.id);
+      setTimeout(() => setCliCopied(null), 1500);
+    } else {
+      const updatedCode = generateCode(
+        item.source,
+        size,
+        strokeWidth,
+        durationOverride ?? undefined,
+      );
 
-    await navigator.clipboard.writeText(updatedCode);
+      await navigator.clipboard.writeText(updatedCode);
 
-    setCopied(item.id);
-    setTimeout(() => setCopied(null), 1500);
+      setCopied(item.id);
+      setTimeout(() => setCopied(null), 1500);
+    }
   };
 
   return (
@@ -280,6 +288,7 @@ function Icon() {
                   durationOverride={durationOverride}
                   onCopy={copyToClipboard}
                   isCopied={copied === item.id}
+                  isCliCopied={cliCopied === item.id}
                 />
               ))}
             </motion.div>

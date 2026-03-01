@@ -259,7 +259,7 @@ export default Card;
       </div>
 
       {tab === "preview" ? (
-        <div className=" flex justify-center  w-full  relative">
+        <div className=" flex justify-center  w-full  relative ">
           <div
             className="flex flex-col justify-center  items-center  w-70 dark:bg-neutral-950
             bg-neutral-100 shadow-xs  ring-1 dark:ring-neutral-700
