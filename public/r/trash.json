@@ -10,6 +10,12 @@
       "path": "src/icons/Trash.tsx",
       "content": "import { motion, useAnimate } from \"motion/react\";\r\nimport { forwardRef, useImperativeHandle } from \"react\";\r\nimport type { AnimatedIconHandle, IconProps } from \"@/types/Type\";\r\n\r\nexport const Trash = forwardRef<AnimatedIconHandle, IconProps>(\r\n  (\r\n    {\r\n      size = 24,\r\n      strokeWidth = 2,\r\n      color = \"currentColor\",\r\n      className = \"\",\r\n      duration = 0.98,\r\n    },\r\n    ref,\r\n  ) => {\r\n    const [scope, animate] = useAnimate();\r\n\r\n    const start = () => {\r\n      animate(\r\n        \".up\",\r\n\r\n        { y: [0, -5, -3, -1.2, 0], rotate: [0, -3, 3, -3, 0] },\r\n\r\n        { duration, ease: \"easeInOut\" },\r\n      );\r\n    };\r\n    useImperativeHandle(ref, () => ({\r\n      startAnimation: start,\r\n      stopAnimation: stop,\r\n    }));\r\n    return (\r\n      <>\r\n        <motion.svg\r\n          onMouseEnter={start}\r\n          ref={scope}\r\n          xmlns=\"http://www.w3.org/2000/svg\"\r\n          width={size}\r\n          height={size}\r\n          viewBox=\"0 0 24 24\"\r\n          fill=\"none\"\r\n          stroke={color}\r\n          strokeWidth={strokeWidth}\r\n          strokeLinecap=\"round\"\r\n          strokeLinejoin=\"round\"\r\n          className={`cursor-pointer${className}`}\r\n        >\r\n          <path stroke=\"none\" d=\"M0 0h24v24H0z\" fill=\"none\" />\r\n          <path className=\"up\" d=\"M4 7l16 0\" />\r\n          <path className=\"down\" d=\"M10 11l0 6\" />\r\n          <path className=\"down\" d=\"M14 11l0 6\" />\r\n          <path\r\n            className=\"down\"\r\n            d=\"M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12\"\r\n          />\r\n          <path className=\"up\" d=\"M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3\" />\r\n        </motion.svg>\r\n      </>\r\n    );\r\n  },\r\n);\r\n",
       "type": "registry:ui"
+    },
+    {
+      "path": "src/types/Type.ts",
+      "content": "import type { ComponentType } from \"react\";\r\n\r\nexport interface AnimatedIconHandle {\r\n  startAnimation: () => void;\r\n  stopAnimation: () => void;\r\n}\r\nexport interface IconProps {\r\n  size?: number;\r\n  color?: string;\r\n  strokeWidth?: number;\r\n  duration?: number;\r\n  className?: string;\r\n}\r\n\r\nexport interface IconItem {\r\n  id: number;\r\n  Component: ComponentType<IconProps>;\r\n  title: string;\r\n  source: string;\r\n}\r\n",
+      "type": "registry:ui",
+      "target": "types/Type.ts"
     }
   ]
 }

@@ -54,7 +54,6 @@ function Icon() {
   ) => {
     let updated = source;
 
-    // Replace the types import with the actual interface declarations
     const typeDefs = `export interface AnimatedIconHandle {
   startAnimation: () => void;
   stopAnimation: () => void;

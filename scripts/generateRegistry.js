@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 
 const SRC_DIR = path.resolve(process.cwd(), "src/icons");
-const REGISTRY_DIR = path.resolve(process.cwd(), "public/registry");
+const REGISTRY_DIR = path.resolve(process.cwd(), "public/r");
 
 if (!fs.existsSync(REGISTRY_DIR)) {
   fs.mkdirSync(REGISTRY_DIR, { recursive: true });
@@ -32,28 +32,10 @@ files.forEach((file) => {
   const filePath = path.join(SRC_DIR, file);
   let content = fs.readFileSync(filePath, "utf-8");
 
-  // Check if the file already defines the types
-  const hasDefs = content.includes("export interface AnimatedIconHandle");
-
-  if (!hasDefs) {
-    const typeDefs = `export interface AnimatedIconHandle {
-  startAnimation: () => void;
-  stopAnimation: () => void;
-}
-
-export interface IconProps {
-  size?: number;
-  color?: string;
-  strokeWidth?: number;
-  duration?: number;
-  className?: string;
-}
-`;
-    content = content.replace(
-      /import type \{[^}]+\} from ["']@\/types\/Type["'];?\n?/,
-      typeDefs,
-    );
-  }
+  const typeFilePath = path.resolve(process.cwd(), "src/types/Type.ts");
+  const typeContent = fs.existsSync(typeFilePath)
+    ? fs.readFileSync(typeFilePath, "utf-8")
+    : "";
 
   const registryItem = {
     name: componentName.toLowerCase(), // This acts as the ID for `shadcn add`
@@ -65,6 +47,12 @@ export interface IconProps {
         path: `src/icons/${file}`,
         content: content,
         type: "registry:ui",
+      },
+      {
+        path: `src/types/Type.ts`,
+        content: typeContent,
+        type: "registry:ui",
+        target: `types/Type.ts`,
       },
     ],
   };
