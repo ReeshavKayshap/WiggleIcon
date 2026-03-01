@@ -52,7 +52,28 @@ function Icon() {
     strokeWidth: number,
     duration?: number,
   ) => {
-    let updated = source
+    let updated = source;
+
+    // Replace the types import with the actual interface declarations
+    const typeDefs = `export interface AnimatedIconHandle {
+  startAnimation: () => void;
+  stopAnimation: () => void;
+}
+
+export interface IconProps {
+  size?: number;
+  color?: string;
+  strokeWidth?: number;
+  duration?: number;
+  className?: string;
+}\n`;
+
+    updated = updated.replace(
+      /import type \{[^}]+\} from ["']@\/types\/Type["'];?\n?/,
+      typeDefs,
+    );
+
+    updated = updated
       .replace(/size\s*=\s*\d+/, `size = ${size}`)
       .replace(/strokeWidth\s*=\s*\d+/, `strokeWidth = ${strokeWidth}`);
 

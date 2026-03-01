@@ -22,7 +22,10 @@ function Navbar() {
   };
 
   const codeString = `
-import type { AnimatedIconHandle } from "@/types/Type";
+export interface AnimatedIconHandle {
+  startAnimation: () => void;
+  stopAnimation: () => void;
+}
 import { User } from "@/icons/User";
 import { useRef} from "react";
 import { Home } from "@/icons/Home";

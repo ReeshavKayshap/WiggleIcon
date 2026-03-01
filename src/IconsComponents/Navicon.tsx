@@ -31,7 +31,10 @@ function Navicon() {
   const iconRefs = useRef<Record<string, AnimatedIconHandle | null>>({});
   const codeString = `
 import { useRef, useState } from "react";
-import type { AnimatedIconHandle } from "@/types/Type";
+export interface AnimatedIconHandle {
+  startAnimation: () => void;
+  stopAnimation: () => void;
+}
 import { motion, AnimatePresence } from "framer-motion";  
 import { Box } from "@/icons/Box";
 import { Stack } from "@/icons/Stack";
