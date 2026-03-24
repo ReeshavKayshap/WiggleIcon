@@ -88,8 +88,9 @@ export interface IconProps {
 
   const copyToClipboard = async (item: IconItem, isCliProps?: boolean) => {
     if (isCliProps) {
-      const formattedTitle = item.title.replace("-icon", "").replace(/-/g, "");
-      const command = `npx shadcn@latest add "https://wiggleicon.in/r/${formattedTitle}.json"`;
+      const componentName =
+        item.Component?.name || item.title.replace("-icon", "");
+      const command = `import { ${componentName} } from "@wiggle/icons-react"`;
       await navigator.clipboard.writeText(command);
       setCliCopied(item.id);
       setTimeout(() => setCliCopied(null), 1500);
@@ -125,16 +126,7 @@ export interface IconProps {
               <div className="font-text pt-4  flex flex-col gap-6">
                 <span className="flex flex-col gap-3">
                   <p className="dark:text-gray-400 text-gray-600">
-                    Add all icons directly via terminal using the{" "}
-                    <Link
-                      to="https://ui.shadcn.com/"
-                      target="_blank"
-                      className=" hover:text-neutral-950 dark:hover:text-neutral-200 cursor-pointer underline underline-offset-3 
-                     hover:decoration-neutral-950 dark:hover:decoration-neutral-200 transition  "
-                    >
-                      shadcn
-                    </Link>{" "}
-                    cli
+                    Install the complete lightweight library via npm
                   </p>
                 </span>
                 <span className="flex items-center gap-1.5">
@@ -318,13 +310,12 @@ export interface IconProps {
                 className="text-[16px] group-hover:text-black  dark:group-hover:text-gray-300  transition-colors duration-200 ease-in-out
                dark:text-gray-400 text-gray-600 font-Adjust flex items-center gap-2"
               >
-                npx shadcn@latest add
-                &quot;https://wiggleicon.in/r/index.json&quot;
+                npm install @wiggle/icons-react
               </p>
               <button
                 onClick={async () => {
                   await navigator.clipboard.writeText(
-                    'npx shadcn@latest add "https://wiggleicon.in/r/index.json"',
+                    "npm install @wiggle/icons-react",
                   );
                   setCopiedAll(true);
                   setTimeout(() => setCopiedAll(false), 2000);

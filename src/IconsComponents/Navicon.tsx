@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 
 import type { AnimatedIconHandle } from "@/types/Type";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "motion/react";
 import { Copy } from "@/icons/Copy";
 import { IconCheck, IconChevronDown } from "@tabler/icons-react";
 import { Box } from "@/icons/Box";

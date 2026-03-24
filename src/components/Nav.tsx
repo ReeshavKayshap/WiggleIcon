@@ -1,5 +1,5 @@
 import { useTheme } from "next-themes";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Github } from "@/icons/Github";
 import { Twitter } from "@/icons/Twitter";

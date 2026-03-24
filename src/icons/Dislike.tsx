@@ -1,0 +1,56 @@
+import { motion, useAnimate } from "motion/react";
+import { forwardRef, useImperativeHandle } from "react";
+import type { AnimatedIconHandle, IconProps } from "@/types/Type";
+
+export const Dislike = forwardRef<AnimatedIconHandle, IconProps>(
+  (
+    {
+      size = 24,
+      strokeWidth = 2,
+      color = "currentColor",
+      className = "",
+      duration = 0.8,
+    },
+    ref,
+  ) => {
+    const [scope, animate] = useAnimate();
+
+    const start = () => {
+      animate(
+        ".main",
+
+        { y: [0, -2, 4, -1.5, 3.5, 0], rotate: [0, 0, 3.5, 3.5, 3.5, 0] },
+
+        { duration, ease: "easeInOut" },
+      );
+    };
+    useImperativeHandle(ref, () => ({
+      startAnimation: start,
+      stopAnimation: stop,
+    }));
+    return (
+      <>
+        <motion.svg
+          onMouseEnter={start}
+          ref={scope}
+          xmlns="http://www.w3.org/2000/svg"
+          width={size}
+          height={size}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke={color}
+          strokeWidth={strokeWidth}
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          className={`cursor-pointer${className}`}
+        >
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path
+            className="main"
+            d="M7 13v-8a1 1 0 0 0 -1 -1h-2a1 1 0 0 0 -1 1v7a1 1 0 0 0 1 1h3a4 4 0 0 1 4 4v1a2 2 0 0 0 4 0v-5h3a2 2 0 0 0 2 -2l-1 -5a2 3 0 0 0 -2 -2h-7a3 3 0 0 0 -3 3"
+          />
+        </motion.svg>
+      </>
+    );
+  },
+);

@@ -1,12 +1,15 @@
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "motion/react";
 import { Cross } from "@/icons/Cross";
 import firstlogoDark from "../assets/darklogo.png";
 import firstlogoLight from "../assets/lightlogo.png";
 import firstlogoDark2 from "../assets/darklogo2.png";
 import firstlogoLight2 from "../assets/lightlogo2.png";
+import firstlogoDark3 from "../assets/darklogo3.png";
+import firstlogoLight3 from "../assets/lightlogo3.png";
 import Navicon from "../IconsComponents/Navicon";
 import NavBar from "@/IconsComponents/NavBar";
+import BoxReveal from "@/IconsComponents/BoxReveal";
 
 type ShowcaseItem = {
   id: number;
@@ -43,6 +46,17 @@ function IconsComponents() {
       images: {
         light: firstlogoLight2,
         dark: firstlogoDark2,
+      },
+      colSpan: 2,
+      description: "A responsive animated navbar component",
+    },
+    {
+      id: 3,
+      title: "BoxReveal",
+      component: BoxReveal,
+      images: {
+        light: firstlogoLight3,
+        dark: firstlogoDark3,
       },
       colSpan: 2,
       description: "A responsive animated navbar component",
@@ -94,7 +108,7 @@ function IconsComponents() {
               </div>
 
               <span className=" flex flex-col  px-5  pt-8 pb-10">
-                <h2 className=" font-medium text-3xl font-text">
+                <h2 className="dark:text-white text-black font-medium text-3xl font-text">
                   {item.title}
                 </h2>
                 <p className="font-inter  dark:text-neutral-200">

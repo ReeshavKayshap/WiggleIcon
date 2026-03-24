@@ -1,19 +1,9 @@
 import { forwardRef, useImperativeHandle, useCallback } from "react";
 import { motion, useAnimate } from "motion/react";
 
-export interface AnimatedIconHandle {
-  startAnimation: () => void;
-  stopAnimation: () => void;
-}
-export interface AnimatedIconProps {
-  size?: number;
-  color?: string;
-  strokeWidth?: number;
-  duration?: number;
-  className?: string;
-}
+import type { AnimatedIconHandle, IconProps } from "@/types/Type";
 
-export const Home = forwardRef<AnimatedIconHandle, AnimatedIconProps>(
+export const Home = forwardRef<AnimatedIconHandle, IconProps>(
   (
     {
       size = 24,

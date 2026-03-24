@@ -116,7 +116,7 @@ export const IconCard = ({
               className="dark:bg-neutral-200 bg-black dark:text-black text-neutral-200 flex flex-col justify-center items-center absolute -bottom-8 px-2.5 py-0.5 rounded-xl whitespace-nowrap"
             >
               <h3 className="font-mono text-[13.5px] z-20">
-                {isCliCopied ? "CLI copied" : "Copy CLI command"}
+                {isCliCopied ? "Import copied" : "Copy import"}
               </h3>
               <span className="absolute top-1">
                 <svg

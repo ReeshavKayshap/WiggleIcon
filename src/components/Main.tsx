@@ -1,8 +1,7 @@
-// import Container from "./Container";
 import { HeroSection } from "./HeroSection";
 import { Nav } from "./Nav";
 import Icons from "./Icons";
-// import { cn } from "@/lib/lib/utils";
+
 import Footer from "./Footer";
 
 import Container from "./Container";
