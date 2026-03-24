@@ -18,5 +18,15 @@ export default defineConfig({
       "@": path.resolve(__dirname, "src"),
     },
   },
-  // No build.lib — standard SPA build for the website
+  build: {
+    chunkSizeWarningLimit: 1000,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ["react", "react-dom", "react-router-dom"],
+          motion: ["motion"],
+        },
+      },
+    },
+  },
 });
