@@ -8,9 +8,9 @@
   "types": "dist/icons/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/icons/index.d.ts",
       "import": "./dist/index.js",
-      "require": "./dist/index.cjs",
-      "types": "./dist/icons/index.d.ts"
+      "require": "./dist/index.cjs"
     }
   },
   "files": [
