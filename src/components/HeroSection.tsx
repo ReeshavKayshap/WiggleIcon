@@ -28,9 +28,9 @@ export function HeroSection() {
               </Link>
             </div>
             <span className="flex flex-col gap-5 text-foreground">
-              <h2 className="font-main text-6xl  text-center tracking-tight">
+              <h1 className="font-main text-6xl  text-center tracking-tight">
                 Icons that move when you interact
-              </h2>
+              </h1>
               <p className="font-main  max-w-sm px-2 text-lg xs:max-w-xl  mx-auto text-center dark:text-gray-300  ">
                 Collection of customizable, motion-based icons that are editable
                 and Works seamlessly with modern design systems.
