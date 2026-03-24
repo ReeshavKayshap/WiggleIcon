@@ -2,10 +2,12 @@
 @font-face {
   font-family: para;
   src: url("fonts/Gabarito-Medium.ttf");
+  font-display: swap;
 }
 @font-face {
   font-family: Gabarito;
   src: url("fonts/Gabarito-Medium.ttf");
+  font-display: swap;
 }
 
 @import "tailwindcss";
