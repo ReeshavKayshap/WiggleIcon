@@ -1,14 +1,19 @@
+"use client";
+
+import { useState } from "react";
 import Container from "@/components/Container";
-import { Herosection } from "@/components/ui/Herosection";
+import { Landing } from "@/components/ui/Landing";
 import { Nav } from "@/components/ui/Nav";
-import { SearchBar } from "@/components/ui/SearchBar";
+import { IconShowcase } from "@/components/ui/IconShowcase";
 
 export default function Home() {
+  const [searchQuery, setSearchQuery] = useState("");
+
   return (
     <Container className="pt-5">
       <Nav />
-      <Herosection />
-      <SearchBar />
+      <Landing setSearchQuery={setSearchQuery} />
+      <IconShowcase searchQuery={searchQuery} />
     </Container>
   );
 }

@@ -1,13 +1,22 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { IconCheck, IconCopy } from "@tabler/icons-react";
+import { IconCheck } from "@tabler/icons-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { cn } from "@/lib/utils";
+import { Copy } from "../icons";
+
 interface CopyButtonProps {
   textToCopy: string;
+  className?: string;
+  size?: number;
 }
 
-export function CopyButton({ textToCopy }: CopyButtonProps) {
+export function CopyButton({
+  textToCopy,
+  className,
+  size = 16,
+}: CopyButtonProps) {
   const [isCopied, setIsCopied] = useState(false);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -38,31 +47,30 @@ export function CopyButton({ textToCopy }: CopyButtonProps) {
   return (
     <button
       onClick={copyToClipboard}
-      className="p-2 cursor-pointer rounded-md text-neutral-400 hover:text-black dark:hover:text-white
-       dark:bg-neutral-800 bg-neutral-200  transition-all  duration-300 ease-in "
+      className={cn(" cursor-pointer ", className)}
       aria-label="Copy text"
     >
       <AnimatePresence mode="wait" initial={false}>
         {isCopied ? (
           <motion.div
             key="open"
-            initial={{ opacity: 0, scale: 0.97, filter: "blur(2px)" }}
-            animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-            exit={{ opacity: 0, scale: 0.97, filter: "blur(2px)" }}
+            initial={{ opacity: 0, scale: 1, filter: "blur(2px)" }}
+            animate={{ opacity: 1, scale: 0.97, filter: "blur(0px)" }}
+            exit={{ opacity: 0, scale: 1, filter: "blur(2px)" }}
             transition={{ duration: 0.15, ease: "easeOut" }}
           >
             {" "}
-            <IconCheck className="w-4 h-4 text-green-500" />
+            <IconCheck size={size} className="text-green-500" />
           </motion.div>
         ) : (
           <motion.div
             key="closed"
-            initial={{ opacity: 0, scale: 0.97, filter: "blur(2px)" }}
-            animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-            exit={{ opacity: 0, scale: 0.97, filter: "blur(2px)" }}
+            initial={{ opacity: 0, scale: 1, filter: "blur(2px)" }}
+            animate={{ opacity: 1, scale: 0.97, filter: "blur(0px)" }}
+            exit={{ opacity: 0, scale: 1, filter: "blur(2px)" }}
             transition={{ duration: 0.15, ease: "easeOut" }}
           >
-            <IconCopy className="w-4 h-4" />
+            <Copy size={size} />
           </motion.div>
         )}
       </AnimatePresence>

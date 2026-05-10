@@ -2,9 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { IconSearch, IconCommand } from "@tabler/icons-react";
-import { motion, AnimatePresence } from "framer-motion";
-
-import { IconList } from "@/lib/IconList";
+import { motion, AnimatePresence } from "motion/react";
 
 interface SearchBarProps {
   onSearch?: (query: string) => void;
@@ -18,7 +16,6 @@ export function SearchBar({ onSearch }: SearchBarProps) {
     onSearch?.(query);
   }, [query, onSearch]);
 
-  // Keyboard shortcut listener
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key === "k") {

@@ -38,7 +38,8 @@ export function InstallCommand({ componentName }: InstallCommandProps) {
      bg-neutral-200/20 dark:bg-neutral-900"
     >
       <div
-        className="flex items-center justify-between px-4 py-3 border-b border-neutral-200 dark:border-neutral-800
+        className="flex items-center justify-between px-4 py-3 border-b border-neutral-200
+         dark:border-neutral-800
        "
       >
         <div className="flex items-center gap-2">
@@ -67,7 +68,10 @@ export function InstallCommand({ componentName }: InstallCommandProps) {
             </motion.button>
           ))}
         </div>
-        <CopyButton textToCopy={commandText} />
+        <CopyButton
+          textToCopy={commandText}
+          className="rounded-md ring dark:ring-neutral-700 dark:hover:bg-neutral-800 transition-all duration-300 ease-in p-2"
+        />
       </div>
 
       <div className="p-4 overflow-x-auto bg-neutral-200/20 dark:bg-neutral-900">
