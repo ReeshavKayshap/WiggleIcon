@@ -29,12 +29,12 @@ export function SearchBar({ onSearch }: SearchBarProps) {
   }, []);
 
   return (
-    <div className="w-full max-w-2xl mx-auto mt-16 relative">
+    <div className="relative">
       <div
         className={`
-          relative flex items-center gap-3 px-5 py-4 rounded-2xl
+          relative flex items-center gap-3 px-5 py-3 rounded-xl
           bg-neutral-50/50 dark:bg-neutral-900/50 backdrop-blur-xl
-          border transition-all duration-500 ease-in-out
+          border transition-all duration-500 ease-in-out w-full
           ${
             isFocused
               ? "border-neutral-400 dark:border-neutral-700 shadow-[0_0_0_1px_rgba(0,0,0,0.1),0_8px_30px_rgba(0,0,0,0.1)] dark:shadow-[0_0_0_1px_rgba(255,255,255,0.1),0_8px_30px_rgba(0,0,0,0.2)] bg-white dark:bg-neutral-950"
@@ -44,7 +44,7 @@ export function SearchBar({ onSearch }: SearchBarProps) {
       >
         <div className="relative">
           <IconSearch
-            size={22}
+            size={20}
             className={`${
               isFocused
                 ? "text-neutral-900 dark:text-neutral-100"
@@ -62,8 +62,9 @@ export function SearchBar({ onSearch }: SearchBarProps) {
         <input
           id="search-input"
           type="text"
-          placeholder="Search components..."
-          className="flex-1 bg-transparent outline-none text-neutral-900 dark:text-neutral-100 placeholder:text-neutral-500 font-sans text-xl"
+          placeholder="Search Icons..."
+          className="flex-1 bg-transparent outline-none text-neutral-900 dark:text-neutral-100
+           placeholder:text-neutral-500 font-sans text-md"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           onFocus={() => setIsFocused(true)}
@@ -77,12 +78,11 @@ export function SearchBar({ onSearch }: SearchBarProps) {
                 initial={{ opacity: 0, x: 10 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: 10 }}
-                className="hidden sm:flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-neutral-200/50 dark:bg-neutral-800/50 border border-neutral-300/50 dark:border-neutral-700/50"
+                className="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-neutral-200/50
+                 dark:bg-neutral-800/50 border border-neutral-300/50 dark:border-neutral-700/50"
               >
                 <IconCommand size={14} className="text-neutral-500" />
-                <span className="text-xs font-bold text-neutral-500 tracking-tighter">
-                  K
-                </span>
+                <span className="text-xs font-bold text-neutral-500">K</span>
               </motion.div>
             )}
           </AnimatePresence>

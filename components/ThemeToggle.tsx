@@ -1,34 +1,65 @@
 "use client";
 
-import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
+import { flushSync } from "react-dom";
+import { useTheme } from "next-themes";
+
+import { Moon, Sun } from "./icons";
 
 export function ThemeToggle() {
-  const [mounted, setMounted] = useState(false);
   const { resolvedTheme, setTheme } = useTheme();
+
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  if (!mounted) {
-    return (
-      <div className="fixed right-5 top-5 z-50 h-11 w-11" aria-hidden="true" />
-    );
-  }
+  if (!mounted) return null;
 
-  const toggleTheme = () => {
-    setTheme(resolvedTheme === "dark" ? "light" : "dark");
+  const isDark = resolvedTheme === "dark";
+
+  const toggleTheme = async () => {
+    const nextTheme = isDark ? "light" : "dark";
+
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+
+    if (!document.startViewTransition || reduceMotion) {
+      setTheme(nextTheme);
+      return;
+    }
+
+    const transition = document.startViewTransition(() => {
+      flushSync(() => {
+        setTheme(nextTheme);
+      });
+    });
+
+    await transition.ready;
+
+    document.documentElement.animate(
+      {
+        clipPath: ["inset(0 0 100% 0)", "inset(0 0 0 0)"],
+      },
+      {
+        duration: 650,
+        easing: "cubic-bezier(0.87, 0, 0.13, 1)",
+        pseudoElement: "::view-transition-new(root)",
+      },
+    );
   };
 
   return (
     <button
+      type="button"
       onClick={toggleTheme}
       aria-label="Toggle theme"
-      className="size-10 cursor-pointer items-center justify-center rounded-full border 
-      border-foreground/10 bg-neutral-100 dark:bg-neutral-900 shadow-sm"
+      className="p-2.5 cursor-pointer flex items-center justify-center rounded-full
+       border border-foreground/10 bg-neutral-100 dark:bg-neutral-900 shadow-sm "
     >
-      {resolvedTheme === "dark" ? <h1>light</h1> : <h1>dark</h1>}
+      {isDark ? <Sun size={20} /> : <Moon size={20} />}
     </button>
   );
 }

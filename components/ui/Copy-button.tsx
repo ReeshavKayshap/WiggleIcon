@@ -54,9 +54,9 @@ export function CopyButton({
         {isCopied ? (
           <motion.div
             key="open"
-            initial={{ opacity: 0, scale: 1, filter: "blur(2px)" }}
+            initial={{ opacity: 0, scale: 0.95, filter: "blur(2px)" }}
             animate={{ opacity: 1, scale: 0.97, filter: "blur(0px)" }}
-            exit={{ opacity: 0, scale: 1, filter: "blur(2px)" }}
+            exit={{ opacity: 0, scale: 0.95, filter: "blur(2px)" }}
             transition={{ duration: 0.15, ease: "easeOut" }}
           >
             {" "}
@@ -65,9 +65,9 @@ export function CopyButton({
         ) : (
           <motion.div
             key="closed"
-            initial={{ opacity: 0, scale: 1, filter: "blur(2px)" }}
+            initial={{ opacity: 0, scale: 0.95, filter: "blur(2px)" }}
             animate={{ opacity: 1, scale: 0.97, filter: "blur(0px)" }}
-            exit={{ opacity: 0, scale: 1, filter: "blur(2px)" }}
+            exit={{ opacity: 0, scale: 0.95, filter: "blur(2px)" }}
             transition={{ duration: 0.15, ease: "easeOut" }}
           >
             <Copy size={size} />
