@@ -25,15 +25,19 @@ export const Moon = forwardRef<AnimatedIconHandle, IconProps>(
       );
     };
 
+    const stop = () => {
+      animate(".main", { rotate: 0 }, { duration: 0.1, ease: "easeInOut" });
+    };
     useImperativeHandle(ref, () => ({
       startAnimation: start,
-      stopAnimation: () => {},
+      stopAnimation: stop,
     }));
 
     return (
       <>
         <motion.svg
           onMouseEnter={start}
+          onMouseLeave={stop}
           ref={scope}
           width={size}
           height={size}
@@ -43,7 +47,7 @@ export const Moon = forwardRef<AnimatedIconHandle, IconProps>(
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
           strokeLinejoin="round"
-          className={`cursor-pointer${className}`}
+          className={`cursor-pointer ${className}`}
         >
           <path
             className="main"

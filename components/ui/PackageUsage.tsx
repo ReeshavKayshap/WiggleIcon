@@ -24,6 +24,14 @@ export function PackageUsage({
       transition={{ duration: 0.25, ease: "easeOut" }}
       className="flex flex-col gap-6 "
     >
+      <div className="flex flex-col gap-2 ">
+        <span className="text-sm font-medium font-sans dark:text-neutral-300 text-neutral-600 px-2">
+          Install via shadcn CLI
+        </span>
+
+        <InstallCommand componentName={iconName} />
+      </div>
+
       <div className="flex flex-col gap-2">
         <div className="flex items-center justify-between px-2">
           <span className="text-sm font-medium font-sans dark:text-neutral-300 text-neutral-600 ">
@@ -45,7 +53,11 @@ export function PackageUsage({
             import {"{ "}
             <span className="text-sky-300">{iconName}</span>
             {" }"} from
-            <span className="text-amber-300"> "@wiggle/icons-react"</span>;
+            <span className="text-amber-300">
+              {" "}
+              "@/components/icons/{iconName}"
+            </span>
+            ;
           </code>
         </div>
       </div>
@@ -71,14 +83,6 @@ export function PackageUsage({
             {jsxUsage}
           </pre>
         </div>
-      </div>
-
-      <div className="flex flex-col gap-2 ">
-        <span className="text-sm font-medium font-sans dark:text-neutral-300 text-neutral-600 px-2">
-          Install
-        </span>
-
-        <InstallCommand componentName="@wiggle/icons-react" />
       </div>
     </motion.div>
   );

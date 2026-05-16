@@ -18,7 +18,7 @@ export const Activity = forwardRef<AnimatedIconHandle, IconProps>(
     const [scope, animate] = useAnimate();
 
     const start = () => {
-      animate(".show", { pathLength: [0, 1] }, { duration, ease: "easeInOut" });
+      animate(".show", { pathLength: [0, 1] }, { duration, ease: "easeOut" });
     };
 
     const stop = () => {

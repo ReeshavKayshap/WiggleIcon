@@ -37,7 +37,7 @@ export function SearchBar({ onSearch }: SearchBarProps) {
           border transition-all duration-500 ease-in-out w-full
           ${
             isFocused
-              ? "border-neutral-400 dark:border-neutral-700 shadow-[0_0_0_1px_rgba(0,0,0,0.1),0_8px_30px_rgba(0,0,0,0.1)] dark:shadow-[0_0_0_1px_rgba(255,255,255,0.1),0_8px_30px_rgba(0,0,0,0.2)] bg-white dark:bg-neutral-950"
+              ? "border-neutral-400 dark:border-neutral-700 shadow-sm bg-black/10"
               : "border-neutral-200 dark:border-neutral-800 shadow-sm"
           }
         `}
@@ -72,12 +72,13 @@ export function SearchBar({ onSearch }: SearchBarProps) {
         />
 
         <div className="flex items-center gap-2">
-          <AnimatePresence mode="wait">
+          <AnimatePresence mode="wait" initial={false}>
             {!query && (
               <motion.div
-                initial={{ opacity: 0, x: 10 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: 10 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
                 className="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-neutral-200/50
                  dark:bg-neutral-800/50 border border-neutral-300/50 dark:border-neutral-700/50"
               >

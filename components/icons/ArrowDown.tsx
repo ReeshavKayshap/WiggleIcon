@@ -18,10 +18,10 @@ export const ArrowDown = forwardRef<AnimatedIconHandle, IconProps>(
     const [scope, animate] = useAnimate();
 
     const start = () => {
-      animate(".main", { rotate: 180 }, { duration, ease: "easeOut" });
+      animate(".main", { rotate: 180 }, { duration, ease: "easeInOut" });
     };
     const stop = () => {
-      animate(".main", { rotate: 0 }, { duration, ease: "easeOut" });
+      animate(".main", { rotate: 0 }, { duration, ease: "easeInOut" });
     };
     useImperativeHandle(ref, () => ({
       startAnimation: start,

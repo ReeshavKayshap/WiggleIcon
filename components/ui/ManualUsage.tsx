@@ -47,7 +47,7 @@ export function ManualUsage({ iconCode }: ManualUsageProps) {
             className="dark:bg-neutral-900/80 bg-neutral-200/20 border dark:border-neutral-800/40
          border-neutral-200/80 rounded-lg p-3 overflow-x-auto"
           >
-            <code className="text-[13px] font-mono text-neutral-400">
+            <code className="text-[13px] font-mono dark:text-neutral-300 text-neutral-800">
               npm install motion
             </code>
           </div>

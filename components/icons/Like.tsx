@@ -4,7 +4,7 @@ import { motion, useAnimate } from "motion/react";
 import { forwardRef, useImperativeHandle } from "react";
 import type { AnimatedIconHandle, IconProps } from "@/types/Type";
 
-export const ThumbUp = forwardRef<AnimatedIconHandle, IconProps>(
+export const Like = forwardRef<AnimatedIconHandle, IconProps>(
   (
     {
       size = 24,
@@ -57,4 +57,4 @@ export const ThumbUp = forwardRef<AnimatedIconHandle, IconProps>(
   },
 );
 
-ThumbUp.displayName = "ThumbUp";
+Like.displayName = "Like";

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useAnimate } from "motion/react";
-import { forwardRef, useEffect, useImperativeHandle } from "react";
+import { forwardRef, useImperativeHandle } from "react";
 import type { AnimatedIconHandle, IconProps } from "@/types/Type";
 
 export const Check = forwardRef<AnimatedIconHandle, IconProps>(
@@ -11,7 +11,7 @@ export const Check = forwardRef<AnimatedIconHandle, IconProps>(
       strokeWidth = 2,
       color = "currentColor",
       className = "",
-      duration = 0.5,
+      duration = 0.7,
     },
     ref,
   ) => {
@@ -27,16 +27,10 @@ export const Check = forwardRef<AnimatedIconHandle, IconProps>(
       );
     };
 
-    // const stop = () => {};
-
     useImperativeHandle(ref, () => ({
       startAnimation: start,
-      stopAnimation: stop,
+      stopAnimation: () => {},
     }));
-
-    useEffect(() => {
-      start();
-    }, []);
 
     return (
       <>

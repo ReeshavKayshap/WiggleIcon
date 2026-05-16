@@ -11,24 +11,32 @@ export const ArrowRight = forwardRef<AnimatedIconHandle, IconProps>(
       strokeWidth = 2,
       color = "currentColor",
       className = "",
-      duration = 0.6,
+      duration = 0.7,
     },
     ref,
   ) => {
     const [scope, animate] = useAnimate();
 
     const start = () => {
-      animate(".main", { x: [0, 1, -1, 1, 0] }, { duration, ease: "easeOut" });
+      animate(
+        ".main",
+        { x: [0, -1, 1, -1, 1, 0] },
+        { duration, ease: "easeInOut" },
+      );
+    };
+    const stop = () => {
+      animate(".main", { x: 0 }, { duration: 0.2, ease: "easeInOut" });
     };
     useImperativeHandle(ref, () => ({
       startAnimation: start,
-      stopAnimation: () => {},
+      stopAnimation: stop,
     }));
     return (
       <>
         <motion.svg
           ref={scope}
           onMouseEnter={start}
+          onMouseLeave={stop}
           xmlns="http://www.w3.org/2000/svg"
           width={size}
           height={size}

@@ -5,15 +5,17 @@ import Container from "@/components/Container";
 import { Landing } from "@/components/ui/Landing";
 import { Nav } from "@/components/ui/Nav";
 import { IconShowcase } from "@/components/ui/IconShowcase";
+import Footer from "@/components/ui/Fotter";
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState("");
 
   return (
-    <Container className="pt-5">
+    <Container className="pt-5 px-5">
       <Nav />
       <Landing setSearchQuery={setSearchQuery} />
       <IconShowcase searchQuery={searchQuery} />
+      <Footer />
     </Container>
   );
 }

@@ -40,14 +40,33 @@ export const Brightness = forwardRef<AnimatedIconHandle, IconProps>(
         { duration, ease: "easeInOut", delay: 0.6 },
       );
     };
+
+    const stop = () => {
+      animate(
+        ".main",
+        { pathLength: 1, pathOffset: 0, opacity: 1 },
+        { duration: 0.1, ease: "easeInOut" },
+      );
+      animate(
+        ".maintwo",
+        { pathLength: 1, pathOffset: 0, opacity: 1 },
+        { duration: 0.1, ease: "easeInOut" },
+      );
+      animate(
+        ".mainThree",
+        { pathLength: 1, pathOffset: 0, opacity: 1 },
+        { duration: 0.1, ease: "easeInOut" },
+      );
+    };
     useImperativeHandle(ref, () => ({
       startAnimation: start,
-      stopAnimation: () => {},
+      stopAnimation: stop,
     }));
     return (
       <>
         <motion.svg
           onMouseEnter={start}
+          onMouseLeave={stop}
           ref={scope}
           xmlns="http://www.w3.org/2000/svg"
           width={size}
@@ -58,7 +77,7 @@ export const Brightness = forwardRef<AnimatedIconHandle, IconProps>(
           strokeWidth={strokeWidth}
           strokeLinecap="round"
           strokeLinejoin="round"
-          className={`cursor-pointer${className}`}
+          className={`cursor-pointer ${className}`}
         >
           <path stroke="none" d="M0 0h24v24H0z" fill="none" />
           <path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />

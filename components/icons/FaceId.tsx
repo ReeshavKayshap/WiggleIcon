@@ -37,17 +37,42 @@ export const FaceId = forwardRef<AnimatedIconHandle, IconProps>(
 
         { opacity: [0, 1, 0, 1, 0], y: [0, 23, 0] },
 
-        { duration: duration * 1.625, ease: "easeInOut", delay: 0.9 },
+        { duration: duration * 1.625, ease: "easeOut", delay: 1 },
+      );
+    };
+
+    const stop = () => {
+      animate(
+        ".face",
+
+        { x: 0 },
+
+        { duration: duration * 0.1, ease: "easeInOut" },
+      );
+      animate(
+        "#blink",
+
+        { scaleY: 1 },
+
+        { duration: duration * 0.1, ease: "easeInOut", delay: 0.3 },
+      );
+      animate(
+        ".scan",
+
+        { opacity: 0, y: 0 },
+
+        { duration: 0.1, ease: "easeInOut" },
       );
     };
     useImperativeHandle(ref, () => ({
       startAnimation: start,
-      stopAnimation: () => {},
+      stopAnimation: stop,
     }));
     return (
       <>
         <motion.svg
           onMouseEnter={start}
+          onMouseLeave={stop}
           ref={scope}
           width={size}
           height={size}

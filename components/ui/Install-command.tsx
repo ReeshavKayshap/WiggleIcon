@@ -9,12 +9,17 @@ interface InstallCommandProps {
   componentName?: string;
 }
 
-type PackageManager = "npm" | "pnpm" | "yarn" | "bun";
+type Runner = "npm" | "pnpm" | "bun" | "yarn";
 
 export function InstallCommand({ componentName }: InstallCommandProps) {
-  const [activeManager, setActiveManager] = useState<PackageManager>("npm");
+  const [activeRunner, setActiveRunner] = useState<Runner>("npm");
   const [isOpen, setIsOpen] = useState(false);
+  const [baseUrl, setBaseUrl] = useState("");
   const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setBaseUrl(window.location.origin);
+  }, []);
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -31,48 +36,51 @@ export function InstallCommand({ componentName }: InstallCommandProps) {
   }, []);
 
   const commandText = React.useMemo(() => {
-    const packageName = componentName || "@wiggle/icons-react";
+    const iconName = componentName || "icon";
+    const registryUrl = `${baseUrl}/r/${iconName}.json`;
 
-    switch (activeManager) {
+    switch (activeRunner) {
       case "pnpm":
-        return `pnpm add ${packageName}`;
+        return `pnpm dlx shadcn@latest add ${registryUrl}`;
       case "bun":
-        return `bun add ${packageName}`;
+        return `bunx --bun shadcn@latest add ${registryUrl}`;
       case "yarn":
-        return `yarn add ${packageName}`;
+        return `yarn dlx shadcn@latest add ${registryUrl}`;
       case "npm":
       default:
-        return `npm install ${packageName}`;
+        return `npx shadcn@latest add ${registryUrl}`;
     }
-  }, [activeManager, componentName]);
+  }, [activeRunner, baseUrl, componentName]);
 
-  const managers: PackageManager[] = ["pnpm", "npm", "yarn", "bun"];
+  const runners: Runner[] = ["npm", "pnpm", "bun", "yarn"];
 
   return (
     <div
       ref={dropdownRef}
-      className="relative  w-full p-1 ring ring-neutral-200/80 dark:ring-neutral-800/60 rounded-lg bg-neutral-100
+      className="relative w-full p-1 ring ring-neutral-200/80 dark:ring-neutral-800/60 rounded-lg bg-neutral-100
        dark:bg-neutral-900/40 shadow-sm shadow-black/10"
     >
       <div
-        className="px-3 py-4 overflow-x-auto dark:bg-background bg-[#FAFAFA] flex items-center justify-between 
+        className="px-3 py-2.5 overflow-x-auto custom-scrollbar dark:bg-[#0A0A0A] bg-[#FAFAFA] flex items-center justify-between 
       gap-4 rounded-md"
       >
-        <code
-          className="text-[15px] font-mono text-neutral-900 dark:text-zinc-300 flex items-center 
-        whitespace-nowrap"
-        >
-          <span className="text-emerald-500 mr-2">{">_"}</span>
-          <AnimatePresence mode="wait">
+        <code className="text-[13px] font-mono text-neutral-900 dark:text-zinc-300 block pb-1 leading-relaxed">
+          <span className="text-green-600 mr-2">{"$"}</span>
+          <AnimatePresence mode="wait" initial={false}>
             <motion.span
-              key={commandText}
+              key={`${componentName}-${activeRunner}`}
               initial={{ opacity: 0, scale: 0.95, filter: `blur(3px)` }}
               animate={{ opacity: 1, scale: 0.97, filter: `blur(0px)` }}
               exit={{ opacity: 0, scale: 0.95, filter: `blur(3px)` }}
               transition={{ duration: 0.2, ease: "easeOut" }}
-              className="inline-block"
+              className="inline break-all"
             >
-              {commandText}
+              {commandText.split("/").map((part, index) => (
+                <React.Fragment key={index}>
+                  {index === 0 ? part + "/" : part}
+                  {index === 0 && <br />}
+                </React.Fragment>
+              ))}
             </motion.span>
           </AnimatePresence>
         </code>
@@ -100,24 +108,24 @@ export function InstallCommand({ componentName }: InstallCommandProps) {
           animate={{ opacity: 1, scale: 0.97, filter: `blur(0px)` }}
           exit={{ opacity: 0, scale: 0.95, filter: `blur(2px)` }}
           transition={{ duration: 0.2, ease: "easeOut" }}
-          className="absolute right-0 top-full mt-3 w-28 overflow-hidden rounded-xl border dark:border-neutral-700
-         border-neutral-200 bg-white dark:bg-neutral-900 shadow-sm shadow-black/10  "
+          className="absolute right-0 top-full mt-3 w-40 overflow-hidden rounded-xl border dark:border-neutral-800/60
+         border-neutral-200 bg-white dark:bg-neutral-900 shadow-xl shadow-black/10 z-20"
         >
-          <div className="flex flex-col p-1">
-            {managers.map((manager) => (
+          <div className="flex flex-col py-1.5 px-2 gap-1">
+            {runners.map((runner) => (
               <button
-                key={manager}
+                key={runner}
                 onClick={() => {
-                  setActiveManager(manager);
+                  setActiveRunner(runner);
                   setIsOpen(false);
                 }}
-                className={`px-3 py-1.5 text-sm text-left rounded-sm transition-colors font-mono font-medium ${
-                  activeManager === manager
+                className={`px-3 py-1.5 text-sm text-left rounded-[8px] transition-colors font-mono font-medium ${
+                  activeRunner === runner
                     ? "bg-neutral-100 dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100 font-medium"
                     : "text-neutral-600 dark:text-neutral-400 hover:bg-neutral-50 dark:hover:bg-neutral-800/60"
                 }`}
               >
-                {manager}
+                {runner}
               </button>
             ))}
           </div>

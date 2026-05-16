@@ -5,7 +5,7 @@ import { useTheme } from "next-themes";
 import { CustomizeBar } from "@/components/ui/CustomizeBar";
 import { IconCard } from "@/components/ui/icon-card-preview";
 import { IconDetailPreview } from "@/components/ui/IconDetailPreview";
-import * as Icons from "@/components/icons";
+import * as Icons from "@/lib";
 import { motion, AnimatePresence } from "motion/react";
 import { AnimatedIconHandle, IconProps } from "@/types/Type";
 import React from "react";
@@ -60,20 +60,50 @@ export function IconShowcase({ searchQuery }: IconShowcaseProps) {
     icon.name.toLowerCase().includes(searchQuery.toLowerCase()),
   );
 
+  const [isFirstRender, setIsFirstRender] = useState(true);
+
+  useEffect(() => {
+    setIsFirstRender(false);
+  }, []);
+
   return (
     <>
-      <div className="flex justify-between w-full gap-10 items-start">
-        <div className="mt-24 pb-40 w-full">
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 gap-3">
+      <div className="flex flex-col-reverse md:flex-row justify-between w-full gap-10 items-start">
+        <div className="mt-8 md:mt-24 w-full">
+          <motion.div
+            key={`${searchQuery}-${resolvedTheme}`}
+            variants={{
+              hidden: { opacity: 1 },
+              show: {
+                transition: {
+                  staggerChildren: 0.02,
+                },
+              },
+            }}
+            initial={isFirstRender ? false : "hidden"}
+            animate="show"
+            className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 gap-3"
+          >
             <AnimatePresence mode="popLayout">
               {filteredIcons.map((icon) => (
                 <motion.div
                   key={icon.name}
                   layout
-                  initial={{ opacity: 0, scale: 0.9, y: 20 }}
-                  animate={{ opacity: 1, scale: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                  transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
+                  variants={{
+                    hidden: {
+                      opacity: 0,
+                      y: 10,
+                      filter: "blur(10px)",
+                      scale: 0.9,
+                    },
+                    show: { opacity: 1, y: 0, filter: "blur(0px)", scale: 1 },
+                  }}
+                  exit={{ opacity: 0, scale: 0.9, filter: "blur(10px)" }}
+                  transition={{
+                    duration: 0.3,
+                    ease: "easeOut",
+                    layout: { duration: 0.3 },
+                  }}
                 >
                   <IconCard
                     name={icon.name}
@@ -87,15 +117,16 @@ export function IconShowcase({ searchQuery }: IconShowcaseProps) {
                 </motion.div>
               ))}
             </AnimatePresence>
-          </div>
+          </motion.div>
 
           {filteredIcons.length === 0 && (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="text-center py-32 bg-neutral-50 dark:bg-neutral-900/20 rounded-[3rem] border border-dashed border-neutral-200 dark:border-neutral-800"
+              className="text-center py-20 md:py-32 bg-neutral-50 dark:bg-neutral-900/20 rounded-4xl md:rounded-[3rem] 
+              border border-dashed border-neutral-200 dark:border-neutral-800"
             >
-              <p className="text-neutral-400 text-2xl font-medium">
+              <p className="text-neutral-400 text-xl md:text-2xl font-medium">
                 No components found for{" "}
                 <span className="text-neutral-900 dark:text-neutral-100">
                   &quot;{searchQuery}&quot;
@@ -105,8 +136,8 @@ export function IconShowcase({ searchQuery }: IconShowcaseProps) {
           )}
         </div>
 
-        <div className="mt-24 flex flex-col md:flex-row justify-between items-start gap-10 w-full max-w-[340px] sticky top-5">
-          <div className="w-full max-w-lg">
+        <div className="mt-24 flex flex-col justify-between items-start gap-10 w-full md:max-w-[340px] md:sticky md:top-5">
+          <div className="md:w-full  w-fit  md:max-w-lg">
             <CustomizeBar
               size={size}
               setSize={setSize}

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { flushSync } from "react-dom";
 import { useTheme } from "next-themes";
 
-import { Moon, Sun } from "./icons";
+import { Moon, Sun } from "../lib";
 
 export function ThemeToggle() {
   const { resolvedTheme, setTheme } = useTheme();
@@ -14,8 +14,6 @@ export function ThemeToggle() {
   useEffect(() => {
     setMounted(true);
   }, []);
-
-  if (!mounted) return null;
 
   const isDark = resolvedTheme === "dark";
 
@@ -56,10 +54,17 @@ export function ThemeToggle() {
       type="button"
       onClick={toggleTheme}
       aria-label="Toggle theme"
-      className="p-2.5 cursor-pointer flex items-center justify-center rounded-full
-       border border-foreground/10 bg-neutral-100 dark:bg-neutral-900 shadow-sm "
+      className="size-10 cursor-pointer flex items-center justify-center rounded-full
+       border border-foreground/10 bg-neutral-100 dark:bg-neutral-900 shadow-sm transition-colors"
     >
-      {isDark ? <Sun size={20} /> : <Moon size={20} />}
+      <div className="relative w-5 h-5">
+        <div className="dark:hidden">
+          <Moon size={20} />
+        </div>
+        <div className="hidden dark:block">
+          <Sun size={20} />
+        </div>
+      </div>
     </button>
   );
 }

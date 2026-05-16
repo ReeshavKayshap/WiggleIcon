@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import { IconCheck } from "@tabler/icons-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { Copy } from "../icons";
+import { Copy } from "../../lib";
 
 interface CopyButtonProps {
   textToCopy: string;

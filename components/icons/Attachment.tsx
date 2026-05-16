@@ -11,15 +11,20 @@ export const Attachment = forwardRef<AnimatedIconHandle, IconProps>(
       strokeWidth = 2,
       color = "currentColor",
       className = "",
-      duration = 0.6,
+      duration = 0.8,
     },
     ref,
   ) => {
     const [scope, animate] = useAnimate();
 
     const start = () => {
-      animate(".main", { scaleX: [1, -1, 1] }, { duration, ease: "easeOut" });
+      animate(
+        ".main",
+        { pathLength: [0, 1], opacity: [0, 1] },
+        { duration, ease: "easeInOut" },
+      );
     };
+
     useImperativeHandle(ref, () => ({
       startAnimation: start,
       stopAnimation: () => {},

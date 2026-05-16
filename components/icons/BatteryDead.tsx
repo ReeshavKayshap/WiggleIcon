@@ -4,7 +4,7 @@ import { motion, useAnimate } from "motion/react";
 import { forwardRef, useImperativeHandle } from "react";
 import type { AnimatedIconHandle, IconProps } from "@/types/Type";
 
-export const Battery = forwardRef<AnimatedIconHandle, IconProps>(
+export const BatteryDead = forwardRef<AnimatedIconHandle, IconProps>(
   (
     {
       size = 24,
@@ -74,4 +74,4 @@ export const Battery = forwardRef<AnimatedIconHandle, IconProps>(
   },
 );
 
-Battery.displayName = "Battery";
+BatteryDead.displayName = "BatteryDead";

@@ -74,7 +74,6 @@ export function CustomizeBar({
         </div>
 
         <div className="flex flex-col gap-7 mt-1">
-          {/* Size Slider */}
           <div className="flex flex-col gap-3">
             <div className="flex justify-between items-center w-full">
               <span className="dark:text-white text-neutral-900 font-semibold text-[15px]">
