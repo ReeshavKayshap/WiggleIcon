@@ -108,10 +108,10 @@ export function InstallCommand({ componentName }: InstallCommandProps) {
           animate={{ opacity: 1, scale: 0.97, filter: `blur(0px)` }}
           exit={{ opacity: 0, scale: 0.95, filter: `blur(2px)` }}
           transition={{ duration: 0.2, ease: "easeOut" }}
-          className="absolute right-0 top-full mt-3 w-40 overflow-hidden rounded-xl border dark:border-neutral-800/60
+          className="absolute right-0 top-full mt-3 w-36 overflow-hidden rounded-xl border dark:border-neutral-800/60
          border-neutral-200 bg-white dark:bg-neutral-900 shadow-xl shadow-black/10 z-20"
         >
-          <div className="flex flex-col py-1.5 px-2 gap-1">
+          <div className="flex flex-col py-1.5 px-1 gap-1">
             {runners.map((runner) => (
               <button
                 key={runner}
@@ -119,7 +119,7 @@ export function InstallCommand({ componentName }: InstallCommandProps) {
                   setActiveRunner(runner);
                   setIsOpen(false);
                 }}
-                className={`px-3 py-1.5 text-sm text-left rounded-[8px] transition-colors font-mono font-medium ${
+                className={`px-2 py-1.5 text-sm text-left rounded-[7.5px] transition-colors font-mono font-medium ${
                   activeRunner === runner
                     ? "bg-neutral-100 dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100 font-medium"
                     : "text-neutral-600 dark:text-neutral-400 hover:bg-neutral-50 dark:hover:bg-neutral-800/60"
