@@ -29,14 +29,15 @@ export function IconCard({
 
   return (
     <div
-      className="h-full w-full p-1.5 ring ring-neutral-200/80 dark:ring-neutral-800/60 rounded-2xl
-     bg-neutral-50 dark:bg-neutral-900/40 shadow-sm shadow-black/10"
+      className="h-full w-full p-1 ring ring-neutral-200 dark:ring-neutral-800/70 rounded-2xl
+     bg-[#FAFAFA]  dark:bg-neutral-900/40  shadow-[0_4px_8px_rgba(0,0,0,0.05)]"
     >
       <div
         onClick={onClick}
-        className="w-full flex flex-col justify-center items-center gap-3 rounded-xl py-6 dark:bg-[#0A0A0A] bg-[#FAFAFA] 
-       ring ring-neutral-200/30 dark:ring-neutral-900/30 transition-colors duration-300 hover:dark:bg-[#121212] hover:bg-neutral-100
-       "
+        className="w-full flex flex-col justify-center items-center gap-3 rounded-xl py-7 dark:bg-[#0A0A0A] bg-[#ffffff] hover:shadow-sm hover:shadow-black/9
+       ring ring-neutral-200/40 hover:ring-neutral-200/40 dark:ring-neutral-900/60 hover:dark:ring-neutral-800/50 transition-all duration-150 ease-out
+        hover:dark:bg-neutral-900/50  hover:bg-gray-50/30  
+     "
       >
         <div className="flex flex-col items-center justify-center">
           <IconComponent

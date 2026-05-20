@@ -1,7 +1,10 @@
 "use client";
 
+import { useState, useRef, useEffect } from "react";
+import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
-import { IconRefresh } from "@tabler/icons-react";
+import { IconRefresh, IconPalette } from "@tabler/icons-react";
+import { HexColorPicker } from "react-colorful";
 
 interface CustomizeBarProps {
   size: number;
@@ -47,27 +50,53 @@ export function CustomizeBar({
   setColor,
   resetToDefault,
 }: CustomizeBarProps) {
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const activeColor = mounted && resolvedTheme === "dark" ? "#ffffff" : "#000000";
+  const inactiveColor = mounted && resolvedTheme === "dark" ? "#333333" : "#e5e5e5";
+
+  const [showPicker, setShowPicker] = useState(false);
+  const popoverRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        popoverRef.current &&
+        !popoverRef.current.contains(event.target as Node)
+      ) {
+        setShowPicker(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
   const sliderThumbClasses =
-    "[&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:size-[18px] [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[#1d82f5] [&::-webkit-slider-thumb]:shadow-sm [&::-webkit-slider-thumb]:cursor-pointer " +
-    "[&::-moz-range-thumb]:appearance-none [&::-moz-range-thumb]:size-[18px] [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-[#1d82f5] [&::-moz-range-thumb]:border-none [&::-moz-range-thumb]:cursor-pointer";
+    "[&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:size-[18px] [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-black dark:[&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:shadow-sm [&::-webkit-slider-thumb]:cursor-pointer " +
+    "[&::-moz-range-thumb]:appearance-none [&::-moz-range-thumb]:size-[18px] [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-black dark:[&::-moz-range-thumb]:bg-white [&::-moz-range-thumb]:border-none [&::-moz-range-thumb]:cursor-pointer";
 
   return (
     <div
-      className="relative  w-full p-1 ring ring-neutral-200/80 dark:ring-neutral-800/60 rounded-2xl bg-neutral-100
-       dark:bg-neutral-900/40 shadow-sm shadow-black/10 "
+      className="relative  w-full p-[5.5px] ring  ring-neutral-200 dark:ring-neutral-800/70 rounded-2xl 
+    bg-[#FAFAFA] dark:bg-neutral-900/40  shadow-[0_4px_8px_rgba(0,0,0,0.05)]"
     >
       <div
-        className="w-full max-w-[340px] flex flex-col gap-6 dark:bg-[#0A0A0A] bg-[#FAFAFA]  
-      p-7 rounded-xl font-sans  ring ring-neutral-200/30 dark:ring-neutral-900/30"
+        className="w-full max-w-[340px] flex flex-col gap-6 dark:bg-[#0A0A0A] bg-[#ffffff]
+      p-7 rounded-xl  ring ring-neutral-200/30 dark:ring-neutral-900/30"
       >
         <div className="flex justify-between items-center">
-          <h1 className="font-bold text-xl dark:text-white text-neutral-900 tracking-tight">
+          <h1 className="font-medium text-xl dark:text-white text-neutral-900 font-inter">
             Customize icons
           </h1>
 
           <button
             onClick={resetToDefault}
-            className="dark:text-gray-400 text-neutral-500 dark:hover:text-white hover:text-neutral-900 transition-colors p-1 rounded-md dark:hover:bg-slate-800 hover:bg-neutral-100 cursor-pointer"
+            className="dark:text-gray-400 text-neutral-500 dark:hover:text-white hover:text-neutral-900
+             transition-colors p-1 rounded-md dark:hover:bg-slate-800 hover:bg-neutral-100 cursor-pointer"
           >
             <IconRefresh size={20} stroke={1.5} />
           </button>
@@ -75,12 +104,12 @@ export function CustomizeBar({
 
         <div className="flex flex-col gap-7 mt-1">
           <div className="flex flex-col gap-3">
-            <div className="flex justify-between items-center w-full">
-              <span className="dark:text-white text-neutral-900 font-semibold text-[15px]">
+            <div className="flex justify-between items-center font-mono w-full">
+              <span className="dark:text-white text-neutral-900 font-medium text-[14px]">
                 Size:
               </span>
 
-              <span className="dark:text-gray-300 text-neutral-500 font-mono text-[15px]">
+              <span className="dark:text-gray-300 text-neutral-500 font-mono text-[14px]">
                 {size}
               </span>
             </div>
@@ -96,21 +125,21 @@ export function CustomizeBar({
                 sliderThumbClasses,
               )}
               style={{
-                background: `linear-gradient(to right, #1d82f5 0%, #1d82f5 ${
+                background: `linear-gradient(to right, ${activeColor} 0%, ${activeColor} ${
                   ((size - 24) / (48 - 24)) * 100
-                }%, #334155 ${((size - 24) / (48 - 24)) * 100}%, #334155 100%)`,
+                }%, ${inactiveColor} ${((size - 24) / (48 - 24)) * 100}%, ${inactiveColor} 100%)`,
               }}
             />
           </div>
 
           {/* Stroke Slider */}
           <div className="flex flex-col gap-3">
-            <div className="flex justify-between items-center w-full">
-              <span className="dark:text-white text-neutral-900 font-semibold text-[15px]">
+            <div className="flex justify-between items-center font-mono w-full">
+              <span className="dark:text-white text-neutral-900 font-medium text-[14px]">
                 Stroke:
               </span>
 
-              <span className="dark:text-gray-300 text-neutral-500 font-mono text-[15px]">
+              <span className="dark:text-gray-300 text-neutral-500 text-[14px]">
                 {strokeWidth}
               </span>
             </div>
@@ -127,23 +156,23 @@ export function CustomizeBar({
                 sliderThumbClasses,
               )}
               style={{
-                background: `linear-gradient(to right, #1d82f5 0%, #1d82f5 ${
+                background: `linear-gradient(to right, ${activeColor} 0%, ${activeColor} ${
                   ((strokeWidth - 1) / (4 - 1)) * 100
-                }%, #334155 ${
+                }%, ${inactiveColor} ${
                   ((strokeWidth - 1) / (4 - 1)) * 100
-                }%, #334155 100%)`,
+                }%, ${inactiveColor} 100%)`,
               }}
             />
           </div>
 
           {/* Animation Slider */}
           <div className="flex flex-col gap-3">
-            <div className="flex justify-between items-center w-full">
-              <span className="dark:text-white text-neutral-900 font-semibold text-[15px]">
-                Animation:
+            <div className="flex justify-between items-center font-mono w-full">
+              <span className="dark:text-white text-neutral-900 font-medium text-[14px]">
+                Duration:
               </span>
 
-              <span className="text-gray-300 font-mono text-[15px]">
+              <span className="text-gray-300 text-[14px]">
                 {durationOverride === null ? "0" : `${durationOverride}`}
               </span>
             </div>
@@ -160,11 +189,11 @@ export function CustomizeBar({
                 sliderThumbClasses,
               )}
               style={{
-                background: `linear-gradient(to right, #1d82f5 0%, #1d82f5 ${
+                background: `linear-gradient(to right, ${activeColor} 0%, ${activeColor} ${
                   (((durationOverride ?? 1) - 0.2) / (2 - 0.2)) * 100
-                }%, #334155 ${
+                }%, ${inactiveColor} ${
                   (((durationOverride ?? 1) - 0.2) / (2 - 0.2)) * 100
-                }%, #334155 100%)`,
+                }%, ${inactiveColor} 100%)`,
               }}
             />
           </div>
@@ -172,7 +201,7 @@ export function CustomizeBar({
           {/* Color Palette */}
           <div className="flex flex-col gap-4">
             <div className="flex justify-between items-center">
-              <span className="dark:text-white text-neutral-900 font-semibold text-[15px]">
+              <span className="dark:text-white text-neutral-900 font-medium font-mono text-[14px]">
                 Color:
               </span>
 
@@ -207,25 +236,41 @@ export function CustomizeBar({
               ))}
 
               {/* Custom Color Picker */}
-              <label
-                className="relative size-8 rounded-full overflow-hidden border-2 border-dashed border-neutral-600 
-              hover:border-white cursor-pointer transition-all"
-              >
-                <input
-                  type="color"
-                  value={color}
-                  onChange={(e) => setColor(e.target.value)}
-                  className="absolute inset-0 opacity-0 cursor-pointer"
-                />
+              <div className="relative flex w-full" ref={popoverRef}>
+                <button
+                  type="button"
+                  title="Custom Color"
+                  onClick={() => setShowPicker(!showPicker)}
+                  className={cn(
+                    "relative flex items-center justify-center size-8 rounded-full border bg-white dark:bg-neutral-800 transition-all hover:scale-105 cursor-pointer",
+                    showPicker
+                      ? "border-neutral-900 dark:border-white text-neutral-900 dark:text-white"
+                      : "border-neutral-200 dark:border-neutral-700 text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:border-neutral-300 dark:hover:border-neutral-500 hover:shadow-sm",
+                  )}
+                >
+                  <IconPalette size={16} stroke={1.5} />
+                </button>
 
-                <div
-                  className="w-full h-full"
-                  style={{
-                    background:
-                      "linear-gradient(135deg, #ff0000, #00ffcc, #3b82f6, #ff00ff)",
-                  }}
-                />
-              </label>
+                {showPicker && (
+                  <div
+                    className="absolute top-0 right-0 w-fit z-50 p-3 bg-white dark:bg-[#111111] 
+                  rounded-xl border border-neutral-200 dark:border-neutral-800 shadow-xl"
+                  >
+                    <HexColorPicker color={color} onChange={setColor} />
+                    <div className="mt-3 flex items-center justify-between">
+                      <span className="text-xs font-mono text-neutral-500">
+                        HEX
+                      </span>
+                      <input
+                        type="text"
+                        value={color}
+                        onChange={(e) => setColor(e.target.value)}
+                        className="w-20 px-2 py-1 text-xs font-mono bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded text-neutral-900 dark:text-neutral-100 uppercase"
+                      />
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>

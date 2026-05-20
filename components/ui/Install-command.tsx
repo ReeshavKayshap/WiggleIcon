@@ -57,14 +57,14 @@ export function InstallCommand({ componentName }: InstallCommandProps) {
   return (
     <div
       ref={dropdownRef}
-      className="relative w-full p-1 ring ring-neutral-200/80 dark:ring-neutral-800/60 rounded-lg bg-neutral-100
-       dark:bg-neutral-900/40 shadow-sm shadow-black/10"
+      className="relative w-full p-1 ring ring-neutral-200 dark:ring-neutral-800/70 rounded-xl
+       bg-[#FAFAFA]  dark:bg-neutral-900/40  shadow-[0_4px_8px_rgba(0,0,0,0.05)]"
     >
       <div
-        className="px-3 py-2.5 overflow-x-auto custom-scrollbar dark:bg-[#0A0A0A] bg-[#FAFAFA] flex items-center justify-between 
-      gap-4 rounded-md"
+        className="px-3 py-2 overflow-x-auto custom-scrollbar dark:bg-[#0A0A0A] bg-[#ffffff] flex items-center justify-between 
+      gap-4 rounded-lg ring ring-neutral-200/30 dark:ring-neutral-900/30"
       >
-        <code className="text-[13px] font-mono text-neutral-900 dark:text-zinc-300 block pb-1 leading-relaxed">
+        <code className="text-[14px] font-mono font-medium text-neutral-900 dark:text-zinc-300 ">
           <span className="text-green-600 mr-2">{"$"}</span>
           <AnimatePresence mode="wait" initial={false}>
             <motion.span
@@ -75,12 +75,7 @@ export function InstallCommand({ componentName }: InstallCommandProps) {
               transition={{ duration: 0.2, ease: "easeOut" }}
               className="inline break-all"
             >
-              {commandText.split("/").map((part, index) => (
-                <React.Fragment key={index}>
-                  {index === 0 ? part + "/" : part}
-                  {index === 0 && <br />}
-                </React.Fragment>
-              ))}
+              {commandText}
             </motion.span>
           </AnimatePresence>
         </code>
@@ -107,11 +102,11 @@ export function InstallCommand({ componentName }: InstallCommandProps) {
           initial={{ opacity: 0, scale: 0.95, filter: `blur(2px)` }}
           animate={{ opacity: 1, scale: 0.97, filter: `blur(0px)` }}
           exit={{ opacity: 0, scale: 0.95, filter: `blur(2px)` }}
-          transition={{ duration: 0.2, ease: "easeOut" }}
-          className="absolute right-0 top-full mt-3 w-36 overflow-hidden rounded-xl border dark:border-neutral-800/60
-         border-neutral-200 bg-white dark:bg-neutral-900 shadow-xl shadow-black/10 z-20"
+          transition={{ duration: 0.23, ease: "easeOut" }}
+          className="absolute right-0 top-full mt-3 w-40 overflow-hidden rounded-xl border dark:border-neutral-800/60
+         border-neutral-200 bg-white dark:bg-neutral-900 shadow-md shadow-black/10 z-20"
         >
-          <div className="flex flex-col py-1.5 px-1 gap-1">
+          <div className="flex flex-col py-1.5 px-1.5 gap-1">
             {runners.map((runner) => (
               <button
                 key={runner}

@@ -88,7 +88,7 @@ export function IconDetailPreview({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
+            transition={{ duration: 0.15, ease: "easeOut" }}
             className="fixed inset-0 bg-black/40 backdrop-blur-sm z-40"
             onClick={onClose}
           />
@@ -98,8 +98,8 @@ export function IconDetailPreview({
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: "100%" }}
             transition={{
-              duration: 0.3,
-              ease: "easeInOut",
+              duration: 0.23,
+              ease: "easeOut",
             }}
             className="fixed right-4 top-4 bottom-4 z-50 w-full max-w-[520px] flex flex-col dark:bg-[#0A0A0A] bg-[#FAFAFA]  
             ring ring-neutral-400 dark:ring-neutral-800/60 rounded-2xl shadow-sm "

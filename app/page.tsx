@@ -13,8 +13,8 @@ export default function Home() {
   return (
     <Container className="pt-5 px-5">
       <Nav />
-      <Landing setSearchQuery={setSearchQuery} />
-      <IconShowcase searchQuery={searchQuery} />
+      <Landing />
+      <IconShowcase searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
       <Footer />
     </Container>
   );

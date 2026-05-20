@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Inter } from "next/font/google";
+
 import "./globals.css";
 import { ThemeProvider } from "@/provider/ThemeProvider";
 
@@ -10,6 +11,11 @@ const geistSans = Geist({
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
 });
 
@@ -27,7 +33,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         suppressHydrationWarning
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} antialiased`}
       >
         <ThemeProvider
           attribute="class"
@@ -35,7 +41,11 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <main className="bg-background text-foreground">{children}</main>
+          <main className="bg-background text-foreground relative">
+            {children}
+            <div className="pointer-events-none fixed bottom-0 left-0 right-0 h-16 bg-background/50 backdrop-blur-md
+             mask-[linear-gradient(to_top,black_20%,transparent_100%)] " />
+          </main>
         </ThemeProvider>
       </body>
     </html>

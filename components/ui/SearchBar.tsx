@@ -1,8 +1,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { IconSearch, IconCommand } from "@tabler/icons-react";
+import {  IconCommand } from "@tabler/icons-react";
 import { motion, AnimatePresence } from "motion/react";
+import { SearchTwo } from "../icons/SearchTwo";
 
 interface SearchBarProps {
   onSearch?: (query: string) => void;
@@ -29,32 +30,31 @@ export function SearchBar({ onSearch }: SearchBarProps) {
   }, []);
 
   return (
-    <div className="relative">
+    
       <div
         className={`
-          relative flex items-center gap-3 px-5 py-3 rounded-xl
-          bg-neutral-50/50 dark:bg-neutral-900/50 backdrop-blur-xl
-          border transition-all duration-500 ease-in-out w-full
+        px-4 py-3.5 overflow-x-auto dark:bg-[#0A0A0A] bg-[#ffffff] flex items-center  transition-all ease-in duration-200
+        gap-3 rounded-4xl ring shadow-[0_4px_8px_rgba(0,0,0,0.05)] 
           ${
-            isFocused
-              ? "border-neutral-400 dark:border-neutral-700 shadow-sm bg-black/10"
-              : "border-neutral-200 dark:border-neutral-800 shadow-sm"
+            isFocused 
+              ? "ring-neutral-400/60 dark:ring-neutral-800/90"
+              : "ring-neutral-200 dark:ring-neutral-900"
           }
         `}
       >
         <div className="relative">
-          <IconSearch
+          <SearchTwo
             size={20}
             className={`${
               isFocused
                 ? "text-neutral-900 dark:text-neutral-100"
                 : "text-neutral-400"
-            } transition-colors duration-300`}
+            } transition-colors ease-in duration-200`}
           />
           {isFocused && (
             <motion.div
               layoutId="search-glow"
-              className="absolute inset-0 bg-neutral-900/10 dark:bg-white/10 blur-xl rounded-full -z-10"
+              className="absolute inset-0 bg-neutral-900/10 dark:bg-white/10 rounded-full -z-10"
             />
           )}
         </div>
@@ -112,6 +112,6 @@ export function SearchBar({ onSearch }: SearchBarProps) {
           )}
         </div>
       </div>
-    </div>
+ 
   );
 }
