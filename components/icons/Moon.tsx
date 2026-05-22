@@ -35,25 +35,23 @@ export const Moon = forwardRef<AnimatedIconHandle, IconProps>(
 
     return (
       <>
-        <motion.svg
+      <motion.svg xmlns="http://www.w3.org/2000/svg"
           onMouseEnter={start}
           onMouseLeave={stop}
           ref={scope}
           width={size}
           height={size}
           viewBox="0 0 24 24"
-          stroke={color}
-          strokeWidth={strokeWidth}
           fill="none"
-          xmlns="http://www.w3.org/2000/svg"
+          stroke={color} 
+          strokeWidth={strokeWidth}
+          strokeLinecap="round"
           strokeLinejoin="round"
-          className={`cursor-pointer ${className}`}
-        >
-          <path
-            className="main"
-            d="M20.1999 13.2394C19.2976 13.5131 18.3403 13.6602 17.3487 13.6602C11.9307 13.6602 7.53854 9.26803 7.53854 3.85003C7.53854 2.85881 7.68554 1.90193 7.95894 1C3.93151 2.22138 1 5.96304 1 10.3894C1 15.8074 5.39216 20.1996 10.8102 20.1996C15.2369 20.1996 18.9789 17.2675 20.1999 13.2394Z"
-          />
-        </motion.svg>
+          className={`cursor-pointer ${className}`} >
+      <path className="main" d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+      </motion.svg> 
+
+      
       </>
     );
   },

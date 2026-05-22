@@ -78,11 +78,27 @@ export function IconShowcase({
   return (
     <>
       <div className="pt-30 w-full">
-        <div className="w-full max-w-2xl  pb-10 ">
+        {/* Mobile: CustomizeBar on top */}
+        <div className="md:hidden w-fit pb-8">
+          <CustomizeBar
+            size={size}
+            setSize={setSize}
+            strokeWidth={strokeWidth}
+            setStrokeWidth={setStrokeWidth}
+            durationOverride={durationOverride}
+            setDurationOverride={setDurationOverride}
+            color={color}
+            setColor={handleSetColor}
+            resetToDefault={resetToDefault}
+          />
+        </div>
+
+        <div className="w-full max-w-2xl pb-10">
           <SearchBar onSearch={setSearchQuery} />
         </div>
-        <div className="flex flex-col-reverse md:flex-row justify-between w-full gap-10 items-start ">
-          <div className="w-full ">
+
+        <div className="flex md:flex-row justify-between w-full gap-10 items-start">
+          <div className="w-full">
             <motion.div
               key={searchQuery}
               variants={{
@@ -148,8 +164,9 @@ export function IconShowcase({
             )}
           </div>
 
-          <div className=" flex flex-col justify-between items-start gap-10 w-full md:max-w-[340px] md:sticky md:top-5">
-            <div className="md:w-full  w-fit  md:max-w-lg">
+          {/* Desktop: CustomizeBar sticky on the right */}
+          <div className="hidden md:flex flex-col justify-between items-start gap-10 w-full md:max-w-[340px] md:sticky md:top-5">
+            <div className="md:w-full md:max-w-lg">
               <CustomizeBar
                 size={size}
                 setSize={setSize}

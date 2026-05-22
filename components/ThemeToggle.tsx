@@ -3,8 +3,8 @@
 import { useEffect, useState } from "react";
 import { flushSync } from "react-dom";
 import { useTheme } from "next-themes";
-
-import { Moon, Sun } from "../lib";
+import {motion} from "motion/react"
+import { Sun, Moon } from "../lib";
 
 export function ThemeToggle() {
   const { resolvedTheme, setTheme } = useTheme();
@@ -50,21 +50,25 @@ export function ThemeToggle() {
   };
 
   return (
-    <button
+    <motion.button
+      initial={{ scale:1 }} 
+     
+      whileHover={{ scale:0.95 }}
+      transition={{ type:"spring", stiffness:260, damping:20 }}
       type="button"
       onClick={toggleTheme}
       aria-label="Toggle theme"
-      className="size-10 cursor-pointer flex items-center justify-center rounded-full
-       border border-foreground/10 bg-neutral-100 dark:bg-neutral-900 shadow-sm transition-colors"
+      className="size-12 cursor-pointer flex items-center justify-center rounded-full 
+       border border-foreground/10 bg-neutral-100 dark:bg-neutral-900 shadow-sm 
+       "
     >
-      <div className="relative w-5 h-5">
-        <div className="dark:hidden">
-          <Moon size={20} />
+    
+        <div className="dark:hidden  ">
+          <Moon  size={22} />
         </div>
-        <div className="hidden dark:block">
-          <Sun size={20} />
+        <div className="hidden dark:block ">
+        <Sun  size={22} />
         </div>
-      </div>
-    </button>
+    </motion.button>
   );
 }

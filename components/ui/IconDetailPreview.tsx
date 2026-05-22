@@ -208,17 +208,13 @@ export function IconDetailPreview({
               </AnimatePresence>
             </div>
 
-            <div className="px-6 py-4 border-t dark:border-neutral-800/60 border-neutral-200/60 flex items-center gap-3">
+            {/* <div className="px-6 py-4 border-t dark:border-neutral-800/60 border-neutral-200/60 flex justify-center items-center gap-3">
               <button
-                onClick={() => {
-                  const text = `${getJsxImport(selectedIcon.name)}\n\n${getJsxUsage(selectedIcon.name)}`;
-
-                  navigator.clipboard.writeText(text);
-                }}
-                className="flex-1 py-2.5 rounded-xl dark:bg-white bg-neutral-900 dark:text-black text-white font-semibold text-sm
-                hover:opacity-90 transition-opacity cursor-pointer text-center"
+               
+                className="px-4 py-2.5 rounded-xl dark:bg-neutral-800 bg-neutral-100 dark:text-neutral-300 text-neutral-600 font-medium text-sm
+                hover:dark:bg-neutral-700 hover:bg-neutral-200 transition-colors cursor-pointer"
               >
-                Copy Component
+               Follow for Updates
               </button>
 
               <button
@@ -226,9 +222,9 @@ export function IconDetailPreview({
                 className="py-2.5 px-5 rounded-xl dark:bg-neutral-800 bg-neutral-100 dark:text-neutral-300 text-neutral-600 font-medium text-sm
                 hover:dark:bg-neutral-700 hover:bg-neutral-200 transition-colors cursor-pointer"
               >
-                Close
+                Open Source
               </button>
-            </div>
+            </div> */}
           </motion.div>
         </>
       )}

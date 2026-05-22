@@ -4,7 +4,7 @@ function Footer() {
   return (
     <footer className="my-12">
       <div className="flex justify-center items-center">
-        <p className="text-xl text-neutral-500 dark:text-neutral-400 font-sans">
+        <p className="text-lg text-center md:text-xl text-neutral-500 dark:text-neutral-400 font-sans">
           Built by{" "}
           <Link
             href="https://x.com/rshvkyp"
